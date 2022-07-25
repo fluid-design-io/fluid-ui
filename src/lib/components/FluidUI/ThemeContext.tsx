@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { FC, ReactNode } from 'react';
+import React, { FC, ReactNode } from 'react';
 import { createContext, useContext, useEffect, useState } from 'react';
 import windowExists from '../../helpers/window-exists';
 import defaultTheme from '../../theme/default';

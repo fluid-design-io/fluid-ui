@@ -1,4 +1,4 @@
-import { ComponentProps, PropsWithChildren } from 'react';
+import React, { ComponentProps, PropsWithChildren } from 'react';
 import clsxm from '../../helpers/clsxm';
 import { FluidButtonColors, FluidTheme } from '../FluidUI/FluidTheme';
 

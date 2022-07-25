@@ -1,6 +1,6 @@
 import { Disclosure } from '@headlessui/react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { ComponentProps, FC, PropsWithChildren } from 'react';
+import React, { ComponentProps, FC, PropsWithChildren } from 'react';
 import { HiChevronDown } from 'react-icons/hi';
 import clsxm from '../../helpers/clsxm';
 import { excludeClassName } from '../../helpers/exclude';

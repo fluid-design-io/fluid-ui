@@ -1,5 +1,4 @@
-import { FC, HTMLAttributes } from 'react';
-import { useEffect, useMemo } from 'react';
+import React, { FC, HTMLAttributes,useEffect, useMemo } from 'react';
 import { DeepPartial } from '../../helpers/deep-partial';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import windowExists from '../../helpers/window-exists';
