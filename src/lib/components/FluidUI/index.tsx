@@ -1,4 +1,4 @@
-import React, { FC, HTMLAttributes,useEffect, useMemo } from 'react';
+import React, { FC, HTMLAttributes, useEffect, useMemo } from 'react';
 import { DeepPartial } from '../../helpers/deep-partial';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import windowExists from '../../helpers/window-exists';
@@ -12,16 +12,19 @@ export interface ThemeProps {
   usePreferences?: boolean;
 }
 
-interface FlowbiteProps extends HTMLAttributes<HTMLDivElement> {
+interface FluidUIProps extends HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   theme?: ThemeProps;
 }
 
-export const Flowbite: FC<FlowbiteProps> = ({ children, theme = {} }) => {
+export const FluidUI: FC<FluidUIProps> = ({ children, theme = {} }) => {
   const { theme: customTheme = {}, dark, usePreferences = true } = theme;
   const [mode, setMode, toggleMode] = useThemeMode(usePreferences);
 
-  const mergedTheme = mergeDeep(defaultTheme, customTheme) as unknown as FluidTheme;
+  const mergedTheme = (mergeDeep(
+    defaultTheme,
+    customTheme
+  ) as unknown) as FluidTheme;
 
   useEffect(() => {
     if (dark) {
@@ -41,10 +44,14 @@ export const Flowbite: FC<FlowbiteProps> = ({ children, theme = {} }) => {
       mode,
       toggleMode,
     }),
-    [mode, toggleMode, mergedTheme],
+    [mode, toggleMode, mergedTheme]
   );
 
-  return <ThemeContext.Provider value={themeContextValue}>{children}</ThemeContext.Provider>;
+  return (
+    <ThemeContext.Provider value={themeContextValue}>
+      {children}
+    </ThemeContext.Provider>
+  );
 };
 
-export type { FluidTheme } from './FluidTheme';
+export { FluidTheme } from './FluidTheme';

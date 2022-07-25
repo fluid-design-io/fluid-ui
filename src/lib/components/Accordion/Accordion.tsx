@@ -1,4 +1,9 @@
-import React, { ComponentProps, FC, PropsWithChildren, ReactElement } from 'react';
+import React, {
+  ComponentProps,
+  FC,
+  PropsWithChildren,
+  ReactElement,
+} from 'react';
 import clsxm from '../../helpers/clsxm';
 import { useTheme } from '../FluidUI/ThemeContext';
 import { AccordionPanelProps } from './AccordionPanel';

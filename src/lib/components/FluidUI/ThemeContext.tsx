@@ -1,6 +1,12 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-import React, { FC, ReactNode } from 'react';
-import { createContext, useContext, useEffect, useState } from 'react';
+/* eslint no-use-before-define: 0 */
+import React, {
+  FC,
+  ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 import windowExists from '../../helpers/window-exists';
 import defaultTheme from '../../theme/default';
 import { FluidTheme } from './FluidTheme';

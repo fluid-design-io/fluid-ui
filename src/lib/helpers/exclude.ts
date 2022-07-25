@@ -1,5 +1,5 @@
 /* Source from flowbite-react */
-import type { PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 
 export interface ExcludeProps {
   key: string;
