@@ -1,9 +1,9 @@
 export default {
   gray: {
     palette:
-      "bg-stone-500 dark:bg-stone-600 ring-stone-500 dark:ring-stone-600 text-white",
+      'bg-stone-500 dark:bg-stone-600 ring-stone-500 dark:ring-stone-600 text-white',
     active:
-      "ring-2 ring-offset-2 ring-offset-stone-50 dark:ring-offset-stone-800",
+      'ring-2 ring-offset-2 ring-offset-stone-50 dark:ring-offset-stone-800',
     color: {
       light: `
           min-w-[3rem]
@@ -52,7 +52,7 @@ export default {
           focus-visible:ring-stone-500
           focus-visible:ring-offset-transparent
           dark:focus-visible:ring-offset-stone-600
-          `.replace(/[\n\r]\s*/g, " "),
+          `.replace(/[\n\r]\s*/g, ' '),
       dark: `
             min-w-[3rem]
           select-none
@@ -97,14 +97,14 @@ export default {
           focus-visible:ring-stone-50
           focus-visible:ring-offset-transparent
           dark:focus-visible:ring-offset-stone-50
-          `.replace(/[\n\r]\s*/g, " "),
+          `.replace(/[\n\r]\s*/g, ' '),
     },
   },
   orange: {
     palette:
-      "bg-orange-500 dark:bg-orange-600 ring-orange-500 dark:ring-orange-600 text-white",
+      'bg-orange-500 dark:bg-orange-600 ring-orange-500 dark:ring-orange-600 text-white',
     active:
-      "ring-2 ring-offset-2 ring-offset-stone-50 dark:ring-offset-stone-800",
+      'ring-2 ring-offset-2 ring-offset-stone-50 dark:ring-offset-stone-800',
     color: {
       light: `
             min-w-[3rem]
@@ -153,7 +153,7 @@ export default {
           focus-visible:ring-orange-500
           focus-visible:ring-offset-transparent
           dark:focus-visible:ring-offset-orange-600
-          `.replace(/[\n\r]\s*/g, " "),
+          `.replace(/[\n\r]\s*/g, ' '),
       dark: `
             min-w-[3rem]
           select-none
@@ -198,13 +198,13 @@ export default {
           focus-visible:ring-orange-50
           focus-visible:ring-offset-transparent
           dark:focus-visible:ring-offset-orange-50
-        `.replace(/[\n\r]\s*/g, " "),
+        `.replace(/[\n\r]\s*/g, ' '),
     },
   },
   yellow: {
-    palette: "bg-yellow-500 dark:bg-oragne-600 text-black",
+    palette: 'bg-yellow-500 dark:bg-oragne-600 text-black',
     active:
-      "ring-yellow-500 ring-2 ring-offset-2 ring-offset-stone-50 dark:ring-offset-stone-800",
+      'ring-yellow-500 ring-2 ring-offset-2 ring-offset-stone-50 dark:ring-offset-stone-800',
     color: {
       light: `
             min-w-[3rem]
@@ -253,7 +253,7 @@ export default {
             focus-visible:ring-yellow-500
             focus-visible:ring-offset-transparent
             dark:focus-visible:ring-offset-yellow-600
-            `.replace(/[\n\r]\s*/g, " "),
+            `.replace(/[\n\r]\s*/g, ' '),
       dark: `
             min-w-[3rem]
             select-none
@@ -298,13 +298,13 @@ export default {
             focus-visible:ring-yellow-50
             focus-visible:ring-offset-transparent
             dark:focus-visible:ring-offset-yellow-50
-          `.replace(/[\n\r]\s*/g, " "),
+          `.replace(/[\n\r]\s*/g, ' '),
     },
   },
   lime: {
-    palette: "bg-lime-500 dark:bg-oragne-600 text-black",
+    palette: 'bg-lime-500 dark:bg-oragne-600 text-black',
     active:
-      "ring-lime-500 ring-2 ring-offset-2 ring-offset-stone-50 dark:ring-offset-stone-800",
+      'ring-lime-500 ring-2 ring-offset-2 ring-offset-stone-50 dark:ring-offset-stone-800',
     color: {
       light: `
             min-w-[3rem]
@@ -353,7 +353,7 @@ export default {
             focus-visible:ring-lime-500
             focus-visible:ring-offset-transparent
             dark:focus-visible:ring-offset-lime-600
-            `.replace(/[\n\r]\s*/g, " "),
+            `.replace(/[\n\r]\s*/g, ' '),
       dark: `
             min-w-[3rem]
             select-none
@@ -398,13 +398,13 @@ export default {
             focus-visible:ring-lime-50
             focus-visible:ring-offset-transparent
             dark:focus-visible:ring-offset-lime-50
-          `.replace(/[\n\r]\s*/g, " "),
+          `.replace(/[\n\r]\s*/g, ' '),
     },
   },
   green: {
-    palette: "bg-green-500 dark:bg-oragne-600 text-black",
+    palette: 'bg-green-500 dark:bg-oragne-600 text-black',
     active:
-      "ring-green-500 ring-2 ring-offset-2 ring-offset-stone-50 dark:ring-offset-stone-800",
+      'ring-green-500 ring-2 ring-offset-2 ring-offset-stone-50 dark:ring-offset-stone-800',
     color: {
       light: `
             min-w-[3rem]
@@ -453,7 +453,7 @@ export default {
             focus-visible:ring-green-500
             focus-visible:ring-offset-transparent
             dark:focus-visible:ring-offset-green-600
-            `.replace(/[\n\r]\s*/g, " "),
+            `.replace(/[\n\r]\s*/g, ' '),
       dark: `
             min-w-[3rem]
             select-none
@@ -498,13 +498,13 @@ export default {
             focus-visible:ring-green-50
             focus-visible:ring-offset-transparent
             dark:focus-visible:ring-offset-green-50
-          `.replace(/[\n\r]\s*/g, " "),
+          `.replace(/[\n\r]\s*/g, ' '),
     },
   },
   teal: {
-    palette: "bg-teal-500 dark:bg-oragne-600 text-black",
+    palette: 'bg-teal-500 dark:bg-oragne-600 text-black',
     active:
-      "ring-teal-500 ring-2 ring-offset-2 ring-offset-stone-50 dark:ring-offset-stone-800",
+      'ring-teal-500 ring-2 ring-offset-2 ring-offset-stone-50 dark:ring-offset-stone-800',
     color: {
       light: `
             min-w-[3rem]
@@ -553,7 +553,7 @@ export default {
             focus-visible:ring-teal-500
             focus-visible:ring-offset-transparent
             dark:focus-visible:ring-offset-teal-600
-            `.replace(/[\n\r]\s*/g, " "),
+            `.replace(/[\n\r]\s*/g, ' '),
       dark: `
             min-w-[3rem]
             select-none
@@ -598,13 +598,13 @@ export default {
             focus-visible:ring-teal-50
             focus-visible:ring-offset-transparent
             dark:focus-visible:ring-offset-teal-50
-          `.replace(/[\n\r]\s*/g, " "),
+          `.replace(/[\n\r]\s*/g, ' '),
     },
   },
   sky: {
-    palette: "bg-sky-400 dark:bg-sky-600 text-black",
+    palette: 'bg-sky-400 dark:bg-sky-600 text-black',
     active:
-      "ring-sky-500 ring-2 ring-offset-2 ring-offset-stone-50 dark:ring-offset-stone-800",
+      'ring-sky-500 ring-2 ring-offset-2 ring-offset-stone-50 dark:ring-offset-stone-800',
     color: {
       light: `
             min-w-[3rem]
@@ -653,7 +653,7 @@ export default {
             focus-visible:ring-sky-500
             focus-visible:ring-offset-transparent
             dark:focus-visible:ring-offset-sky-600
-            `.replace(/[\n\r]\s*/g, " "),
+            `.replace(/[\n\r]\s*/g, ' '),
       dark: `
             min-w-[3rem]
             select-none
@@ -698,14 +698,14 @@ export default {
             focus-visible:ring-sky-50
             focus-visible:ring-offset-transparent
             dark:focus-visible:ring-offset-sky-50
-          `.replace(/[\n\r]\s*/g, " "),
+          `.replace(/[\n\r]\s*/g, ' '),
     },
   },
   indigo: {
     palette:
-      "bg-indigo-500 dark:bg-indigo-600 ring-indigo-500 dark:ring-indigo-600 text-white",
+      'bg-indigo-500 dark:bg-indigo-600 ring-indigo-500 dark:ring-indigo-600 text-white',
     active:
-      "ring-2 ring-offset-2 ring-offset-stone-50 dark:ring-offset-stone-800",
+      'ring-2 ring-offset-2 ring-offset-stone-50 dark:ring-offset-stone-800',
     color: {
       light: `
             min-w-[3rem]
@@ -754,7 +754,7 @@ export default {
           focus-visible:ring-indigo-500
           focus-visible:ring-offset-transparent
           dark:focus-visible:ring-offset-indigo-600
-          `.replace(/[\n\r]\s*/g, " "),
+          `.replace(/[\n\r]\s*/g, ' '),
       dark: `
             min-w-[3rem]
           select-none
@@ -799,14 +799,14 @@ export default {
           focus-visible:ring-indigo-50
           focus-visible:ring-offset-transparent
           dark:focus-visible:ring-offset-indigo-50
-        `.replace(/[\n\r]\s*/g, " "),
+        `.replace(/[\n\r]\s*/g, ' '),
     },
   },
   fuchsia: {
     palette:
-      "bg-fuchsia-500 dark:bg-fuchsia-600 ring-fuchsia-500 dark:ring-fuchsia-600 text-white",
+      'bg-fuchsia-500 dark:bg-fuchsia-600 ring-fuchsia-500 dark:ring-fuchsia-600 text-white',
     active:
-      "ring-2 ring-offset-2 ring-offset-stone-50 dark:ring-offset-stone-800",
+      'ring-2 ring-offset-2 ring-offset-stone-50 dark:ring-offset-stone-800',
     color: {
       light: `
             min-w-[3rem]
@@ -855,7 +855,7 @@ export default {
           focus-visible:ring-fuchsia-500
           focus-visible:ring-offset-transparent
           dark:focus-visible:ring-offset-fuchsia-600
-          `.replace(/[\n\r]\s*/g, " "),
+          `.replace(/[\n\r]\s*/g, ' '),
       dark: `
             min-w-[3rem]
           select-none
@@ -900,14 +900,14 @@ export default {
           focus-visible:ring-fuchsia-50
           focus-visible:ring-offset-transparent
           dark:focus-visible:ring-offset-fuchsia-50
-        `.replace(/[\n\r]\s*/g, " "),
+        `.replace(/[\n\r]\s*/g, ' '),
     },
   },
   rose: {
     palette:
-      "bg-rose-500 dark:bg-rose-600 ring-rose-500 dark:ring-rose-600 text-white",
+      'bg-rose-500 dark:bg-rose-600 ring-rose-500 dark:ring-rose-600 text-white',
     active:
-      "ring-2 ring-offset-2 ring-offset-stone-50 dark:ring-offset-stone-800",
+      'ring-2 ring-offset-2 ring-offset-stone-50 dark:ring-offset-stone-800',
     color: {
       light: `
             min-w-[3rem]
@@ -956,7 +956,7 @@ export default {
           focus-visible:ring-rose-500
           focus-visible:ring-offset-transparent
           dark:focus-visible:ring-offset-rose-600
-          `.replace(/[\n\r]\s*/g, " "),
+          `.replace(/[\n\r]\s*/g, ' '),
       dark: `
             min-w-[3rem]
           select-none
@@ -1001,14 +1001,14 @@ export default {
           focus-visible:ring-rose-50
           focus-visible:ring-offset-transparent
           dark:focus-visible:ring-offset-rose-50
-        `.replace(/[\n\r]\s*/g, " "),
+        `.replace(/[\n\r]\s*/g, ' '),
     },
   },
   red: {
     palette:
-      "bg-red-500 dark:bg-red-600 ring-red-500 dark:ring-red-600 text-white",
+      'bg-red-500 dark:bg-red-600 ring-red-500 dark:ring-red-600 text-white',
     active:
-      "ring-2 ring-offset-2 ring-offset-stone-50 dark:ring-offset-stone-800",
+      'ring-2 ring-offset-2 ring-offset-stone-50 dark:ring-offset-stone-800',
     color: {
       light: `
             min-w-[3rem]
@@ -1057,7 +1057,7 @@ export default {
           focus-visible:ring-red-500
           focus-visible:ring-offset-transparent
           dark:focus-visible:ring-offset-red-600
-          `.replace(/[\n\r]\s*/g, " "),
+          `.replace(/[\n\r]\s*/g, ' '),
       dark: `
             min-w-[3rem]
           select-none
@@ -1102,7 +1102,7 @@ export default {
           focus-visible:ring-red-50
           focus-visible:ring-offset-transparent
           dark:focus-visible:ring-offset-red-50
-        `.replace(/[\n\r]\s*/g, " "),
+        `.replace(/[\n\r]\s*/g, ' '),
     },
   },
 };

@@ -1,17 +1,17 @@
-import { Disclosure } from "@headlessui/react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import type { ComponentProps, FC, PropsWithChildren } from "react";
-import { HiChevronDown } from "react-icons/hi";
-import clsxm from "../../helpers/clsxm";
-import { excludeClassName } from "../../helpers/exclude";
-import { useTheme } from "../FluidUI/ThemeContext";
+import { Disclosure } from '@headlessui/react';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { ComponentProps, FC, PropsWithChildren } from 'react';
+import { HiChevronDown } from 'react-icons/hi';
+import clsxm from '../../helpers/clsxm';
+import { excludeClassName } from '../../helpers/exclude';
+import { useTheme } from '../FluidUI/ThemeContext';
 
 export interface AccordionPanelProps
-  extends PropsWithChildren<ComponentProps<"div">> {
+  extends PropsWithChildren<ComponentProps<'div'>> {
   isOpen?: boolean;
   header?: string | React.ReactNode;
-  headerIcon?: FC<ComponentProps<"svg">>;
-  arrowIcon?: FC<ComponentProps<"svg">>;
+  headerIcon?: FC<ComponentProps<'svg'>>;
+  arrowIcon?: FC<ComponentProps<'svg'>>;
 }
 
 export const AccordionPanel: FC<AccordionPanelProps> = ({
@@ -33,14 +33,14 @@ export const AccordionPanel: FC<AccordionPanelProps> = ({
       animate="open"
       exit="collapsed"
       variants={{
-        open: { opacity: 1, height: "auto" },
+        open: { opacity: 1, height: 'auto' },
         collapsed: {
           opacity: 0,
-          height: shouldReduceMotion ? "auto" : 0,
+          height: shouldReduceMotion ? 'auto' : 0,
         },
       }}
       transition={{
-        type: "spring",
+        type: 'spring',
         bounce: 0,
         duration: shouldReduceMotion ? 0.2 : 0.5,
       }}
@@ -53,7 +53,7 @@ export const AccordionPanel: FC<AccordionPanelProps> = ({
   return (
     <Disclosure
       as="div"
-      className={clsxm("space-y-1", props?.className)}
+      className={clsxm('space-y-1', props?.className)}
       defaultOpen={isOpen}
       {...theirProps}
     >
@@ -64,7 +64,7 @@ export const AccordionPanel: FC<AccordionPanelProps> = ({
             className={clsxm(theme.base, open && theme.open.on)}
             aria-live="assertive"
           >
-            {typeof header === "string" ? (
+            {typeof header === 'string' ? (
               <p className="flex items-center gap-2">
                 {HeaderIcon && (
                   <HeaderIcon
@@ -81,7 +81,7 @@ export const AccordionPanel: FC<AccordionPanelProps> = ({
               <ArrowIcon
                 className={clsxm(
                   theme.arrow.base,
-                  open ? `ltr:rotate-180 rtl:-rotate-180` : "rotate-0"
+                  open ? `ltr:rotate-180 rtl:-rotate-180` : 'rotate-0'
                 )}
               />
             </span>
@@ -89,7 +89,7 @@ export const AccordionPanel: FC<AccordionPanelProps> = ({
               <ArrowIcon
                 className={clsxm(
                   theme.arrow.base,
-                  open ? `rotate-180` : "rotate-0"
+                  open ? `rotate-180` : 'rotate-0'
                 )}
               />
             </span>

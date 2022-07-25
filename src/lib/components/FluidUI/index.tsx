@@ -1,10 +1,10 @@
-import type { FC, HTMLAttributes } from 'react';
+import { FC, HTMLAttributes } from 'react';
 import { useEffect, useMemo } from 'react';
-import type { DeepPartial } from '../../helpers/deep-partial';
+import { DeepPartial } from '../../helpers/deep-partial';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import windowExists from '../../helpers/window-exists';
 import defaultTheme from '../../theme/default';
-import type { FluidTheme } from './FluidTheme';
+import { FluidTheme } from './FluidTheme';
 import { ThemeContext, useThemeMode } from './ThemeContext';
 
 export interface ThemeProps {

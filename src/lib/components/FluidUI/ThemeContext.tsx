@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import type { FC, ReactNode } from "react";
-import { createContext, useContext, useEffect, useState } from "react";
-import windowExists from "../../helpers/window-exists";
-import defaultTheme from "../../theme/default";
-import type { FluidTheme } from "./FluidTheme";
+import { FC, ReactNode } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
+import windowExists from '../../helpers/window-exists';
+import defaultTheme from '../../theme/default';
+import { FluidTheme } from './FluidTheme';
 
-export type Mode = string | undefined | "light" | "dark";
+export type Mode = string | undefined | 'light' | 'dark';
 
 interface ThemeContextProps {
   theme: FluidTheme;
@@ -42,7 +42,7 @@ export const useThemeMode = (
   if (!usePreferences) return [undefined, undefined, undefined];
   const [mode, setMode] = useState<Mode>(undefined);
 
-  const savePreference = (m: string) => localStorage.setItem("theme", m);
+  const savePreference = (m: string) => localStorage.setItem('theme', m);
 
   const toggleMode = () => {
     if (!mode) {
@@ -50,11 +50,11 @@ export const useThemeMode = (
     }
 
     if (windowExists()) {
-      document.documentElement.classList.toggle("dark");
+      document.documentElement.classList.toggle('dark');
     }
 
     savePreference(mode);
-    setMode(mode == "dark" ? "light" : "dark");
+    setMode(mode == 'dark' ? 'light' : 'dark');
   };
 
   if (usePreferences) {
@@ -62,9 +62,9 @@ export const useThemeMode = (
       const userPreference =
         windowExists() &&
         !!window.matchMedia &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches;
+        window.matchMedia('(prefers-color-scheme: dark)').matches;
       const userMode =
-        localStorage.getItem("theme") || (userPreference ? "dark" : "light");
+        localStorage.getItem('theme') || (userPreference ? 'dark' : 'light');
 
       if (userMode) {
         setMode(userMode);
@@ -82,10 +82,10 @@ export const useThemeMode = (
         return;
       }
 
-      if (mode != "dark") {
-        document.documentElement.classList.remove("dark");
+      if (mode != 'dark') {
+        document.documentElement.classList.remove('dark');
       } else {
-        document.documentElement.classList.add("dark");
+        document.documentElement.classList.add('dark');
       }
     }, [mode]);
   }

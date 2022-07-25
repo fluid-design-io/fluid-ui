@@ -1,17 +1,17 @@
-import type { Meta, Story } from "@storybook/react/types-6-0";
-import type { ComponentProps, FC } from "react";
+import { Meta, Story } from '@storybook/react/types-6-0';
+import { ComponentProps, FC } from 'react';
 import {
   HiOutlineArrowCircleDown,
   HiOutlineInformationCircle,
   HiOutlineShoppingCart,
-} from "react-icons/hi";
-import type { AccordionProps } from "../lib/components/Accordion"
-import { Accordion } from "../lib/components/Accordion";
-import { AccordionPanel } from "../lib/components/Accordion/AccordionPanel";
-import { excludeClassName } from "../lib/helpers/exclude";
+} from 'react-icons/hi';
+import { AccordionProps } from '../lib/components/Accordion';
+import { Accordion } from '../lib/components/Accordion';
+import { AccordionPanel } from '../lib/components/Accordion/AccordionPanel';
+import { excludeClassName } from '../lib/helpers/exclude';
 
 export default {
-  title: "Components/Accordion",
+  title: 'Components/Accordion',
   component: Accordion,
   args: {
     isOpen: false,
@@ -20,9 +20,9 @@ export default {
 } as Meta;
 
 interface CustomAccordionProps extends AccordionProps {
-  headerIcons: FC<ComponentProps<"svg">>[];
+  headerIcons: FC<ComponentProps<'svg'>>[];
 }
-const Template: Story<CustomAccordionProps> = (args) => {
+const Template: Story<CustomAccordionProps> = args => {
   return (
     <Accordion divider={args?.divider} className={args?.className}>
       <AccordionPanel
@@ -57,34 +57,34 @@ const Template: Story<CustomAccordionProps> = (args) => {
 export const Default = Template.bind({});
 
 export const IsOpen = Template.bind({});
-IsOpen.storyName = "Default Open";
+IsOpen.storyName = 'Default Open';
 IsOpen.args = {
   isOpen: true,
 };
 
 export const WithDivider = Template.bind({});
-WithDivider.storyName = "With Divider";
+WithDivider.storyName = 'With Divider';
 WithDivider.args = {
   divider: true,
 };
 
 export const WithArrowIcon = Template.bind({});
-WithArrowIcon.storyName = "With arrow icon";
+WithArrowIcon.storyName = 'With arrow icon';
 WithArrowIcon.args = {
   divider: true,
   arrowIcon: HiOutlineArrowCircleDown,
 };
 
 export const WithHeaderIcon = Template.bind({});
-WithHeaderIcon.storyName = "With header icon";
+WithHeaderIcon.storyName = 'With header icon';
 WithHeaderIcon.args = {
   divider: true,
   headerIcons: [HiOutlineShoppingCart, HiOutlineInformationCircle],
 };
 
 export const CustomStyle = Template.bind({});
-CustomStyle.storyName = "Custom style";
+CustomStyle.storyName = 'Custom style';
 CustomStyle.args = {
   divider: true,
-  className: "max-w-md mx-auto shadow-lg shadow-gray-300/40",
+  className: 'max-w-md mx-auto shadow-lg shadow-gray-300/40',
 };

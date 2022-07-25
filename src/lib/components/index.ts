@@ -1,2 +1,2 @@
-export * from "./Accordion";
+export * from './Accordion';
 // export * from "./Button";
