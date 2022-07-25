@@ -28,7 +28,6 @@ export const AccordionPanel: FC<AccordionPanelProps> = ({
 
   const ListPanel = ({ children }: { children: React.ReactNode }) => (
     <motion.div
-      key={`${name}.content`}
       initial="collapsed"
       animate="open"
       exit="collapsed"
