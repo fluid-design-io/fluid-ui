@@ -1,7 +1,9 @@
 import React, { ComponentProps, PropsWithChildren } from 'react';
 import clsxm from '../../helpers/clsxm';
 import {
+  FluidButtonColorOptions,
   FluidButtonColors,
+  FluidButtonShapes,
   FluidButtonSizes,
   FluidButtonWeights,
   FulidButtonLoadingOptions,
@@ -9,6 +11,7 @@ import {
 
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { GrEmptyCircle } from 'react-icons/gr';
+import { HiOutlineDotsHorizontal } from 'react-icons/hi';
 
 import { useTheme } from '../FluidUI/ThemeContext';
 
@@ -18,6 +21,8 @@ export interface ButtonProps
   size?: keyof FluidButtonSizes;
   weight?: keyof FluidButtonWeights;
   isLoading?: boolean;
+  shape?: keyof FluidButtonShapes;
+  gradient?: keyof FluidButtonColorOptions['gradient'] | undefined;
   loadingOptions?: {
     animation?: keyof FulidButtonLoadingOptions['animation'];
     text?: string;
@@ -28,11 +33,13 @@ export interface ButtonProps
 export const Button = ({
   color = 'gray',
   size = 'md',
+  shape = 'round',
   weight = 'normal',
   isLoading = false,
+  gradient = undefined,
   loadingOptions = {
     animation: 'spin',
-    text: 'Loading...',
+    text: '',
   },
   children,
   ...props
@@ -43,19 +50,27 @@ export const Button = ({
       className={clsxm(
         theme.base,
         theme.color[color].base,
-        size ? theme.size[size] : theme.size.md,
-        weight
-          ? theme.color[color].weight[weight]
-          : theme.color[color].weight.light,
+        theme.shape[shape][size],
+        gradient
+          ? theme.color[color].gradient[gradient]
+          : theme.color[color].weight[weight],
         props?.className
       )}
       disabled={props?.disabled || isLoading}
     >
-      {isLoading ? (
-        <ButtonLoadingComponent {...{ loadingOptions }} />
-      ) : (
-        children
-      )}
+      {isLoading && <ButtonLoadingComponent {...{ loadingOptions }} />}
+      <div
+        className={clsxm(
+          isLoading && 'opacity-0',
+          loadingOptions.text.length > 0 && 'px-2'
+        )}
+      >
+        {isLoading
+          ? loadingOptions.text.length > 0
+            ? loadingOptions.text
+            : children
+          : children}
+      </div>
     </button>
   );
 };
@@ -69,20 +84,19 @@ const ButtonLoadingComponent = ({
   };
 }) => {
   const theme = useTheme().theme.button;
+  const iconOption = {
+    spin: AiOutlineLoading3Quarters,
+    pulse: HiOutlineDotsHorizontal,
+    ping: GrEmptyCircle,
+  };
+  const Icon = iconOption[loadingOptions.animation];
 
-  if (loadingOptions.animation === 'spin') {
-    return (
-      <div className={clsxm(theme.loading.animation.spin)}>
-        <AiOutlineLoading3Quarters className={theme.loading.base} />
-      </div>
-    );
-  } else if (loadingOptions.animation === 'pulse') {
-    return (
-      <div className={clsxm(theme.loading.animation.pulse)}>
-        <GrEmptyCircle className={theme.loading.base} />
-      </div>
-    );
-  } else {
-    return null;
-  }
+  return (
+    <div className={clsxm(theme.loading.base)}>
+      <Icon className={theme.loading.animation[loadingOptions.animation]} />
+      {loadingOptions.text.length > 0 && (
+        <div className={theme.loading.text}>{loadingOptions.text}</div>
+      )}
+    </div>
+  );
 };

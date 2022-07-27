@@ -48,7 +48,7 @@ export interface FluidTheme {
   };
   button: {
     base: string;
-    size: FluidButtonSizes;
+    shape: FluidButtonShapes;
     color: FluidButtonColors;
     loading: FulidButtonLoadingOptions;
   };
@@ -95,9 +95,15 @@ export interface FluidButtonColorOptions {
 
 export interface FulidButtonLoadingOptions {
   base: string;
+  /**
+   * The animation type to use when the button is loading.
+   * @default "spin"
+   * Options: "spin", "pulse", "ping"
+   */
   animation: {
     spin: string;
     pulse: string;
+    ping: string;
   };
   text: string;
 }
@@ -116,6 +122,12 @@ export interface FluidButtonSizes {
   md: string;
   lg: string;
   xl: string;
+}
+
+export interface FluidButtonShapes {
+  pill: FluidButtonSizes;
+  round: FluidButtonSizes;
+  square: FluidButtonSizes;
 }
 
 export interface FluidColors {

@@ -28,17 +28,38 @@ export default {
   },
   button: {
     base: 'flex justify-center items-center h-min w-fit text-center transition',
-    size: {
-      xs: 'px-3 py-1.5 text-xs rounded-md',
-      sm: 'px-3.5 py-2 text-sm rounded-md',
-      md: 'px-4 py-2 rounded-md min-h-[1.5rem]',
-      lg: 'px-5 py-2.5 rounded-md text-lg',
-      xl: 'px-6 py-3 rounded-md text-xl',
+    shape: {
+      pill: {
+        xs: 'px-3.5 py-1.5 text-xs rounded-full',
+        sm: 'px-4 py-2 text-sm rounded-full',
+        md: 'px-4 py-2 rounded-full',
+        lg: 'px-5 py-2.5 rounded-full text-lg',
+        xl: 'px-6 py-2.5 rounded-full text-xl',
+      },
+      round: {
+        xs: 'px-3 py-1.5 text-xs rounded-md',
+        sm: 'px-3.5 py-2 text-sm rounded-md',
+        md: 'px-4 py-2 rounded-md',
+        lg: 'px-5 py-2.5 rounded-md text-lg',
+        xl: 'px-6 py-3 rounded-md text-xl',
+      },
+      square: {
+        xs: 'px-2.5 py-1 text-xs uppercase',
+        sm: 'px-3 py-1.5 text-sm uppercase',
+        md: 'px-3.5 py-2 uppercase',
+        lg: 'px-4 py-2.5 text-lg uppercase',
+        xl: 'px-5 py-3 text-xl uppercase',
+      },
     },
     color: buttonStyles,
     loading: {
-      base: '',
-      animation: { spin: 'animate-spin', pulse: 'animate-pulse' },
+      base:
+        'absolute inset-0 z-[2] w-full h-full flex justify-center items-center gap-2',
+      animation: {
+        spin: 'animate-spin',
+        pulse: 'animate-pulse',
+        ping: 'animate-ping',
+      },
       text: '',
     },
   },

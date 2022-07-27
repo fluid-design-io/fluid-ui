@@ -15,7 +15,7 @@
     "build": "tsdx build",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
-    "commit": "git-cz && git-push",
+    "commit": "git-cz && git push",
     "prepare": "tsdx build",
     "size": "size-limit",
     "analyze": "size-limit --why",
