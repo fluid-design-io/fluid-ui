@@ -5,11 +5,12 @@ import {
   HiOutlineArrowCircleDown,
   HiOutlineInformationCircle,
   HiOutlineShoppingCart,
+  HiOutlineUser,
 } from 'react-icons/hi';
 import { AccordionProps } from '../lib/components/Accordion';
 import { Accordion } from '../lib/components/Accordion';
 import { AccordionPanel } from '../lib/components/Accordion/AccordionPanel';
-import { excludeClassName } from '../lib/helpers/exclude';
+import clsxm from '../lib/helpers/clsxm';
 
 export default {
   title: 'Components/Accordion',
@@ -17,42 +18,65 @@ export default {
   args: {
     isOpen: false,
     divider: false,
+    darkMode: false,
   },
 } as Meta;
 
 interface CustomAccordionProps extends AccordionProps {
   headerIcons: FC<ComponentProps<'svg'>>[];
+  rtl: boolean;
+  darkMode: boolean;
 }
 const Template: Story<CustomAccordionProps> = args => {
-  return (
-    <Accordion divider={args?.divider} className={args?.className}>
-      <AccordionPanel
-        header="Shop"
-        headerIcon={args?.headerIcons && args.headerIcons[0]}
-        {...excludeClassName(args)}
-      >
-        <p className="mb-2 text-gray-500 dark:text-gray-400">
-          Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam.
-          Integer ut neque. Vivamus nisi metus, molestie vel, gravida in,
-          condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi.
-          Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu
-          ante scelerisque vulputate.
-        </p>
-      </AccordionPanel>
-      <AccordionPanel
-        header="Service"
-        headerIcon={args?.headerIcons && args.headerIcons[1]}
-        {...excludeClassName(args)}
-      >
-        <p className="mb-2 text-gray-500 dark:text-gray-400">
-          Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
-          purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis
-          porttitor velit, faucibus interdum tellus libero ac justo. Vivamus non
-          quam. In suscipit faucibus urna.
-        </p>
-      </AccordionPanel>
+  const headers = args?.rtl
+    ? ['متجر', 'خدمة', 'معلومات عنا']
+    : ['Shop', 'Service', 'About'];
+  const contents = args?.rtl
+    ? [
+        'لكن لا بد أن أوضح لك أن كل هذه الأفكار المغلوطة حول استنكار  النشوة وتمجيد الألم نشأت بالفعل، وسأعرض لك التفاصيل لتكتشف حقيقة وأساس تلك السعادة البشرية، فلا أحد يرفض أو يكره أو يتجنب الشعور بالسعادة، ولكن بفضل هؤلاء الأشخاص الذين لا يدركون بأن السعادة لا بد أن نستشعرها بصورة أكثر عقلانية ومنطقية فيعرضهم هذا لمواجهة الظروف الأليمة، وأكرر بأنه لا يوجد من هؤ',
+        'المغلوطة حول استنكار  النشوة وتمجيد الألم نشأت بالفعل، وسأعرض لك التفاصيل لتكتشف حقيقة وأساس تلك السعادة البشرية، فلا أحد يرفض أو يكره أو يتجنب الشعور بالسعادة، ولكن بفضل هؤ',
+        'و سأعرض مثال حي لهذا، من منا لم يتحمل جهد بدني شاق إلا من أجل الحصول على ميزة أو فائدة؟ ولكن من لديه الحق أن ينتقد شخص ما أراد أن يشعر بالسعادة التي لا تشوبها عواقب أليمة أو آخر أراد أن يتجنب الألم الذي ربما تنجم عنه بعض المتعة ؟ ',
+      ]
+    : [
+        `Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam.
+    Integer ut neque. Vivamus nisi metus, molestie vel, gravida in,
+    condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi.
+    Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu
+    ante scelerisque vulputate.`,
+        `Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
+    purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis
+    porttitor velit, faucibus interdum tellus libero ac justo. Vivamus non
+    quam. In suscipit faucibus urna.`,
+        `Nam mi. Proin viverra leo ut
+    odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque
+    vulputate.`,
+      ];
+  const body = (
+    <Accordion divider={args?.divider} className={clsxm(args?.className)}>
+      {headers.map((_, index) => (
+        <AccordionPanel
+          key={`${index}`}
+          header={headers[index]}
+          headerIcon={args?.headerIcons && args.headerIcons[index]}
+        >
+          <p className="mb-2 text-gray-500 dark:text-gray-300">
+            {contents[index]}
+          </p>
+        </AccordionPanel>
+      ))}
     </Accordion>
   );
+  if (args?.rtl || args?.darkMode) {
+    return (
+      <div
+        dir={args?.rtl ? 'rtl' : 'ltr'}
+        className={clsxm(args?.darkMode && 'dark')}
+      >
+        {body}
+      </div>
+    );
+  }
+  return body;
 };
 
 export const Default = Template.bind({});
@@ -80,7 +104,11 @@ export const WithHeaderIcon = Template.bind({});
 WithHeaderIcon.storyName = 'With header icon';
 WithHeaderIcon.args = {
   divider: true,
-  headerIcons: [HiOutlineShoppingCart, HiOutlineInformationCircle],
+  headerIcons: [
+    HiOutlineShoppingCart,
+    HiOutlineInformationCircle,
+    HiOutlineUser,
+  ],
 };
 
 export const CustomStyle = Template.bind({});
@@ -88,4 +116,15 @@ CustomStyle.storyName = 'Custom style';
 CustomStyle.args = {
   divider: true,
   className: 'max-w-md mx-auto shadow-lg shadow-gray-300/40',
+};
+export const RTL = Template.bind({});
+RTL.storyName = 'RTL language';
+RTL.args = {
+  rtl: true,
+  divider: true,
+  headerIcons: [
+    HiOutlineShoppingCart,
+    HiOutlineInformationCircle,
+    HiOutlineUser,
+  ],
 };

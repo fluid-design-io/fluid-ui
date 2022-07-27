@@ -3,11 +3,11 @@ import buttonStyles from './buttonStyles';
 export default {
   accordion: {
     base:
-      'w-full px-2 py-1 overflow-hidden rounded-lg bg-stone-50 dark:bg-stone-900 shadow-stone-900/10 dark:shadow-stone-900/30 component prefers-contrast:bg-white dark:prefers-contrast:bg-stone-900 prefers-contrast:contrast-ring',
+      'w-full divide-y divide-transparent px-2 py-1 overflow-hidden rounded-lg bg-stone-50 dark:bg-stone-900 shadow-stone-900/10 dark:shadow-stone-900/30 prefers-contrast:bg-white dark:prefers-contrast:bg-stone-900 prefers-contrast:contrast-ring',
     content: {
-      base: 'overflow-hidden !mt-0 mx-4',
+      base: 'overflow-hidden mx-4',
     },
-    divider: false,
+    divider: 'divide-stone-200 dark:divide-stone-700',
     header: {
       arrow: {
         base: 'w-4 h-4 transform transition',
@@ -27,26 +27,19 @@ export default {
     },
   },
   button: {
-    base: 'hover:opacity-80 transition-colors flex justify-center items-center',
+    base: 'flex justify-center items-center h-min w-fit text-center transition',
     size: {
-      xs: 'w-full px-3 py-1.5 text-sm rounded-md',
-      sm: 'w-full px-3.5 py-2 text-sm rounded-md',
-      md: 'w-full px-4 py-2 rounded-md',
-      lg: 'w-full px-5 py-2.5 rounded-md',
-      xl: 'w-full px-6 py-3 rounded-md',
+      xs: 'px-3 py-1.5 text-xs rounded-md',
+      sm: 'px-3.5 py-2 text-sm rounded-md',
+      md: 'px-4 py-2 rounded-md min-h-[1.5rem]',
+      lg: 'px-5 py-2.5 rounded-md text-lg',
+      xl: 'px-6 py-3 rounded-md text-xl',
     },
-    color: {
-      gray: buttonStyles.gray,
-      yellow: buttonStyles.yellow,
-      orange: buttonStyles.orange,
-      red: buttonStyles.red,
-      lime: buttonStyles.lime,
-      green: buttonStyles.green,
-      teal: buttonStyles.teal,
-      sky: buttonStyles.sky,
-      indigo: buttonStyles.indigo,
-      fuchsia: buttonStyles.fuchsia,
-      rose: buttonStyles.rose,
+    color: buttonStyles,
+    loading: {
+      base: '',
+      animation: { spin: 'animate-spin', pulse: 'animate-pulse' },
+      text: '',
     },
   },
 };

@@ -1,1108 +1,484 @@
 export default {
-  gray: {
-    palette:
-      'bg-stone-500 dark:bg-stone-600 ring-stone-500 dark:ring-stone-600 text-white',
-    active:
-      'ring-2 ring-offset-2 ring-offset-stone-50 dark:ring-offset-stone-800',
-    color: {
-      light: `
-          min-w-[3rem]
-          select-none
-          disabled:cursor-not-allowed 
-          disabled:opacity-80 
-          disabled:filter 
-          disabled:saturate-0
-          transition-colors
-          
-          bg-stone-50
-          text-stone-800
-          focus:bg-stone-100
-          hover:bg-stone-100
-          hover:text-stone-900
-          focus:text-stone-900
-          active:bg-stone-200
-          
-          prefers-contrast:border
-          prefers-contrast:bg-stone-50
-          prefers-contrast:text-stone-900
-          prefers-contrast:border-stone-800
-          prefers-contrast:hover:bg-stone-50
-          prefers-contrast:focus:bg-stone-50
-          prefers-contrast:hover:text-stone-900
-          
-          dark:bg-stone-900
-          dark:text-stone-100
-          dark:hover:bg-stone-900/50
-          dark:focus:bg-stone-900/50
-          dark:active:bg-stone-700
-          dark:hover:text-stone-100
-          dark:focus:text-stone-100
-          
-          dark:prefers-contrast:font-bold
-          dark:prefers-contrast:bg-black
-          dark:prefers-contrast:text-stone-50
-          dark:prefers-contrast:hover:bg-stone-800
-          dark:prefers-contrast:focus:bg-stone-800
-          dark:prefers-contrast:hover:text-stone-50
-          dark:prefers-contrast:focus:text-stone-50
-          dark:prefers-contrast:border-stone-200
-  
-          focus-visible:outline-none
-          focus-visible:ring-2
-          focus-visible:ring-stone-500
-          focus-visible:ring-offset-transparent
-          dark:focus-visible:ring-offset-stone-600
-          `.replace(/[\n\r]\s*/g, ' '),
-      dark: `
-            min-w-[3rem]
-          select-none
-          disabled:cursor-not-allowed 
-          disabled:opacity-80 
-          disabled:filter 
-          disabled:saturate-0
-          transition-colors
-          
-          bg-stone-900
-          text-stone-100
-          focus:bg-stone-800
-          hover:bg-stone-800
-          hover:text-stone-50
-          focus:text-stone-50
-          active:bg-stone-700
-          
-          prefers-contrast:border
-          prefers-contrast:border-stone-50
-          prefers-contrast:hover:bg-stone-600
-          prefers-contrast:focus:bg-stone-600
-          prefers-contrast:hover:text-stone-50
-          
-          dark:bg-stone-600
-          dark:text-stone-50
-          dark:hover:bg-stone-500
-          dark:focus:bg-stone-500
-          dark:hover:text-stone-50
-          dark:focus:text-stone-50
-          dark:active:bg-stone-600
-          
-          dark:prefers-contrast:font-bold
-          dark:prefers-contrast:bg-transparent
-          dark:prefers-contrast:bg-stone-100
-          dark:prefers-contrast:text-stone-900
-          dark:prefers-contrast:hover:bg-stone-800
-          dark:prefers-contrast:focus:bg-stone-800
-          dark:prefers-contrast:border-stone-500
-  
-          focus-visible:outline-none
-          focus-visible:ring-2
-          focus-visible:ring-stone-50
-          focus-visible:ring-offset-transparent
-          dark:focus-visible:ring-offset-stone-50
-          `.replace(/[\n\r]\s*/g, ' '),
+  red: {
+    base:
+      'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
+    active: 'ring-2 ring-offset-2 ring-offset-red-50 dark:ring-offset-red-800',
+    weight: {
+      light:
+        ' bg-red-50 text-red-500 focus-visible:bg-red-100 enabled:hover:bg-red-100 enabled:hover:text-red-600 focus-visible:text-red-600 enabled:active:bg-red-200 contrast-more:border contrast-more:bg-red-50 contrast-more:text-red-900 contrast-more:border-red-800 contrast-more:enabled:hover:bg-red-50 contrast-more:focus-visible:bg-red-50 contrast-more:enabled:hover:text-red-900 dark:bg-red-900/40 dark:text-red-100 dark:enabled:hover:bg-red-900/60 dark:focus-visible:bg-red-900/60 dark:enabled:active:bg-red-900/90 dark:enabled:hover:text-red-100 dark:focus-visible:text-red-100 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-red-50 dark:contrast-more:enabled:hover:bg-red-800 dark:contrast-more:focus-visible:bg-red-800 dark:contrast-more:enabled:hover:text-red-50 dark:contrast-more:focus-visible:text-red-50 dark:contrast-more:border-red-200 focus-visible:ring-red-500 dark:focus-visible:ring-offset-red-600 ',
+      normal:
+        ' bg-red-500 text-red-50 focus-visible:bg-red-600 enabled:hover:bg-red-600 enabled:hover:text-red-100 focus-visible:text-red-100 enabled:active:bg-red-700 contrast-more:border contrast-more:bg-red-50 contrast-more:text-red-900 contrast-more:border-red-800 contrast-more:enabled:hover:bg-red-50 contrast-more:focus-visible:bg-red-50 contrast-more:enabled:hover:text-red-900 dark:bg-red-600 dark:text-red-50 dark:enabled:hover:bg-red-500 dark:focus-visible:bg-red-500 dark:enabled:active:bg-red-600/80 dark:enabled:hover:text-red-50 dark:focus-visible:text-red-50 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-red-50 dark:contrast-more:enabled:hover:bg-red-800 dark:contrast-more:focus-visible:bg-red-800 dark:contrast-more:enabled:hover:text-red-50 dark:contrast-more:focus-visible:text-red-50 dark:contrast-more:border-red-200 focus-visible:ring-red-800 dark:focus-visible:ring-offset-red-100 ',
+      bold:
+        ' bg-red-800 text-red-100 focus-visible:bg-red-900/80 enabled:hover:bg-red-900/80 enabled:hover:text-red-50 focus-visible:text-red-50 enabled:active:bg-red-900 contrast-more:border contrast-more:border-red-50 contrast-more:enabled:hover:bg-red-600 contrast-more:focus-visible:bg-red-600 contrast-more:enabled:hover:text-red-50 dark:bg-red-300 dark:text-red-900/80 dark:enabled:hover:bg-red-200 dark:focus-visible:bg-red-200 dark:enabled:hover:text-red-900 dark:focus-visible:text-red-900 dark:enabled:active:bg-red-300/90 dark:contrast-more:font-bold dark:contrast-more:bg-red-100 dark:contrast-more:text-red-900 dark:contrast-more:enabled:hover:bg-red-800 dark:contrast-more:focus-visible:bg-red-800 dark:contrast-more:border-red-500 focus-visible:ring-red-500 dark:focus-visible:ring-offset-red-50 ',
+      outline:
+        ' border border-red-500 text-red-700 enabled:hover:text-red-50 enabled:hover:bg-red-500 enabled:active:text-white enabled:active:bg-red-600 enabled:active:border-red-600 focus-visible:bg-red-500 focus-visible:text-red-50 contrast-more:border contrast-more:text-red-900 contrast-more:border-red-800 contrast-more:enabled:hover:border-red-50 contrast-more:focus-visible:border-red-50 contrast-more:enabled:hover:text-red-900 dark:border dark:border-red-600 dark:text-red-300 dark:enabled:hover:text-red-50 dark:enabled:hover:bg-red-600 dark:enabled:active:text-white dark:enabled:active:bg-red-700 dark:enabled:active:border-red-700 dark:focus-visible:bg-red-600 dark:focus-visible:text-red-50 dark:contrast-more:font-bold dark:contrast-more:text-red-50 dark:contrast-more:enabled:hover:border-red-800 dark:contrast-more:focus-visible:border-red-800 dark:contrast-more:enabled:hover:text-red-50 dark:contrast-more:focus-visible:text-red-50 dark:contrast-more:border-red-100 focus-visible:ring-red-500 dark:focus-visible:ring-offset-red-600 ',
+      none:
+        ' text-red-500 enabled:hover:text-red-600 focus-visible:text-red-600 dark:text-red-300 dark:enabled:hover:text-red-400 dark:focus-visible:text-red-400 focus-visible:ring-red-500 dark:focus-visible:ring-offset-red-600 ',
+    },
+    gradient: {
+      linear: '',
+      clay: '',
     },
   },
   orange: {
-    palette:
-      'bg-orange-500 dark:bg-orange-600 ring-orange-500 dark:ring-orange-600 text-white',
+    base:
+      'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
     active:
-      'ring-2 ring-offset-2 ring-offset-stone-50 dark:ring-offset-stone-800',
-    color: {
-      light: `
-            min-w-[3rem]
-          select-none
-          disabled:cursor-not-allowed 
-          disabled:opacity-80 
-          disabled:filter 
-          disabled:saturate-0
-          transition-colors
-          
-          bg-stone-50
-          text-orange-500
-          focus:bg-orange-500
-          hover:bg-orange-500
-          hover:text-orange-50
-          focus:text-orange-50
-          active:bg-orange-400
-          
-          prefers-contrast:border
-          prefers-contrast:bg-stone-50
-          prefers-contrast:text-orange-800
-          prefers-contrast:border-orange-800
-          prefers-contrast:hover:bg-orange-50
-          prefers-contrast:focus:bg-orange-50
-          prefers-contrast:hover:text-orange-800
-          
-          dark:bg-stone-900
-          dark:text-orange-500
-          dark:hover:bg-stone-900/50
-          dark:focus:bg-stone-900/50
-          dark:active:bg-stone-700
-          dark:hover:text-orange-400
-          dark:focus:text-orange-400
-          
-          dark:prefers-contrast:font-bold
-          dark:prefers-contrast:bg-black
-          dark:prefers-contrast:text-orange-500
-          dark:prefers-contrast:hover:bg-orange-900
-          dark:prefers-contrast:focus:bg-orange-900
-          dark:prefers-contrast:hover:text-orange-50
-          dark:prefers-contrast:focus:text-orange-50
-          dark:prefers-contrast:border-orange-500
-  
-          focus-visible:outline-none
-          focus-visible:ring-2
-          focus-visible:ring-orange-500
-          focus-visible:ring-offset-transparent
-          dark:focus-visible:ring-offset-orange-600
-          `.replace(/[\n\r]\s*/g, ' '),
-      dark: `
-            min-w-[3rem]
-          select-none
-          disabled:cursor-not-allowed 
-          disabled:opacity-80 
-          disabled:filter 
-          disabled:saturate-0
-          transition-colors
-          
-          bg-orange-500
-          text-orange-50
-          focus:bg-orange-600
-          hover:bg-orange-600
-          hover:text-orange-50
-          focus:text-orange-50
-          active:bg-orange-500
-          
-          prefers-contrast:border
-          prefers-contrast:border-orange-800
-          prefers-contrast:hover:bg-orange-50
-          prefers-contrast:focus:bg-orange-50
-          prefers-contrast:hover:text-orange-800
-          
-          dark:bg-orange-600
-          dark:text-orange-50
-          dark:hover:bg-orange-500
-          dark:focus:bg-orange-500
-          dark:active:bg-orange-600
-          dark:hover:text-orange-50
-          dark:focus:text-orange-50
-          
-          dark:prefers-contrast:font-bold
-          dark:prefers-contrast:bg-transparent
-          dark:prefers-contrast:bg-orange-100
-          dark:prefers-contrast:text-orange-900
-          dark:prefers-contrast:hover:bg-orange-800
-          dark:prefers-contrast:focus:bg-orange-800
-          dark:prefers-contrast:border-orange-500
-  
-          focus-visible:outline-none
-          focus-visible:ring-2
-          focus-visible:ring-orange-50
-          focus-visible:ring-offset-transparent
-          dark:focus-visible:ring-offset-orange-50
-        `.replace(/[\n\r]\s*/g, ' '),
+      'ring-2 ring-offset-2 ring-offset-orange-50 dark:ring-offset-orange-800',
+    weight: {
+      light:
+        ' bg-orange-50 text-orange-500 focus-visible:bg-orange-100 enabled:hover:bg-orange-100 enabled:hover:text-orange-600 focus-visible:text-orange-600 enabled:active:bg-orange-200 contrast-more:border contrast-more:bg-orange-50 contrast-more:text-orange-900 contrast-more:border-orange-800 contrast-more:enabled:hover:bg-orange-50 contrast-more:focus-visible:bg-orange-50 contrast-more:enabled:hover:text-orange-900 dark:bg-orange-900/40 dark:text-orange-100 dark:enabled:hover:bg-orange-900/60 dark:focus-visible:bg-orange-900/60 dark:enabled:active:bg-orange-900/90 dark:enabled:hover:text-orange-100 dark:focus-visible:text-orange-100 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-orange-50 dark:contrast-more:enabled:hover:bg-orange-800 dark:contrast-more:focus-visible:bg-orange-800 dark:contrast-more:enabled:hover:text-orange-50 dark:contrast-more:focus-visible:text-orange-50 dark:contrast-more:border-orange-200 focus-visible:ring-orange-500 dark:focus-visible:ring-offset-orange-600 ',
+      normal:
+        ' bg-orange-500 text-orange-50 focus-visible:bg-orange-600 enabled:hover:bg-orange-600 enabled:hover:text-orange-100 focus-visible:text-orange-100 enabled:active:bg-orange-700 contrast-more:border contrast-more:bg-orange-50 contrast-more:text-orange-900 contrast-more:border-orange-800 contrast-more:enabled:hover:bg-orange-50 contrast-more:focus-visible:bg-orange-50 contrast-more:enabled:hover:text-orange-900 dark:bg-orange-600 dark:text-orange-50 dark:enabled:hover:bg-orange-500 dark:focus-visible:bg-orange-500 dark:enabled:active:bg-orange-600/80 dark:enabled:hover:text-orange-50 dark:focus-visible:text-orange-50 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-orange-50 dark:contrast-more:enabled:hover:bg-orange-800 dark:contrast-more:focus-visible:bg-orange-800 dark:contrast-more:enabled:hover:text-orange-50 dark:contrast-more:focus-visible:text-orange-50 dark:contrast-more:border-orange-200 focus-visible:ring-orange-800 dark:focus-visible:ring-offset-orange-100 ',
+      bold:
+        ' bg-orange-800 text-orange-100 focus-visible:bg-orange-900/80 enabled:hover:bg-orange-900/80 enabled:hover:text-orange-50 focus-visible:text-orange-50 enabled:active:bg-orange-900 contrast-more:border contrast-more:border-orange-50 contrast-more:enabled:hover:bg-orange-600 contrast-more:focus-visible:bg-orange-600 contrast-more:enabled:hover:text-orange-50 dark:bg-orange-300 dark:text-orange-900/80 dark:enabled:hover:bg-orange-200 dark:focus-visible:bg-orange-200 dark:enabled:hover:text-orange-900 dark:focus-visible:text-orange-900 dark:enabled:active:bg-orange-300/90 dark:contrast-more:font-bold dark:contrast-more:bg-orange-100 dark:contrast-more:text-orange-900 dark:contrast-more:enabled:hover:bg-orange-800 dark:contrast-more:focus-visible:bg-orange-800 dark:contrast-more:border-orange-500 focus-visible:ring-orange-500 dark:focus-visible:ring-offset-orange-50 ',
+      outline:
+        ' border border-orange-500 text-orange-700 enabled:hover:text-orange-50 enabled:hover:bg-orange-500 enabled:active:text-white enabled:active:bg-orange-600 enabled:active:border-orange-600 focus-visible:bg-orange-500 focus-visible:text-orange-50 contrast-more:border contrast-more:text-orange-900 contrast-more:border-orange-800 contrast-more:enabled:hover:border-orange-50 contrast-more:focus-visible:border-orange-50 contrast-more:enabled:hover:text-orange-900 dark:border dark:border-orange-600 dark:text-orange-300 dark:enabled:hover:text-orange-50 dark:enabled:hover:bg-orange-600 dark:enabled:active:text-white dark:enabled:active:bg-orange-700 dark:enabled:active:border-orange-700 dark:focus-visible:bg-orange-600 dark:focus-visible:text-orange-50 dark:contrast-more:font-bold dark:contrast-more:text-orange-50 dark:contrast-more:enabled:hover:border-orange-800 dark:contrast-more:focus-visible:border-orange-800 dark:contrast-more:enabled:hover:text-orange-50 dark:contrast-more:focus-visible:text-orange-50 dark:contrast-more:border-orange-100 focus-visible:ring-orange-500 dark:focus-visible:ring-offset-orange-600 ',
+      none:
+        ' text-orange-500 enabled:hover:text-orange-600 focus-visible:text-orange-600 dark:text-orange-300 dark:enabled:hover:text-orange-400 dark:focus-visible:text-orange-400 focus-visible:ring-orange-500 dark:focus-visible:ring-offset-orange-600 ',
+    },
+    gradient: {
+      linear: '',
+      clay: '',
+    },
+  },
+  amber: {
+    base:
+      'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
+    active:
+      'ring-2 ring-offset-2 ring-offset-amber-50 dark:ring-offset-amber-800',
+    weight: {
+      light:
+        ' bg-amber-50 text-amber-500 focus-visible:bg-amber-100 enabled:hover:bg-amber-100 enabled:hover:text-amber-600 focus-visible:text-amber-600 enabled:active:bg-amber-200 contrast-more:border contrast-more:bg-amber-50 contrast-more:text-amber-900 contrast-more:border-amber-800 contrast-more:enabled:hover:bg-amber-50 contrast-more:focus-visible:bg-amber-50 contrast-more:enabled:hover:text-amber-900 dark:bg-amber-900/40 dark:text-amber-100 dark:enabled:hover:bg-amber-900/60 dark:focus-visible:bg-amber-900/60 dark:enabled:active:bg-amber-900/90 dark:enabled:hover:text-amber-100 dark:focus-visible:text-amber-100 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-amber-50 dark:contrast-more:enabled:hover:bg-amber-800 dark:contrast-more:focus-visible:bg-amber-800 dark:contrast-more:enabled:hover:text-amber-50 dark:contrast-more:focus-visible:text-amber-50 dark:contrast-more:border-amber-200 focus-visible:ring-amber-500 dark:focus-visible:ring-offset-amber-600 ',
+      normal:
+        ' bg-amber-500 text-amber-50 focus-visible:bg-amber-600 enabled:hover:bg-amber-600 enabled:hover:text-amber-100 focus-visible:text-amber-100 enabled:active:bg-amber-700 contrast-more:border contrast-more:bg-amber-50 contrast-more:text-amber-900 contrast-more:border-amber-800 contrast-more:enabled:hover:bg-amber-50 contrast-more:focus-visible:bg-amber-50 contrast-more:enabled:hover:text-amber-900 dark:bg-amber-600 dark:text-amber-50 dark:enabled:hover:bg-amber-500 dark:focus-visible:bg-amber-500 dark:enabled:active:bg-amber-600/80 dark:enabled:hover:text-amber-50 dark:focus-visible:text-amber-50 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-amber-50 dark:contrast-more:enabled:hover:bg-amber-800 dark:contrast-more:focus-visible:bg-amber-800 dark:contrast-more:enabled:hover:text-amber-50 dark:contrast-more:focus-visible:text-amber-50 dark:contrast-more:border-amber-200 focus-visible:ring-amber-800 dark:focus-visible:ring-offset-amber-100 ',
+      bold:
+        ' bg-amber-800 text-amber-100 focus-visible:bg-amber-900/80 enabled:hover:bg-amber-900/80 enabled:hover:text-amber-50 focus-visible:text-amber-50 enabled:active:bg-amber-900 contrast-more:border contrast-more:border-amber-50 contrast-more:enabled:hover:bg-amber-600 contrast-more:focus-visible:bg-amber-600 contrast-more:enabled:hover:text-amber-50 dark:bg-amber-300 dark:text-amber-900/80 dark:enabled:hover:bg-amber-200 dark:focus-visible:bg-amber-200 dark:enabled:hover:text-amber-900 dark:focus-visible:text-amber-900 dark:enabled:active:bg-amber-300/90 dark:contrast-more:font-bold dark:contrast-more:bg-amber-100 dark:contrast-more:text-amber-900 dark:contrast-more:enabled:hover:bg-amber-800 dark:contrast-more:focus-visible:bg-amber-800 dark:contrast-more:border-amber-500 focus-visible:ring-amber-500 dark:focus-visible:ring-offset-amber-50 ',
+      outline:
+        ' border border-amber-500 text-amber-700 enabled:hover:text-amber-50 enabled:hover:bg-amber-500 enabled:active:text-white enabled:active:bg-amber-600 enabled:active:border-amber-600 focus-visible:bg-amber-500 focus-visible:text-amber-50 contrast-more:border contrast-more:text-amber-900 contrast-more:border-amber-800 contrast-more:enabled:hover:border-amber-50 contrast-more:focus-visible:border-amber-50 contrast-more:enabled:hover:text-amber-900 dark:border dark:border-amber-600 dark:text-amber-300 dark:enabled:hover:text-amber-50 dark:enabled:hover:bg-amber-600 dark:enabled:active:text-white dark:enabled:active:bg-amber-700 dark:enabled:active:border-amber-700 dark:focus-visible:bg-amber-600 dark:focus-visible:text-amber-50 dark:contrast-more:font-bold dark:contrast-more:text-amber-50 dark:contrast-more:enabled:hover:border-amber-800 dark:contrast-more:focus-visible:border-amber-800 dark:contrast-more:enabled:hover:text-amber-50 dark:contrast-more:focus-visible:text-amber-50 dark:contrast-more:border-amber-100 focus-visible:ring-amber-500 dark:focus-visible:ring-offset-amber-600 ',
+      none:
+        ' text-amber-500 enabled:hover:text-amber-600 focus-visible:text-amber-600 dark:text-amber-300 dark:enabled:hover:text-amber-400 dark:focus-visible:text-amber-400 focus-visible:ring-amber-500 dark:focus-visible:ring-offset-amber-600 ',
+    },
+    gradient: {
+      linear: '',
+      clay: '',
     },
   },
   yellow: {
-    palette: 'bg-yellow-500 dark:bg-oragne-600 text-black',
+    base:
+      'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
     active:
-      'ring-yellow-500 ring-2 ring-offset-2 ring-offset-stone-50 dark:ring-offset-stone-800',
-    color: {
-      light: `
-            min-w-[3rem]
-            select-none
-            disabled:cursor-not-allowed 
-            disabled:opacity-80 
-            disabled:filter 
-            disabled:saturate-0
-            transition-colors
-            
-            bg-stone-50
-            text-yellow-600
-            focus:bg-yellow-500
-            hover:bg-yellow-500
-            hover:text-yellow-50
-            focus:text-yellow-50
-            active:bg-yellow-400
-            
-            prefers-contrast:border
-            prefers-contrast:bg-stone-50
-            prefers-contrast:text-yellow-800
-            prefers-contrast:border-yellow-800
-            prefers-contrast:hover:bg-yellow-50
-            prefers-contrast:focus:bg-yellow-50
-            prefers-contrast:hover:text-yellow-800
-            
-            dark:bg-stone-900
-            dark:text-yellow-500
-            dark:hover:bg-stone-900/50
-            dark:focus:bg-stone-900/50
-            dark:active:bg-stone-700
-            dark:hover:text-yellow-400
-            dark:focus:text-yellow-400
-            
-            dark:prefers-contrast:font-bold
-            dark:prefers-contrast:bg-black
-            dark:prefers-contrast:text-yellow-500
-            dark:prefers-contrast:hover:bg-yellow-900
-            dark:prefers-contrast:focus:bg-yellow-900
-            dark:prefers-contrast:hover:text-yellow-50
-            dark:prefers-contrast:focus:text-yellow-50
-            dark:prefers-contrast:border-yellow-500
-    
-            focus-visible:outline-none
-            focus-visible:ring-2
-            focus-visible:ring-yellow-500
-            focus-visible:ring-offset-transparent
-            dark:focus-visible:ring-offset-yellow-600
-            `.replace(/[\n\r]\s*/g, ' '),
-      dark: `
-            min-w-[3rem]
-            select-none
-            disabled:cursor-not-allowed 
-            disabled:opacity-80 
-            disabled:filter 
-            disabled:saturate-0
-            transition-colors
-            
-            bg-yellow-300
-            text-stone-900/75
-            focus:bg-yellow-400/80
-            hover:bg-yellow-400/80
-            hover:text-yellow-900
-            focus:text-yellow-900
-            active:bg-yellow-400
-            
-            prefers-contrast:border
-            prefers-contrast:border-yellow-800
-            prefers-contrast:hover:bg-yellow-50
-            prefers-contrast:focus:bg-yellow-50
-            prefers-contrast:hover:text-yellow-800
-            
-            dark:bg-yellow-500
-            dark:text-stone-900/80
-            dark:hover:bg-yellow-400
-            dark:focus:bg-yellow-400
-            dark:active:bg-yellow-500
-            dark:hover:text-yellow-800
-            dark:focus:text-yellow-800
-            
-            dark:prefers-contrast:font-bold
-            dark:prefers-contrast:bg-transparent
-            dark:prefers-contrast:bg-yellow-100
-            dark:prefers-contrast:text-yellow-900
-            dark:prefers-contrast:hover:bg-yellow-800
-            dark:prefers-contrast:focus:bg-yellow-800
-            dark:prefers-contrast:border-yellow-500
-    
-            focus-visible:outline-none
-            focus-visible:ring-2
-            focus-visible:ring-yellow-50
-            focus-visible:ring-offset-transparent
-            dark:focus-visible:ring-offset-yellow-50
-          `.replace(/[\n\r]\s*/g, ' '),
+      'ring-2 ring-offset-2 ring-offset-yellow-50 dark:ring-offset-yellow-800',
+    weight: {
+      light:
+        ' bg-yellow-50 text-yellow-500 focus-visible:bg-yellow-100 enabled:hover:bg-yellow-100 enabled:hover:text-yellow-600 focus-visible:text-yellow-600 enabled:active:bg-yellow-200 contrast-more:border contrast-more:bg-yellow-50 contrast-more:text-yellow-900 contrast-more:border-yellow-800 contrast-more:enabled:hover:bg-yellow-50 contrast-more:focus-visible:bg-yellow-50 contrast-more:enabled:hover:text-yellow-900 dark:bg-yellow-900/40 dark:text-yellow-100 dark:enabled:hover:bg-yellow-900/60 dark:focus-visible:bg-yellow-900/60 dark:enabled:active:bg-yellow-900/90 dark:enabled:hover:text-yellow-100 dark:focus-visible:text-yellow-100 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-yellow-50 dark:contrast-more:enabled:hover:bg-yellow-800 dark:contrast-more:focus-visible:bg-yellow-800 dark:contrast-more:enabled:hover:text-yellow-50 dark:contrast-more:focus-visible:text-yellow-50 dark:contrast-more:border-yellow-200 focus-visible:ring-yellow-500 dark:focus-visible:ring-offset-yellow-600 ',
+      normal:
+        ' bg-yellow-500 text-yellow-50 focus-visible:bg-yellow-600 enabled:hover:bg-yellow-600 enabled:hover:text-yellow-100 focus-visible:text-yellow-100 enabled:active:bg-yellow-700 contrast-more:border contrast-more:bg-yellow-50 contrast-more:text-yellow-900 contrast-more:border-yellow-800 contrast-more:enabled:hover:bg-yellow-50 contrast-more:focus-visible:bg-yellow-50 contrast-more:enabled:hover:text-yellow-900 dark:bg-yellow-600 dark:text-yellow-50 dark:enabled:hover:bg-yellow-500 dark:focus-visible:bg-yellow-500 dark:enabled:active:bg-yellow-600/80 dark:enabled:hover:text-yellow-50 dark:focus-visible:text-yellow-50 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-yellow-50 dark:contrast-more:enabled:hover:bg-yellow-800 dark:contrast-more:focus-visible:bg-yellow-800 dark:contrast-more:enabled:hover:text-yellow-50 dark:contrast-more:focus-visible:text-yellow-50 dark:contrast-more:border-yellow-200 focus-visible:ring-yellow-800 dark:focus-visible:ring-offset-yellow-100 ',
+      bold:
+        ' bg-yellow-800 text-yellow-100 focus-visible:bg-yellow-900/80 enabled:hover:bg-yellow-900/80 enabled:hover:text-yellow-50 focus-visible:text-yellow-50 enabled:active:bg-yellow-900 contrast-more:border contrast-more:border-yellow-50 contrast-more:enabled:hover:bg-yellow-600 contrast-more:focus-visible:bg-yellow-600 contrast-more:enabled:hover:text-yellow-50 dark:bg-yellow-300 dark:text-yellow-900/80 dark:enabled:hover:bg-yellow-200 dark:focus-visible:bg-yellow-200 dark:enabled:hover:text-yellow-900 dark:focus-visible:text-yellow-900 dark:enabled:active:bg-yellow-300/90 dark:contrast-more:font-bold dark:contrast-more:bg-yellow-100 dark:contrast-more:text-yellow-900 dark:contrast-more:enabled:hover:bg-yellow-800 dark:contrast-more:focus-visible:bg-yellow-800 dark:contrast-more:border-yellow-500 focus-visible:ring-yellow-500 dark:focus-visible:ring-offset-yellow-50 ',
+      outline:
+        ' border border-yellow-500 text-yellow-700 enabled:hover:text-yellow-50 enabled:hover:bg-yellow-500 enabled:active:text-white enabled:active:bg-yellow-600 enabled:active:border-yellow-600 focus-visible:bg-yellow-500 focus-visible:text-yellow-50 contrast-more:border contrast-more:text-yellow-900 contrast-more:border-yellow-800 contrast-more:enabled:hover:border-yellow-50 contrast-more:focus-visible:border-yellow-50 contrast-more:enabled:hover:text-yellow-900 dark:border dark:border-yellow-600 dark:text-yellow-300 dark:enabled:hover:text-yellow-50 dark:enabled:hover:bg-yellow-600 dark:enabled:active:text-white dark:enabled:active:bg-yellow-700 dark:enabled:active:border-yellow-700 dark:focus-visible:bg-yellow-600 dark:focus-visible:text-yellow-50 dark:contrast-more:font-bold dark:contrast-more:text-yellow-50 dark:contrast-more:enabled:hover:border-yellow-800 dark:contrast-more:focus-visible:border-yellow-800 dark:contrast-more:enabled:hover:text-yellow-50 dark:contrast-more:focus-visible:text-yellow-50 dark:contrast-more:border-yellow-100 focus-visible:ring-yellow-500 dark:focus-visible:ring-offset-yellow-600 ',
+      none:
+        ' text-yellow-500 enabled:hover:text-yellow-600 focus-visible:text-yellow-600 dark:text-yellow-300 dark:enabled:hover:text-yellow-400 dark:focus-visible:text-yellow-400 focus-visible:ring-yellow-500 dark:focus-visible:ring-offset-yellow-600 ',
+    },
+    gradient: {
+      linear: '',
+      clay: '',
     },
   },
   lime: {
-    palette: 'bg-lime-500 dark:bg-oragne-600 text-black',
+    base:
+      'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
     active:
-      'ring-lime-500 ring-2 ring-offset-2 ring-offset-stone-50 dark:ring-offset-stone-800',
-    color: {
-      light: `
-            min-w-[3rem]
-            select-none
-            disabled:cursor-not-allowed 
-            disabled:opacity-80 
-            disabled:filter 
-            disabled:saturate-0
-            transition-colors
-            
-            bg-stone-50
-            text-lime-700
-            focus:bg-lime-500
-            hover:bg-lime-500
-            hover:text-lime-50
-            focus:text-lime-50
-            active:bg-lime-400
-            
-            prefers-contrast:border
-            prefers-contrast:bg-stone-50
-            prefers-contrast:text-lime-800
-            prefers-contrast:border-lime-800
-            prefers-contrast:hover:bg-lime-50
-            prefers-contrast:focus:bg-lime-50
-            prefers-contrast:hover:text-lime-800
-            
-            dark:bg-stone-900
-            dark:text-lime-500
-            dark:hover:bg-stone-900/50
-            dark:focus:bg-stone-900/50
-            dark:active:bg-stone-700
-            dark:hover:text-lime-400
-            dark:focus:text-lime-400
-            
-            dark:prefers-contrast:font-bold
-            dark:prefers-contrast:bg-black
-            dark:prefers-contrast:text-lime-500
-            dark:prefers-contrast:hover:bg-lime-900
-            dark:prefers-contrast:focus:bg-lime-900
-            dark:prefers-contrast:hover:text-lime-50
-            dark:prefers-contrast:focus:text-lime-50
-            dark:prefers-contrast:border-lime-500
-    
-            focus-visible:outline-none
-            focus-visible:ring-2
-            focus-visible:ring-lime-500
-            focus-visible:ring-offset-transparent
-            dark:focus-visible:ring-offset-lime-600
-            `.replace(/[\n\r]\s*/g, ' '),
-      dark: `
-            min-w-[3rem]
-            select-none
-            disabled:cursor-not-allowed 
-            disabled:opacity-80 
-            disabled:filter 
-            disabled:saturate-0
-            transition-colors
-            
-            bg-lime-300
-            text-stone-900/75
-            focus:bg-lime-400/80
-            hover:bg-lime-400/80
-            hover:text-lime-900
-            focus:text-lime-900
-            active:bg-lime-400
-            
-            prefers-contrast:border
-            prefers-contrast:border-lime-800
-            prefers-contrast:hover:bg-lime-50
-            prefers-contrast:focus:bg-lime-50
-            prefers-contrast:hover:text-lime-800
-            
-            dark:bg-lime-500
-            dark:text-stone-900/80
-            dark:hover:bg-lime-400
-            dark:focus:bg-lime-400
-            dark:active:bg-lime-500
-            dark:hover:text-lime-800
-            dark:focus:text-lime-800
-            
-            dark:prefers-contrast:font-bold
-            dark:prefers-contrast:bg-transparent
-            dark:prefers-contrast:bg-lime-100
-            dark:prefers-contrast:text-lime-900
-            dark:prefers-contrast:hover:bg-lime-800
-            dark:prefers-contrast:focus:bg-lime-800
-            dark:prefers-contrast:border-lime-500
-    
-            focus-visible:outline-none
-            focus-visible:ring-2
-            focus-visible:ring-lime-50
-            focus-visible:ring-offset-transparent
-            dark:focus-visible:ring-offset-lime-50
-          `.replace(/[\n\r]\s*/g, ' '),
+      'ring-2 ring-offset-2 ring-offset-lime-50 dark:ring-offset-lime-800',
+    weight: {
+      light:
+        ' bg-lime-50 text-lime-500 focus-visible:bg-lime-100 enabled:hover:bg-lime-100 enabled:hover:text-lime-600 focus-visible:text-lime-600 enabled:active:bg-lime-200 contrast-more:border contrast-more:bg-lime-50 contrast-more:text-lime-900 contrast-more:border-lime-800 contrast-more:enabled:hover:bg-lime-50 contrast-more:focus-visible:bg-lime-50 contrast-more:enabled:hover:text-lime-900 dark:bg-lime-900/40 dark:text-lime-100 dark:enabled:hover:bg-lime-900/60 dark:focus-visible:bg-lime-900/60 dark:enabled:active:bg-lime-900/90 dark:enabled:hover:text-lime-100 dark:focus-visible:text-lime-100 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-lime-50 dark:contrast-more:enabled:hover:bg-lime-800 dark:contrast-more:focus-visible:bg-lime-800 dark:contrast-more:enabled:hover:text-lime-50 dark:contrast-more:focus-visible:text-lime-50 dark:contrast-more:border-lime-200 focus-visible:ring-lime-500 dark:focus-visible:ring-offset-lime-600 ',
+      normal:
+        ' bg-lime-500 text-lime-50 focus-visible:bg-lime-600 enabled:hover:bg-lime-600 enabled:hover:text-lime-100 focus-visible:text-lime-100 enabled:active:bg-lime-700 contrast-more:border contrast-more:bg-lime-50 contrast-more:text-lime-900 contrast-more:border-lime-800 contrast-more:enabled:hover:bg-lime-50 contrast-more:focus-visible:bg-lime-50 contrast-more:enabled:hover:text-lime-900 dark:bg-lime-600 dark:text-lime-50 dark:enabled:hover:bg-lime-500 dark:focus-visible:bg-lime-500 dark:enabled:active:bg-lime-600/80 dark:enabled:hover:text-lime-50 dark:focus-visible:text-lime-50 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-lime-50 dark:contrast-more:enabled:hover:bg-lime-800 dark:contrast-more:focus-visible:bg-lime-800 dark:contrast-more:enabled:hover:text-lime-50 dark:contrast-more:focus-visible:text-lime-50 dark:contrast-more:border-lime-200 focus-visible:ring-lime-800 dark:focus-visible:ring-offset-lime-100 ',
+      bold:
+        ' bg-lime-800 text-lime-100 focus-visible:bg-lime-900/80 enabled:hover:bg-lime-900/80 enabled:hover:text-lime-50 focus-visible:text-lime-50 enabled:active:bg-lime-900 contrast-more:border contrast-more:border-lime-50 contrast-more:enabled:hover:bg-lime-600 contrast-more:focus-visible:bg-lime-600 contrast-more:enabled:hover:text-lime-50 dark:bg-lime-300 dark:text-lime-900/80 dark:enabled:hover:bg-lime-200 dark:focus-visible:bg-lime-200 dark:enabled:hover:text-lime-900 dark:focus-visible:text-lime-900 dark:enabled:active:bg-lime-300/90 dark:contrast-more:font-bold dark:contrast-more:bg-lime-100 dark:contrast-more:text-lime-900 dark:contrast-more:enabled:hover:bg-lime-800 dark:contrast-more:focus-visible:bg-lime-800 dark:contrast-more:border-lime-500 focus-visible:ring-lime-500 dark:focus-visible:ring-offset-lime-50 ',
+      outline:
+        ' border border-lime-500 text-lime-700 enabled:hover:text-lime-50 enabled:hover:bg-lime-500 enabled:active:text-white enabled:active:bg-lime-600 enabled:active:border-lime-600 focus-visible:bg-lime-500 focus-visible:text-lime-50 contrast-more:border contrast-more:text-lime-900 contrast-more:border-lime-800 contrast-more:enabled:hover:border-lime-50 contrast-more:focus-visible:border-lime-50 contrast-more:enabled:hover:text-lime-900 dark:border dark:border-lime-600 dark:text-lime-300 dark:enabled:hover:text-lime-50 dark:enabled:hover:bg-lime-600 dark:enabled:active:text-white dark:enabled:active:bg-lime-700 dark:enabled:active:border-lime-700 dark:focus-visible:bg-lime-600 dark:focus-visible:text-lime-50 dark:contrast-more:font-bold dark:contrast-more:text-lime-50 dark:contrast-more:enabled:hover:border-lime-800 dark:contrast-more:focus-visible:border-lime-800 dark:contrast-more:enabled:hover:text-lime-50 dark:contrast-more:focus-visible:text-lime-50 dark:contrast-more:border-lime-100 focus-visible:ring-lime-500 dark:focus-visible:ring-offset-lime-600 ',
+      none:
+        ' text-lime-500 enabled:hover:text-lime-600 focus-visible:text-lime-600 dark:text-lime-300 dark:enabled:hover:text-lime-400 dark:focus-visible:text-lime-400 focus-visible:ring-lime-500 dark:focus-visible:ring-offset-lime-600 ',
+    },
+    gradient: {
+      linear: '',
+      clay: '',
     },
   },
   green: {
-    palette: 'bg-green-500 dark:bg-oragne-600 text-black',
+    base:
+      'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
     active:
-      'ring-green-500 ring-2 ring-offset-2 ring-offset-stone-50 dark:ring-offset-stone-800',
-    color: {
-      light: `
-            min-w-[3rem]
-            select-none
-            disabled:cursor-not-allowed 
-            disabled:opacity-80 
-            disabled:filter 
-            disabled:saturate-0
-            transition-colors
-            
-            bg-stone-50
-            text-green-600
-            focus:bg-green-500
-            hover:bg-green-500
-            hover:text-green-50
-            focus:text-green-50
-            active:bg-green-400
-            
-            prefers-contrast:border
-            prefers-contrast:bg-stone-50
-            prefers-contrast:text-green-800
-            prefers-contrast:border-green-800
-            prefers-contrast:hover:bg-green-50
-            prefers-contrast:focus:bg-green-50
-            prefers-contrast:hover:text-green-800
-            
-            dark:bg-stone-900
-            dark:text-green-500
-            dark:hover:bg-stone-900/50
-            dark:focus:bg-stone-900/50
-            dark:active:bg-stone-700
-            dark:hover:text-green-400
-            dark:focus:text-green-400
-            
-            dark:prefers-contrast:font-bold
-            dark:prefers-contrast:bg-black
-            dark:prefers-contrast:text-green-500
-            dark:prefers-contrast:hover:bg-green-900
-            dark:prefers-contrast:focus:bg-green-900
-            dark:prefers-contrast:hover:text-green-50
-            dark:prefers-contrast:focus:text-green-50
-            dark:prefers-contrast:border-green-500
-    
-            focus-visible:outline-none
-            focus-visible:ring-2
-            focus-visible:ring-green-500
-            focus-visible:ring-offset-transparent
-            dark:focus-visible:ring-offset-green-600
-            `.replace(/[\n\r]\s*/g, ' '),
-      dark: `
-            min-w-[3rem]
-            select-none
-            disabled:cursor-not-allowed 
-            disabled:opacity-80 
-            disabled:filter 
-            disabled:saturate-0
-            transition-colors
-            
-            bg-green-300
-            text-stone-900/75
-            focus:bg-green-400/80
-            hover:bg-green-400/80
-            hover:text-green-900
-            focus:text-green-900
-            active:bg-green-400
-            
-            prefers-contrast:border
-            prefers-contrast:border-green-800
-            prefers-contrast:hover:bg-green-50
-            prefers-contrast:focus:bg-green-50
-            prefers-contrast:hover:text-green-800
-            
-            dark:bg-green-500
-            dark:text-stone-900/80
-            dark:hover:bg-green-400
-            dark:focus:bg-green-400
-            dark:active:bg-green-500
-            dark:hover:text-green-800
-            dark:focus:text-green-800
-            
-            dark:prefers-contrast:font-bold
-            dark:prefers-contrast:bg-transparent
-            dark:prefers-contrast:bg-green-100
-            dark:prefers-contrast:text-green-900
-            dark:prefers-contrast:hover:bg-green-800
-            dark:prefers-contrast:focus:bg-green-800
-            dark:prefers-contrast:border-green-500
-    
-            focus-visible:outline-none
-            focus-visible:ring-2
-            focus-visible:ring-green-50
-            focus-visible:ring-offset-transparent
-            dark:focus-visible:ring-offset-green-50
-          `.replace(/[\n\r]\s*/g, ' '),
+      'ring-2 ring-offset-2 ring-offset-green-50 dark:ring-offset-green-800',
+    weight: {
+      light:
+        ' bg-green-50 text-green-500 focus-visible:bg-green-100 enabled:hover:bg-green-100 enabled:hover:text-green-600 focus-visible:text-green-600 enabled:active:bg-green-200 contrast-more:border contrast-more:bg-green-50 contrast-more:text-green-900 contrast-more:border-green-800 contrast-more:enabled:hover:bg-green-50 contrast-more:focus-visible:bg-green-50 contrast-more:enabled:hover:text-green-900 dark:bg-green-900/40 dark:text-green-100 dark:enabled:hover:bg-green-900/60 dark:focus-visible:bg-green-900/60 dark:enabled:active:bg-green-900/90 dark:enabled:hover:text-green-100 dark:focus-visible:text-green-100 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-green-50 dark:contrast-more:enabled:hover:bg-green-800 dark:contrast-more:focus-visible:bg-green-800 dark:contrast-more:enabled:hover:text-green-50 dark:contrast-more:focus-visible:text-green-50 dark:contrast-more:border-green-200 focus-visible:ring-green-500 dark:focus-visible:ring-offset-green-600 ',
+      normal:
+        ' bg-green-500 text-green-50 focus-visible:bg-green-600 enabled:hover:bg-green-600 enabled:hover:text-green-100 focus-visible:text-green-100 enabled:active:bg-green-700 contrast-more:border contrast-more:bg-green-50 contrast-more:text-green-900 contrast-more:border-green-800 contrast-more:enabled:hover:bg-green-50 contrast-more:focus-visible:bg-green-50 contrast-more:enabled:hover:text-green-900 dark:bg-green-600 dark:text-green-50 dark:enabled:hover:bg-green-500 dark:focus-visible:bg-green-500 dark:enabled:active:bg-green-600/80 dark:enabled:hover:text-green-50 dark:focus-visible:text-green-50 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-green-50 dark:contrast-more:enabled:hover:bg-green-800 dark:contrast-more:focus-visible:bg-green-800 dark:contrast-more:enabled:hover:text-green-50 dark:contrast-more:focus-visible:text-green-50 dark:contrast-more:border-green-200 focus-visible:ring-green-800 dark:focus-visible:ring-offset-green-100 ',
+      bold:
+        ' bg-green-800 text-green-100 focus-visible:bg-green-900/80 enabled:hover:bg-green-900/80 enabled:hover:text-green-50 focus-visible:text-green-50 enabled:active:bg-green-900 contrast-more:border contrast-more:border-green-50 contrast-more:enabled:hover:bg-green-600 contrast-more:focus-visible:bg-green-600 contrast-more:enabled:hover:text-green-50 dark:bg-green-300 dark:text-green-900/80 dark:enabled:hover:bg-green-200 dark:focus-visible:bg-green-200 dark:enabled:hover:text-green-900 dark:focus-visible:text-green-900 dark:enabled:active:bg-green-300/90 dark:contrast-more:font-bold dark:contrast-more:bg-green-100 dark:contrast-more:text-green-900 dark:contrast-more:enabled:hover:bg-green-800 dark:contrast-more:focus-visible:bg-green-800 dark:contrast-more:border-green-500 focus-visible:ring-green-500 dark:focus-visible:ring-offset-green-50 ',
+      outline:
+        ' border border-green-500 text-green-700 enabled:hover:text-green-50 enabled:hover:bg-green-500 enabled:active:text-white enabled:active:bg-green-600 enabled:active:border-green-600 focus-visible:bg-green-500 focus-visible:text-green-50 contrast-more:border contrast-more:text-green-900 contrast-more:border-green-800 contrast-more:enabled:hover:border-green-50 contrast-more:focus-visible:border-green-50 contrast-more:enabled:hover:text-green-900 dark:border dark:border-green-600 dark:text-green-300 dark:enabled:hover:text-green-50 dark:enabled:hover:bg-green-600 dark:enabled:active:text-white dark:enabled:active:bg-green-700 dark:enabled:active:border-green-700 dark:focus-visible:bg-green-600 dark:focus-visible:text-green-50 dark:contrast-more:font-bold dark:contrast-more:text-green-50 dark:contrast-more:enabled:hover:border-green-800 dark:contrast-more:focus-visible:border-green-800 dark:contrast-more:enabled:hover:text-green-50 dark:contrast-more:focus-visible:text-green-50 dark:contrast-more:border-green-100 focus-visible:ring-green-500 dark:focus-visible:ring-offset-green-600 ',
+      none:
+        ' text-green-500 enabled:hover:text-green-600 focus-visible:text-green-600 dark:text-green-300 dark:enabled:hover:text-green-400 dark:focus-visible:text-green-400 focus-visible:ring-green-500 dark:focus-visible:ring-offset-green-600 ',
+    },
+    gradient: {
+      linear: '',
+      clay: '',
+    },
+  },
+  emerald: {
+    base:
+      'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
+    active:
+      'ring-2 ring-offset-2 ring-offset-emerald-50 dark:ring-offset-emerald-800',
+    weight: {
+      light:
+        ' bg-emerald-50 text-emerald-500 focus-visible:bg-emerald-100 enabled:hover:bg-emerald-100 enabled:hover:text-emerald-600 focus-visible:text-emerald-600 enabled:active:bg-emerald-200 contrast-more:border contrast-more:bg-emerald-50 contrast-more:text-emerald-900 contrast-more:border-emerald-800 contrast-more:enabled:hover:bg-emerald-50 contrast-more:focus-visible:bg-emerald-50 contrast-more:enabled:hover:text-emerald-900 dark:bg-emerald-900/40 dark:text-emerald-100 dark:enabled:hover:bg-emerald-900/60 dark:focus-visible:bg-emerald-900/60 dark:enabled:active:bg-emerald-900/90 dark:enabled:hover:text-emerald-100 dark:focus-visible:text-emerald-100 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-emerald-50 dark:contrast-more:enabled:hover:bg-emerald-800 dark:contrast-more:focus-visible:bg-emerald-800 dark:contrast-more:enabled:hover:text-emerald-50 dark:contrast-more:focus-visible:text-emerald-50 dark:contrast-more:border-emerald-200 focus-visible:ring-emerald-500 dark:focus-visible:ring-offset-emerald-600 ',
+      normal:
+        ' bg-emerald-500 text-emerald-50 focus-visible:bg-emerald-600 enabled:hover:bg-emerald-600 enabled:hover:text-emerald-100 focus-visible:text-emerald-100 enabled:active:bg-emerald-700 contrast-more:border contrast-more:bg-emerald-50 contrast-more:text-emerald-900 contrast-more:border-emerald-800 contrast-more:enabled:hover:bg-emerald-50 contrast-more:focus-visible:bg-emerald-50 contrast-more:enabled:hover:text-emerald-900 dark:bg-emerald-600 dark:text-emerald-50 dark:enabled:hover:bg-emerald-500 dark:focus-visible:bg-emerald-500 dark:enabled:active:bg-emerald-600/80 dark:enabled:hover:text-emerald-50 dark:focus-visible:text-emerald-50 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-emerald-50 dark:contrast-more:enabled:hover:bg-emerald-800 dark:contrast-more:focus-visible:bg-emerald-800 dark:contrast-more:enabled:hover:text-emerald-50 dark:contrast-more:focus-visible:text-emerald-50 dark:contrast-more:border-emerald-200 focus-visible:ring-emerald-800 dark:focus-visible:ring-offset-emerald-100 ',
+      bold:
+        ' bg-emerald-800 text-emerald-100 focus-visible:bg-emerald-900/80 enabled:hover:bg-emerald-900/80 enabled:hover:text-emerald-50 focus-visible:text-emerald-50 enabled:active:bg-emerald-900 contrast-more:border contrast-more:border-emerald-50 contrast-more:enabled:hover:bg-emerald-600 contrast-more:focus-visible:bg-emerald-600 contrast-more:enabled:hover:text-emerald-50 dark:bg-emerald-300 dark:text-emerald-900/80 dark:enabled:hover:bg-emerald-200 dark:focus-visible:bg-emerald-200 dark:enabled:hover:text-emerald-900 dark:focus-visible:text-emerald-900 dark:enabled:active:bg-emerald-300/90 dark:contrast-more:font-bold dark:contrast-more:bg-emerald-100 dark:contrast-more:text-emerald-900 dark:contrast-more:enabled:hover:bg-emerald-800 dark:contrast-more:focus-visible:bg-emerald-800 dark:contrast-more:border-emerald-500 focus-visible:ring-emerald-500 dark:focus-visible:ring-offset-emerald-50 ',
+      outline:
+        ' border border-emerald-500 text-emerald-700 enabled:hover:text-emerald-50 enabled:hover:bg-emerald-500 enabled:active:text-white enabled:active:bg-emerald-600 enabled:active:border-emerald-600 focus-visible:bg-emerald-500 focus-visible:text-emerald-50 contrast-more:border contrast-more:text-emerald-900 contrast-more:border-emerald-800 contrast-more:enabled:hover:border-emerald-50 contrast-more:focus-visible:border-emerald-50 contrast-more:enabled:hover:text-emerald-900 dark:border dark:border-emerald-600 dark:text-emerald-300 dark:enabled:hover:text-emerald-50 dark:enabled:hover:bg-emerald-600 dark:enabled:active:text-white dark:enabled:active:bg-emerald-700 dark:enabled:active:border-emerald-700 dark:focus-visible:bg-emerald-600 dark:focus-visible:text-emerald-50 dark:contrast-more:font-bold dark:contrast-more:text-emerald-50 dark:contrast-more:enabled:hover:border-emerald-800 dark:contrast-more:focus-visible:border-emerald-800 dark:contrast-more:enabled:hover:text-emerald-50 dark:contrast-more:focus-visible:text-emerald-50 dark:contrast-more:border-emerald-100 focus-visible:ring-emerald-500 dark:focus-visible:ring-offset-emerald-600 ',
+      none:
+        ' text-emerald-500 enabled:hover:text-emerald-600 focus-visible:text-emerald-600 dark:text-emerald-300 dark:enabled:hover:text-emerald-400 dark:focus-visible:text-emerald-400 focus-visible:ring-emerald-500 dark:focus-visible:ring-offset-emerald-600 ',
+    },
+    gradient: {
+      linear: '',
+      clay: '',
     },
   },
   teal: {
-    palette: 'bg-teal-500 dark:bg-oragne-600 text-black',
+    base:
+      'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
     active:
-      'ring-teal-500 ring-2 ring-offset-2 ring-offset-stone-50 dark:ring-offset-stone-800',
-    color: {
-      light: `
-            min-w-[3rem]
-            select-none
-            disabled:cursor-not-allowed 
-            disabled:opacity-80 
-            disabled:filter 
-            disabled:saturate-0
-            transition-colors
-            
-            bg-stone-50
-            text-teal-600
-            focus:bg-teal-500
-            hover:bg-teal-500
-            hover:text-teal-50
-            focus:text-teal-50
-            active:bg-teal-400
-            
-            prefers-contrast:border
-            prefers-contrast:bg-stone-50
-            prefers-contrast:text-teal-800
-            prefers-contrast:border-teal-800
-            prefers-contrast:hover:bg-teal-50
-            prefers-contrast:focus:bg-teal-50
-            prefers-contrast:hover:text-teal-800
-            
-            dark:bg-stone-900
-            dark:text-teal-500
-            dark:hover:bg-stone-900/50
-            dark:focus:bg-stone-900/50
-            dark:active:bg-stone-700
-            dark:hover:text-teal-400
-            dark:focus:text-teal-400
-            
-            dark:prefers-contrast:font-bold
-            dark:prefers-contrast:bg-black
-            dark:prefers-contrast:text-teal-500
-            dark:prefers-contrast:hover:bg-teal-900
-            dark:prefers-contrast:focus:bg-teal-900
-            dark:prefers-contrast:hover:text-teal-50
-            dark:prefers-contrast:focus:text-teal-50
-            dark:prefers-contrast:border-teal-500
-    
-            focus-visible:outline-none
-            focus-visible:ring-2
-            focus-visible:ring-teal-500
-            focus-visible:ring-offset-transparent
-            dark:focus-visible:ring-offset-teal-600
-            `.replace(/[\n\r]\s*/g, ' '),
-      dark: `
-            min-w-[3rem]
-            select-none
-            disabled:cursor-not-allowed 
-            disabled:opacity-80 
-            disabled:filter 
-            disabled:saturate-0
-            transition-colors
-            
-            bg-teal-300
-            text-stone-900/75
-            focus:bg-teal-400/80
-            hover:bg-teal-400/80
-            hover:text-teal-900
-            focus:text-teal-900
-            active:bg-teal-400
-            
-            prefers-contrast:border
-            prefers-contrast:border-teal-800
-            prefers-contrast:hover:bg-teal-50
-            prefers-contrast:focus:bg-teal-50
-            prefers-contrast:hover:text-teal-800
-            
-            dark:bg-teal-500
-            dark:text-stone-900/80
-            dark:hover:bg-teal-400
-            dark:focus:bg-teal-400
-            dark:active:bg-teal-500
-            dark:hover:text-teal-800
-            dark:focus:text-teal-800
-            
-            dark:prefers-contrast:font-bold
-            dark:prefers-contrast:bg-transparent
-            dark:prefers-contrast:bg-teal-100
-            dark:prefers-contrast:text-teal-900
-            dark:prefers-contrast:hover:bg-teal-800
-            dark:prefers-contrast:focus:bg-teal-800
-            dark:prefers-contrast:border-teal-500
-    
-            focus-visible:outline-none
-            focus-visible:ring-2
-            focus-visible:ring-teal-50
-            focus-visible:ring-offset-transparent
-            dark:focus-visible:ring-offset-teal-50
-          `.replace(/[\n\r]\s*/g, ' '),
+      'ring-2 ring-offset-2 ring-offset-teal-50 dark:ring-offset-teal-800',
+    weight: {
+      light:
+        ' bg-teal-50 text-teal-500 focus-visible:bg-teal-100 enabled:hover:bg-teal-100 enabled:hover:text-teal-600 focus-visible:text-teal-600 enabled:active:bg-teal-200 contrast-more:border contrast-more:bg-teal-50 contrast-more:text-teal-900 contrast-more:border-teal-800 contrast-more:enabled:hover:bg-teal-50 contrast-more:focus-visible:bg-teal-50 contrast-more:enabled:hover:text-teal-900 dark:bg-teal-900/40 dark:text-teal-100 dark:enabled:hover:bg-teal-900/60 dark:focus-visible:bg-teal-900/60 dark:enabled:active:bg-teal-900/90 dark:enabled:hover:text-teal-100 dark:focus-visible:text-teal-100 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-teal-50 dark:contrast-more:enabled:hover:bg-teal-800 dark:contrast-more:focus-visible:bg-teal-800 dark:contrast-more:enabled:hover:text-teal-50 dark:contrast-more:focus-visible:text-teal-50 dark:contrast-more:border-teal-200 focus-visible:ring-teal-500 dark:focus-visible:ring-offset-teal-600 ',
+      normal:
+        ' bg-teal-500 text-teal-50 focus-visible:bg-teal-600 enabled:hover:bg-teal-600 enabled:hover:text-teal-100 focus-visible:text-teal-100 enabled:active:bg-teal-700 contrast-more:border contrast-more:bg-teal-50 contrast-more:text-teal-900 contrast-more:border-teal-800 contrast-more:enabled:hover:bg-teal-50 contrast-more:focus-visible:bg-teal-50 contrast-more:enabled:hover:text-teal-900 dark:bg-teal-600 dark:text-teal-50 dark:enabled:hover:bg-teal-500 dark:focus-visible:bg-teal-500 dark:enabled:active:bg-teal-600/80 dark:enabled:hover:text-teal-50 dark:focus-visible:text-teal-50 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-teal-50 dark:contrast-more:enabled:hover:bg-teal-800 dark:contrast-more:focus-visible:bg-teal-800 dark:contrast-more:enabled:hover:text-teal-50 dark:contrast-more:focus-visible:text-teal-50 dark:contrast-more:border-teal-200 focus-visible:ring-teal-800 dark:focus-visible:ring-offset-teal-100 ',
+      bold:
+        ' bg-teal-800 text-teal-100 focus-visible:bg-teal-900/80 enabled:hover:bg-teal-900/80 enabled:hover:text-teal-50 focus-visible:text-teal-50 enabled:active:bg-teal-900 contrast-more:border contrast-more:border-teal-50 contrast-more:enabled:hover:bg-teal-600 contrast-more:focus-visible:bg-teal-600 contrast-more:enabled:hover:text-teal-50 dark:bg-teal-300 dark:text-teal-900/80 dark:enabled:hover:bg-teal-200 dark:focus-visible:bg-teal-200 dark:enabled:hover:text-teal-900 dark:focus-visible:text-teal-900 dark:enabled:active:bg-teal-300/90 dark:contrast-more:font-bold dark:contrast-more:bg-teal-100 dark:contrast-more:text-teal-900 dark:contrast-more:enabled:hover:bg-teal-800 dark:contrast-more:focus-visible:bg-teal-800 dark:contrast-more:border-teal-500 focus-visible:ring-teal-500 dark:focus-visible:ring-offset-teal-50 ',
+      outline:
+        ' border border-teal-500 text-teal-700 enabled:hover:text-teal-50 enabled:hover:bg-teal-500 enabled:active:text-white enabled:active:bg-teal-600 enabled:active:border-teal-600 focus-visible:bg-teal-500 focus-visible:text-teal-50 contrast-more:border contrast-more:text-teal-900 contrast-more:border-teal-800 contrast-more:enabled:hover:border-teal-50 contrast-more:focus-visible:border-teal-50 contrast-more:enabled:hover:text-teal-900 dark:border dark:border-teal-600 dark:text-teal-300 dark:enabled:hover:text-teal-50 dark:enabled:hover:bg-teal-600 dark:enabled:active:text-white dark:enabled:active:bg-teal-700 dark:enabled:active:border-teal-700 dark:focus-visible:bg-teal-600 dark:focus-visible:text-teal-50 dark:contrast-more:font-bold dark:contrast-more:text-teal-50 dark:contrast-more:enabled:hover:border-teal-800 dark:contrast-more:focus-visible:border-teal-800 dark:contrast-more:enabled:hover:text-teal-50 dark:contrast-more:focus-visible:text-teal-50 dark:contrast-more:border-teal-100 focus-visible:ring-teal-500 dark:focus-visible:ring-offset-teal-600 ',
+      none:
+        ' text-teal-500 enabled:hover:text-teal-600 focus-visible:text-teal-600 dark:text-teal-300 dark:enabled:hover:text-teal-400 dark:focus-visible:text-teal-400 focus-visible:ring-teal-500 dark:focus-visible:ring-offset-teal-600 ',
+    },
+    gradient: {
+      linear: '',
+      clay: '',
+    },
+  },
+  cyan: {
+    base:
+      'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
+    active:
+      'ring-2 ring-offset-2 ring-offset-cyan-50 dark:ring-offset-cyan-800',
+    weight: {
+      light:
+        ' bg-cyan-50 text-cyan-500 focus-visible:bg-cyan-100 enabled:hover:bg-cyan-100 enabled:hover:text-cyan-600 focus-visible:text-cyan-600 enabled:active:bg-cyan-200 contrast-more:border contrast-more:bg-cyan-50 contrast-more:text-cyan-900 contrast-more:border-cyan-800 contrast-more:enabled:hover:bg-cyan-50 contrast-more:focus-visible:bg-cyan-50 contrast-more:enabled:hover:text-cyan-900 dark:bg-cyan-900/40 dark:text-cyan-100 dark:enabled:hover:bg-cyan-900/60 dark:focus-visible:bg-cyan-900/60 dark:enabled:active:bg-cyan-900/90 dark:enabled:hover:text-cyan-100 dark:focus-visible:text-cyan-100 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-cyan-50 dark:contrast-more:enabled:hover:bg-cyan-800 dark:contrast-more:focus-visible:bg-cyan-800 dark:contrast-more:enabled:hover:text-cyan-50 dark:contrast-more:focus-visible:text-cyan-50 dark:contrast-more:border-cyan-200 focus-visible:ring-cyan-500 dark:focus-visible:ring-offset-cyan-600 ',
+      normal:
+        ' bg-cyan-500 text-cyan-50 focus-visible:bg-cyan-600 enabled:hover:bg-cyan-600 enabled:hover:text-cyan-100 focus-visible:text-cyan-100 enabled:active:bg-cyan-700 contrast-more:border contrast-more:bg-cyan-50 contrast-more:text-cyan-900 contrast-more:border-cyan-800 contrast-more:enabled:hover:bg-cyan-50 contrast-more:focus-visible:bg-cyan-50 contrast-more:enabled:hover:text-cyan-900 dark:bg-cyan-600 dark:text-cyan-50 dark:enabled:hover:bg-cyan-500 dark:focus-visible:bg-cyan-500 dark:enabled:active:bg-cyan-600/80 dark:enabled:hover:text-cyan-50 dark:focus-visible:text-cyan-50 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-cyan-50 dark:contrast-more:enabled:hover:bg-cyan-800 dark:contrast-more:focus-visible:bg-cyan-800 dark:contrast-more:enabled:hover:text-cyan-50 dark:contrast-more:focus-visible:text-cyan-50 dark:contrast-more:border-cyan-200 focus-visible:ring-cyan-800 dark:focus-visible:ring-offset-cyan-100 ',
+      bold:
+        ' bg-cyan-800 text-cyan-100 focus-visible:bg-cyan-900/80 enabled:hover:bg-cyan-900/80 enabled:hover:text-cyan-50 focus-visible:text-cyan-50 enabled:active:bg-cyan-900 contrast-more:border contrast-more:border-cyan-50 contrast-more:enabled:hover:bg-cyan-600 contrast-more:focus-visible:bg-cyan-600 contrast-more:enabled:hover:text-cyan-50 dark:bg-cyan-300 dark:text-cyan-900/80 dark:enabled:hover:bg-cyan-200 dark:focus-visible:bg-cyan-200 dark:enabled:hover:text-cyan-900 dark:focus-visible:text-cyan-900 dark:enabled:active:bg-cyan-300/90 dark:contrast-more:font-bold dark:contrast-more:bg-cyan-100 dark:contrast-more:text-cyan-900 dark:contrast-more:enabled:hover:bg-cyan-800 dark:contrast-more:focus-visible:bg-cyan-800 dark:contrast-more:border-cyan-500 focus-visible:ring-cyan-500 dark:focus-visible:ring-offset-cyan-50 ',
+      outline:
+        ' border border-cyan-500 text-cyan-700 enabled:hover:text-cyan-50 enabled:hover:bg-cyan-500 enabled:active:text-white enabled:active:bg-cyan-600 enabled:active:border-cyan-600 focus-visible:bg-cyan-500 focus-visible:text-cyan-50 contrast-more:border contrast-more:text-cyan-900 contrast-more:border-cyan-800 contrast-more:enabled:hover:border-cyan-50 contrast-more:focus-visible:border-cyan-50 contrast-more:enabled:hover:text-cyan-900 dark:border dark:border-cyan-600 dark:text-cyan-300 dark:enabled:hover:text-cyan-50 dark:enabled:hover:bg-cyan-600 dark:enabled:active:text-white dark:enabled:active:bg-cyan-700 dark:enabled:active:border-cyan-700 dark:focus-visible:bg-cyan-600 dark:focus-visible:text-cyan-50 dark:contrast-more:font-bold dark:contrast-more:text-cyan-50 dark:contrast-more:enabled:hover:border-cyan-800 dark:contrast-more:focus-visible:border-cyan-800 dark:contrast-more:enabled:hover:text-cyan-50 dark:contrast-more:focus-visible:text-cyan-50 dark:contrast-more:border-cyan-100 focus-visible:ring-cyan-500 dark:focus-visible:ring-offset-cyan-600 ',
+      none:
+        ' text-cyan-500 enabled:hover:text-cyan-600 focus-visible:text-cyan-600 dark:text-cyan-300 dark:enabled:hover:text-cyan-400 dark:focus-visible:text-cyan-400 focus-visible:ring-cyan-500 dark:focus-visible:ring-offset-cyan-600 ',
+    },
+    gradient: {
+      linear: '',
+      clay: '',
     },
   },
   sky: {
-    palette: 'bg-sky-400 dark:bg-sky-600 text-black',
+    base:
+      'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
+    active: 'ring-2 ring-offset-2 ring-offset-sky-50 dark:ring-offset-sky-800',
+    weight: {
+      light:
+        ' bg-sky-50 text-sky-500 focus-visible:bg-sky-100 enabled:hover:bg-sky-100 enabled:hover:text-sky-600 focus-visible:text-sky-600 enabled:active:bg-sky-200 contrast-more:border contrast-more:bg-sky-50 contrast-more:text-sky-900 contrast-more:border-sky-800 contrast-more:enabled:hover:bg-sky-50 contrast-more:focus-visible:bg-sky-50 contrast-more:enabled:hover:text-sky-900 dark:bg-sky-900/40 dark:text-sky-100 dark:enabled:hover:bg-sky-900/60 dark:focus-visible:bg-sky-900/60 dark:enabled:active:bg-sky-900/90 dark:enabled:hover:text-sky-100 dark:focus-visible:text-sky-100 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-sky-50 dark:contrast-more:enabled:hover:bg-sky-800 dark:contrast-more:focus-visible:bg-sky-800 dark:contrast-more:enabled:hover:text-sky-50 dark:contrast-more:focus-visible:text-sky-50 dark:contrast-more:border-sky-200 focus-visible:ring-sky-500 dark:focus-visible:ring-offset-sky-600 ',
+      normal:
+        ' bg-sky-500 text-sky-50 focus-visible:bg-sky-600 enabled:hover:bg-sky-600 enabled:hover:text-sky-100 focus-visible:text-sky-100 enabled:active:bg-sky-700 contrast-more:border contrast-more:bg-sky-50 contrast-more:text-sky-900 contrast-more:border-sky-800 contrast-more:enabled:hover:bg-sky-50 contrast-more:focus-visible:bg-sky-50 contrast-more:enabled:hover:text-sky-900 dark:bg-sky-600 dark:text-sky-50 dark:enabled:hover:bg-sky-500 dark:focus-visible:bg-sky-500 dark:enabled:active:bg-sky-600/80 dark:enabled:hover:text-sky-50 dark:focus-visible:text-sky-50 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-sky-50 dark:contrast-more:enabled:hover:bg-sky-800 dark:contrast-more:focus-visible:bg-sky-800 dark:contrast-more:enabled:hover:text-sky-50 dark:contrast-more:focus-visible:text-sky-50 dark:contrast-more:border-sky-200 focus-visible:ring-sky-800 dark:focus-visible:ring-offset-sky-100 ',
+      bold:
+        ' bg-sky-800 text-sky-100 focus-visible:bg-sky-900/80 enabled:hover:bg-sky-900/80 enabled:hover:text-sky-50 focus-visible:text-sky-50 enabled:active:bg-sky-900 contrast-more:border contrast-more:border-sky-50 contrast-more:enabled:hover:bg-sky-600 contrast-more:focus-visible:bg-sky-600 contrast-more:enabled:hover:text-sky-50 dark:bg-sky-300 dark:text-sky-900/80 dark:enabled:hover:bg-sky-200 dark:focus-visible:bg-sky-200 dark:enabled:hover:text-sky-900 dark:focus-visible:text-sky-900 dark:enabled:active:bg-sky-300/90 dark:contrast-more:font-bold dark:contrast-more:bg-sky-100 dark:contrast-more:text-sky-900 dark:contrast-more:enabled:hover:bg-sky-800 dark:contrast-more:focus-visible:bg-sky-800 dark:contrast-more:border-sky-500 focus-visible:ring-sky-500 dark:focus-visible:ring-offset-sky-50 ',
+      outline:
+        ' border border-sky-500 text-sky-700 enabled:hover:text-sky-50 enabled:hover:bg-sky-500 enabled:active:text-white enabled:active:bg-sky-600 enabled:active:border-sky-600 focus-visible:bg-sky-500 focus-visible:text-sky-50 contrast-more:border contrast-more:text-sky-900 contrast-more:border-sky-800 contrast-more:enabled:hover:border-sky-50 contrast-more:focus-visible:border-sky-50 contrast-more:enabled:hover:text-sky-900 dark:border dark:border-sky-600 dark:text-sky-300 dark:enabled:hover:text-sky-50 dark:enabled:hover:bg-sky-600 dark:enabled:active:text-white dark:enabled:active:bg-sky-700 dark:enabled:active:border-sky-700 dark:focus-visible:bg-sky-600 dark:focus-visible:text-sky-50 dark:contrast-more:font-bold dark:contrast-more:text-sky-50 dark:contrast-more:enabled:hover:border-sky-800 dark:contrast-more:focus-visible:border-sky-800 dark:contrast-more:enabled:hover:text-sky-50 dark:contrast-more:focus-visible:text-sky-50 dark:contrast-more:border-sky-100 focus-visible:ring-sky-500 dark:focus-visible:ring-offset-sky-600 ',
+      none:
+        ' text-sky-500 enabled:hover:text-sky-600 focus-visible:text-sky-600 dark:text-sky-300 dark:enabled:hover:text-sky-400 dark:focus-visible:text-sky-400 focus-visible:ring-sky-500 dark:focus-visible:ring-offset-sky-600 ',
+    },
+    gradient: {
+      linear: '',
+      clay: '',
+    },
+  },
+  blue: {
+    base:
+      'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
     active:
-      'ring-sky-500 ring-2 ring-offset-2 ring-offset-stone-50 dark:ring-offset-stone-800',
-    color: {
-      light: `
-            min-w-[3rem]
-            select-none
-            disabled:cursor-not-allowed 
-            disabled:opacity-80 
-            disabled:filter 
-            disabled:saturate-0
-            transition-colors
-            
-            bg-stone-50
-            text-sky-600
-            focus:bg-sky-500
-            hover:bg-sky-500
-            hover:text-sky-50
-            focus:text-sky-50
-            active:bg-sky-400
-            
-            prefers-contrast:border
-            prefers-contrast:bg-stone-50
-            prefers-contrast:text-sky-800
-            prefers-contrast:border-sky-800
-            prefers-contrast:hover:bg-sky-50
-            prefers-contrast:focus:bg-sky-50
-            prefers-contrast:hover:text-sky-800
-            
-            dark:bg-stone-900
-            dark:text-sky-500
-            dark:hover:bg-stone-900/50
-            dark:focus:bg-stone-900/50
-            dark:active:bg-stone-700
-            dark:hover:text-sky-400
-            dark:focus:text-sky-400
-            
-            dark:prefers-contrast:font-bold
-            dark:prefers-contrast:bg-black
-            dark:prefers-contrast:text-sky-500
-            dark:prefers-contrast:hover:bg-sky-900
-            dark:prefers-contrast:focus:bg-sky-900
-            dark:prefers-contrast:hover:text-sky-50
-            dark:prefers-contrast:focus:text-sky-50
-            dark:prefers-contrast:border-sky-500
-    
-            focus-visible:outline-none
-            focus-visible:ring-2
-            focus-visible:ring-sky-500
-            focus-visible:ring-offset-transparent
-            dark:focus-visible:ring-offset-sky-600
-            `.replace(/[\n\r]\s*/g, ' '),
-      dark: `
-            min-w-[3rem]
-            select-none
-            disabled:cursor-not-allowed 
-            disabled:opacity-80 
-            disabled:filter 
-            disabled:saturate-0
-            transition-colors
-            
-            bg-sky-300
-            text-stone-900/75
-            focus:bg-sky-400/80
-            hover:bg-sky-400/80
-            hover:text-sky-900
-            focus:text-sky-900
-            active:bg-sky-400
-            
-            prefers-contrast:border
-            prefers-contrast:border-sky-800
-            prefers-contrast:hover:bg-sky-50
-            prefers-contrast:focus:bg-sky-50
-            prefers-contrast:hover:text-sky-800
-            
-            dark:bg-sky-500
-            dark:text-stone-900/90
-            dark:hover:bg-sky-400
-            dark:focus:bg-sky-400
-            dark:active:bg-sky-500
-            dark:hover:text-sky-800
-            dark:focus:text-sky-800
-            
-            dark:prefers-contrast:font-bold
-            dark:prefers-contrast:bg-transparent
-            dark:prefers-contrast:bg-sky-100
-            dark:prefers-contrast:text-sky-900
-            dark:prefers-contrast:hover:bg-sky-800
-            dark:prefers-contrast:focus:bg-sky-800
-            dark:prefers-contrast:border-sky-500
-    
-            focus-visible:outline-none
-            focus-visible:ring-2
-            focus-visible:ring-sky-50
-            focus-visible:ring-offset-transparent
-            dark:focus-visible:ring-offset-sky-50
-          `.replace(/[\n\r]\s*/g, ' '),
+      'ring-2 ring-offset-2 ring-offset-blue-50 dark:ring-offset-blue-800',
+    weight: {
+      light:
+        ' bg-blue-50 text-blue-500 focus-visible:bg-blue-100 enabled:hover:bg-blue-100 enabled:hover:text-blue-600 focus-visible:text-blue-600 enabled:active:bg-blue-200 contrast-more:border contrast-more:bg-blue-50 contrast-more:text-blue-900 contrast-more:border-blue-800 contrast-more:enabled:hover:bg-blue-50 contrast-more:focus-visible:bg-blue-50 contrast-more:enabled:hover:text-blue-900 dark:bg-blue-900/40 dark:text-blue-100 dark:enabled:hover:bg-blue-900/60 dark:focus-visible:bg-blue-900/60 dark:enabled:active:bg-blue-900/90 dark:enabled:hover:text-blue-100 dark:focus-visible:text-blue-100 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-blue-50 dark:contrast-more:enabled:hover:bg-blue-800 dark:contrast-more:focus-visible:bg-blue-800 dark:contrast-more:enabled:hover:text-blue-50 dark:contrast-more:focus-visible:text-blue-50 dark:contrast-more:border-blue-200 focus-visible:ring-blue-500 dark:focus-visible:ring-offset-blue-600 ',
+      normal:
+        ' bg-blue-500 text-blue-50 focus-visible:bg-blue-600 enabled:hover:bg-blue-600 enabled:hover:text-blue-100 focus-visible:text-blue-100 enabled:active:bg-blue-700 contrast-more:border contrast-more:bg-blue-50 contrast-more:text-blue-900 contrast-more:border-blue-800 contrast-more:enabled:hover:bg-blue-50 contrast-more:focus-visible:bg-blue-50 contrast-more:enabled:hover:text-blue-900 dark:bg-blue-600 dark:text-blue-50 dark:enabled:hover:bg-blue-500 dark:focus-visible:bg-blue-500 dark:enabled:active:bg-blue-600/80 dark:enabled:hover:text-blue-50 dark:focus-visible:text-blue-50 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-blue-50 dark:contrast-more:enabled:hover:bg-blue-800 dark:contrast-more:focus-visible:bg-blue-800 dark:contrast-more:enabled:hover:text-blue-50 dark:contrast-more:focus-visible:text-blue-50 dark:contrast-more:border-blue-200 focus-visible:ring-blue-800 dark:focus-visible:ring-offset-blue-100 ',
+      bold:
+        ' bg-blue-800 text-blue-100 focus-visible:bg-blue-900/80 enabled:hover:bg-blue-900/80 enabled:hover:text-blue-50 focus-visible:text-blue-50 enabled:active:bg-blue-900 contrast-more:border contrast-more:border-blue-50 contrast-more:enabled:hover:bg-blue-600 contrast-more:focus-visible:bg-blue-600 contrast-more:enabled:hover:text-blue-50 dark:bg-blue-300 dark:text-blue-900/80 dark:enabled:hover:bg-blue-200 dark:focus-visible:bg-blue-200 dark:enabled:hover:text-blue-900 dark:focus-visible:text-blue-900 dark:enabled:active:bg-blue-300/90 dark:contrast-more:font-bold dark:contrast-more:bg-blue-100 dark:contrast-more:text-blue-900 dark:contrast-more:enabled:hover:bg-blue-800 dark:contrast-more:focus-visible:bg-blue-800 dark:contrast-more:border-blue-500 focus-visible:ring-blue-500 dark:focus-visible:ring-offset-blue-50 ',
+      outline:
+        ' border border-blue-500 text-blue-700 enabled:hover:text-blue-50 enabled:hover:bg-blue-500 enabled:active:text-white enabled:active:bg-blue-600 enabled:active:border-blue-600 focus-visible:bg-blue-500 focus-visible:text-blue-50 contrast-more:border contrast-more:text-blue-900 contrast-more:border-blue-800 contrast-more:enabled:hover:border-blue-50 contrast-more:focus-visible:border-blue-50 contrast-more:enabled:hover:text-blue-900 dark:border dark:border-blue-600 dark:text-blue-300 dark:enabled:hover:text-blue-50 dark:enabled:hover:bg-blue-600 dark:enabled:active:text-white dark:enabled:active:bg-blue-700 dark:enabled:active:border-blue-700 dark:focus-visible:bg-blue-600 dark:focus-visible:text-blue-50 dark:contrast-more:font-bold dark:contrast-more:text-blue-50 dark:contrast-more:enabled:hover:border-blue-800 dark:contrast-more:focus-visible:border-blue-800 dark:contrast-more:enabled:hover:text-blue-50 dark:contrast-more:focus-visible:text-blue-50 dark:contrast-more:border-blue-100 focus-visible:ring-blue-500 dark:focus-visible:ring-offset-blue-600 ',
+      none:
+        ' text-blue-500 enabled:hover:text-blue-600 focus-visible:text-blue-600 dark:text-blue-300 dark:enabled:hover:text-blue-400 dark:focus-visible:text-blue-400 focus-visible:ring-blue-500 dark:focus-visible:ring-offset-blue-600 ',
+    },
+    gradient: {
+      linear: '',
+      clay: '',
     },
   },
   indigo: {
-    palette:
-      'bg-indigo-500 dark:bg-indigo-600 ring-indigo-500 dark:ring-indigo-600 text-white',
+    base:
+      'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
     active:
-      'ring-2 ring-offset-2 ring-offset-stone-50 dark:ring-offset-stone-800',
-    color: {
-      light: `
-            min-w-[3rem]
-          select-none
-          disabled:cursor-not-allowed 
-          disabled:opacity-80 
-          disabled:filter 
-          disabled:saturate-0
-          transition-colors
-          
-          bg-stone-50
-          text-indigo-500
-          focus:bg-indigo-500
-          hover:bg-indigo-500
-          hover:text-indigo-50
-          focus:text-indigo-50
-          active:bg-indigo-400
-          
-          prefers-contrast:border
-          prefers-contrast:bg-stone-50
-          prefers-contrast:text-indigo-800
-          prefers-contrast:border-indigo-800
-          prefers-contrast:hover:bg-indigo-50
-          prefers-contrast:focus:bg-indigo-50
-          prefers-contrast:hover:text-indigo-800
-          
-          dark:bg-stone-900
-          dark:text-indigo-300
-          dark:hover:bg-stone-900/50
-          dark:focus:bg-stone-900/50
-          dark:active:bg-stone-700
-          dark:hover:text-indigo-200
-          dark:focus:text-indigo-200
-          
-          dark:prefers-contrast:font-bold
-          dark:prefers-contrast:bg-black
-          dark:prefers-contrast:text-indigo-500
-          dark:prefers-contrast:hover:bg-indigo-900
-          dark:prefers-contrast:focus:bg-indigo-900
-          dark:prefers-contrast:hover:text-indigo-50
-          dark:prefers-contrast:focus:text-indigo-50
-          dark:prefers-contrast:border-indigo-500
-  
-          focus-visible:outline-none
-          focus-visible:ring-2
-          focus-visible:ring-indigo-500
-          focus-visible:ring-offset-transparent
-          dark:focus-visible:ring-offset-indigo-600
-          `.replace(/[\n\r]\s*/g, ' '),
-      dark: `
-            min-w-[3rem]
-          select-none
-          disabled:cursor-not-allowed 
-          disabled:opacity-80 
-          disabled:filter 
-          disabled:saturate-0
-          transition-colors
-          
-          bg-indigo-500
-          text-indigo-50
-          focus:bg-indigo-600
-          hover:bg-indigo-600
-          hover:text-indigo-50
-          focus:text-indigo-50
-          active:bg-indigo-500
-          
-          prefers-contrast:border
-          prefers-contrast:border-indigo-800
-          prefers-contrast:hover:bg-indigo-50
-          prefers-contrast:focus:bg-indigo-50
-          prefers-contrast:hover:text-indigo-800
-          
-          dark:bg-indigo-600
-          dark:text-indigo-50
-          dark:hover:bg-indigo-500
-          dark:focus:bg-indigo-500
-          dark:active:bg-indigo-600
-          dark:hover:text-indigo-50
-          dark:focus:text-indigo-50
-          
-          dark:prefers-contrast:font-bold
-          dark:prefers-contrast:bg-transparent
-          dark:prefers-contrast:bg-indigo-100
-          dark:prefers-contrast:text-indigo-900
-          dark:prefers-contrast:hover:bg-indigo-800
-          dark:prefers-contrast:focus:bg-indigo-800
-          dark:prefers-contrast:border-indigo-500
-  
-          focus-visible:outline-none
-          focus-visible:ring-2
-          focus-visible:ring-indigo-50
-          focus-visible:ring-offset-transparent
-          dark:focus-visible:ring-offset-indigo-50
-        `.replace(/[\n\r]\s*/g, ' '),
+      'ring-2 ring-offset-2 ring-offset-indigo-50 dark:ring-offset-indigo-800',
+    weight: {
+      light:
+        ' bg-indigo-50 text-indigo-500 focus-visible:bg-indigo-100 enabled:hover:bg-indigo-100 enabled:hover:text-indigo-600 focus-visible:text-indigo-600 enabled:active:bg-indigo-200 contrast-more:border contrast-more:bg-indigo-50 contrast-more:text-indigo-900 contrast-more:border-indigo-800 contrast-more:enabled:hover:bg-indigo-50 contrast-more:focus-visible:bg-indigo-50 contrast-more:enabled:hover:text-indigo-900 dark:bg-indigo-900/40 dark:text-indigo-100 dark:enabled:hover:bg-indigo-900/60 dark:focus-visible:bg-indigo-900/60 dark:enabled:active:bg-indigo-900/90 dark:enabled:hover:text-indigo-100 dark:focus-visible:text-indigo-100 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-indigo-50 dark:contrast-more:enabled:hover:bg-indigo-800 dark:contrast-more:focus-visible:bg-indigo-800 dark:contrast-more:enabled:hover:text-indigo-50 dark:contrast-more:focus-visible:text-indigo-50 dark:contrast-more:border-indigo-200 focus-visible:ring-indigo-500 dark:focus-visible:ring-offset-indigo-600 ',
+      normal:
+        ' bg-indigo-500 text-indigo-50 focus-visible:bg-indigo-600 enabled:hover:bg-indigo-600 enabled:hover:text-indigo-100 focus-visible:text-indigo-100 enabled:active:bg-indigo-700 contrast-more:border contrast-more:bg-indigo-50 contrast-more:text-indigo-900 contrast-more:border-indigo-800 contrast-more:enabled:hover:bg-indigo-50 contrast-more:focus-visible:bg-indigo-50 contrast-more:enabled:hover:text-indigo-900 dark:bg-indigo-600 dark:text-indigo-50 dark:enabled:hover:bg-indigo-500 dark:focus-visible:bg-indigo-500 dark:enabled:active:bg-indigo-600/80 dark:enabled:hover:text-indigo-50 dark:focus-visible:text-indigo-50 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-indigo-50 dark:contrast-more:enabled:hover:bg-indigo-800 dark:contrast-more:focus-visible:bg-indigo-800 dark:contrast-more:enabled:hover:text-indigo-50 dark:contrast-more:focus-visible:text-indigo-50 dark:contrast-more:border-indigo-200 focus-visible:ring-indigo-800 dark:focus-visible:ring-offset-indigo-100 ',
+      bold:
+        ' bg-indigo-800 text-indigo-100 focus-visible:bg-indigo-900/80 enabled:hover:bg-indigo-900/80 enabled:hover:text-indigo-50 focus-visible:text-indigo-50 enabled:active:bg-indigo-900 contrast-more:border contrast-more:border-indigo-50 contrast-more:enabled:hover:bg-indigo-600 contrast-more:focus-visible:bg-indigo-600 contrast-more:enabled:hover:text-indigo-50 dark:bg-indigo-300 dark:text-indigo-900/80 dark:enabled:hover:bg-indigo-200 dark:focus-visible:bg-indigo-200 dark:enabled:hover:text-indigo-900 dark:focus-visible:text-indigo-900 dark:enabled:active:bg-indigo-300/90 dark:contrast-more:font-bold dark:contrast-more:bg-indigo-100 dark:contrast-more:text-indigo-900 dark:contrast-more:enabled:hover:bg-indigo-800 dark:contrast-more:focus-visible:bg-indigo-800 dark:contrast-more:border-indigo-500 focus-visible:ring-indigo-500 dark:focus-visible:ring-offset-indigo-50 ',
+      outline:
+        ' border border-indigo-500 text-indigo-700 enabled:hover:text-indigo-50 enabled:hover:bg-indigo-500 enabled:active:text-white enabled:active:bg-indigo-600 enabled:active:border-indigo-600 focus-visible:bg-indigo-500 focus-visible:text-indigo-50 contrast-more:border contrast-more:text-indigo-900 contrast-more:border-indigo-800 contrast-more:enabled:hover:border-indigo-50 contrast-more:focus-visible:border-indigo-50 contrast-more:enabled:hover:text-indigo-900 dark:border dark:border-indigo-600 dark:text-indigo-300 dark:enabled:hover:text-indigo-50 dark:enabled:hover:bg-indigo-600 dark:enabled:active:text-white dark:enabled:active:bg-indigo-700 dark:enabled:active:border-indigo-700 dark:focus-visible:bg-indigo-600 dark:focus-visible:text-indigo-50 dark:contrast-more:font-bold dark:contrast-more:text-indigo-50 dark:contrast-more:enabled:hover:border-indigo-800 dark:contrast-more:focus-visible:border-indigo-800 dark:contrast-more:enabled:hover:text-indigo-50 dark:contrast-more:focus-visible:text-indigo-50 dark:contrast-more:border-indigo-100 focus-visible:ring-indigo-500 dark:focus-visible:ring-offset-indigo-600 ',
+      none:
+        ' text-indigo-500 enabled:hover:text-indigo-600 focus-visible:text-indigo-600 dark:text-indigo-300 dark:enabled:hover:text-indigo-400 dark:focus-visible:text-indigo-400 focus-visible:ring-indigo-500 dark:focus-visible:ring-offset-indigo-600 ',
+    },
+    gradient: {
+      linear: '',
+      clay: '',
+    },
+  },
+  violet: {
+    base:
+      'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
+    active:
+      'ring-2 ring-offset-2 ring-offset-violet-50 dark:ring-offset-violet-800',
+    weight: {
+      light:
+        ' bg-violet-50 text-violet-500 focus-visible:bg-violet-100 enabled:hover:bg-violet-100 enabled:hover:text-violet-600 focus-visible:text-violet-600 enabled:active:bg-violet-200 contrast-more:border contrast-more:bg-violet-50 contrast-more:text-violet-900 contrast-more:border-violet-800 contrast-more:enabled:hover:bg-violet-50 contrast-more:focus-visible:bg-violet-50 contrast-more:enabled:hover:text-violet-900 dark:bg-violet-900/40 dark:text-violet-100 dark:enabled:hover:bg-violet-900/60 dark:focus-visible:bg-violet-900/60 dark:enabled:active:bg-violet-900/90 dark:enabled:hover:text-violet-100 dark:focus-visible:text-violet-100 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-violet-50 dark:contrast-more:enabled:hover:bg-violet-800 dark:contrast-more:focus-visible:bg-violet-800 dark:contrast-more:enabled:hover:text-violet-50 dark:contrast-more:focus-visible:text-violet-50 dark:contrast-more:border-violet-200 focus-visible:ring-violet-500 dark:focus-visible:ring-offset-violet-600 ',
+      normal:
+        ' bg-violet-500 text-violet-50 focus-visible:bg-violet-600 enabled:hover:bg-violet-600 enabled:hover:text-violet-100 focus-visible:text-violet-100 enabled:active:bg-violet-700 contrast-more:border contrast-more:bg-violet-50 contrast-more:text-violet-900 contrast-more:border-violet-800 contrast-more:enabled:hover:bg-violet-50 contrast-more:focus-visible:bg-violet-50 contrast-more:enabled:hover:text-violet-900 dark:bg-violet-600 dark:text-violet-50 dark:enabled:hover:bg-violet-500 dark:focus-visible:bg-violet-500 dark:enabled:active:bg-violet-600/80 dark:enabled:hover:text-violet-50 dark:focus-visible:text-violet-50 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-violet-50 dark:contrast-more:enabled:hover:bg-violet-800 dark:contrast-more:focus-visible:bg-violet-800 dark:contrast-more:enabled:hover:text-violet-50 dark:contrast-more:focus-visible:text-violet-50 dark:contrast-more:border-violet-200 focus-visible:ring-violet-800 dark:focus-visible:ring-offset-violet-100 ',
+      bold:
+        ' bg-violet-800 text-violet-100 focus-visible:bg-violet-900/80 enabled:hover:bg-violet-900/80 enabled:hover:text-violet-50 focus-visible:text-violet-50 enabled:active:bg-violet-900 contrast-more:border contrast-more:border-violet-50 contrast-more:enabled:hover:bg-violet-600 contrast-more:focus-visible:bg-violet-600 contrast-more:enabled:hover:text-violet-50 dark:bg-violet-300 dark:text-violet-900/80 dark:enabled:hover:bg-violet-200 dark:focus-visible:bg-violet-200 dark:enabled:hover:text-violet-900 dark:focus-visible:text-violet-900 dark:enabled:active:bg-violet-300/90 dark:contrast-more:font-bold dark:contrast-more:bg-violet-100 dark:contrast-more:text-violet-900 dark:contrast-more:enabled:hover:bg-violet-800 dark:contrast-more:focus-visible:bg-violet-800 dark:contrast-more:border-violet-500 focus-visible:ring-violet-500 dark:focus-visible:ring-offset-violet-50 ',
+      outline:
+        ' border border-violet-500 text-violet-700 enabled:hover:text-violet-50 enabled:hover:bg-violet-500 enabled:active:text-white enabled:active:bg-violet-600 enabled:active:border-violet-600 focus-visible:bg-violet-500 focus-visible:text-violet-50 contrast-more:border contrast-more:text-violet-900 contrast-more:border-violet-800 contrast-more:enabled:hover:border-violet-50 contrast-more:focus-visible:border-violet-50 contrast-more:enabled:hover:text-violet-900 dark:border dark:border-violet-600 dark:text-violet-300 dark:enabled:hover:text-violet-50 dark:enabled:hover:bg-violet-600 dark:enabled:active:text-white dark:enabled:active:bg-violet-700 dark:enabled:active:border-violet-700 dark:focus-visible:bg-violet-600 dark:focus-visible:text-violet-50 dark:contrast-more:font-bold dark:contrast-more:text-violet-50 dark:contrast-more:enabled:hover:border-violet-800 dark:contrast-more:focus-visible:border-violet-800 dark:contrast-more:enabled:hover:text-violet-50 dark:contrast-more:focus-visible:text-violet-50 dark:contrast-more:border-violet-100 focus-visible:ring-violet-500 dark:focus-visible:ring-offset-violet-600 ',
+      none:
+        ' text-violet-500 enabled:hover:text-violet-600 focus-visible:text-violet-600 dark:text-violet-300 dark:enabled:hover:text-violet-400 dark:focus-visible:text-violet-400 focus-visible:ring-violet-500 dark:focus-visible:ring-offset-violet-600 ',
+    },
+    gradient: {
+      linear: '',
+      clay: '',
+    },
+  },
+  purple: {
+    base:
+      'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
+    active:
+      'ring-2 ring-offset-2 ring-offset-purple-50 dark:ring-offset-purple-800',
+    weight: {
+      light:
+        ' bg-purple-50 text-purple-500 focus-visible:bg-purple-100 enabled:hover:bg-purple-100 enabled:hover:text-purple-600 focus-visible:text-purple-600 enabled:active:bg-purple-200 contrast-more:border contrast-more:bg-purple-50 contrast-more:text-purple-900 contrast-more:border-purple-800 contrast-more:enabled:hover:bg-purple-50 contrast-more:focus-visible:bg-purple-50 contrast-more:enabled:hover:text-purple-900 dark:bg-purple-900/40 dark:text-purple-100 dark:enabled:hover:bg-purple-900/60 dark:focus-visible:bg-purple-900/60 dark:enabled:active:bg-purple-900/90 dark:enabled:hover:text-purple-100 dark:focus-visible:text-purple-100 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-purple-50 dark:contrast-more:enabled:hover:bg-purple-800 dark:contrast-more:focus-visible:bg-purple-800 dark:contrast-more:enabled:hover:text-purple-50 dark:contrast-more:focus-visible:text-purple-50 dark:contrast-more:border-purple-200 focus-visible:ring-purple-500 dark:focus-visible:ring-offset-purple-600 ',
+      normal:
+        ' bg-purple-500 text-purple-50 focus-visible:bg-purple-600 enabled:hover:bg-purple-600 enabled:hover:text-purple-100 focus-visible:text-purple-100 enabled:active:bg-purple-700 contrast-more:border contrast-more:bg-purple-50 contrast-more:text-purple-900 contrast-more:border-purple-800 contrast-more:enabled:hover:bg-purple-50 contrast-more:focus-visible:bg-purple-50 contrast-more:enabled:hover:text-purple-900 dark:bg-purple-600 dark:text-purple-50 dark:enabled:hover:bg-purple-500 dark:focus-visible:bg-purple-500 dark:enabled:active:bg-purple-600/80 dark:enabled:hover:text-purple-50 dark:focus-visible:text-purple-50 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-purple-50 dark:contrast-more:enabled:hover:bg-purple-800 dark:contrast-more:focus-visible:bg-purple-800 dark:contrast-more:enabled:hover:text-purple-50 dark:contrast-more:focus-visible:text-purple-50 dark:contrast-more:border-purple-200 focus-visible:ring-purple-800 dark:focus-visible:ring-offset-purple-100 ',
+      bold:
+        ' bg-purple-800 text-purple-100 focus-visible:bg-purple-900/80 enabled:hover:bg-purple-900/80 enabled:hover:text-purple-50 focus-visible:text-purple-50 enabled:active:bg-purple-900 contrast-more:border contrast-more:border-purple-50 contrast-more:enabled:hover:bg-purple-600 contrast-more:focus-visible:bg-purple-600 contrast-more:enabled:hover:text-purple-50 dark:bg-purple-300 dark:text-purple-900/80 dark:enabled:hover:bg-purple-200 dark:focus-visible:bg-purple-200 dark:enabled:hover:text-purple-900 dark:focus-visible:text-purple-900 dark:enabled:active:bg-purple-300/90 dark:contrast-more:font-bold dark:contrast-more:bg-purple-100 dark:contrast-more:text-purple-900 dark:contrast-more:enabled:hover:bg-purple-800 dark:contrast-more:focus-visible:bg-purple-800 dark:contrast-more:border-purple-500 focus-visible:ring-purple-500 dark:focus-visible:ring-offset-purple-50 ',
+      outline:
+        ' border border-purple-500 text-purple-700 enabled:hover:text-purple-50 enabled:hover:bg-purple-500 enabled:active:text-white enabled:active:bg-purple-600 enabled:active:border-purple-600 focus-visible:bg-purple-500 focus-visible:text-purple-50 contrast-more:border contrast-more:text-purple-900 contrast-more:border-purple-800 contrast-more:enabled:hover:border-purple-50 contrast-more:focus-visible:border-purple-50 contrast-more:enabled:hover:text-purple-900 dark:border dark:border-purple-600 dark:text-purple-300 dark:enabled:hover:text-purple-50 dark:enabled:hover:bg-purple-600 dark:enabled:active:text-white dark:enabled:active:bg-purple-700 dark:enabled:active:border-purple-700 dark:focus-visible:bg-purple-600 dark:focus-visible:text-purple-50 dark:contrast-more:font-bold dark:contrast-more:text-purple-50 dark:contrast-more:enabled:hover:border-purple-800 dark:contrast-more:focus-visible:border-purple-800 dark:contrast-more:enabled:hover:text-purple-50 dark:contrast-more:focus-visible:text-purple-50 dark:contrast-more:border-purple-100 focus-visible:ring-purple-500 dark:focus-visible:ring-offset-purple-600 ',
+      none:
+        ' text-purple-500 enabled:hover:text-purple-600 focus-visible:text-purple-600 dark:text-purple-300 dark:enabled:hover:text-purple-400 dark:focus-visible:text-purple-400 focus-visible:ring-purple-500 dark:focus-visible:ring-offset-purple-600 ',
+    },
+    gradient: {
+      linear: '',
+      clay: '',
     },
   },
   fuchsia: {
-    palette:
-      'bg-fuchsia-500 dark:bg-fuchsia-600 ring-fuchsia-500 dark:ring-fuchsia-600 text-white',
+    base:
+      'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
     active:
-      'ring-2 ring-offset-2 ring-offset-stone-50 dark:ring-offset-stone-800',
-    color: {
-      light: `
-            min-w-[3rem]
-          select-none
-          disabled:cursor-not-allowed 
-          disabled:opacity-80 
-          disabled:filter 
-          disabled:saturate-0
-          transition-colors
-          
-          bg-stone-50
-          text-fuchsia-500
-          focus:bg-fuchsia-500
-          hover:bg-fuchsia-500
-          hover:text-fuchsia-50
-          focus:text-fuchsia-50
-          active:bg-fuchsia-400
-          
-          prefers-contrast:border
-          prefers-contrast:bg-stone-50
-          prefers-contrast:text-fuchsia-800
-          prefers-contrast:border-fuchsia-800
-          prefers-contrast:hover:bg-fuchsia-50
-          prefers-contrast:focus:bg-fuchsia-50
-          prefers-contrast:hover:text-fuchsia-800
-          
-          dark:bg-stone-900
-          dark:text-fuchsia-400
-          dark:hover:bg-stone-900/50
-          dark:focus:bg-stone-900/50
-          dark:active:bg-stone-700
-          dark:hover:text-fuchsia-400
-          dark:focus:text-fuchsia-400
-          
-          dark:prefers-contrast:font-bold
-          dark:prefers-contrast:bg-black
-          dark:prefers-contrast:text-fuchsia-500
-          dark:prefers-contrast:hover:bg-fuchsia-900
-          dark:prefers-contrast:focus:bg-fuchsia-900
-          dark:prefers-contrast:hover:text-fuchsia-50
-          dark:prefers-contrast:focus:text-fuchsia-50
-          dark:prefers-contrast:border-fuchsia-500
-  
-          focus-visible:outline-none
-          focus-visible:ring-2
-          focus-visible:ring-fuchsia-500
-          focus-visible:ring-offset-transparent
-          dark:focus-visible:ring-offset-fuchsia-600
-          `.replace(/[\n\r]\s*/g, ' '),
-      dark: `
-            min-w-[3rem]
-          select-none
-          disabled:cursor-not-allowed 
-          disabled:opacity-80 
-          disabled:filter 
-          disabled:saturate-0
-          transition-colors
-          
-          bg-fuchsia-500
-          text-fuchsia-50
-          focus:bg-fuchsia-600
-          hover:bg-fuchsia-600
-          hover:text-fuchsia-50
-          focus:text-fuchsia-50
-          active:bg-fuchsia-500
-          
-          prefers-contrast:border
-          prefers-contrast:border-fuchsia-800
-          prefers-contrast:hover:bg-fuchsia-50
-          prefers-contrast:focus:bg-fuchsia-50
-          prefers-contrast:hover:text-fuchsia-800
-          
-          dark:bg-fuchsia-600
-          dark:text-fuchsia-50
-          dark:hover:bg-fuchsia-500
-          dark:focus:bg-fuchsia-500
-          dark:active:bg-fuchsia-500
-          dark:hover:text-fuchsia-50
-          dark:focus:text-fuchsia-50
-          
-          dark:prefers-contrast:font-bold
-          dark:prefers-contrast:bg-transparent
-          dark:prefers-contrast:bg-fuchsia-100
-          dark:prefers-contrast:text-fuchsia-900
-          dark:prefers-contrast:hover:bg-fuchsia-800
-          dark:prefers-contrast:focus:bg-fuchsia-800
-          dark:prefers-contrast:border-fuchsia-500
-  
-          focus-visible:outline-none
-          focus-visible:ring-2
-          focus-visible:ring-fuchsia-50
-          focus-visible:ring-offset-transparent
-          dark:focus-visible:ring-offset-fuchsia-50
-        `.replace(/[\n\r]\s*/g, ' '),
+      'ring-2 ring-offset-2 ring-offset-fuchsia-50 dark:ring-offset-fuchsia-800',
+    weight: {
+      light:
+        ' bg-fuchsia-50 text-fuchsia-500 focus-visible:bg-fuchsia-100 enabled:hover:bg-fuchsia-100 enabled:hover:text-fuchsia-600 focus-visible:text-fuchsia-600 enabled:active:bg-fuchsia-200 contrast-more:border contrast-more:bg-fuchsia-50 contrast-more:text-fuchsia-900 contrast-more:border-fuchsia-800 contrast-more:enabled:hover:bg-fuchsia-50 contrast-more:focus-visible:bg-fuchsia-50 contrast-more:enabled:hover:text-fuchsia-900 dark:bg-fuchsia-900/40 dark:text-fuchsia-100 dark:enabled:hover:bg-fuchsia-900/60 dark:focus-visible:bg-fuchsia-900/60 dark:enabled:active:bg-fuchsia-900/90 dark:enabled:hover:text-fuchsia-100 dark:focus-visible:text-fuchsia-100 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-fuchsia-50 dark:contrast-more:enabled:hover:bg-fuchsia-800 dark:contrast-more:focus-visible:bg-fuchsia-800 dark:contrast-more:enabled:hover:text-fuchsia-50 dark:contrast-more:focus-visible:text-fuchsia-50 dark:contrast-more:border-fuchsia-200 focus-visible:ring-fuchsia-500 dark:focus-visible:ring-offset-fuchsia-600 ',
+      normal:
+        ' bg-fuchsia-500 text-fuchsia-50 focus-visible:bg-fuchsia-600 enabled:hover:bg-fuchsia-600 enabled:hover:text-fuchsia-100 focus-visible:text-fuchsia-100 enabled:active:bg-fuchsia-700 contrast-more:border contrast-more:bg-fuchsia-50 contrast-more:text-fuchsia-900 contrast-more:border-fuchsia-800 contrast-more:enabled:hover:bg-fuchsia-50 contrast-more:focus-visible:bg-fuchsia-50 contrast-more:enabled:hover:text-fuchsia-900 dark:bg-fuchsia-600 dark:text-fuchsia-50 dark:enabled:hover:bg-fuchsia-500 dark:focus-visible:bg-fuchsia-500 dark:enabled:active:bg-fuchsia-600/80 dark:enabled:hover:text-fuchsia-50 dark:focus-visible:text-fuchsia-50 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-fuchsia-50 dark:contrast-more:enabled:hover:bg-fuchsia-800 dark:contrast-more:focus-visible:bg-fuchsia-800 dark:contrast-more:enabled:hover:text-fuchsia-50 dark:contrast-more:focus-visible:text-fuchsia-50 dark:contrast-more:border-fuchsia-200 focus-visible:ring-fuchsia-800 dark:focus-visible:ring-offset-fuchsia-100 ',
+      bold:
+        ' bg-fuchsia-800 text-fuchsia-100 focus-visible:bg-fuchsia-900/80 enabled:hover:bg-fuchsia-900/80 enabled:hover:text-fuchsia-50 focus-visible:text-fuchsia-50 enabled:active:bg-fuchsia-900 contrast-more:border contrast-more:border-fuchsia-50 contrast-more:enabled:hover:bg-fuchsia-600 contrast-more:focus-visible:bg-fuchsia-600 contrast-more:enabled:hover:text-fuchsia-50 dark:bg-fuchsia-300 dark:text-fuchsia-900/80 dark:enabled:hover:bg-fuchsia-200 dark:focus-visible:bg-fuchsia-200 dark:enabled:hover:text-fuchsia-900 dark:focus-visible:text-fuchsia-900 dark:enabled:active:bg-fuchsia-300/90 dark:contrast-more:font-bold dark:contrast-more:bg-fuchsia-100 dark:contrast-more:text-fuchsia-900 dark:contrast-more:enabled:hover:bg-fuchsia-800 dark:contrast-more:focus-visible:bg-fuchsia-800 dark:contrast-more:border-fuchsia-500 focus-visible:ring-fuchsia-500 dark:focus-visible:ring-offset-fuchsia-50 ',
+      outline:
+        ' border border-fuchsia-500 text-fuchsia-700 enabled:hover:text-fuchsia-50 enabled:hover:bg-fuchsia-500 enabled:active:text-white enabled:active:bg-fuchsia-600 enabled:active:border-fuchsia-600 focus-visible:bg-fuchsia-500 focus-visible:text-fuchsia-50 contrast-more:border contrast-more:text-fuchsia-900 contrast-more:border-fuchsia-800 contrast-more:enabled:hover:border-fuchsia-50 contrast-more:focus-visible:border-fuchsia-50 contrast-more:enabled:hover:text-fuchsia-900 dark:border dark:border-fuchsia-600 dark:text-fuchsia-300 dark:enabled:hover:text-fuchsia-50 dark:enabled:hover:bg-fuchsia-600 dark:enabled:active:text-white dark:enabled:active:bg-fuchsia-700 dark:enabled:active:border-fuchsia-700 dark:focus-visible:bg-fuchsia-600 dark:focus-visible:text-fuchsia-50 dark:contrast-more:font-bold dark:contrast-more:text-fuchsia-50 dark:contrast-more:enabled:hover:border-fuchsia-800 dark:contrast-more:focus-visible:border-fuchsia-800 dark:contrast-more:enabled:hover:text-fuchsia-50 dark:contrast-more:focus-visible:text-fuchsia-50 dark:contrast-more:border-fuchsia-100 focus-visible:ring-fuchsia-500 dark:focus-visible:ring-offset-fuchsia-600 ',
+      none:
+        ' text-fuchsia-500 enabled:hover:text-fuchsia-600 focus-visible:text-fuchsia-600 dark:text-fuchsia-300 dark:enabled:hover:text-fuchsia-400 dark:focus-visible:text-fuchsia-400 focus-visible:ring-fuchsia-500 dark:focus-visible:ring-offset-fuchsia-600 ',
+    },
+    gradient: {
+      linear: '',
+      clay: '',
+    },
+  },
+  pink: {
+    base:
+      'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
+    active:
+      'ring-2 ring-offset-2 ring-offset-pink-50 dark:ring-offset-pink-800',
+    weight: {
+      light:
+        ' bg-pink-50 text-pink-500 focus-visible:bg-pink-100 enabled:hover:bg-pink-100 enabled:hover:text-pink-600 focus-visible:text-pink-600 enabled:active:bg-pink-200 contrast-more:border contrast-more:bg-pink-50 contrast-more:text-pink-900 contrast-more:border-pink-800 contrast-more:enabled:hover:bg-pink-50 contrast-more:focus-visible:bg-pink-50 contrast-more:enabled:hover:text-pink-900 dark:bg-pink-900/40 dark:text-pink-100 dark:enabled:hover:bg-pink-900/60 dark:focus-visible:bg-pink-900/60 dark:enabled:active:bg-pink-900/90 dark:enabled:hover:text-pink-100 dark:focus-visible:text-pink-100 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-pink-50 dark:contrast-more:enabled:hover:bg-pink-800 dark:contrast-more:focus-visible:bg-pink-800 dark:contrast-more:enabled:hover:text-pink-50 dark:contrast-more:focus-visible:text-pink-50 dark:contrast-more:border-pink-200 focus-visible:ring-pink-500 dark:focus-visible:ring-offset-pink-600 ',
+      normal:
+        ' bg-pink-500 text-pink-50 focus-visible:bg-pink-600 enabled:hover:bg-pink-600 enabled:hover:text-pink-100 focus-visible:text-pink-100 enabled:active:bg-pink-700 contrast-more:border contrast-more:bg-pink-50 contrast-more:text-pink-900 contrast-more:border-pink-800 contrast-more:enabled:hover:bg-pink-50 contrast-more:focus-visible:bg-pink-50 contrast-more:enabled:hover:text-pink-900 dark:bg-pink-600 dark:text-pink-50 dark:enabled:hover:bg-pink-500 dark:focus-visible:bg-pink-500 dark:enabled:active:bg-pink-600/80 dark:enabled:hover:text-pink-50 dark:focus-visible:text-pink-50 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-pink-50 dark:contrast-more:enabled:hover:bg-pink-800 dark:contrast-more:focus-visible:bg-pink-800 dark:contrast-more:enabled:hover:text-pink-50 dark:contrast-more:focus-visible:text-pink-50 dark:contrast-more:border-pink-200 focus-visible:ring-pink-800 dark:focus-visible:ring-offset-pink-100 ',
+      bold:
+        ' bg-pink-800 text-pink-100 focus-visible:bg-pink-900/80 enabled:hover:bg-pink-900/80 enabled:hover:text-pink-50 focus-visible:text-pink-50 enabled:active:bg-pink-900 contrast-more:border contrast-more:border-pink-50 contrast-more:enabled:hover:bg-pink-600 contrast-more:focus-visible:bg-pink-600 contrast-more:enabled:hover:text-pink-50 dark:bg-pink-300 dark:text-pink-900/80 dark:enabled:hover:bg-pink-200 dark:focus-visible:bg-pink-200 dark:enabled:hover:text-pink-900 dark:focus-visible:text-pink-900 dark:enabled:active:bg-pink-300/90 dark:contrast-more:font-bold dark:contrast-more:bg-pink-100 dark:contrast-more:text-pink-900 dark:contrast-more:enabled:hover:bg-pink-800 dark:contrast-more:focus-visible:bg-pink-800 dark:contrast-more:border-pink-500 focus-visible:ring-pink-500 dark:focus-visible:ring-offset-pink-50 ',
+      outline:
+        ' border border-pink-500 text-pink-700 enabled:hover:text-pink-50 enabled:hover:bg-pink-500 enabled:active:text-white enabled:active:bg-pink-600 enabled:active:border-pink-600 focus-visible:bg-pink-500 focus-visible:text-pink-50 contrast-more:border contrast-more:text-pink-900 contrast-more:border-pink-800 contrast-more:enabled:hover:border-pink-50 contrast-more:focus-visible:border-pink-50 contrast-more:enabled:hover:text-pink-900 dark:border dark:border-pink-600 dark:text-pink-300 dark:enabled:hover:text-pink-50 dark:enabled:hover:bg-pink-600 dark:enabled:active:text-white dark:enabled:active:bg-pink-700 dark:enabled:active:border-pink-700 dark:focus-visible:bg-pink-600 dark:focus-visible:text-pink-50 dark:contrast-more:font-bold dark:contrast-more:text-pink-50 dark:contrast-more:enabled:hover:border-pink-800 dark:contrast-more:focus-visible:border-pink-800 dark:contrast-more:enabled:hover:text-pink-50 dark:contrast-more:focus-visible:text-pink-50 dark:contrast-more:border-pink-100 focus-visible:ring-pink-500 dark:focus-visible:ring-offset-pink-600 ',
+      none:
+        ' text-pink-500 enabled:hover:text-pink-600 focus-visible:text-pink-600 dark:text-pink-300 dark:enabled:hover:text-pink-400 dark:focus-visible:text-pink-400 focus-visible:ring-pink-500 dark:focus-visible:ring-offset-pink-600 ',
+    },
+    gradient: {
+      linear: '',
+      clay: '',
     },
   },
   rose: {
-    palette:
-      'bg-rose-500 dark:bg-rose-600 ring-rose-500 dark:ring-rose-600 text-white',
+    base:
+      'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
     active:
-      'ring-2 ring-offset-2 ring-offset-stone-50 dark:ring-offset-stone-800',
-    color: {
-      light: `
-            min-w-[3rem]
-          select-none
-          disabled:cursor-not-allowed 
-          disabled:opacity-80 
-          disabled:filter 
-          disabled:saturate-0
-          transition-colors
-          
-          bg-stone-50
-          text-rose-500
-          focus:bg-rose-500
-          hover:bg-rose-500
-          hover:text-rose-50
-          focus:text-rose-50
-          active:bg-rose-400
-          
-          prefers-contrast:border
-          prefers-contrast:bg-stone-50
-          prefers-contrast:text-rose-800
-          prefers-contrast:border-rose-800
-          prefers-contrast:hover:bg-rose-50
-          prefers-contrast:focus:bg-rose-50
-          prefers-contrast:hover:text-rose-800
-          
-          dark:bg-stone-900
-          dark:text-rose-400
-          dark:hover:bg-stone-900/50
-          dark:focus:bg-stone-900/50
-          dark:active:bg-stone-700
-          dark:hover:text-rose-400
-          dark:focus:text-rose-400
-          
-          dark:prefers-contrast:font-bold
-          dark:prefers-contrast:bg-black
-          dark:prefers-contrast:text-rose-500
-          dark:prefers-contrast:hover:bg-rose-900
-          dark:prefers-contrast:focus:bg-rose-900
-          dark:prefers-contrast:hover:text-rose-50
-          dark:prefers-contrast:focus:text-rose-50
-          dark:prefers-contrast:border-rose-500
-  
-          focus-visible:outline-none
-          focus-visible:ring-2
-          focus-visible:ring-rose-500
-          focus-visible:ring-offset-transparent
-          dark:focus-visible:ring-offset-rose-600
-          `.replace(/[\n\r]\s*/g, ' '),
-      dark: `
-            min-w-[3rem]
-          select-none
-          disabled:cursor-not-allowed 
-          disabled:opacity-80 
-          disabled:filter 
-          disabled:saturate-0
-          transition-colors
-          
-          bg-rose-500
-          text-rose-50
-          focus:bg-rose-600
-          hover:bg-rose-600
-          hover:text-rose-50
-          focus:text-rose-50
-          active:bg-rose-500
-          
-          prefers-contrast:border
-          prefers-contrast:border-rose-800
-          prefers-contrast:hover:bg-rose-50
-          prefers-contrast:focus:bg-rose-50
-          prefers-contrast:hover:text-rose-800
-          
-          dark:bg-rose-600
-          dark:text-rose-50
-          dark:hover:bg-rose-500
-          dark:focus:bg-rose-500
-          dark:active:bg-rose-500
-          dark:hover:text-rose-50
-          dark:focus:text-rose-50
-          
-          dark:prefers-contrast:font-bold
-          dark:prefers-contrast:bg-transparent
-          dark:prefers-contrast:bg-rose-100
-          dark:prefers-contrast:text-rose-900
-          dark:prefers-contrast:hover:bg-rose-800
-          dark:prefers-contrast:focus:bg-rose-800
-          dark:prefers-contrast:border-rose-500
-  
-          focus-visible:outline-none
-          focus-visible:ring-2
-          focus-visible:ring-rose-50
-          focus-visible:ring-offset-transparent
-          dark:focus-visible:ring-offset-rose-50
-        `.replace(/[\n\r]\s*/g, ' '),
+      'ring-2 ring-offset-2 ring-offset-rose-50 dark:ring-offset-rose-800',
+    weight: {
+      light:
+        ' bg-rose-50 text-rose-500 focus-visible:bg-rose-100 enabled:hover:bg-rose-100 enabled:hover:text-rose-600 focus-visible:text-rose-600 enabled:active:bg-rose-200 contrast-more:border contrast-more:bg-rose-50 contrast-more:text-rose-900 contrast-more:border-rose-800 contrast-more:enabled:hover:bg-rose-50 contrast-more:focus-visible:bg-rose-50 contrast-more:enabled:hover:text-rose-900 dark:bg-rose-900/40 dark:text-rose-100 dark:enabled:hover:bg-rose-900/60 dark:focus-visible:bg-rose-900/60 dark:enabled:active:bg-rose-900/90 dark:enabled:hover:text-rose-100 dark:focus-visible:text-rose-100 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-rose-50 dark:contrast-more:enabled:hover:bg-rose-800 dark:contrast-more:focus-visible:bg-rose-800 dark:contrast-more:enabled:hover:text-rose-50 dark:contrast-more:focus-visible:text-rose-50 dark:contrast-more:border-rose-200 focus-visible:ring-rose-500 dark:focus-visible:ring-offset-rose-600 ',
+      normal:
+        ' bg-rose-500 text-rose-50 focus-visible:bg-rose-600 enabled:hover:bg-rose-600 enabled:hover:text-rose-100 focus-visible:text-rose-100 enabled:active:bg-rose-700 contrast-more:border contrast-more:bg-rose-50 contrast-more:text-rose-900 contrast-more:border-rose-800 contrast-more:enabled:hover:bg-rose-50 contrast-more:focus-visible:bg-rose-50 contrast-more:enabled:hover:text-rose-900 dark:bg-rose-600 dark:text-rose-50 dark:enabled:hover:bg-rose-500 dark:focus-visible:bg-rose-500 dark:enabled:active:bg-rose-600/80 dark:enabled:hover:text-rose-50 dark:focus-visible:text-rose-50 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-rose-50 dark:contrast-more:enabled:hover:bg-rose-800 dark:contrast-more:focus-visible:bg-rose-800 dark:contrast-more:enabled:hover:text-rose-50 dark:contrast-more:focus-visible:text-rose-50 dark:contrast-more:border-rose-200 focus-visible:ring-rose-800 dark:focus-visible:ring-offset-rose-100 ',
+      bold:
+        ' bg-rose-800 text-rose-100 focus-visible:bg-rose-900/80 enabled:hover:bg-rose-900/80 enabled:hover:text-rose-50 focus-visible:text-rose-50 enabled:active:bg-rose-900 contrast-more:border contrast-more:border-rose-50 contrast-more:enabled:hover:bg-rose-600 contrast-more:focus-visible:bg-rose-600 contrast-more:enabled:hover:text-rose-50 dark:bg-rose-300 dark:text-rose-900/80 dark:enabled:hover:bg-rose-200 dark:focus-visible:bg-rose-200 dark:enabled:hover:text-rose-900 dark:focus-visible:text-rose-900 dark:enabled:active:bg-rose-300/90 dark:contrast-more:font-bold dark:contrast-more:bg-rose-100 dark:contrast-more:text-rose-900 dark:contrast-more:enabled:hover:bg-rose-800 dark:contrast-more:focus-visible:bg-rose-800 dark:contrast-more:border-rose-500 focus-visible:ring-rose-500 dark:focus-visible:ring-offset-rose-50 ',
+      outline:
+        ' border border-rose-500 text-rose-700 enabled:hover:text-rose-50 enabled:hover:bg-rose-500 enabled:active:text-white enabled:active:bg-rose-600 enabled:active:border-rose-600 focus-visible:bg-rose-500 focus-visible:text-rose-50 contrast-more:border contrast-more:text-rose-900 contrast-more:border-rose-800 contrast-more:enabled:hover:border-rose-50 contrast-more:focus-visible:border-rose-50 contrast-more:enabled:hover:text-rose-900 dark:border dark:border-rose-600 dark:text-rose-300 dark:enabled:hover:text-rose-50 dark:enabled:hover:bg-rose-600 dark:enabled:active:text-white dark:enabled:active:bg-rose-700 dark:enabled:active:border-rose-700 dark:focus-visible:bg-rose-600 dark:focus-visible:text-rose-50 dark:contrast-more:font-bold dark:contrast-more:text-rose-50 dark:contrast-more:enabled:hover:border-rose-800 dark:contrast-more:focus-visible:border-rose-800 dark:contrast-more:enabled:hover:text-rose-50 dark:contrast-more:focus-visible:text-rose-50 dark:contrast-more:border-rose-100 focus-visible:ring-rose-500 dark:focus-visible:ring-offset-rose-600 ',
+      none:
+        ' text-rose-500 enabled:hover:text-rose-600 focus-visible:text-rose-600 dark:text-rose-300 dark:enabled:hover:text-rose-400 dark:focus-visible:text-rose-400 focus-visible:ring-rose-500 dark:focus-visible:ring-offset-rose-600 ',
+    },
+    gradient: {
+      linear: '',
+      clay: '',
     },
   },
-  red: {
-    palette:
-      'bg-red-500 dark:bg-red-600 ring-red-500 dark:ring-red-600 text-white',
+  gray: {
+    base:
+      'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
+    active:
+      'ring-2 ring-offset-2 ring-offset-gray-50 dark:ring-offset-gray-800',
+    weight: {
+      light:
+        ' bg-gray-50 text-gray-500 focus-visible:bg-gray-100 enabled:hover:bg-gray-100 enabled:hover:text-gray-600 focus-visible:text-gray-600 enabled:active:bg-gray-200 contrast-more:border contrast-more:bg-gray-50 contrast-more:text-gray-900 contrast-more:border-gray-800 contrast-more:enabled:hover:bg-gray-50 contrast-more:focus-visible:bg-gray-50 contrast-more:enabled:hover:text-gray-900 dark:bg-gray-900/40 dark:text-gray-100 dark:enabled:hover:bg-gray-900/60 dark:focus-visible:bg-gray-900/60 dark:enabled:active:bg-gray-900/90 dark:enabled:hover:text-gray-100 dark:focus-visible:text-gray-100 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-gray-50 dark:contrast-more:enabled:hover:bg-gray-800 dark:contrast-more:focus-visible:bg-gray-800 dark:contrast-more:enabled:hover:text-gray-50 dark:contrast-more:focus-visible:text-gray-50 dark:contrast-more:border-gray-200 focus-visible:ring-gray-500 dark:focus-visible:ring-offset-gray-600 ',
+      normal:
+        ' bg-gray-500 text-gray-50 focus-visible:bg-gray-600 enabled:hover:bg-gray-600 enabled:hover:text-gray-100 focus-visible:text-gray-100 enabled:active:bg-gray-700 contrast-more:border contrast-more:bg-gray-50 contrast-more:text-gray-900 contrast-more:border-gray-800 contrast-more:enabled:hover:bg-gray-50 contrast-more:focus-visible:bg-gray-50 contrast-more:enabled:hover:text-gray-900 dark:bg-gray-600 dark:text-gray-50 dark:enabled:hover:bg-gray-500 dark:focus-visible:bg-gray-500 dark:enabled:active:bg-gray-600/80 dark:enabled:hover:text-gray-50 dark:focus-visible:text-gray-50 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-gray-50 dark:contrast-more:enabled:hover:bg-gray-800 dark:contrast-more:focus-visible:bg-gray-800 dark:contrast-more:enabled:hover:text-gray-50 dark:contrast-more:focus-visible:text-gray-50 dark:contrast-more:border-gray-200 focus-visible:ring-gray-800 dark:focus-visible:ring-offset-gray-100 ',
+      bold:
+        ' bg-gray-800 text-gray-100 focus-visible:bg-gray-900/80 enabled:hover:bg-gray-900/80 enabled:hover:text-gray-50 focus-visible:text-gray-50 enabled:active:bg-gray-900 contrast-more:border contrast-more:border-gray-50 contrast-more:enabled:hover:bg-gray-600 contrast-more:focus-visible:bg-gray-600 contrast-more:enabled:hover:text-gray-50 dark:bg-gray-300 dark:text-gray-900/80 dark:enabled:hover:bg-gray-200 dark:focus-visible:bg-gray-200 dark:enabled:hover:text-gray-900 dark:focus-visible:text-gray-900 dark:enabled:active:bg-gray-300/90 dark:contrast-more:font-bold dark:contrast-more:bg-gray-100 dark:contrast-more:text-gray-900 dark:contrast-more:enabled:hover:bg-gray-800 dark:contrast-more:focus-visible:bg-gray-800 dark:contrast-more:border-gray-500 focus-visible:ring-gray-500 dark:focus-visible:ring-offset-gray-50 ',
+      outline:
+        ' border border-gray-500 text-gray-700 enabled:hover:text-gray-50 enabled:hover:bg-gray-500 enabled:active:text-white enabled:active:bg-gray-600 enabled:active:border-gray-600 focus-visible:bg-gray-500 focus-visible:text-gray-50 contrast-more:border contrast-more:text-gray-900 contrast-more:border-gray-800 contrast-more:enabled:hover:border-gray-50 contrast-more:focus-visible:border-gray-50 contrast-more:enabled:hover:text-gray-900 dark:border dark:border-gray-600 dark:text-gray-300 dark:enabled:hover:text-gray-50 dark:enabled:hover:bg-gray-600 dark:enabled:active:text-white dark:enabled:active:bg-gray-700 dark:enabled:active:border-gray-700 dark:focus-visible:bg-gray-600 dark:focus-visible:text-gray-50 dark:contrast-more:font-bold dark:contrast-more:text-gray-50 dark:contrast-more:enabled:hover:border-gray-800 dark:contrast-more:focus-visible:border-gray-800 dark:contrast-more:enabled:hover:text-gray-50 dark:contrast-more:focus-visible:text-gray-50 dark:contrast-more:border-gray-100 focus-visible:ring-gray-500 dark:focus-visible:ring-offset-gray-600 ',
+      none:
+        ' text-gray-500 enabled:hover:text-gray-600 focus-visible:text-gray-600 dark:text-gray-300 dark:enabled:hover:text-gray-400 dark:focus-visible:text-gray-400 focus-visible:ring-gray-500 dark:focus-visible:ring-offset-gray-600 ',
+    },
+    gradient: {
+      linear: '',
+      clay: '',
+    },
+  },
+  slate: {
+    base:
+      'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
+    active:
+      'ring-2 ring-offset-2 ring-offset-slate-50 dark:ring-offset-slate-800',
+    weight: {
+      light:
+        ' bg-slate-50 text-slate-500 focus-visible:bg-slate-100 enabled:hover:bg-slate-100 enabled:hover:text-slate-600 focus-visible:text-slate-600 enabled:active:bg-slate-200 contrast-more:border contrast-more:bg-slate-50 contrast-more:text-slate-900 contrast-more:border-slate-800 contrast-more:enabled:hover:bg-slate-50 contrast-more:focus-visible:bg-slate-50 contrast-more:enabled:hover:text-slate-900 dark:bg-slate-900/40 dark:text-slate-100 dark:enabled:hover:bg-slate-900/60 dark:focus-visible:bg-slate-900/60 dark:enabled:active:bg-slate-900/90 dark:enabled:hover:text-slate-100 dark:focus-visible:text-slate-100 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-slate-50 dark:contrast-more:enabled:hover:bg-slate-800 dark:contrast-more:focus-visible:bg-slate-800 dark:contrast-more:enabled:hover:text-slate-50 dark:contrast-more:focus-visible:text-slate-50 dark:contrast-more:border-slate-200 focus-visible:ring-slate-500 dark:focus-visible:ring-offset-slate-600 ',
+      normal:
+        ' bg-slate-500 text-slate-50 focus-visible:bg-slate-600 enabled:hover:bg-slate-600 enabled:hover:text-slate-100 focus-visible:text-slate-100 enabled:active:bg-slate-700 contrast-more:border contrast-more:bg-slate-50 contrast-more:text-slate-900 contrast-more:border-slate-800 contrast-more:enabled:hover:bg-slate-50 contrast-more:focus-visible:bg-slate-50 contrast-more:enabled:hover:text-slate-900 dark:bg-slate-600 dark:text-slate-50 dark:enabled:hover:bg-slate-500 dark:focus-visible:bg-slate-500 dark:enabled:active:bg-slate-600/80 dark:enabled:hover:text-slate-50 dark:focus-visible:text-slate-50 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-slate-50 dark:contrast-more:enabled:hover:bg-slate-800 dark:contrast-more:focus-visible:bg-slate-800 dark:contrast-more:enabled:hover:text-slate-50 dark:contrast-more:focus-visible:text-slate-50 dark:contrast-more:border-slate-200 focus-visible:ring-slate-800 dark:focus-visible:ring-offset-slate-100 ',
+      bold:
+        ' bg-slate-800 text-slate-100 focus-visible:bg-slate-900/80 enabled:hover:bg-slate-900/80 enabled:hover:text-slate-50 focus-visible:text-slate-50 enabled:active:bg-slate-900 contrast-more:border contrast-more:border-slate-50 contrast-more:enabled:hover:bg-slate-600 contrast-more:focus-visible:bg-slate-600 contrast-more:enabled:hover:text-slate-50 dark:bg-slate-300 dark:text-slate-900/80 dark:enabled:hover:bg-slate-200 dark:focus-visible:bg-slate-200 dark:enabled:hover:text-slate-900 dark:focus-visible:text-slate-900 dark:enabled:active:bg-slate-300/90 dark:contrast-more:font-bold dark:contrast-more:bg-slate-100 dark:contrast-more:text-slate-900 dark:contrast-more:enabled:hover:bg-slate-800 dark:contrast-more:focus-visible:bg-slate-800 dark:contrast-more:border-slate-500 focus-visible:ring-slate-500 dark:focus-visible:ring-offset-slate-50 ',
+      outline:
+        ' border border-slate-500 text-slate-700 enabled:hover:text-slate-50 enabled:hover:bg-slate-500 enabled:active:text-white enabled:active:bg-slate-600 enabled:active:border-slate-600 focus-visible:bg-slate-500 focus-visible:text-slate-50 contrast-more:border contrast-more:text-slate-900 contrast-more:border-slate-800 contrast-more:enabled:hover:border-slate-50 contrast-more:focus-visible:border-slate-50 contrast-more:enabled:hover:text-slate-900 dark:border dark:border-slate-600 dark:text-slate-300 dark:enabled:hover:text-slate-50 dark:enabled:hover:bg-slate-600 dark:enabled:active:text-white dark:enabled:active:bg-slate-700 dark:enabled:active:border-slate-700 dark:focus-visible:bg-slate-600 dark:focus-visible:text-slate-50 dark:contrast-more:font-bold dark:contrast-more:text-slate-50 dark:contrast-more:enabled:hover:border-slate-800 dark:contrast-more:focus-visible:border-slate-800 dark:contrast-more:enabled:hover:text-slate-50 dark:contrast-more:focus-visible:text-slate-50 dark:contrast-more:border-slate-100 focus-visible:ring-slate-500 dark:focus-visible:ring-offset-slate-600 ',
+      none:
+        ' text-slate-500 enabled:hover:text-slate-600 focus-visible:text-slate-600 dark:text-slate-300 dark:enabled:hover:text-slate-400 dark:focus-visible:text-slate-400 focus-visible:ring-slate-500 dark:focus-visible:ring-offset-slate-600 ',
+    },
+    gradient: {
+      linear: '',
+      clay: '',
+    },
+  },
+  zinc: {
+    base:
+      'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
+    active:
+      'ring-2 ring-offset-2 ring-offset-zinc-50 dark:ring-offset-zinc-800',
+    weight: {
+      light:
+        ' bg-zinc-50 text-zinc-500 focus-visible:bg-zinc-100 enabled:hover:bg-zinc-100 enabled:hover:text-zinc-600 focus-visible:text-zinc-600 enabled:active:bg-zinc-200 contrast-more:border contrast-more:bg-zinc-50 contrast-more:text-zinc-900 contrast-more:border-zinc-800 contrast-more:enabled:hover:bg-zinc-50 contrast-more:focus-visible:bg-zinc-50 contrast-more:enabled:hover:text-zinc-900 dark:bg-zinc-900/40 dark:text-zinc-100 dark:enabled:hover:bg-zinc-900/60 dark:focus-visible:bg-zinc-900/60 dark:enabled:active:bg-zinc-900/90 dark:enabled:hover:text-zinc-100 dark:focus-visible:text-zinc-100 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-zinc-50 dark:contrast-more:enabled:hover:bg-zinc-800 dark:contrast-more:focus-visible:bg-zinc-800 dark:contrast-more:enabled:hover:text-zinc-50 dark:contrast-more:focus-visible:text-zinc-50 dark:contrast-more:border-zinc-200 focus-visible:ring-zinc-500 dark:focus-visible:ring-offset-zinc-600 ',
+      normal:
+        ' bg-zinc-500 text-zinc-50 focus-visible:bg-zinc-600 enabled:hover:bg-zinc-600 enabled:hover:text-zinc-100 focus-visible:text-zinc-100 enabled:active:bg-zinc-700 contrast-more:border contrast-more:bg-zinc-50 contrast-more:text-zinc-900 contrast-more:border-zinc-800 contrast-more:enabled:hover:bg-zinc-50 contrast-more:focus-visible:bg-zinc-50 contrast-more:enabled:hover:text-zinc-900 dark:bg-zinc-600 dark:text-zinc-50 dark:enabled:hover:bg-zinc-500 dark:focus-visible:bg-zinc-500 dark:enabled:active:bg-zinc-600/80 dark:enabled:hover:text-zinc-50 dark:focus-visible:text-zinc-50 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-zinc-50 dark:contrast-more:enabled:hover:bg-zinc-800 dark:contrast-more:focus-visible:bg-zinc-800 dark:contrast-more:enabled:hover:text-zinc-50 dark:contrast-more:focus-visible:text-zinc-50 dark:contrast-more:border-zinc-200 focus-visible:ring-zinc-800 dark:focus-visible:ring-offset-zinc-100 ',
+      bold:
+        ' bg-zinc-800 text-zinc-100 focus-visible:bg-zinc-900/80 enabled:hover:bg-zinc-900/80 enabled:hover:text-zinc-50 focus-visible:text-zinc-50 enabled:active:bg-zinc-900 contrast-more:border contrast-more:border-zinc-50 contrast-more:enabled:hover:bg-zinc-600 contrast-more:focus-visible:bg-zinc-600 contrast-more:enabled:hover:text-zinc-50 dark:bg-zinc-300 dark:text-zinc-900/80 dark:enabled:hover:bg-zinc-200 dark:focus-visible:bg-zinc-200 dark:enabled:hover:text-zinc-900 dark:focus-visible:text-zinc-900 dark:enabled:active:bg-zinc-300/90 dark:contrast-more:font-bold dark:contrast-more:bg-zinc-100 dark:contrast-more:text-zinc-900 dark:contrast-more:enabled:hover:bg-zinc-800 dark:contrast-more:focus-visible:bg-zinc-800 dark:contrast-more:border-zinc-500 focus-visible:ring-zinc-500 dark:focus-visible:ring-offset-zinc-50 ',
+      outline:
+        ' border border-zinc-500 text-zinc-700 enabled:hover:text-zinc-50 enabled:hover:bg-zinc-500 enabled:active:text-white enabled:active:bg-zinc-600 enabled:active:border-zinc-600 focus-visible:bg-zinc-500 focus-visible:text-zinc-50 contrast-more:border contrast-more:text-zinc-900 contrast-more:border-zinc-800 contrast-more:enabled:hover:border-zinc-50 contrast-more:focus-visible:border-zinc-50 contrast-more:enabled:hover:text-zinc-900 dark:border dark:border-zinc-600 dark:text-zinc-300 dark:enabled:hover:text-zinc-50 dark:enabled:hover:bg-zinc-600 dark:enabled:active:text-white dark:enabled:active:bg-zinc-700 dark:enabled:active:border-zinc-700 dark:focus-visible:bg-zinc-600 dark:focus-visible:text-zinc-50 dark:contrast-more:font-bold dark:contrast-more:text-zinc-50 dark:contrast-more:enabled:hover:border-zinc-800 dark:contrast-more:focus-visible:border-zinc-800 dark:contrast-more:enabled:hover:text-zinc-50 dark:contrast-more:focus-visible:text-zinc-50 dark:contrast-more:border-zinc-100 focus-visible:ring-zinc-500 dark:focus-visible:ring-offset-zinc-600 ',
+      none:
+        ' text-zinc-500 enabled:hover:text-zinc-600 focus-visible:text-zinc-600 dark:text-zinc-300 dark:enabled:hover:text-zinc-400 dark:focus-visible:text-zinc-400 focus-visible:ring-zinc-500 dark:focus-visible:ring-offset-zinc-600 ',
+    },
+    gradient: {
+      linear: '',
+      clay: '',
+    },
+  },
+  neutral: {
+    base:
+      'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
+    active:
+      'ring-2 ring-offset-2 ring-offset-neutral-50 dark:ring-offset-neutral-800',
+    weight: {
+      light:
+        ' bg-neutral-50 text-neutral-500 focus-visible:bg-neutral-100 enabled:hover:bg-neutral-100 enabled:hover:text-neutral-600 focus-visible:text-neutral-600 enabled:active:bg-neutral-200 contrast-more:border contrast-more:bg-neutral-50 contrast-more:text-neutral-900 contrast-more:border-neutral-800 contrast-more:enabled:hover:bg-neutral-50 contrast-more:focus-visible:bg-neutral-50 contrast-more:enabled:hover:text-neutral-900 dark:bg-neutral-900/40 dark:text-neutral-100 dark:enabled:hover:bg-neutral-900/60 dark:focus-visible:bg-neutral-900/60 dark:enabled:active:bg-neutral-900/90 dark:enabled:hover:text-neutral-100 dark:focus-visible:text-neutral-100 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-neutral-50 dark:contrast-more:enabled:hover:bg-neutral-800 dark:contrast-more:focus-visible:bg-neutral-800 dark:contrast-more:enabled:hover:text-neutral-50 dark:contrast-more:focus-visible:text-neutral-50 dark:contrast-more:border-neutral-200 focus-visible:ring-neutral-500 dark:focus-visible:ring-offset-neutral-600 ',
+      normal:
+        ' bg-neutral-500 text-neutral-50 focus-visible:bg-neutral-600 enabled:hover:bg-neutral-600 enabled:hover:text-neutral-100 focus-visible:text-neutral-100 enabled:active:bg-neutral-700 contrast-more:border contrast-more:bg-neutral-50 contrast-more:text-neutral-900 contrast-more:border-neutral-800 contrast-more:enabled:hover:bg-neutral-50 contrast-more:focus-visible:bg-neutral-50 contrast-more:enabled:hover:text-neutral-900 dark:bg-neutral-600 dark:text-neutral-50 dark:enabled:hover:bg-neutral-500 dark:focus-visible:bg-neutral-500 dark:enabled:active:bg-neutral-600/80 dark:enabled:hover:text-neutral-50 dark:focus-visible:text-neutral-50 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-neutral-50 dark:contrast-more:enabled:hover:bg-neutral-800 dark:contrast-more:focus-visible:bg-neutral-800 dark:contrast-more:enabled:hover:text-neutral-50 dark:contrast-more:focus-visible:text-neutral-50 dark:contrast-more:border-neutral-200 focus-visible:ring-neutral-800 dark:focus-visible:ring-offset-neutral-100 ',
+      bold:
+        ' bg-neutral-800 text-neutral-100 focus-visible:bg-neutral-900/80 enabled:hover:bg-neutral-900/80 enabled:hover:text-neutral-50 focus-visible:text-neutral-50 enabled:active:bg-neutral-900 contrast-more:border contrast-more:border-neutral-50 contrast-more:enabled:hover:bg-neutral-600 contrast-more:focus-visible:bg-neutral-600 contrast-more:enabled:hover:text-neutral-50 dark:bg-neutral-300 dark:text-neutral-900/80 dark:enabled:hover:bg-neutral-200 dark:focus-visible:bg-neutral-200 dark:enabled:hover:text-neutral-900 dark:focus-visible:text-neutral-900 dark:enabled:active:bg-neutral-300/90 dark:contrast-more:font-bold dark:contrast-more:bg-neutral-100 dark:contrast-more:text-neutral-900 dark:contrast-more:enabled:hover:bg-neutral-800 dark:contrast-more:focus-visible:bg-neutral-800 dark:contrast-more:border-neutral-500 focus-visible:ring-neutral-500 dark:focus-visible:ring-offset-neutral-50 ',
+      outline:
+        ' border border-neutral-500 text-neutral-700 enabled:hover:text-neutral-50 enabled:hover:bg-neutral-500 enabled:active:text-white enabled:active:bg-neutral-600 enabled:active:border-neutral-600 focus-visible:bg-neutral-500 focus-visible:text-neutral-50 contrast-more:border contrast-more:text-neutral-900 contrast-more:border-neutral-800 contrast-more:enabled:hover:border-neutral-50 contrast-more:focus-visible:border-neutral-50 contrast-more:enabled:hover:text-neutral-900 dark:border dark:border-neutral-600 dark:text-neutral-300 dark:enabled:hover:text-neutral-50 dark:enabled:hover:bg-neutral-600 dark:enabled:active:text-white dark:enabled:active:bg-neutral-700 dark:enabled:active:border-neutral-700 dark:focus-visible:bg-neutral-600 dark:focus-visible:text-neutral-50 dark:contrast-more:font-bold dark:contrast-more:text-neutral-50 dark:contrast-more:enabled:hover:border-neutral-800 dark:contrast-more:focus-visible:border-neutral-800 dark:contrast-more:enabled:hover:text-neutral-50 dark:contrast-more:focus-visible:text-neutral-50 dark:contrast-more:border-neutral-100 focus-visible:ring-neutral-500 dark:focus-visible:ring-offset-neutral-600 ',
+      none:
+        ' text-neutral-500 enabled:hover:text-neutral-600 focus-visible:text-neutral-600 dark:text-neutral-300 dark:enabled:hover:text-neutral-400 dark:focus-visible:text-neutral-400 focus-visible:ring-neutral-500 dark:focus-visible:ring-offset-neutral-600 ',
+    },
+    gradient: {
+      linear: '',
+      clay: '',
+    },
+  },
+  stone: {
+    base:
+      'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
     active:
       'ring-2 ring-offset-2 ring-offset-stone-50 dark:ring-offset-stone-800',
-    color: {
-      light: `
-            min-w-[3rem]
-          select-none
-          disabled:cursor-not-allowed 
-          disabled:opacity-80 
-          disabled:filter 
-          disabled:saturate-0
-          transition-colors
-          
-          bg-stone-50
-          text-red-500
-          focus:bg-red-500
-          hover:bg-red-500
-          hover:text-red-50
-          focus:text-red-50
-          active:bg-red-400
-          
-          prefers-contrast:border
-          prefers-contrast:bg-stone-50
-          prefers-contrast:text-red-800
-          prefers-contrast:border-red-800
-          prefers-contrast:hover:bg-red-50
-          prefers-contrast:focus:bg-red-50
-          prefers-contrast:hover:text-red-800
-          
-          dark:bg-stone-900
-          dark:text-red-400
-          dark:hover:bg-stone-900/50
-          dark:focus:bg-stone-900/50
-          dark:active:bg-stone-700
-          dark:hover:text-red-300
-          dark:focus:text-red-300
-          
-          dark:prefers-contrast:font-bold
-          dark:prefers-contrast:bg-black
-          dark:prefers-contrast:text-red-500
-          dark:prefers-contrast:hover:bg-red-900
-          dark:prefers-contrast:focus:bg-red-900
-          dark:prefers-contrast:hover:text-red-50
-          dark:prefers-contrast:focus:text-red-50
-          dark:prefers-contrast:border-red-500
-  
-          focus-visible:outline-none
-          focus-visible:ring-2
-          focus-visible:ring-red-500
-          focus-visible:ring-offset-transparent
-          dark:focus-visible:ring-offset-red-600
-          `.replace(/[\n\r]\s*/g, ' '),
-      dark: `
-            min-w-[3rem]
-          select-none
-          disabled:cursor-not-allowed 
-          disabled:opacity-80 
-          disabled:filter 
-          disabled:saturate-0
-          transition-colors
-          
-          bg-red-500
-          text-red-50
-          focus:bg-red-600
-          hover:bg-red-600
-          hover:text-red-50
-          focus:text-red-50
-          active:bg-red-500
-          
-          prefers-contrast:border
-          prefers-contrast:border-red-800
-          prefers-contrast:hover:bg-red-50
-          prefers-contrast:focus:bg-red-50
-          prefers-contrast:hover:text-red-800
-          
-          dark:bg-red-600
-          dark:text-red-50
-          dark:hover:bg-red-500
-          dark:focus:bg-red-500
-          dark:active:bg-red-500
-          dark:hover:text-red-50
-          dark:focus:text-red-50
-          
-          dark:prefers-contrast:font-bold
-          dark:prefers-contrast:bg-transparent
-          dark:prefers-contrast:bg-red-100
-          dark:prefers-contrast:text-red-900
-          dark:prefers-contrast:hover:bg-red-800
-          dark:prefers-contrast:focus:bg-red-800
-          dark:prefers-contrast:border-red-500
-  
-          focus-visible:outline-none
-          focus-visible:ring-2
-          focus-visible:ring-red-50
-          focus-visible:ring-offset-transparent
-          dark:focus-visible:ring-offset-red-50
-        `.replace(/[\n\r]\s*/g, ' '),
+    weight: {
+      light:
+        ' bg-stone-50 text-stone-500 focus-visible:bg-stone-100 enabled:hover:bg-stone-100 enabled:hover:text-stone-600 focus-visible:text-stone-600 enabled:active:bg-stone-200 contrast-more:border contrast-more:bg-stone-50 contrast-more:text-stone-900 contrast-more:border-stone-800 contrast-more:enabled:hover:bg-stone-50 contrast-more:focus-visible:bg-stone-50 contrast-more:enabled:hover:text-stone-900 dark:bg-stone-900/40 dark:text-stone-100 dark:enabled:hover:bg-stone-900/60 dark:focus-visible:bg-stone-900/60 dark:enabled:active:bg-stone-900/90 dark:enabled:hover:text-stone-100 dark:focus-visible:text-stone-100 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-stone-50 dark:contrast-more:enabled:hover:bg-stone-800 dark:contrast-more:focus-visible:bg-stone-800 dark:contrast-more:enabled:hover:text-stone-50 dark:contrast-more:focus-visible:text-stone-50 dark:contrast-more:border-stone-200 focus-visible:ring-stone-500 dark:focus-visible:ring-offset-stone-600 ',
+      normal:
+        ' bg-stone-500 text-stone-50 focus-visible:bg-stone-600 enabled:hover:bg-stone-600 enabled:hover:text-stone-100 focus-visible:text-stone-100 enabled:active:bg-stone-700 contrast-more:border contrast-more:bg-stone-50 contrast-more:text-stone-900 contrast-more:border-stone-800 contrast-more:enabled:hover:bg-stone-50 contrast-more:focus-visible:bg-stone-50 contrast-more:enabled:hover:text-stone-900 dark:bg-stone-600 dark:text-stone-50 dark:enabled:hover:bg-stone-500 dark:focus-visible:bg-stone-500 dark:enabled:active:bg-stone-600/80 dark:enabled:hover:text-stone-50 dark:focus-visible:text-stone-50 dark:contrast-more:font-bold dark:contrast-more:bg-black dark:contrast-more:text-stone-50 dark:contrast-more:enabled:hover:bg-stone-800 dark:contrast-more:focus-visible:bg-stone-800 dark:contrast-more:enabled:hover:text-stone-50 dark:contrast-more:focus-visible:text-stone-50 dark:contrast-more:border-stone-200 focus-visible:ring-stone-800 dark:focus-visible:ring-offset-stone-100 ',
+      bold:
+        ' bg-stone-800 text-stone-100 focus-visible:bg-stone-900/80 enabled:hover:bg-stone-900/80 enabled:hover:text-stone-50 focus-visible:text-stone-50 enabled:active:bg-stone-900 contrast-more:border contrast-more:border-stone-50 contrast-more:enabled:hover:bg-stone-600 contrast-more:focus-visible:bg-stone-600 contrast-more:enabled:hover:text-stone-50 dark:bg-stone-300 dark:text-stone-900/80 dark:enabled:hover:bg-stone-200 dark:focus-visible:bg-stone-200 dark:enabled:hover:text-stone-900 dark:focus-visible:text-stone-900 dark:enabled:active:bg-stone-300/90 dark:contrast-more:font-bold dark:contrast-more:bg-stone-100 dark:contrast-more:text-stone-900 dark:contrast-more:enabled:hover:bg-stone-800 dark:contrast-more:focus-visible:bg-stone-800 dark:contrast-more:border-stone-500 focus-visible:ring-stone-500 dark:focus-visible:ring-offset-stone-50 ',
+      outline:
+        ' border border-stone-500 text-stone-700 enabled:hover:text-stone-50 enabled:hover:bg-stone-500 enabled:active:text-white enabled:active:bg-stone-600 enabled:active:border-stone-600 focus-visible:bg-stone-500 focus-visible:text-stone-50 contrast-more:border contrast-more:text-stone-900 contrast-more:border-stone-800 contrast-more:enabled:hover:border-stone-50 contrast-more:focus-visible:border-stone-50 contrast-more:enabled:hover:text-stone-900 dark:border dark:border-stone-600 dark:text-stone-300 dark:enabled:hover:text-stone-50 dark:enabled:hover:bg-stone-600 dark:enabled:active:text-white dark:enabled:active:bg-stone-700 dark:enabled:active:border-stone-700 dark:focus-visible:bg-stone-600 dark:focus-visible:text-stone-50 dark:contrast-more:font-bold dark:contrast-more:text-stone-50 dark:contrast-more:enabled:hover:border-stone-800 dark:contrast-more:focus-visible:border-stone-800 dark:contrast-more:enabled:hover:text-stone-50 dark:contrast-more:focus-visible:text-stone-50 dark:contrast-more:border-stone-100 focus-visible:ring-stone-500 dark:focus-visible:ring-offset-stone-600 ',
+      none:
+        ' text-stone-500 enabled:hover:text-stone-600 focus-visible:text-stone-600 dark:text-stone-300 dark:enabled:hover:text-stone-400 dark:focus-visible:text-stone-400 focus-visible:ring-stone-500 dark:focus-visible:ring-offset-stone-600 ',
+    },
+    gradient: {
+      linear: '',
+      clay: '',
     },
   },
 };

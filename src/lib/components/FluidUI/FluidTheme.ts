@@ -32,7 +32,7 @@ export type CustomFluidTheme = DeepPartial<FluidTheme>;
 export interface FluidTheme {
   accordion: {
     base: string;
-    divider: boolean;
+    divider: string;
     content: {
       base: string;
     };
@@ -50,6 +50,7 @@ export interface FluidTheme {
     base: string;
     size: FluidButtonSizes;
     color: FluidButtonColors;
+    loading: FulidButtonLoadingOptions;
   };
 }
 
@@ -58,34 +59,55 @@ export interface FluidBoolean {
   on: string;
 }
 
-export interface FluidStateColors {
-  info: string;
-  danger: string;
-  success: string;
-  warning: string;
-}
-
 export interface FluidButtonColors {
-  gray: FluidButtonColorOptions;
+  red: FluidButtonColorOptions;
   orange: FluidButtonColorOptions;
+  amber: FluidButtonColorOptions;
   yellow: FluidButtonColorOptions;
   lime: FluidButtonColorOptions;
   green: FluidButtonColorOptions;
+  emerald: FluidButtonColorOptions;
   teal: FluidButtonColorOptions;
+  cyan: FluidButtonColorOptions;
   sky: FluidButtonColorOptions;
+  blue: FluidButtonColorOptions;
   indigo: FluidButtonColorOptions;
+  violet: FluidButtonColorOptions;
+  purple: FluidButtonColorOptions;
   fuchsia: FluidButtonColorOptions;
+  pink: FluidButtonColorOptions;
   rose: FluidButtonColorOptions;
-  red: FluidButtonColorOptions;
+  gray: FluidButtonColorOptions;
+  slate: FluidButtonColorOptions;
+  zinc: FluidButtonColorOptions;
+  neutral: FluidButtonColorOptions;
+  stone: FluidButtonColorOptions;
 }
 
 export interface FluidButtonColorOptions {
-  palette: string;
-  active: string;
-  color: {
-    light: string;
-    dark: string;
+  base: string;
+  weight: FluidButtonWeights;
+  gradient: {
+    linear: string;
+    clay: string;
   };
+}
+
+export interface FulidButtonLoadingOptions {
+  base: string;
+  animation: {
+    spin: string;
+    pulse: string;
+  };
+  text: string;
+}
+
+export interface FluidButtonWeights {
+  light: string;
+  normal: string;
+  bold: string;
+  outline: string;
+  none: string;
 }
 
 export interface FluidButtonSizes {
@@ -96,7 +118,7 @@ export interface FluidButtonSizes {
   xl: string;
 }
 
-export interface FluidColors extends FluidStateColors {
+export interface FluidColors {
   [key: string]: string;
   blue: string;
   cyan: string;
@@ -111,25 +133,6 @@ export interface FluidColors extends FluidStateColors {
   dark: string;
   light: string;
   purple: string;
-}
-
-export interface FluidGradientColors extends Omit<FluidStateColors, 'warning'> {
-  [key: string]: string;
-  cyan: string;
-  lime: string;
-  pink: string;
-  purple: string;
-  teal: string;
-}
-
-export interface FluidGradientDuoToneColors {
-  cyanToBlue: string;
-  greenToBlue: string;
-  pinkToOrange: string;
-  purpleToBlue: string;
-  purpleToPink: string;
-  redToYellow: string;
-  tealToLime: string;
 }
 
 export type FluidHeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';

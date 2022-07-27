@@ -80,7 +80,7 @@ export const AccordionPanel: FC<AccordionPanelProps> = ({
               <ArrowIcon
                 className={clsxm(
                   theme.arrow.base,
-                  open ? `ltr:rotate-180 rtl:-rotate-180` : 'rotate-0'
+                  open ? `ltr:-rotate-180 rtl:rotate-180` : 'rotate-0'
                 )}
               />
             </span>
@@ -88,7 +88,7 @@ export const AccordionPanel: FC<AccordionPanelProps> = ({
               <ArrowIcon
                 className={clsxm(
                   theme.arrow.base,
-                  open ? `rotate-180` : 'rotate-0'
+                  open ? `-rotate-180` : 'rotate-0'
                 )}
               />
             </span>
