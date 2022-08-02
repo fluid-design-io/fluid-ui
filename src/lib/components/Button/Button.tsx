@@ -14,6 +14,7 @@ import { GrEmptyCircle } from 'react-icons/gr';
 import { HiOutlineDotsHorizontal } from 'react-icons/hi';
 
 import { useTheme } from '../FluidUI/ThemeContext';
+import { excludeClassName } from '../../helpers/exclude';
 
 export interface ButtonProps
   extends PropsWithChildren<ComponentProps<'button'>> {
@@ -27,7 +28,7 @@ export interface ButtonProps
     animation?: keyof FulidButtonLoadingOptions['animation'];
     text?: string;
   };
-  children: React.ReactNode;
+  children?: React.ReactNode;
   [key: string]: any;
 }
 export const Button = ({
@@ -41,12 +42,17 @@ export const Button = ({
     animation: 'spin',
     text: '',
   },
+  href = undefined,
   children,
   ...props
 }: ButtonProps) => {
+  const isLink = typeof href !== 'undefined';
+  const Component = isLink ? 'a' : 'button';
   const theme = useTheme().theme.button;
+
+  const theirProps = excludeClassName(props);
   return (
-    <button
+    <Component
       className={clsxm(
         theme.base,
         theme.color[color].base,
@@ -57,10 +63,14 @@ export const Button = ({
         props?.className
       )}
       disabled={props?.disabled || isLoading}
+      href={href}
+      type={isLink ? undefined : 'button'}
+      {...theirProps}
     >
       {isLoading && <ButtonLoadingComponent {...{ loadingOptions }} />}
       <div
         className={clsxm(
+          theme.base,
           isLoading && 'opacity-0',
           loadingOptions.text.length > 0 && 'px-2'
         )}
@@ -71,7 +81,7 @@ export const Button = ({
             : children
           : children}
       </div>
-    </button>
+    </Component>
   );
 };
 

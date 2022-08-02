@@ -6,6 +6,7 @@ import {
   FluidButtonSizes,
   FluidButtonWeights,
 } from '../lib/components/FluidUI/FluidTheme';
+import { IoIosSend } from 'react-icons/io';
 
 export default {
   title: 'Components/Button',
@@ -55,6 +56,7 @@ const Template: Story<StoryButtonProps> = args => {
           {...args}
         >
           {color}
+          {args?.icon && <IoIosSend />}
         </Button>
       ))}
     </div>
@@ -86,4 +88,10 @@ export const None: Story<StoryButtonProps> = Template.bind({});
 None.storyName = 'Weight None';
 None.args = {
   weight: 'none' as keyof FluidButtonWeights,
+};
+
+export const WithIcon: Story<StoryButtonProps> = Template.bind({});
+WithIcon.storyName = 'With Icon';
+WithIcon.args = {
+  icon: true,
 };
