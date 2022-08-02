@@ -19,7 +19,11 @@ function AppMenu({
   [x: string]: any;
 }) {
   return (
-    <Menu as="div" className={clsxm('relative -ml-px block', className)}>
+    <Menu
+      as="div"
+      className={clsxm('relative -ml-px block', className)}
+      {...props}
+    >
       <Menu.Button
         className={clsxm(
           'default-focus group inline-flex items-center justify-center text-sm font-medium text-gray-700 hover:text-gray-900',

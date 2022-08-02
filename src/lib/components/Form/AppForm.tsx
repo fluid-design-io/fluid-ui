@@ -6,7 +6,6 @@ function AppForm({
   onSubmit,
   validationSchema,
   children,
-  ...props
 }: {
   children: React.ReactNode;
 } & FormikConfig<FormikValues>) {
