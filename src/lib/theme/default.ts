@@ -64,7 +64,8 @@ export default {
       text: '',
     },
   },
-  form:{
-    base: 'block w-full rounded-lg border-none bg-stone-100 outline-none transition [-webkit-tap-highlight-color:transparent] dark:bg-stone-800 dark:text-stone-200 contrast-more:placeholder:text-stone-700  dark:contrast-more:bg-black dark:contrast-more:text-stone-50 dark:contrast-more:placeholder:text-stone-50/75',
-  }
+  form: {
+    base:
+      'block w-full rounded-lg border-none bg-stone-100 outline-none transition [-webkit-tap-highlight-color:transparent] dark:bg-stone-800 dark:text-stone-200 contrast-more:placeholder:text-stone-700  dark:contrast-more:bg-black dark:contrast-more:text-stone-50 dark:contrast-more:placeholder:text-stone-50/75',
+  },
 };

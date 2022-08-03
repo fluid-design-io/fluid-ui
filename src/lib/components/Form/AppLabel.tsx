@@ -14,11 +14,7 @@ function AppLabel({ focused, error, errors, name, label, value }) {
           : [noErrorStyle, `dark:contrast-more:text-gray-900`],
         !focused && error
           ? `contrast-more:text-red-500 dark:contrast-more:text-red-300 top-1 text-red-400 dark:text-red-500`
-          : [
-              notFocusedStyle,
-              noErrorStyle,
-              `dark:contrast-more:text-gray-50`,
-            ],
+          : [notFocusedStyle, noErrorStyle, `dark:contrast-more:text-gray-50`],
         `pointer-events-none absolute left-4 -mb-1 text-xs font-semibold transition-all`
       )}
       htmlFor={name}

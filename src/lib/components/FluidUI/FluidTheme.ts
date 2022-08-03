@@ -54,7 +54,7 @@ export interface FluidTheme {
   };
   form: {
     base: string;
-  }
+  };
 }
 
 export interface FluidBoolean {
