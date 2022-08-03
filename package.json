@@ -1,6 +1,6 @@
 {
-  "name": "@fluid-design/fluid-ui",
   "version": "1.0.2",
+  "name": "@fluid-design/fluid-ui",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -14,7 +14,7 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build && yarn build:css",
-    "build:css": "NPM_ENV=development npx postcss .storybook/style.css  > dist/fluid-ui.css",
+    "build:css": "NPM_ENV=development npx postcss src/fluid-ui.css  > dist/fluid-ui.css",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
     "commit": "git add . && git-cz && git push",
