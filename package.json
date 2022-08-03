@@ -17,7 +17,7 @@
     "build:css": "NPM_ENV=development npx postcss src/fluid-ui.css  > dist/fluid-ui.css",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
-    "commit": "git add . && git-cz && git push",
+    "commit": "git add . && git-cz",
     "prepare": "tsdx build",
     "size": "size-limit",
     "analyze": "size-limit --why",
