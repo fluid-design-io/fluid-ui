@@ -4,6 +4,7 @@ import ReactTextareaAutosize from 'react-textarea-autosize';
 
 import { FormItem, FormProp, Label, getInputColor } from '.';
 import clsxm from '../../helpers/clsxm';
+import { useTheme } from '../FluidUI/ThemeContext';
 function Textarea({
   name,
   minRows = 1,
@@ -27,6 +28,8 @@ function Textarea({
   const [focused, setFocused] = useState(false);
   const error = touched[name] ? errors[name] : undefined;
   const label = `${name[0].toUpperCase()}${name.slice(1)}`;
+
+  const theme = useTheme().theme.form;
   return (
     <FormItem {...{ error, focused, description }}>
       <Label
@@ -38,6 +41,7 @@ function Textarea({
         minRows={minRows}
         maxRows={maxRows}
         className={clsxm(
+          theme.base,
           getInputColor({ error, className: props.className }),
           'pb-2 min-h-[3rem]'
         )}

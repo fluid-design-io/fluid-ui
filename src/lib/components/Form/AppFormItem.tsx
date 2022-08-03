@@ -22,15 +22,15 @@ function FormItem({
           `relative mb-4 overflow-hidden rounded-lg transition-all`,
           error &&
             focused &&
-            `prefers-contrast:ring-stone-800 dark:prefers-contrast:ring-amber-800 ring-1 ring-blue-400`,
+            `contrast-more:ring-stone-800 dark:contrast-more:ring-amber-800 ring-1 ring-blue-400`,
           error &&
             !focused &&
-            'prefers-contrast:ring-red-500 dark:prefers-contrast:ring-red-300 ring-1 ring-red-400 dark:ring-red-500',
+            'contrast-more:ring-red-500 dark:contrast-more:ring-red-300 ring-1 ring-red-400 dark:ring-red-500',
           !error &&
-            'prefers-contrast:ring-stone-800 dark:prefers-contrast:ring-stone-200 ring ring-transparent',
+            'contrast-more:ring-stone-800 dark:contrast-more:ring-stone-200 ring ring-transparent',
           !error &&
             focused &&
-            'prefers-contrast:ring-blue-400 dark:prefers-contrast:ring-blue-200 ring-1 ring-blue-400',
+            'contrast-more:ring-blue-400 dark:contrast-more:ring-blue-200 ring-1 ring-blue-400',
           props.className && props.className
         )}
       >

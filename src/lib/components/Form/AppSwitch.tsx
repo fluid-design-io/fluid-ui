@@ -37,7 +37,7 @@ function AppSwitch({
       <span className="flex flex-grow flex-col">
         <Switch.Label
           as="span"
-          className="text-sm font-medium text-gray-700 dark:text-gray-200 prefers-contrast:text-gray-900"
+          className="text-sm font-medium text-stone-700 dark:text-stone-200 contrast-more:text-stone-900"
           passive
         >
           {label} {error && `(${error})`}
@@ -54,7 +54,7 @@ function AppSwitch({
           setFocused(false);
         }}
         className={clsxm(
-          values[name] ? 'bg-blue-600' : 'bg-gray-200 dark:bg-gray-700',
+          values[name] ? 'bg-blue-600' : 'bg-stone-200 dark:bg-stone-700',
           'default-focus relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out  focus:outline-none disabled:cursor-not-allowed disabled:opacity-50'
         )}
         {...props}

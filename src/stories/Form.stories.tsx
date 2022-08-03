@@ -54,7 +54,7 @@ const Template: Story<StoryButtonProps> = args => {
   console.log('submitBtnRef', submitBtnRef);
   return (
     <>
-      <div className="w-4/5 max-w-lg mx-auto p-4 bg-white dark:bg-gray-900/40 shadow-lg shadow-gray-400/20 dark:shadow-black/30 rounded-xl">
+      <div className="w-4/5 max-w-lg mx-auto p-4 bg-white dark:bg-stone-900 shadow-lg shadow-gray-400/20 dark:shadow-black/30 rounded-xl">
         <Form
           initialValues={initialValues}
           validationSchema={validationSchema}

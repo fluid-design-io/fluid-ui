@@ -52,6 +52,9 @@ export interface FluidTheme {
     color: FluidButtonColors;
     loading: FulidButtonLoadingOptions;
   };
+  form: {
+    base: string;
+  }
 }
 
 export interface FluidBoolean {

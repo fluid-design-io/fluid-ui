@@ -5,6 +5,7 @@ import clsxm from '../../helpers/clsxm';
 
 import { HiCheck, HiSelector } from 'react-icons/hi';
 import { FormProp } from '.';
+import { useTheme } from '../FluidUI/ThemeContext';
 
 function AppComboBox({
   name,
@@ -53,7 +54,7 @@ function AppComboBox({
         .includes(query.toLowerCase().replace(/\s/g, ''));
     });
   }, [query, list, itemKey]);
-
+  const theme = useTheme().theme.form;
   return (
     <Combobox
       as="div"
@@ -67,7 +68,7 @@ function AppComboBox({
     >
       <Combobox.Label
         className={clsxm(
-          'prefers-contrast:text-gray-90 text-sm font-medium text-gray-700 dark:text-gray-200',
+          'contrast-more:text-stone-90 text-sm font-medium text-stone-700 dark:text-stone-200',
           props.className
         )}
       >
@@ -76,7 +77,8 @@ function AppComboBox({
       <div className="relative mt-1">
         <Combobox.Input
           className={clsxm(
-            'default-input py-2 pl-3 pr-10 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 sm:text-sm'
+            theme.base,
+            'py-2 pl-3 pr-10 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 sm:text-sm'
           )}
           value={query}
           onChange={e => setQuery(e.target.value)}
@@ -87,7 +89,7 @@ function AppComboBox({
           }}
         />
         <Combobox.Button className="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none">
-          <HiSelector className="h-5 w-5 text-gray-400" aria-hidden="true" />
+          <HiSelector className="h-5 w-5 text-stone-400" aria-hidden="true" />
         </Combobox.Button>
 
         {list.length > 0 && (
@@ -101,7 +103,7 @@ function AppComboBox({
                     'relative cursor-default select-none py-2 pl-3 pr-9',
                     active
                       ? 'bg-blue-600 text-white'
-                      : 'text-gray-900 dark:text-gray-200'
+                      : 'text-stone-900 dark:text-stone-200 bg-stone-800'
                   )
                 }
               >

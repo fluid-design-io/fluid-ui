@@ -21,6 +21,9 @@ export default [
     ],
     plugins: [
       postcss({
+        config: {
+          path: "./postcss.config.js",
+        },
         plugins: [],
         minimize: true,
       }),

@@ -1,5 +1,7 @@
 import { useFormikContext } from 'formik';
 import React, { useState } from 'react';
+import clsxm from '../../helpers/clsxm';
+import { useTheme } from '../FluidUI/ThemeContext';
 
 import { FormItem, FormProp, Label, getInputColor } from './';
 function AppInput({
@@ -25,13 +27,18 @@ function AppInput({
   const label = placeholder
     ? placeholder
     : `${name[0].toUpperCase()}${name.slice(1)}`;
+
+  const theme = useTheme().theme.form;
   return (
     <FormItem {...{ error, focused, description }}>
       <Label
         {...{ errors, error, focused, label, name, value: values[name] }}
       />
       <input
-        className={getInputColor({ error, className: props.className })}
+        className={clsxm(
+          theme.base,
+          getInputColor({ error, className: props.className })
+        )}
         value={values[name]}
         placeholder={error ? label : undefined}
         onChange={handleChange}
