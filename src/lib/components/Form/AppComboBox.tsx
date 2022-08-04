@@ -1,11 +1,11 @@
-import { Combobox } from '@headlessui/react';
-import { useFormikContext } from 'formik';
-import React, { useMemo, useState } from 'react';
-import clsxm from '../../helpers/clsxm';
+import { Combobox } from "@headlessui/react";
+import { useFormikContext } from "formik";
+import React, { useMemo, useState } from "react";
+import clsxm from "../../helpers/clsxm";
 
-import { HiCheck, HiSelector } from 'react-icons/hi';
-import { FormProp } from '.';
-import { useTheme } from '../FluidUI/ThemeContext';
+import { HiCheck, HiSelector } from "react-icons/hi";
+import { FormProp } from ".";
+import { useTheme } from "../FluidUI/ThemeContext";
 
 function AppComboBox({
   name,
@@ -18,7 +18,7 @@ function AppComboBox({
 }: {
   name: string;
   list: any[];
-  description?: FormProp['description'];
+  description?: FormProp["description"];
   placeholder?: string;
   disabled?: boolean;
   /**
@@ -29,29 +29,21 @@ function AppComboBox({
   itemKey?: string;
   [key: string]: any;
 }) {
-  const {
-    setFieldTouched,
-    handleChange,
-    errors,
-    touched,
-    values,
-  } = useFormikContext();
-  const [query, setQuery] = useState('');
+  const { setFieldTouched, handleChange, errors, touched, values } = useFormikContext();
+  const [query, setQuery] = useState("");
   const [focused, setFocused] = useState(false);
   const error = touched[name] ? errors[name] : undefined;
-  const label = placeholder
-    ? placeholder
-    : `${name[0].toUpperCase()}${name.slice(1)}`;
+  const label = placeholder ? placeholder : `${name[0].toUpperCase()}${name.slice(1)}`;
   const filteredList = useMemo(() => {
-    if (query === '') {
+    if (query === "") {
       return list;
     }
     return list.filter(item => {
       const itemValue = itemKey ? item[itemKey] : item;
       return itemValue
         .toLowerCase()
-        .replace(/\s/g, '')
-        .includes(query.toLowerCase().replace(/\s/g, ''));
+        .replace(/\s/g, "")
+        .includes(query.toLowerCase().replace(/\s/g, ""));
     });
   }, [query, list, itemKey]);
   const theme = useTheme().theme.form;
@@ -62,13 +54,13 @@ function AppComboBox({
       defaultValue={values[name]}
       disabled={disabled}
       onChange={e => {
-        handleChange({ target: { type: 'text', name, value: e } });
+        handleChange({ target: { type: "text", name, value: e } });
       }}
       className="mb-4"
     >
       <Combobox.Label
         className={clsxm(
-          'contrast-more:text-stone-90 text-sm font-medium text-stone-700 dark:text-stone-200',
+          "contrast-more:text-stone-90 text-sm font-medium text-stone-700 dark:text-stone-200",
           props.className
         )}
       >
@@ -78,7 +70,7 @@ function AppComboBox({
         <Combobox.Input
           className={clsxm(
             theme.base,
-            'py-2 pl-3 pr-10 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 sm:text-sm'
+            "py-2 pl-3 pr-10 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 sm:text-sm"
           )}
           value={query}
           onChange={e => setQuery(e.target.value)}
@@ -100,31 +92,20 @@ function AppComboBox({
                 value={item[itemKey]}
                 className={({ active }) =>
                   clsxm(
-                    'relative cursor-default select-none py-2 pl-3 pr-9',
-                    active
-                      ? 'bg-blue-600 text-white'
-                      : 'text-stone-900 dark:text-stone-200 bg-stone-800'
+                    "relative cursor-default select-none py-2 pl-3 pr-9",
+                    active ? "bg-blue-600 text-white" : "text-stone-900 dark:text-stone-200 bg-stone-800"
                   )
                 }
               >
                 {({ active, selected }) => (
                   <>
-                    <span
-                      className={clsxm(
-                        'block truncate',
-                        selected && 'font-semibold'
-                      )}
-                    >
-                      {item[itemKey]}
-                    </span>
+                    <span className={clsxm("block truncate", selected && "font-semibold")}>{item[itemKey]}</span>
 
                     {selected && (
                       <span
                         className={clsxm(
-                          'absolute inset-y-0 right-0 flex items-center pr-4',
-                          active
-                            ? 'text-white'
-                            : 'text-blue-600 dark:text-blue-400'
+                          "absolute inset-y-0 right-0 flex items-center pr-4",
+                          active ? "text-white" : "text-blue-600 dark:text-blue-400"
                         )}
                       >
                         <HiCheck className="h-5 w-5" aria-hidden="true" />

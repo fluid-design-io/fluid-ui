@@ -1,16 +1,16 @@
-import { useFormikContext } from 'formik';
-import React from 'react';
-import clsxm from '../../helpers/clsxm';
+import { useFormikContext } from "formik";
+import React from "react";
+import clsxm from "../../helpers/clsxm";
 
 const SubmitButtonRef = React.forwardRef(
   (
     {
-      title = 'Submit',
-      slot = 'start',
+      title = "Submit",
+      slot = "start",
       ...props
     }: {
       title?: string;
-      slot?: 'start' | 'end';
+      slot?: "start" | "end";
       [key: string]: any;
     },
     ref: React.Ref<HTMLButtonElement>
@@ -24,7 +24,7 @@ const SubmitButtonRef = React.forwardRef(
           title={title}
           disabled={!isValid}
           onClick={() => {
-            console.log('submit');
+            console.log("submit");
             handleSubmit();
           }}
           type="submit"

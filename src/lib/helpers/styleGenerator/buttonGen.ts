@@ -4,12 +4,11 @@ This generator will generate gradients for the tones based on the colors.
 
 */
 
-import { colorsWithHex } from './tailwindColors';
+import { colorsWithHex } from "./tailwindColors";
 
 const base =
-  'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent';
-const getActive = (color: string) =>
-  `ring-2 ring-offset-2 ring-offset-${color}-50 dark:ring-offset-${color}-800`;
+  "select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent";
+const getActive = (color: string) => `ring-2 ring-offset-2 ring-offset-${color}-50 dark:ring-offset-${color}-800`;
 const getLight = (color: string) =>
   `
     bg-${color}-50
@@ -206,7 +205,7 @@ const getLinear = (color: string) => `
 const getClay = (color: string) => {
   const { rgb } = colorsWithHex.find(c => c.name === color);
   // split the rgb into 3 parts
-  const [r, g, b] = rgb.split(',').map(n => parseInt(n, 10));
+  const [r, g, b] = rgb.split(",").map(n => parseInt(n, 10));
   const makeDarker = (n: number) => Math.round(n * 0.8);
   const [rDark, gDark, bDark] = [r, g, b].map(makeDarker);
   return `
@@ -224,8 +223,7 @@ const getClay = (color: string) => {
 };
 
 // a function replaces enter with a space
-const replaceEnter = (str: string) =>
-  str.replace(/\n/g, ' ').replace(/\s+/g, ' ');
+const replaceEnter = (str: string) => str.replace(/\n/g, " ").replace(/\s+/g, " ");
 
 const generate = (color: string) => {
   const active = replaceEnter(getActive(color));
@@ -257,28 +255,28 @@ const generate = (color: string) => {
 };
 
 const colors = [
-  'red',
-  'orange',
-  'amber',
-  'yellow',
-  'lime',
-  'green',
-  'emerald',
-  'teal',
-  'cyan',
-  'sky',
-  'blue',
-  'indigo',
-  'violet',
-  'purple',
-  'fuchsia',
-  'pink',
-  'rose',
-  'gray',
-  'slate',
-  'zinc',
-  'neutral',
-  'stone',
+  "red",
+  "orange",
+  "amber",
+  "yellow",
+  "lime",
+  "green",
+  "emerald",
+  "teal",
+  "cyan",
+  "sky",
+  "blue",
+  "indigo",
+  "violet",
+  "purple",
+  "fuchsia",
+  "pink",
+  "rose",
+  "gray",
+  "slate",
+  "zinc",
+  "neutral",
+  "stone",
 ];
 
 export const generateAllColors = () => {

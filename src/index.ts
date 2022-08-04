@@ -1,3 +1,3 @@
-import './fluid-ui.css';
+import "./fluid-ui.css";
 
-export * from './lib';
+export * from "./lib";

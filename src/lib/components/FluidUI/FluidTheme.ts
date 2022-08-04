@@ -1,4 +1,4 @@
-import { DeepPartial } from '../../helpers/deep-partial';
+import { DeepPartial } from "../../helpers/deep-partial";
 // import type { AlertColors } from "../Alert";
 // import type { AvatarSizes } from "../Avatar";
 // import type { BadgeColors, BadgeSizes } from "../Badge";
@@ -150,18 +150,18 @@ export interface FluidColors {
   purple: string;
 }
 
-export type FluidHeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+export type FluidHeadingLevel = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
 export interface FluidPositions {
-  'bottom-left': string;
-  'bottom-right': string;
-  'bottom-center': string;
-  'top-left': string;
-  'top-center': string;
-  'top-right': string;
-  'center-left': string;
+  "bottom-left": string;
+  "bottom-right": string;
+  "bottom-center": string;
+  "top-left": string;
+  "top-center": string;
+  "top-right": string;
+  "center-left": string;
   center: string;
-  'center-right': string;
+  "center-right": string;
 }
 
 export interface FluidSizes {
@@ -170,10 +170,10 @@ export interface FluidSizes {
   md: string;
   lg: string;
   xl: string;
-  '2xl': string;
-  '3xl': string;
-  '4xl': string;
-  '5xl': string;
-  '6xl': string;
-  '7xl': string;
+  "2xl": string;
+  "3xl": string;
+  "4xl": string;
+  "5xl": string;
+  "6xl": string;
+  "7xl": string;
 }

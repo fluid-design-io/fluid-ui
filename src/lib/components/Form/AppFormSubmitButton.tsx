@@ -1,6 +1,6 @@
-import React from 'react';
-import { useFormikContext } from 'formik';
-import { Button, ButtonProps } from '../Button';
+import React from "react";
+import { useFormikContext } from "formik";
+import { Button, ButtonProps } from "../Button";
 
 function SubmitButton({
   title,
@@ -9,24 +9,18 @@ function SubmitButton({
   ...props
 }: {
   title?: string;
-  slot?: 'start' | 'end' | undefined;
+  slot?: "start" | "end" | undefined;
   children?: React.ReactNode;
   [key: string]: any;
 } & ButtonProps) {
   const { handleSubmit, isValid, isSubmitting } = useFormikContext();
   return (
     <div className="flex justify-center">
-      {slot === 'end' && <div className="flex-grow" />}
-      <Button
-        type="submit"
-        disabled={!isValid}
-        isLoading={isSubmitting}
-        onClick={() => handleSubmit()}
-        {...props}
-      >
+      {slot === "end" && <div className="flex-grow" />}
+      <Button type="submit" disabled={!isValid} isLoading={isSubmitting} onClick={() => handleSubmit()} {...props}>
         {title || children}
       </Button>
-      {slot === 'start' && <div className="flex-grow" />}
+      {slot === "start" && <div className="flex-grow" />}
     </div>
   );
 }

@@ -1,5 +1,5 @@
 /* Source from flowbite-react */
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren } from "react";
 
 export interface ExcludeProps {
   key: string;
@@ -8,7 +8,7 @@ export interface ExcludeProps {
 
 export const excludeClassName = (props: PropsWithChildren<object>): object => {
   return exclude({
-    key: 'className',
+    key: "className",
     source: props,
   });
 };
