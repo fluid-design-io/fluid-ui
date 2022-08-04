@@ -24,10 +24,8 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
-      - name: Yarn install cache
-        # You may pin to the exact commit or the version.
-        # uses: c-hive/gha-yarn-cache@1188bbd5a9af66e263de707cf9e97b7b7c942969
-        uses: c-hive/gha-yarn-cache@v1
+      - name: Install deps and build (with cache)
+        uses: bahmutov/npm-install@v1
 
       - name: Lint
         run: yarn lint
@@ -48,10 +46,8 @@ jobs:
       with:
         node-version: ${{ matrix.node }}
 
-    - name: Yarn install cache
-      # You may pin to the exact commit or the version.
-      # uses: c-hive/gha-yarn-cache@1188bbd5a9af66e263de707cf9e97b7b7c942969
-      uses: c-hive/gha-yarn-cache@v1
+    - name: Install deps and build (with cache)
+      uses: bahmutov/npm-install@v1
       
     - name: Action For Semantic Release
       # You may pin to the exact commit or the version.
