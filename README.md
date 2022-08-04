@@ -1,181 +1,71 @@
-# TSDX React w/ Storybook User Guide
 
-Congrats! You just saved yourself hours of work by bootstrapping this project with TSDX. Let’s get you oriented with what’s here and how to use it.
+<p align="center">
 
-> This TSDX setup is meant for developing React component libraries (not apps!) that can be published to NPM. If you’re looking to build a React-based app, you should use `create-react-app`, `razzle`, `nextjs`, `gatsby`, or `react-static`.
+<a href="#">
 
-> If you’re new to TypeScript and React, checkout [this handy cheatsheet](https://github.com/sw-yx/react-typescript-cheatsheet/)
+<img alt="Fluid" src="https://github.com/fluid-design-io/fluid/blob/main/public/assets/fluid-logo.webp?raw=true" width="80" />
 
-## Commands
+</a>
 
-TSDX scaffolds your new library inside `/src`, and also sets up a [Parcel-based](https://parceljs.org) playground for it inside `/example`.
+</p>
 
-The recommended workflow is to run TSDX in one terminal:
+<h1 align="center">
 
-```bash
-npm start # or yarn start
-```
+Fluid
 
-This builds to `/dist` and runs the project in watch mode so any edits you save inside `src` causes a rebuild to `/dist`.
+</h1>
 
-Then run either Storybook or the example playground:
+<p align="center">
 
-### Storybook
+Fluid is an open source React UI library for building beautiful mordern UI components that supports advanced a11y features.
 
-Run inside another terminal:
+</p>
 
-```bash
-yarn storybook
-```
+<p align="center">
 
-This loads the stories from `./stories`.
+Fluid is based on <a href="https://reactjs.com/">React</a>, <a href="https://tailwindcss.com/">tailwindcss</a>, <a href="https://headlessui.dev/">headless-ui</a>, and <a href="https://www.framer.com/motion/">framer-motion</a>.
 
-> NOTE: Stories should reference the components as if using the library, similar to the example playground. This means importing from the root project directory. This has been aliased in the tsconfig and the storybook webpack config as a helper.
+</p>
 
-### Example
+<p align="center">
 
-Then run the example inside another:
+<a href="https://github.com/fluid-design-io/fluid/blob/main/LICENSE">
 
-```bash
-cd example
-npm i # or yarn to install dependencies
-npm start # or yarn start
-```
+<img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="Ionic Framework is released under the MIT license." />
 
-The default example imports and live reloads whatever is in `/dist`, so if you are seeing an out of date component, make sure TSDX is running in watch mode like we recommend above. **No symlinking required**, we use [Parcel's aliasing](https://parceljs.org/module_resolution.html#aliases).
+</a>
 
-To do a one-off build, use `npm run build` or `yarn build`.
+</p>
 
-To run tests, use `npm test` or `yarn test`.
+<h2 align="center">
 
-## Configuration
+<a href="http://fluid-design.io/docs/usage">Usage</a>
 
-Code quality is set up for you with `prettier`, `husky`, and `lint-staged`. Adjust the respective fields in `package.json` accordingly.
+<span> · </span>
 
-### Jest
+<a href="http://fluid-design.io/docs/docs">Docs</a>
 
-Jest tests are set up to run with `npm test` or `yarn test`.
+<span> · </span>
 
-### Bundle analysis
+<a href="http://fluid-design.io/docs/examples">Examples</a>
 
-Calculates the real cost of your library using [size-limit](https://github.com/ai/size-limit) with `npm run size` and visulize it with `npm run analyze`.
+<br />
 
-#### Setup Files
+###  Getting Started
 
-This is the folder structure we set up for you:
+Start a new project by following our quick [Getting Started guide](http://fluid-design.io/docs/usage).
 
-```txt
-/example
-  index.html
-  index.tsx       # test your component here in a demo app
-  package.json
-  tsconfig.json
-/src
-  index.tsx       # EDIT THIS
-/test
-  blah.test.tsx   # EDIT THIS
-/stories
-  Thing.stories.tsx # EDIT THIS
-/.storybook
-  main.js
-  preview.js
-.gitignore
-package.json
-README.md         # EDIT THIS
-tsconfig.json
-```
+We would love to hear from you! If you have any feedback or run into issues using our library, please file
 
-#### React Testing Library
+an [issue](https://github.com/fluid-design-io/fluid/issues/new) on this repository.
 
-We do not set up `react-testing-library` for you yet, we welcome contributions and documentation on this.
 
-### Rollup
+###  Examples
 
-TSDX uses [Rollup](https://rollupjs.org) as a bundler and generates multiple rollup configs for various module formats and build settings. See [Optimizations](#optimizations) for details.
+The [Example Page](http://fluid-design.io/docs/examples) provides many possiple ways to group components into a nice-looking ui.
 
-### TypeScript
+It is the perfect starting point for learning and building your own app.
 
-`tsconfig.json` is set up to interpret `dom` and `esnext` types, as well as `react` for `jsx`. Adjust according to your needs.
+###  Future Goals
 
-## Continuous Integration
-
-### GitHub Actions
-
-Two actions are added by default:
-
-- `main` which installs deps w/ cache, lints, tests, and builds on all pushes against a Node and OS matrix
-- `size` which comments cost comparison of your library on every pull request using [size-limit](https://github.com/ai/size-limit)
-
-## Optimizations
-
-Please see the main `tsdx` [optimizations docs](https://github.com/palmerhq/tsdx#optimizations). In particular, know that you can take advantage of development-only optimizations:
-
-```js
-// ./types/index.d.ts
-declare var __DEV__: boolean;
-
-// inside your code...
-if (__DEV__) {
-  console.log('foo');
-}
-```
-
-You can also choose to install and use [invariant](https://github.com/palmerhq/tsdx#invariant) and [warning](https://github.com/palmerhq/tsdx#warning) functions.
-
-## Module Formats
-
-CJS, ESModules, and UMD module formats are supported.
-
-The appropriate paths are configured in `package.json` and `dist/index.js` accordingly. Please report if any issues are found.
-
-## Deploying the Example Playground
-
-The Playground is just a simple [Parcel](https://parceljs.org) app, you can deploy it anywhere you would normally deploy that. Here are some guidelines for **manually** deploying with the Netlify CLI (`npm i -g netlify-cli`):
-
-```bash
-cd example # if not already in the example folder
-npm run build # builds to dist
-netlify deploy # deploy the dist folder
-```
-
-Alternatively, if you already have a git repo connected, you can set up continuous deployment with Netlify:
-
-```bash
-netlify init
-# build command: yarn build && cd example && yarn && yarn build
-# directory to deploy: example/dist
-# pick yes for netlify.toml
-```
-
-## Named Exports
-
-Per Palmer Group guidelines, [always use named exports.](https://github.com/palmerhq/typescript#exports) Code split inside your React app instead of your React library.
-
-## Including Styles
-
-There are many ways to ship styles, including with CSS-in-JS. TSDX has no opinion on this, configure how you like.
-
-For vanilla CSS, you can include it at the root directory and add it to the `files` section in your `package.json`, so that it can be imported separately by your users and run through their bundler's loader.
-
-## Publishing to NPM
-
-We recommend using [np](https://github.com/sindresorhus/np).
-
-## Usage with Lerna
-
-When creating a new package with TSDX within a project set up with Lerna, you might encounter a `Cannot resolve dependency` error when trying to run the `example` project. To fix that you will need to make changes to the `package.json` file _inside the `example` directory_.
-
-The problem is that due to the nature of how dependencies are installed in Lerna projects, the aliases in the example project's `package.json` might not point to the right place, as those dependencies might have been installed in the root of your Lerna project.
-
-Change the `alias` to point to where those packages are actually installed. This depends on the directory structure of your Lerna project, so the actual path might be different from the diff below.
-
-```diff
-   "alias": {
--    "react": "../node_modules/react",
--    "react-dom": "../node_modules/react-dom"
-+    "react": "../../../node_modules/react",
-+    "react-dom": "../../../node_modules/react-dom"
-   },
-```
-
-An alternative to fixing this problem would be to remove aliases altogether and define the dependencies referenced as aliases as dev dependencies instead. [However, that might cause other problems.](https://github.com/palmerhq/tsdx/issues/64)
+Fluid will keep adding new components and provide more customizations to exisiting ones.
