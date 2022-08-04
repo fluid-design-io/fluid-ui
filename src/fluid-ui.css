@@ -1,8 +1,7 @@
-@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
+@layer components {
   /* https://gist.github.com/coltenkrauter/34ca748828ffd351930aaf34aaef6c72 */
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
@@ -11,8 +10,6 @@
     @apply dark:text-slate-200;
     transition: background-color 5000000s ease-in-out 0s;
   }
-}
-@layer utilities {
   .checkbox {
     @apply h-4 w-4 rounded border-gray-300 text-gray-600 focus:ring-gray-500 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-400 dark:focus:ring-gray-400 dark:focus:ring-offset-black/70;
   }

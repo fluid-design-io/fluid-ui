@@ -7,10 +7,10 @@ import {
   HiOutlineShoppingCart,
   HiOutlineUser,
 } from 'react-icons/hi';
-import { AccordionProps } from '../lib/components/Accordion';
-import { Accordion } from '../lib/components/Accordion';
-import { AccordionPanel } from '../lib/components/Accordion/AccordionPanel';
-import clsxm from '../lib/helpers/clsxm';
+import { AccordionProps } from '../src/lib/components/Accordion';
+import { Accordion } from '../src/lib/components/Accordion';
+import { AccordionPanel } from '../src/lib/components/Accordion/AccordionPanel';
+import clsxm from '../src/lib/helpers/clsxm';
 
 export default {
   title: 'Components/Accordion',
