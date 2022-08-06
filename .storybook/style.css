@@ -24,5 +24,11 @@ input {
   }
   .default-focus-visible {
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-2 dark:ring-gray-400 dark:focus-visible:ring-offset-gray-800;
+  } /* Last row menu fix */
+  .menu-popover {
+    @apply mt-2 -mr-1 origin-top-right;
+  }
+  .row:last-child .menu-popover {
+    @apply bottom-0 mb-10 mt-0 mr-0 origin-bottom-right;
   }
 }

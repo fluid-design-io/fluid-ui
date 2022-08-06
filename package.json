@@ -26,9 +26,9 @@
     "semantic-release": "semantic-release --branches main"
   },
   "peerDependencies": {
-    "framer-motion": "^6.5.1",
+    "framer-motion": "^ 6.5.1",
     "react": ">=17",
-    "react-dom": "^17.0.1",
+    "react-dom": ">=17",
     "react-icons": "^4.3.1",
     "tailwindcss": "^3"
   },

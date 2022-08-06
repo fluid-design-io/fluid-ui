@@ -1,11 +1,11 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { Button, ButtonProps } from '../lib/components/Button';
+import { Button, ButtonProps } from '../src/lib/components/Button';
 import {
   FluidButtonColors,
   FluidButtonSizes,
   FluidButtonWeights,
-} from '../lib/components/FluidUI/FluidTheme';
+} from '../src/lib/components/FluidUI/FluidTheme';
 import { IoIosSend } from 'react-icons/io';
 
 export default {
