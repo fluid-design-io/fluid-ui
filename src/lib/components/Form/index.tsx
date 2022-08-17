@@ -1,17 +1,17 @@
-import { SVGProps } from "react";
+import { SVGProps } from 'react';
 
-export { default as ComboBox } from "./AppComboBox";
-export { default as Form } from "./AppForm";
-export { default as FormItem } from "./AppFormItem";
-export { default as FormItemDescription } from "./AppFormItemDescription";
-export { default as SubmitButton } from "./AppFormSubmitButton";
-export { default as SubmitButtonRef } from "./AppFormSubmitButtonRef";
-export { default as Input } from "./AppInput";
-export { default as Label } from "./AppLabel";
-export { default as Menu } from "./AppMenu";
-export { default as Switch } from "./AppSwitch";
-export { default as Textarea } from "./AppTextarea";
-export { getInputColor } from "../../helpers/styleGenerator/inputColor";
+export { default as ComboBox } from './AppComboBox';
+export { default as Form } from './AppForm';
+export { default as FormItem } from './AppFormItem';
+export { default as FormItemDescription } from './AppFormItemDescription';
+export { default as SubmitButton } from './AppFormSubmitButton';
+export { default as SubmitButtonRef } from './AppFormSubmitButtonRef';
+export { default as Input } from './AppInput';
+export { default as Label } from './AppLabel';
+export { default as Menu } from './AppMenu';
+export { default as Switch } from './AppSwitch';
+export { default as Textarea } from './AppTextarea';
+export { getInputColor } from '../../helpers/styleGenerator/inputColor';
 
 export interface FormProp {
   description:
@@ -45,7 +45,7 @@ export interface MenuProps {
     label?: string;
     onClick?: () => void | Promise<boolean | void>;
     icon?: (props: SVGProps<SVGSVGElement>) => JSX.Element;
-    role?: "separator" | "destructive" | "default" | "info" | "success" | "warning";
+    role?: 'separator' | 'destructive' | 'default' | 'info' | 'success' | 'warning';
   }[];
 }
 export interface PopoverProps {

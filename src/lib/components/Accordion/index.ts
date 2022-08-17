@@ -1,2 +1,2 @@
-export * from "./Accordion";
-export * from "./AccordionPanel";
+export * from './Accordion';
+export * from './AccordionPanel';

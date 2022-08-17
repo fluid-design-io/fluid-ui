@@ -1,10 +1,10 @@
-import React, { FC, HTMLAttributes, useEffect, useMemo } from "react";
-import { DeepPartial } from "../../helpers/deep-partial";
-import { mergeDeep } from "../../helpers/mergeDeep";
-import windowExists from "../../helpers/window-exists";
-import defaultTheme from "../../theme/default";
-import { FluidTheme } from "./FluidTheme";
-import { ThemeContext, useThemeMode } from "./ThemeContext";
+import React, { FC, HTMLAttributes, useEffect, useMemo } from 'react';
+import { DeepPartial } from '../../helpers/deep-partial';
+import { mergeDeep } from '../../helpers/mergeDeep';
+import windowExists from '../../helpers/window-exists';
+import defaultTheme from '../../theme/default';
+import { FluidTheme } from './FluidTheme';
+import { ThemeContext, useThemeMode } from './ThemeContext';
 
 export interface ThemeProps {
   dark?: boolean;
@@ -21,16 +21,16 @@ export const FluidUI: FC<FluidUIProps> = ({ children, theme = {} }) => {
   const { theme: customTheme = {}, dark, usePreferences = true } = theme;
   const [mode, setMode, toggleMode] = useThemeMode(usePreferences);
 
-  const mergedTheme = (mergeDeep(defaultTheme, customTheme) as unknown) as FluidTheme;
+  const mergedTheme = mergeDeep(defaultTheme, customTheme) as unknown as FluidTheme;
 
   useEffect(() => {
     if (dark) {
       if (setMode != null) {
-        setMode("dark");
+        setMode('dark');
       }
 
       if (windowExists()) {
-        document.documentElement.classList.add("dark");
+        document.documentElement.classList.add('dark');
       }
     }
   }, [dark, setMode]);
@@ -47,4 +47,4 @@ export const FluidUI: FC<FluidUIProps> = ({ children, theme = {} }) => {
   return <ThemeContext.Provider value={themeContextValue}>{children}</ThemeContext.Provider>;
 };
 
-export { FluidTheme } from "./FluidTheme";
+export { FluidTheme } from './FluidTheme';

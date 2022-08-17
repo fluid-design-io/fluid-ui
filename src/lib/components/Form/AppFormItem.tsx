@@ -1,6 +1,6 @@
-import React from "react";
-import { FormItemDescription, FormProp } from ".";
-import clsxm from "../../helpers/clsxm";
+import React from 'react';
+import { FormItemDescription, FormProp } from '.';
+import clsxm from '../../helpers/clsxm';
 
 function FormItem({
   error,
@@ -11,7 +11,7 @@ function FormItem({
 }: {
   error?: string;
   focused?: boolean;
-  description?: FormProp["description"];
+  description?: FormProp['description'];
   children: React.ReactNode;
   [key: string]: any;
 }) {
@@ -21,11 +21,9 @@ function FormItem({
         className={clsxm(
           `relative mb-4 overflow-hidden rounded-lg transition-all`,
           error && focused && `contrast:ring-stone-800 dark:contrast:ring-amber-800 ring-1 ring-blue-400`,
-          error &&
-            !focused &&
-            "contrast:ring-red-500 dark:contrast:ring-red-300 ring-1 ring-red-400 dark:ring-red-500",
-          !error && "contrast:ring-stone-800 dark:contrast:ring-stone-200 ring ring-transparent",
-          !error && focused && "contrast:ring-blue-400 dark:contrast:ring-blue-200 ring-1 ring-blue-400",
+          error && !focused && 'contrast:ring-red-500 dark:contrast:ring-red-300 ring-1 ring-red-400 dark:ring-red-500',
+          !error && 'contrast:ring-stone-800 dark:contrast:ring-stone-200 ring ring-transparent',
+          !error && focused && 'contrast:ring-blue-400 dark:contrast:ring-blue-200 ring-1 ring-blue-400',
           props.className && props.className
         )}
       >

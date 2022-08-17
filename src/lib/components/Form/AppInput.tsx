@@ -1,9 +1,9 @@
-import { useFormikContext } from "formik";
-import React, { useState } from "react";
-import clsxm from "../../helpers/clsxm";
-import { useTheme } from "../FluidUI/ThemeContext";
+import { useFormikContext } from 'formik';
+import React, { useState } from 'react';
+import clsxm from '../../helpers/clsxm';
+import { useTheme } from '../FluidUI/ThemeContext';
 
-import { FormItem, FormProp, Label, getInputColor } from "./";
+import { FormItem, FormProp, Label, getInputColor } from './';
 function AppInput({
   name,
   placeholder = undefined,
@@ -12,7 +12,7 @@ function AppInput({
 }: {
   name: string;
   placeholder?: string;
-  description?: FormProp["description"];
+  description?: FormProp['description'];
   [key: string]: any;
 } & React.InputHTMLAttributes<HTMLInputElement>) {
   const { setFieldTouched, handleChange, errors, touched, values } = useFormikContext();

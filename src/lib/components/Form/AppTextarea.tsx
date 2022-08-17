@@ -1,10 +1,10 @@
-import { useFormikContext } from "formik";
-import React, { useState } from "react";
-import ReactTextareaAutosize from "react-textarea-autosize";
+import { useFormikContext } from 'formik';
+import React, { useState } from 'react';
+import ReactTextareaAutosize from 'react-textarea-autosize';
 
-import { FormItem, FormProp, Label, getInputColor } from ".";
-import clsxm from "../../helpers/clsxm";
-import { useTheme } from "../FluidUI/ThemeContext";
+import { FormItem, FormProp, Label, getInputColor } from '.';
+import clsxm from '../../helpers/clsxm';
+import { useTheme } from '../FluidUI/ThemeContext';
 const Textarea = ({
   name,
   minRows = 1,
@@ -15,7 +15,7 @@ const Textarea = ({
   name: string;
   minRows?: number;
   maxRows?: number;
-  description?: FormProp["description"];
+  description?: FormProp['description'];
   [key: string]: any;
 }) => {
   const { setFieldTouched, handleChange, errors, touched, values } = useFormikContext();
@@ -32,7 +32,7 @@ const Textarea = ({
         rows={minRows}
         minRows={minRows}
         maxRows={maxRows}
-        className={clsxm(theme.base, getInputColor({ error, className: props.className }), "min-h-[3rem] pb-2")}
+        className={clsxm(theme.base, getInputColor({ error, className: props.className }), 'min-h-[3rem] pb-2')}
         value={values[name]}
         placeholder={error ? label : undefined}
         onChange={handleChange}

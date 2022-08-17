@@ -1,15 +1,15 @@
-import { useFormikContext } from "formik";
-import React from "react";
-import clsxm from "../../helpers/clsxm";
+import { useFormikContext } from 'formik';
+import React from 'react';
+import clsxm from '../../helpers/clsxm';
 
 const SubmitButtonRef = ({
-  title = "Submit",
-  slot = "start",
+  title = 'Submit',
+  slot = 'start',
   innerRef,
   ...props
 }: {
   title?: string;
-  slot?: "start" | "end";
+  slot?: 'start' | 'end';
   innerRef?: React.Ref<HTMLButtonElement>;
   [key: string]: any;
 }) => {
@@ -22,7 +22,7 @@ const SubmitButtonRef = ({
         title={title}
         disabled={!isValid}
         onClick={() => {
-          console.log("submit");
+          console.log('submit');
           handleSubmit();
         }}
         type="submit"
