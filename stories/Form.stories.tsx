@@ -14,10 +14,9 @@ import {
   Switch,
   Textarea,
 } from "../src/lib/components/Form";
-import { HiChevronDown, HiDotsVertical, HiInformationCircle, HiPencil, HiTrash } from "react-icons/hi";
+import { HiChevronDown, HiInformationCircle, HiPencil, HiTrash } from "react-icons/hi";
 import { states } from "../src/lib/helpers/data";
 import { useRef, useState } from "@storybook/addons";
-import AppMenu from "../src/lib/components/Form/AppMenu";
 
 export default {
   title: "Components/Form",
@@ -31,7 +30,7 @@ export default {
 
 interface StoryButtonProps extends Omit<ButtonProps, "color"> {}
 
-const Template: Story<StoryButtonProps> = args => {
+const Template: Story<StoryButtonProps> = (args) => {
   const submitBtnRef = useRef<HTMLButtonElement | null>(null);
   const [isSubmitted, setIsSubmitted] = useState<any>(null);
   const initialValues = {
@@ -43,9 +42,7 @@ const Template: Story<StoryButtonProps> = args => {
   };
   const validationSchema = Yup.object().shape({
     name: Yup.string().required("Name is required"),
-    email: Yup.string()
-      .email("Invalid email address")
-      .required("Email is required"),
+    email: Yup.string().email("Invalid email address").required("Email is required"),
     message: Yup.string().optional(),
     state: Yup.string().required("State is required"),
     saveResponse: Yup.boolean().required("Save response is required"),
@@ -53,7 +50,7 @@ const Template: Story<StoryButtonProps> = args => {
   console.log("submitBtnRef", submitBtnRef);
   return (
     <>
-      <div className="w-4/5 max-w-lg mx-auto mt-12 p-4 bg-white dark:bg-stone-900 shadow-lg shadow-gray-400/20 dark:shadow-black/30 rounded-xl">
+      <div className="mx-auto mt-12 w-4/5 max-w-lg rounded-xl bg-white p-4 shadow-lg shadow-gray-400/20 dark:bg-stone-900 dark:shadow-black/30">
         <Form
           initialValues={initialValues}
           validationSchema={validationSchema}
@@ -70,8 +67,10 @@ const Template: Story<StoryButtonProps> = args => {
               <h1>Thank you for your submission!</h1>
             </div>
           )}
-          <h2 className="text-xl font-semibold pb-4 text-gray-700 dark:text-gray-200">Contact Us</h2>
-          <div className="relative flex justify-between mb-4">
+          <h2 className="pb-4 text-xl font-semibold text-gray-700 contrast:bg-amber-300 dark:text-gray-200">
+            Contact Us
+          </h2>
+          <div className="relative mb-4 flex justify-between">
             <div />
             <Menu
               label={"Actions"}
@@ -120,13 +119,26 @@ const Template: Story<StoryButtonProps> = args => {
           <ComboBox name="state" list={states} itemKey="name" />
           <Switch name="saveResponse" label="Save Response" />
           <SubmitButton title="Submit" slot="end" />
-          <SubmitButtonRef ref={submitBtnRef} className="hidden" />
+          <SubmitButtonRef innerRef={submitBtnRef} className="hidden" />
         </Form>
       </div>
       <div>
-        <Button onClick={() => submitBtnRef.current?.click()} shape="pill" weight="outline" color="green">
+        <Button
+          data-tooltip-top="some more information"
+          onClick={() => submitBtnRef.current?.click()}
+          shape="pill"
+          weight="outline"
+          color="green"
+        >
           Submit Button Ref
         </Button>
+      </div>
+      <div className="relative h-32 w-full bg-lime-300 contrast:bg-blue-400">
+        <div className="absolute inset-0 bg-grid-blue-500/20 [background-position:10px] dark:bg-grid-indigo-400">
+          <button className="contrast-ring px-4 py-2 btn-outline-indigo ml-24" data-tooltip-bottom="Hi there! How are you doing?">
+            Let see
+          </button>
+        </div>
       </div>
     </>
   );

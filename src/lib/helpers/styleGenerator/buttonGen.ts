@@ -7,165 +7,33 @@ This generator will generate gradients for the tones based on the colors.
 import { colorsWithHex } from "./tailwindColors";
 
 const base =
-  "select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent";
+  "select-none motion-safe:transition-all disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent";
 const getActive = (color: string) => `ring-2 ring-offset-2 ring-offset-${color}-50 dark:ring-offset-${color}-800`;
 const getLight = (color: string) =>
   `
-    bg-${color}-50
-    text-${color}-500
-    focus-visible:bg-${color}-100
-    enabled:hover:bg-${color}-100
-    enabled:hover:text-${color}-600
-    focus-visible:text-${color}-600
-    enabled:active:bg-${color}-200
-
-    contrast-more:border
-    contrast-more:bg-${color}-50
-    contrast-more:text-${color}-900
-    contrast-more:border-${color}-800
-    contrast-more:enabled:hover:bg-${color}-50
-    contrast-more:focus-visible:bg-${color}-50
-    contrast-more:enabled:hover:text-${color}-900
-
-    dark:bg-${color}-900/40
-    dark:text-${color}-100
-    dark:enabled:hover:bg-${color}-900/60
-    dark:focus-visible:bg-${color}-900/60
-    dark:enabled:active:bg-${color}-900/90
-    dark:enabled:hover:text-${color}-100
-    dark:focus-visible:text-${color}-100
-
-    dark:contrast-more:font-bold
-    dark:contrast-more:bg-black
-    dark:contrast-more:text-${color}-50
-    dark:contrast-more:enabled:hover:bg-${color}-800
-    dark:contrast-more:focus-visible:bg-${color}-800
-    dark:contrast-more:enabled:hover:text-${color}-50
-    dark:contrast-more:focus-visible:text-${color}-50
-    dark:contrast-more:border-${color}-200
-
+    btn-light-${color}
     focus-visible:ring-${color}-500
-
     dark:focus-visible:ring-offset-${color}-600
 `;
 
 const getNormal = (color: string) =>
   `
-    bg-${color}-500
-    text-${color}-50
-    focus-visible:bg-${color}-600
-    enabled:hover:bg-${color}-600
-    enabled:hover:text-${color}-100
-    focus-visible:text-${color}-100
-    enabled:active:bg-${color}-700
-
-    contrast-more:border
-    contrast-more:bg-${color}-50
-    contrast-more:text-${color}-900
-    contrast-more:border-${color}-800
-    contrast-more:enabled:hover:bg-${color}-50
-    contrast-more:focus-visible:bg-${color}-50
-    contrast-more:enabled:hover:text-${color}-900
-
-    dark:bg-${color}-600
-    dark:text-${color}-50
-    dark:enabled:hover:bg-${color}-500
-    dark:focus-visible:bg-${color}-500
-    dark:enabled:active:bg-${color}-600/80
-    dark:enabled:hover:text-${color}-50
-    dark:focus-visible:text-${color}-50
-
-    dark:contrast-more:font-bold
-    dark:contrast-more:bg-black
-    dark:contrast-more:text-${color}-50
-    dark:contrast-more:enabled:hover:bg-${color}-800
-    dark:contrast-more:focus-visible:bg-${color}-800
-    dark:contrast-more:enabled:hover:text-${color}-50
-    dark:contrast-more:focus-visible:text-${color}-50
-    dark:contrast-more:border-${color}-200
-
+    btn-${color}
     focus-visible:ring-${color}-800
-
     dark:focus-visible:ring-offset-${color}-100
 `;
 
 const getBold = (color: string) =>
   `
-    bg-${color}-800
-    text-${color}-100
-    focus-visible:bg-${color}-900/80
-    enabled:hover:bg-${color}-900/80
-    enabled:hover:text-${color}-50
-    focus-visible:text-${color}-50
-    enabled:active:bg-${color}-900
-
-    contrast-more:border
-    contrast-more:border-${color}-50
-    contrast-more:enabled:hover:bg-${color}-600
-    contrast-more:focus-visible:bg-${color}-600
-    contrast-more:enabled:hover:text-${color}-50
-
-    dark:bg-${color}-300
-    dark:text-${color}-900/80
-    dark:enabled:hover:bg-${color}-200
-    dark:focus-visible:bg-${color}-200
-    dark:enabled:hover:text-${color}-900
-    dark:focus-visible:text-${color}-900
-    dark:enabled:active:bg-${color}-300/90
-
-    dark:contrast-more:font-bold
-    dark:contrast-more:bg-${color}-100
-    dark:contrast-more:text-${color}-900
-    dark:contrast-more:enabled:hover:bg-${color}-800
-    dark:contrast-more:focus-visible:bg-${color}-800
-    dark:contrast-more:border-${color}-500
-
-    focus-visible:ring-${color}-500
-
+    btn-bold-${color}
+    focus-visible:ring-${color}-900
     dark:focus-visible:ring-offset-${color}-50
 `;
 
 const getOutline = (color: string) =>
   `
-    border
-    border-${color}-500
-    text-${color}-700
-    enabled:hover:text-${color}-50
-    enabled:hover:bg-${color}-500
-    enabled:active:text-white
-    enabled:active:bg-${color}-600
-    enabled:active:border-${color}-600
-    focus-visible:bg-${color}-500
-    focus-visible:text-${color}-50
-    
-    contrast-more:border
-    contrast-more:text-${color}-900
-    contrast-more:border-${color}-800
-    contrast-more:enabled:hover:border-${color}-50
-    contrast-more:focus-visible:border-${color}-50
-    contrast-more:enabled:hover:text-${color}-900
-    
-    dark:border
-    dark:border-${color}-600
-    dark:text-${color}-300
-    dark:enabled:hover:text-${color}-50
-    dark:enabled:hover:bg-${color}-600
-    dark:enabled:active:text-white
-    dark:enabled:active:bg-${color}-700
-    dark:enabled:active:border-${color}-700
-    dark:focus-visible:bg-${color}-600
-    dark:focus-visible:text-${color}-50
-    
-    dark:contrast-more:font-bold
-    dark:contrast-more:text-${color}-50
-    dark:contrast-more:enabled:hover:border-${color}-800
-    dark:contrast-more:focus-visible:border-${color}-800
-    dark:contrast-more:enabled:hover:text-${color}-50
-    dark:contrast-more:focus-visible:text-${color}-50
-    dark:contrast-more:border-${color}-100
-    
+    btn-outline-${color}
     focus-visible:ring-${color}-500
-    
     dark:focus-visible:ring-offset-${color}-600
     `;
 

@@ -11,7 +11,7 @@ export { default as Label } from "./AppLabel";
 export { default as Menu } from "./AppMenu";
 export { default as Switch } from "./AppSwitch";
 export { default as Textarea } from "./AppTextarea";
-export { getInputColor } from "./inputColor";
+export { getInputColor } from "../../helpers/styleGenerator/inputColor";
 
 export interface FormProp {
   description:

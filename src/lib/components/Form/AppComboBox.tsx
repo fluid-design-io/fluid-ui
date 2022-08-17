@@ -38,12 +38,9 @@ function AppComboBox({
     if (query === "") {
       return list;
     }
-    return list.filter(item => {
+    return list.filter((item) => {
       const itemValue = itemKey ? item[itemKey] : item;
-      return itemValue
-        .toLowerCase()
-        .replace(/\s/g, "")
-        .includes(query.toLowerCase().replace(/\s/g, ""));
+      return itemValue.toLowerCase().replace(/\s/g, "").includes(query.toLowerCase().replace(/\s/g, ""));
     });
   }, [query, list, itemKey]);
   const theme = useTheme().theme.form;
@@ -53,14 +50,14 @@ function AppComboBox({
       value={values[name]}
       defaultValue={values[name]}
       disabled={disabled}
-      onChange={e => {
+      onChange={(e) => {
         handleChange({ target: { type: "text", name, value: e } });
       }}
       className="mb-4"
     >
       <Combobox.Label
         className={clsxm(
-          "contrast-more:text-stone-90 text-sm font-medium text-stone-700 dark:text-stone-200",
+          "contrast:text-stone-90 text-sm font-medium text-stone-700 dark:text-stone-200",
           props.className
         )}
       >
@@ -73,7 +70,7 @@ function AppComboBox({
             "py-2 pl-3 pr-10 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 sm:text-sm"
           )}
           value={query}
-          onChange={e => setQuery(e.target.value)}
+          onChange={(e) => setQuery(e.target.value)}
           onFocus={() => (!focused ? setFocused(true) : undefined)}
           onBlur={() => {
             setFieldTouched(name);
@@ -86,14 +83,14 @@ function AppComboBox({
 
         {list.length > 0 && (
           <Combobox.Options className="popover-panel absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md py-1 sm:text-sm">
-            {filteredList.map(item => (
+            {filteredList.map((item) => (
               <Combobox.Option
                 key={`${name}-${itemKey ? item[itemKey] : item}-${item.id}`}
                 value={item[itemKey]}
                 className={({ active }) =>
                   clsxm(
                     "relative cursor-default select-none py-2 pl-3 pr-9",
-                    active ? "bg-blue-600 text-white" : "text-stone-900 dark:text-stone-200 bg-stone-800"
+                    active ? "bg-blue-600 text-white" : "bg-stone-800 text-stone-900 dark:text-stone-200"
                   )
                 }
               >

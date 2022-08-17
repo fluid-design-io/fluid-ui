@@ -5,7 +5,7 @@ import ReactTextareaAutosize from "react-textarea-autosize";
 import { FormItem, FormProp, Label, getInputColor } from ".";
 import clsxm from "../../helpers/clsxm";
 import { useTheme } from "../FluidUI/ThemeContext";
-function Textarea({
+const Textarea = ({
   name,
   minRows = 1,
   maxRows = 10,
@@ -17,7 +17,7 @@ function Textarea({
   maxRows?: number;
   description?: FormProp["description"];
   [key: string]: any;
-}) {
+}) => {
   const { setFieldTouched, handleChange, errors, touched, values } = useFormikContext();
   const [focused, setFocused] = useState(false);
   const error = touched[name] ? errors[name] : undefined;
@@ -32,7 +32,7 @@ function Textarea({
         rows={minRows}
         minRows={minRows}
         maxRows={maxRows}
-        className={clsxm(theme.base, getInputColor({ error, className: props.className }), "pb-2 min-h-[3rem]")}
+        className={clsxm(theme.base, getInputColor({ error, className: props.className }), "min-h-[3rem] pb-2")}
         value={values[name]}
         placeholder={error ? label : undefined}
         onChange={handleChange}
@@ -45,6 +45,6 @@ function Textarea({
       />
     </FormItem>
   );
-}
+};
 
 export default Textarea;

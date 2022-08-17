@@ -62,10 +62,10 @@ export const AccordionPanel: FC<AccordionPanelProps> = ({
               header
             )}
             <span className={`rtl:block hidden`}>
-              <ArrowIcon className={clsxm(theme.arrow.base, open ? `ltr:-rotate-180 rtl:rotate-180` : "rotate-0")} />
+              <ArrowIcon className={clsxm(theme.arrow.base, open ? theme.arrow.open.on : theme.arrow.open.off)} />
             </span>
             <span className={`rtl:hidden block`}>
-              <ArrowIcon className={clsxm(theme.arrow.base, open ? `-rotate-180` : "rotate-0")} />
+              <ArrowIcon className={clsxm(theme.arrow.base, open ? theme.arrow.open.on : theme.arrow.open.off)} />
             </span>
           </Disclosure.Button>
           <AnimatePresence>

@@ -24,7 +24,7 @@ function AppSwitch({
       <span className="flex flex-grow flex-col">
         <Switch.Label
           as="span"
-          className="text-sm font-medium text-stone-700 dark:text-stone-200 contrast-more:text-stone-900"
+          className="text-sm font-medium text-stone-700 dark:text-stone-200 contrast:text-stone-900"
           passive
         >
           {label} {error && `(${error})`}

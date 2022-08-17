@@ -1,3 +1,4 @@
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -21,7 +22,7 @@
   }
   /* default input style */
   .default-input {
-    @apply block w-full rounded-lg border-none bg-gray-100 outline-none transition [-webkit-tap-highlight-color:transparent] dark:bg-gray-900 dark:text-gray-200 contrast-more:placeholder:text-gray-700  dark:contrast-more:bg-black dark:contrast-more:text-gray-50 dark:contrast-more:placeholder:text-gray-50/75;
+    @apply block w-full rounded-lg border-none bg-gray-100 outline-none transition [-webkit-tap-highlight-color:transparent] dark:bg-gray-900 dark:text-gray-200 contrast:placeholder:text-gray-700  dark:contrast:bg-black dark:contrast:text-gray-50 dark:contrast:placeholder:text-gray-50/75;
   }
   /* default focus style */
   .default-focus {
