@@ -98,8 +98,8 @@ const contrastColor = (value, step = undefined, blackWhite = false) => {
         ? '#000'
         : combineAlpha(checkDarkness(color, 'dark'), alpha)
       : blackWhite
-        ? '#FFF'
-        : combineAlpha(checkDarkness(color, 'light'), alpha);
+      ? '#FFF'
+      : combineAlpha(checkDarkness(color, 'light'), alpha);
   }
   return value;
 };
