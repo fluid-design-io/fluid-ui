@@ -6,15 +6,24 @@ const colorModes = {
   rgba: 'rgba',
   hsla: 'hsla',
   hex: 'hex',
+  var: 'var',
+  unkown: 'unknown',
 };
 const checkColorMode = (color) => {
   // check if color is either using rbga or hex
+  if (typeof color !== 'string') {
+    return colorModes.unkown;
+  }
   if (color.includes('rgba')) {
     return colorModes.rgba;
   } else if (color.includes('#')) {
     return colorModes.hex;
+  } else if (color.includes('var')) {
+    // Only able to pass the var as the color,
+    // Can't manipulate the color
+    return colorModes.var;
   } else {
-    return colorModes.hsla;
+    return colorModes.unkown;
   }
 };
 const getRGB = (color) => {
@@ -25,8 +34,13 @@ const getRGB = (color) => {
   } else if (mode === colorModes.rgba) {
     // return as [r, g, b]
     return color.match(/\d+/g).map(Number);
+  } else if (mode === colorModes.var) {
+    // recieve the variable name
+    console.log(color);
+    return color;
   } else {
-    return null;
+    console.log(`unknown color mode: ${mode}, ${color}`);
+    return color;
   }
 };
 const combineAlpha = (color, alpha) => {
@@ -84,8 +98,8 @@ const contrastColor = (value, step = undefined, blackWhite = false) => {
         ? '#000'
         : combineAlpha(checkDarkness(color, 'dark'), alpha)
       : blackWhite
-      ? '#FFF'
-      : combineAlpha(checkDarkness(color, 'light'), alpha);
+        ? '#FFF'
+        : combineAlpha(checkDarkness(color, 'light'), alpha);
   }
   return value;
 };
@@ -460,6 +474,6 @@ module.exports = plugin(function ({ matchUtilities, addVariant, addComponents, a
     }),
     addVariant('hocus', ['&:hover', '&:focus-visible']),
     addVariant('hocus-enabled', ['&:enabled:hover', '&:enabled:focus-visible']),
-    addVariant('active', ['&:enabled:active']),
+    addVariant('active-enabled', ['&:enabled:active']),
     addVariant('contrast', ['.contrast &', '@media (prefers-contrast: more)']);
 });
