@@ -1,6 +1,7 @@
 {
   // see https://www.typescriptlang.org/tsconfig to better understand tsconfigs
-  "include": ["src", "types"],
+  "include": ["src/**/*", "types"],
+  "exclude": ["node_modules", "stories/**/*", "test/**/*", ".storybook/**/*", "example/**/*", ".vscode/**/*"],
   "compilerOptions": {
     "allowJs": true,
     "module": "esnext",

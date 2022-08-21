@@ -3,28 +3,42 @@ import { useFormikContext } from 'formik';
 import React, { useState } from 'react';
 import { FormProp } from '.';
 import clsxm from '../../helpers/clsxm';
+import { excludeOnChangeClickBlurFocus } from '../../helpers/exclude';
 
 function AppSwitch({
   name,
   description,
   placeholder,
+  className,
+  activeClassName,
+  labelClassName,
   ...props
 }: {
   name: string;
   description?: FormProp['description'];
   placeholder?: string;
+  className?: string;
+  activeClassName?: string;
+  labelClassName?: string;
   [key: string]: any;
 }) {
   const { setFieldTouched, handleChange, errors, touched, values } = useFormikContext();
   const [focused, setFocused] = useState(false);
   const error = touched[name] ? errors[name] : undefined;
   const label = props?.label ? props.label : placeholder ? placeholder : `${name[0].toUpperCase()}${name.slice(1)}`;
+  const userOnChange = props?.onChange,
+    userOnBlur = props?.onBlur,
+    userOnFocus = props?.onFocus;
+  const cleanedProps = excludeOnChangeClickBlurFocus(props);
   return (
-    <Switch.Group as="div" className={clsxm('mb-4 flex items-center justify-between text-left')}>
+    <Switch.Group as="div" className={clsxm('mb-4 flex items-center justify-between text-left', className)}>
       <span className="flex flex-grow flex-col">
         <Switch.Label
           as="span"
-          className="text-sm font-medium text-stone-700 dark:text-stone-200 contrast:text-stone-900"
+          className={clsxm(
+            'text-sm font-medium text-stone-700 dark:text-stone-200 contrast:text-stone-900',
+            labelClassName
+          )}
           passive
         >
           {label} {error && `(${error})`}
@@ -32,17 +46,24 @@ function AppSwitch({
       </span>
       <Switch
         checked={values[name]}
-        onChange={(e) => handleChange({ target: { type: 'checkbox', name, checked: e } })}
-        onFocus={() => (!focused ? setFocused(true) : undefined)}
+        className={clsxm(
+          values[name] ? ['bg-blue-600', activeClassName] : 'bg-stone-200 dark:bg-stone-700',
+          'default-focus relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out  focus:outline-none disabled:cursor-not-allowed disabled:opacity-50'
+        )}
+        onChange={(e) => {
+          handleChange({ target: { type: 'checkbox', name, checked: e } });
+          userOnChange && userOnChange(e);
+        }}
+        onFocus={() => {
+          !focused ? setFocused(true) : undefined;
+          userOnFocus && userOnFocus();
+        }}
         onBlur={() => {
           setFieldTouched(name);
           setFocused(false);
+          userOnBlur && userOnBlur();
         }}
-        className={clsxm(
-          values[name] ? 'bg-blue-600' : 'bg-stone-200 dark:bg-stone-700',
-          'default-focus relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out  focus:outline-none disabled:cursor-not-allowed disabled:opacity-50'
-        )}
-        {...props}
+        {...cleanedProps}
       >
         <span
           aria-hidden="true"

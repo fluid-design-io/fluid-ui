@@ -17,7 +17,7 @@
     "build:css": "NOD_ENV=production npx tailwindcss -o ./dist/fluid-ui.css --minify",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
-    "commit": "git add . && git-cz",
+    "commit": "git-cz",
     "prepare": "tsdx build",
     "size": "size-limit",
     "analyze": "size-limit --why",
