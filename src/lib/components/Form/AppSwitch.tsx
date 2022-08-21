@@ -31,7 +31,10 @@ function AppSwitch({
     userOnFocus = props?.onFocus;
   const cleanedProps = excludeOnChangeClickBlurFocus(props);
   return (
-    <Switch.Group as="div" className={clsxm('mb-4 flex items-center justify-between text-left', className)}>
+    <Switch.Group
+      as="div"
+      className={clsxm('mb-4 flex items-center justify-between text-left rtl:text-right', className)}
+    >
       <span className="flex flex-grow flex-col">
         <Switch.Label
           as="span"
@@ -48,14 +51,14 @@ function AppSwitch({
         checked={values[name]}
         className={clsxm(
           values[name] ? ['bg-blue-600', activeClassName] : 'bg-stone-200 dark:bg-stone-700',
-          'default-focus relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out  focus:outline-none disabled:cursor-not-allowed disabled:opacity-50'
+          'default-focus relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none disabled:cursor-not-allowed disabled:opacity-50'
         )}
         onChange={(e) => {
           handleChange({ target: { type: 'checkbox', name, checked: e } });
           userOnChange && userOnChange(e);
         }}
         onFocus={() => {
-          !focused ? setFocused(true) : undefined;
+          !focused && setFocused(true);
           userOnFocus && userOnFocus();
         }}
         onBlur={() => {
@@ -68,7 +71,7 @@ function AppSwitch({
         <span
           aria-hidden="true"
           className={clsxm(
-            values[name] ? 'translate-x-5' : 'translate-x-0',
+            values[name] ? 'translate-x-5 rtl:!-translate-x-5' : 'translate-x-0',
             'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out'
           )}
         />
