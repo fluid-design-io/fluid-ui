@@ -65,8 +65,18 @@ export const Button = ({
       {...theirProps}
     >
       {isLoading && <ButtonLoadingComponent {...{ loadingOptions }} />}
-      <div className={clsxm(theme.base, isLoading && 'opacity-0', loadingOptions.text.length > 0 && 'px-2')}>
-        {isLoading ? (loadingOptions.text.length > 0 ? loadingOptions.text : children) : children}
+      <div
+        className={clsxm(
+          theme.base,
+          isLoading && 'opacity-0',
+          loadingOptions?.text && loadingOptions.text.length > 0 && 'px-2'
+        )}
+      >
+        {isLoading
+          ? loadingOptions?.text && loadingOptions.text.length > 0
+            ? loadingOptions.text
+            : children
+          : children}
       </div>
     </Component>
   );
@@ -91,7 +101,9 @@ const ButtonLoadingComponent = ({
   return (
     <div className={clsxm(theme.loading.base)}>
       <Icon className={theme.loading.animation[loadingOptions.animation]} />
-      {loadingOptions.text.length > 0 && <div className={theme.loading.text}>{loadingOptions.text}</div>}
+      {loadingOptions?.text && loadingOptions.text.length > 0 && (
+        <div className={theme.loading.text}>{loadingOptions.text}</div>
+      )}
     </div>
   );
 };
