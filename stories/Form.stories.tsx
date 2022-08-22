@@ -1,9 +1,9 @@
-import React from "react";
-import { Meta, Story } from "@storybook/react/types-6-0";
-import { Button, ButtonProps } from "../src/lib/components/Button";
-import * as Yup from "yup";
+import React from 'react';
+import { Meta, Story } from '@storybook/react/types-6-0';
+import { Button, ButtonProps } from '../src/lib/components/Button';
+import * as Yup from 'yup';
 
-import { FluidButtonSizes, FluidButtonWeights } from "../src/lib/components/FluidUI/FluidTheme";
+import { FluidButtonSizes, FluidButtonWeights } from '../src/lib/components/FluidUI/FluidTheme';
 import {
   ComboBox,
   Form,
@@ -13,44 +13,43 @@ import {
   SubmitButtonRef,
   Switch,
   Textarea,
-} from "../src/lib/components/Form";
-import { HiChevronDown, HiInformationCircle, HiPencil, HiTrash } from "react-icons/hi";
-import { states } from "../src/lib/helpers/data";
-import { useRef, useState } from "@storybook/addons";
+} from '../src/lib/components/Form';
+import { HiChevronDown, HiInformationCircle, HiPencil, HiTrash } from 'react-icons/hi';
+import { states } from '../src/lib/helpers/data';
+import { useRef, useState } from '@storybook/addons';
 
 export default {
-  title: "Components/Form",
+  title: 'Components/Form',
   component: Button,
   args: {
-    weight: "normal" as keyof FluidButtonWeights,
-    size: "md" as keyof FluidButtonSizes,
+    weight: 'normal' as keyof FluidButtonWeights,
+    size: 'md' as keyof FluidButtonSizes,
     disabled: false,
   },
 } as Meta;
 
-interface StoryButtonProps extends Omit<ButtonProps, "color"> {}
+interface StoryButtonProps extends Omit<ButtonProps, 'color'> {}
 
 const Template: Story<StoryButtonProps> = (args) => {
   const submitBtnRef = useRef<HTMLButtonElement | null>(null);
   const [isSubmitted, setIsSubmitted] = useState<any>(null);
   const initialValues = {
-    name: "",
-    email: "",
-    message: "",
-    state: "California",
+    name: '',
+    email: '',
+    message: '',
+    state: 'California',
     saveResponse: false,
   };
   const validationSchema = Yup.object().shape({
-    name: Yup.string().required("Name is required"),
-    email: Yup.string().email("Invalid email address").required("Email is required"),
+    name: Yup.string().required('Name is required'),
+    email: Yup.string().email('Invalid email address').required('Email is required'),
     message: Yup.string().optional(),
-    state: Yup.string().required("State is required"),
-    saveResponse: Yup.boolean().required("Save response is required"),
+    state: Yup.string().required('State is required'),
+    saveResponse: Yup.boolean().required('Save response is required'),
   });
-  console.log("submitBtnRef", submitBtnRef);
   return (
     <>
-      <div className="mx-auto mt-12 w-4/5 max-w-lg rounded-xl bg-white p-4 shadow-lg shadow-gray-400/20 dark:bg-stone-900 dark:shadow-black/30">
+      <div className="mx-auto mt-12 w-4/5 max-w-lg rounded-xl bg-white p-4 shadow-lg shadow-primary-400/20 dark:bg-stone-900 dark:shadow-black/30">
         <Form
           initialValues={initialValues}
           validationSchema={validationSchema}
@@ -67,43 +66,41 @@ const Template: Story<StoryButtonProps> = (args) => {
               <h1>Thank you for your submission!</h1>
             </div>
           )}
-          <h2 className="pb-4 text-xl font-semibold text-gray-700 contrast:bg-amber-300 dark:text-gray-200">
+          <h2 className="pb-4 text-xl font-semibold text-primary-700 contrast:bg-amber-300 dark:text-primary-200">
             Contact Us
           </h2>
           <div className="relative mb-4 flex justify-between">
             <div />
             <Menu
-              label={"Actions"}
-              icon={
-                <HiChevronDown
-                  className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-50"
-                  aria-hidden="true"
-                />
-              }
+              label={'Actions'}
+              iconEnd={HiChevronDown}
+              iconStart={HiInformationCircle}
               header={
                 <p className="truncate py-3 px-3.5">
-                  <span className="mb-0.5 block text-xs text-gray-500 dark:text-gray-400">Signed in as</span>
-                  <span className="font-semibold text-gray-700 dark:text-gray-300">Guest user</span>
+                  <span className="mb-0.5 block text-xs text-primary-500 dark:text-primary-400">Signed in as</span>
+                  <span className="font-semibold text-primary-700 dark:text-primary-300">Guest user</span>
                 </p>
               }
-              buttonClassName="!ring-offset-2 ring-offset-gray-50 dark:ring-offset-gray-800 rounded-md"
+              buttonClassName="!ring-offset-2 ring-offset-primary-50 dark:ring-offset-primary-800 rounded-md"
               menus={[
                 {
-                  label: "Edit",
+                  label: 'Edit',
                   icon: HiPencil,
-                  role: "info",
-                  onClick: () => console.log("edit"),
+                  role: 'info',
+                  onClick: () => console.log('edit'),
                 },
                 {
-                  role: "separator",
+                  role: 'separator',
                 },
                 {
-                  label: "Delete",
-                  role: "destructive",
+                  label: 'Delete',
+                  role: 'destructive',
                   icon: HiTrash,
-                  onClick: () => console.log("delete"),
+                  onClick: () => console.log('delete'),
                 },
               ]}
+              menuPositionX="end"
+              menuPositionY="bottom"
             />
           </div>
           <Input name="name" label="Name" type="text" />
@@ -112,7 +109,7 @@ const Template: Story<StoryButtonProps> = (args) => {
             name="message"
             label="Message"
             description={{
-              text: "Please be as detailed as possible.",
+              text: 'Please be as detailed as possible.',
               icon: HiInformationCircle,
             }}
           />
