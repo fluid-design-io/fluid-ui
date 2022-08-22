@@ -273,18 +273,18 @@ export default {
   },
   gray: {
     base: 'select-none motion-safe:transition-all disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
-    active: 'ring-2 ring-offset-2 ring-offset-gray-50 dark:ring-offset-gray-800',
+    active: 'ring-2 ring-offset-2 ring-offset-primary-50 dark:ring-offset-primary-800',
     weight: {
-      light: ' btn-light-gray focus-visible:ring-gray-500 dark:focus-visible:ring-offset-gray-600 ',
-      normal: ' btn-gray focus-visible:ring-gray-800 dark:focus-visible:ring-offset-gray-100 ',
-      bold: ' btn-bold-gray focus-visible:ring-gray-900 dark:focus-visible:ring-offset-gray-50 ',
-      outline: ' btn-outline-gray focus-visible:ring-gray-500 dark:focus-visible:ring-offset-gray-600 ',
-      none: ' text-gray-500 enabled:hover:text-gray-600 focus-visible:text-gray-600 dark:text-gray-300 dark:enabled:hover:text-gray-400 dark:focus-visible:text-gray-400 focus-visible:ring-gray-500 dark:focus-visible:ring-offset-gray-600 ',
+      light: ' btn-light-gray focus-visible:ring-primary-500 dark:focus-visible:ring-offset-primary-600 ',
+      normal: ' btn-gray focus-visible:ring-primary-800 dark:focus-visible:ring-offset-primary-100 ',
+      bold: ' btn-bold-gray focus-visible:ring-primary-900 dark:focus-visible:ring-offset-primary-50 ',
+      outline: ' btn-outline-gray focus-visible:ring-primary-500 dark:focus-visible:ring-offset-primary-600 ',
+      none: ' text-primary-500 enabled:hover:text-primary-600 focus-visible:text-primary-600 dark:text-primary-300 dark:enabled:hover:text-primary-400 dark:focus-visible:text-primary-400 focus-visible:ring-primary-500 dark:focus-visible:ring-offset-primary-600 ',
     },
     gradient: {
       linear:
-        ' text-gray-900 bg-gradient-to-b from-gray-300 to-gray-500 enabled:hover:from-gray-400 enabled:hover:to-gray-500 focus-visible:from-gray-400 focus-visible:to-gray-500 dark:text-gray-50 dark:bg-gradient-to-b dark:from-gray-500 dark:to-gray-700 dark:enabled:hover:from-gray-600 dark:enabled:hover:to-gray-800 dark:focus-visible:from-gray-600 dark:focus-visible:to-gray-800 ',
-      clay: ' bg-gray-400 font-bold uppercase tracking-wider text-white shadow-[0px_6px_16px_rgba(86,91,102,_0.35),_inset_-8px_-8px_12px_rgba(107,114,128,1),_inset_8px_8px_12px_rgba(255,255,255,_0.25)] enabled:hover:scale-105 enabled:hover:shadow-[0px_8px_18px_rgba(86,91,102,_0.5),_inset_-8px_-8px_12px_rgba(107,114,128,1),_inset_8px_8px_12px_rgba(255,255,255,_0.35)] active:scale-[0.98] active:shadow-[0px_4px_14px_rgba(86,91,102,_0.35),_inset_-8px_-8px_12px_rgba(107,114,128,1),_inset_8px_8px_12px_rgba(255,255,255,_0.35) ',
+        ' text-primary-900 bg-gradient-to-b from-primary-300 to-primary-500 enabled:hover:from-primary-400 enabled:hover:to-primary-500 focus-visible:from-primary-400 focus-visible:to-primary-500 dark:text-primary-50 dark:bg-gradient-to-b dark:from-primary-500 dark:to-primary-700 dark:enabled:hover:from-primary-600 dark:enabled:hover:to-primary-800 dark:focus-visible:from-primary-600 dark:focus-visible:to-primary-800 ',
+      clay: ' bg-primary-400 font-bold uppercase tracking-wider text-white shadow-[0px_6px_16px_rgba(86,91,102,_0.35),_inset_-8px_-8px_12px_rgba(107,114,128,1),_inset_8px_8px_12px_rgba(255,255,255,_0.25)] enabled:hover:scale-105 enabled:hover:shadow-[0px_8px_18px_rgba(86,91,102,_0.5),_inset_-8px_-8px_12px_rgba(107,114,128,1),_inset_8px_8px_12px_rgba(255,255,255,_0.35)] active:scale-[0.98] active:shadow-[0px_4px_14px_rgba(86,91,102,_0.35),_inset_-8px_-8px_12px_rgba(107,114,128,1),_inset_8px_8px_12px_rgba(255,255,255,_0.35) ',
     },
   },
   slate: {
