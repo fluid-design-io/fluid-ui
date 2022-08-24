@@ -51,6 +51,7 @@ export interface FluidTheme {
     shape: FluidButtonShapes;
     color: FluidButtonColors;
     loading: FulidButtonLoadingOptions;
+    iconOnly: FluidButtonShapes;
   };
   form: {
     base: string;

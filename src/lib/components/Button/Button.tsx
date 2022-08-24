@@ -20,6 +20,12 @@ export interface ButtonProps extends PropsWithChildren<ComponentProps<'button'>>
   color?: keyof FluidButtonColors;
   size?: keyof FluidButtonSizes;
   weight?: keyof FluidButtonWeights;
+  /**
+   * iconOnly: adjust the padding to be the same for all edges
+   *
+   * @default false
+   */
+  iconOnly?: boolean;
   isLoading?: boolean;
   shape?: keyof FluidButtonShapes;
   gradient?: keyof FluidButtonColorOptions['gradient'] | undefined;
@@ -35,6 +41,7 @@ export const Button = ({
   size = 'md',
   shape = 'round',
   weight = 'normal',
+  iconOnly = false,
   isLoading = false,
   gradient = undefined,
   loadingOptions = {
@@ -55,7 +62,7 @@ export const Button = ({
       className={clsxm(
         theme.base,
         theme.color[color].base,
-        theme.shape[shape][size],
+        iconOnly ? theme.iconOnly[shape][size] : theme.shape[shape][size],
         gradient ? theme.color[color].gradient[gradient] : theme.color[color].weight[weight],
         props?.className
       )}

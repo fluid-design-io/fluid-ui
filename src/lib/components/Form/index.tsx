@@ -128,7 +128,7 @@ export interface MenuProps {
      */
     sr?: string;
     label?: string;
-    onClick?: () => void | Promise<boolean | void>;
+    onClick?: () => any;
     icon?: (props: SVGProps<SVGSVGElement>) => JSX.Element | JSX.Element;
     role?: 'separator' | 'destructive' | 'default' | 'info' | 'success' | 'warning';
     [x: string]: any;

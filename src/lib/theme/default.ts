@@ -48,6 +48,29 @@ export default {
         xl: 'px-5 py-3 text-xl uppercase',
       },
     },
+    iconOnly: {
+      pill: {
+        xs: 'p-1.5 text-xs rounded-full',
+        sm: 'p-2 text-sm rounded-full',
+        md: 'p-2 rounded-full',
+        lg: 'p-2.5 rounded-full text-lg',
+        xl: 'p-2.5 rounded-full text-xl',
+      },
+      round: {
+        xs: 'p-1.5 text-xs rounded-md',
+        sm: 'p-2 text-sm rounded-md',
+        md: 'p-2 rounded-md',
+        lg: 'p-2.5 rounded-md text-lg',
+        xl: 'p-3 rounded-md text-xl',
+      },
+      square: {
+        xs: 'p-1 text-xs uppercase',
+        sm: 'p-1.5 text-sm uppercase',
+        md: 'p-2 uppercase',
+        lg: 'p-2.5 text-lg uppercase',
+        xl: 'p-3 text-xl uppercase',
+      },
+    },
     color: buttonStyles,
     loading: {
       base: 'absolute inset-0 z-[2] w-full h-full flex justify-center items-center gap-2',
