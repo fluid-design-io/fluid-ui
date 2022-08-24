@@ -130,10 +130,10 @@ const Template: Story<StoryButtonProps> = (args) => {
           Submit Button Ref
         </Button>
       </div>
-      <div className="relative h-32 w-full bg-lime-300 contrast:bg-blue-400">
+      <div className="relative h-32 w-ful contrast:bg-blue-400">
         <div className="absolute inset-0 bg-grid-blue-500/20 [background-position:10px] dark:bg-grid-indigo-400">
-          <button className="px-4 py-2 btn-orange" data-tooltip-bottom="Hi there! How are you doing?">
-            Let see
+          <button className="p-2 rounded-full m-8 btn-clear-red" data-tooltip-bottom="Hi there! How are you doing?">
+            <HiTrash />
           </button>
         </div>
       </div>

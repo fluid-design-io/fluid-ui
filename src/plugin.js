@@ -346,6 +346,51 @@ const buttonUtilities = (theme) => {
         },
       }),
     }),
+    /* ==== END OUTLINE BUTTON ==== */
+    /* ==== START CLEAR BUTTON ==== */
+    'btn-clear': (value) => ({
+      ...generateTxtBg(value, { step: 50, alpha: 0.01 }, false, getColor(value, 500), 50, false),
+      ...generateTxtStates(value, {
+        hocus: { value, step: 100, bw: false },
+        active: { value, step: { step: 200, alpha: 85 } },
+        disabled: { value, step: { step: 50, alpha: 50 } },
+        textHocus: { value: getColor(value, 500), step: 400, bw: false },
+        textActive: { value: getColor(value, 600), step: 100, bw: true },
+      }),
+      '.dark &': {
+        ...generateTxtBg(value, { step: 900, alpha: 0.01 }, false, getColor(value, 400), 50, false),
+        ...generateTxtStates(value, {
+          hocus: { value, step: { step: 600, alpha: 35 }, bw: false },
+          active: { value, step: { step: 700, alpha: 40 } },
+          disabled: { value, step: { step: 700, alpha: 700 } },
+          textHocus: { value: getColor(value, 600), step: 600, bw: false },
+          textActive: { value: getColor(value, 500), step: 700, bw: false },
+        }),
+      },
+      ...generateCMClass({
+        ...generateTxtBg(value, { step: 50, alpha: 0.01 }, false, getColor(value, 700), 50, false),
+        ...generateCMBtn(value, {
+          bw: '1px',
+          bc: getColor(value, 500),
+          bs: `inset 0 0 0 1px ${getColor(value, 500)}, 0 0px 0px 2px ${getColor(value, 900)}`,
+          fw: 'bold',
+          hocus: generateTxtBg(value, 700, true),
+          active: generateTxtBg(value, 900, true),
+        }),
+        '.dark &': {
+          ...generateTxtBg(value, 900, true),
+          ...generateCMBtn(value, {
+            bw: '1px',
+            bc: getColor(value, 900),
+            bs: `inset 0 0 0 1px ${getColor(value, 900)}, 0 0px 0px 2px ${getColor(value, 50)}`,
+            fw: 'bold',
+            hocus: generateTxtBg(value, 50, true),
+            active: generateTxtBg(value, 300, true),
+          }),
+        },
+      }),
+    }),
+    /* ==== END CLEAR BUTTON ==== */
   };
 };
 

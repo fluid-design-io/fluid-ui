@@ -41,17 +41,22 @@ const getNone = (color: string) =>
   `
     text-${color}-500
     hocus:text-${color}-600
-    hocus:bg-${color}-100
     focus-visible:text-${color}-600
 
     dark:text-${color}-300
     dark:hover:text-${color}-400
-    dark:focus-visible:text-${color}-600/20
     dark:focus-visible:text-${color}-400
 
     focus-visible:ring-${color}-500
     dark:focus-visible:ring-offset-${color}-600
 `;
+
+const getClear = (color: string) =>
+  `
+    btn-clear-${color}
+    focus-visible:ring-${color}-500
+    dark:focus-visible:ring-offset-${color}-600
+  `;
 
 const getLinear = (color: string) => `
     text-${color}-900
@@ -100,6 +105,7 @@ const generate = (color: string) => {
   const light = replaceEnter(getLight(color));
   const normal = replaceEnter(getNormal(color));
   const bold = replaceEnter(getBold(color));
+  const clear = replaceEnter(getClear(color));
   const none = replaceEnter(getNone(color));
   const outline = replaceEnter(getOutline(color));
   const linear = replaceEnter(getLinear(color));
@@ -114,6 +120,7 @@ const generate = (color: string) => {
         normal,
         bold,
         outline,
+        clear,
         none,
       },
       gradient: {

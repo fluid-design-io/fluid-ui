@@ -7,7 +7,8 @@ export default {
       normal: ' btn-red focus-visible:ring-red-800 dark:focus-visible:ring-offset-red-100 ',
       bold: ' btn-bold-red focus-visible:ring-red-900 dark:focus-visible:ring-offset-red-50 ',
       outline: ' btn-outline-red focus-visible:ring-red-500 dark:focus-visible:ring-offset-red-600 ',
-      none: ' text-red-500 hocus:text-red-600 hocus:bg-red-100 focus-visible:text-red-600 dark:text-red-300 dark:hover:text-red-400 dark:focus-visible:text-red-600/20 dark:focus-visible:text-red-400 focus-visible:ring-red-500 dark:focus-visible:ring-offset-red-600 ',
+      clear: ' btn-clear-red focus-visible:ring-red-500 dark:focus-visible:ring-offset-red-600 ',
+      none: ' text-red-500 hocus:text-red-600 focus-visible:text-red-600 dark:text-red-300 dark:hover:text-red-400 dark:focus-visible:text-red-400 focus-visible:ring-red-500 dark:focus-visible:ring-offset-red-600 ',
     },
     gradient: {
       linear:
@@ -23,7 +24,8 @@ export default {
       normal: ' btn-orange focus-visible:ring-orange-800 dark:focus-visible:ring-offset-orange-100 ',
       bold: ' btn-bold-orange focus-visible:ring-orange-900 dark:focus-visible:ring-offset-orange-50 ',
       outline: ' btn-outline-orange focus-visible:ring-orange-500 dark:focus-visible:ring-offset-orange-600 ',
-      none: ' text-orange-500 hocus:text-orange-600 hocus:bg-orange-100 focus-visible:text-orange-600 dark:text-orange-300 dark:hover:text-orange-400 dark:focus-visible:text-orange-600/20 dark:focus-visible:text-orange-400 focus-visible:ring-orange-500 dark:focus-visible:ring-offset-orange-600 ',
+      clear: ' btn-clear-orange focus-visible:ring-orange-500 dark:focus-visible:ring-offset-orange-600 ',
+      none: ' text-orange-500 hocus:text-orange-600 focus-visible:text-orange-600 dark:text-orange-300 dark:hover:text-orange-400 dark:focus-visible:text-orange-400 focus-visible:ring-orange-500 dark:focus-visible:ring-offset-orange-600 ',
     },
     gradient: {
       linear:
@@ -39,7 +41,8 @@ export default {
       normal: ' btn-amber focus-visible:ring-amber-800 dark:focus-visible:ring-offset-amber-100 ',
       bold: ' btn-bold-amber focus-visible:ring-amber-900 dark:focus-visible:ring-offset-amber-50 ',
       outline: ' btn-outline-amber focus-visible:ring-amber-500 dark:focus-visible:ring-offset-amber-600 ',
-      none: ' text-amber-500 hocus:text-amber-600 hocus:bg-amber-100 focus-visible:text-amber-600 dark:text-amber-300 dark:hover:text-amber-400 dark:focus-visible:text-amber-600/20 dark:focus-visible:text-amber-400 focus-visible:ring-amber-500 dark:focus-visible:ring-offset-amber-600 ',
+      clear: ' btn-clear-amber focus-visible:ring-amber-500 dark:focus-visible:ring-offset-amber-600 ',
+      none: ' text-amber-500 hocus:text-amber-600 focus-visible:text-amber-600 dark:text-amber-300 dark:hover:text-amber-400 dark:focus-visible:text-amber-400 focus-visible:ring-amber-500 dark:focus-visible:ring-offset-amber-600 ',
     },
     gradient: {
       linear:
@@ -55,7 +58,8 @@ export default {
       normal: ' btn-yellow focus-visible:ring-yellow-800 dark:focus-visible:ring-offset-yellow-100 ',
       bold: ' btn-bold-yellow focus-visible:ring-yellow-900 dark:focus-visible:ring-offset-yellow-50 ',
       outline: ' btn-outline-yellow focus-visible:ring-yellow-500 dark:focus-visible:ring-offset-yellow-600 ',
-      none: ' text-yellow-500 hocus:text-yellow-600 hocus:bg-yellow-100 focus-visible:text-yellow-600 dark:text-yellow-300 dark:hover:text-yellow-400 dark:focus-visible:text-yellow-600/20 dark:focus-visible:text-yellow-400 focus-visible:ring-yellow-500 dark:focus-visible:ring-offset-yellow-600 ',
+      clear: ' btn-clear-yellow focus-visible:ring-yellow-500 dark:focus-visible:ring-offset-yellow-600 ',
+      none: ' text-yellow-500 hocus:text-yellow-600 focus-visible:text-yellow-600 dark:text-yellow-300 dark:hover:text-yellow-400 dark:focus-visible:text-yellow-400 focus-visible:ring-yellow-500 dark:focus-visible:ring-offset-yellow-600 ',
     },
     gradient: {
       linear:
@@ -71,7 +75,8 @@ export default {
       normal: ' btn-lime focus-visible:ring-lime-800 dark:focus-visible:ring-offset-lime-100 ',
       bold: ' btn-bold-lime focus-visible:ring-lime-900 dark:focus-visible:ring-offset-lime-50 ',
       outline: ' btn-outline-lime focus-visible:ring-lime-500 dark:focus-visible:ring-offset-lime-600 ',
-      none: ' text-lime-500 hocus:text-lime-600 hocus:bg-lime-100 focus-visible:text-lime-600 dark:text-lime-300 dark:hover:text-lime-400 dark:focus-visible:text-lime-600/20 dark:focus-visible:text-lime-400 focus-visible:ring-lime-500 dark:focus-visible:ring-offset-lime-600 ',
+      clear: ' btn-clear-lime focus-visible:ring-lime-500 dark:focus-visible:ring-offset-lime-600 ',
+      none: ' text-lime-500 hocus:text-lime-600 focus-visible:text-lime-600 dark:text-lime-300 dark:hover:text-lime-400 dark:focus-visible:text-lime-400 focus-visible:ring-lime-500 dark:focus-visible:ring-offset-lime-600 ',
     },
     gradient: {
       linear:
@@ -87,7 +92,8 @@ export default {
       normal: ' btn-green focus-visible:ring-green-800 dark:focus-visible:ring-offset-green-100 ',
       bold: ' btn-bold-green focus-visible:ring-green-900 dark:focus-visible:ring-offset-green-50 ',
       outline: ' btn-outline-green focus-visible:ring-green-500 dark:focus-visible:ring-offset-green-600 ',
-      none: ' text-green-500 hocus:text-green-600 hocus:bg-green-100 focus-visible:text-green-600 dark:text-green-300 dark:hover:text-green-400 dark:focus-visible:text-green-600/20 dark:focus-visible:text-green-400 focus-visible:ring-green-500 dark:focus-visible:ring-offset-green-600 ',
+      clear: ' btn-clear-green focus-visible:ring-green-500 dark:focus-visible:ring-offset-green-600 ',
+      none: ' text-green-500 hocus:text-green-600 focus-visible:text-green-600 dark:text-green-300 dark:hover:text-green-400 dark:focus-visible:text-green-400 focus-visible:ring-green-500 dark:focus-visible:ring-offset-green-600 ',
     },
     gradient: {
       linear:
@@ -103,7 +109,8 @@ export default {
       normal: ' btn-emerald focus-visible:ring-emerald-800 dark:focus-visible:ring-offset-emerald-100 ',
       bold: ' btn-bold-emerald focus-visible:ring-emerald-900 dark:focus-visible:ring-offset-emerald-50 ',
       outline: ' btn-outline-emerald focus-visible:ring-emerald-500 dark:focus-visible:ring-offset-emerald-600 ',
-      none: ' text-emerald-500 hocus:text-emerald-600 hocus:bg-emerald-100 focus-visible:text-emerald-600 dark:text-emerald-300 dark:hover:text-emerald-400 dark:focus-visible:text-emerald-600/20 dark:focus-visible:text-emerald-400 focus-visible:ring-emerald-500 dark:focus-visible:ring-offset-emerald-600 ',
+      clear: ' btn-clear-emerald focus-visible:ring-emerald-500 dark:focus-visible:ring-offset-emerald-600 ',
+      none: ' text-emerald-500 hocus:text-emerald-600 focus-visible:text-emerald-600 dark:text-emerald-300 dark:hover:text-emerald-400 dark:focus-visible:text-emerald-400 focus-visible:ring-emerald-500 dark:focus-visible:ring-offset-emerald-600 ',
     },
     gradient: {
       linear:
@@ -119,7 +126,8 @@ export default {
       normal: ' btn-teal focus-visible:ring-teal-800 dark:focus-visible:ring-offset-teal-100 ',
       bold: ' btn-bold-teal focus-visible:ring-teal-900 dark:focus-visible:ring-offset-teal-50 ',
       outline: ' btn-outline-teal focus-visible:ring-teal-500 dark:focus-visible:ring-offset-teal-600 ',
-      none: ' text-teal-500 hocus:text-teal-600 hocus:bg-teal-100 focus-visible:text-teal-600 dark:text-teal-300 dark:hover:text-teal-400 dark:focus-visible:text-teal-600/20 dark:focus-visible:text-teal-400 focus-visible:ring-teal-500 dark:focus-visible:ring-offset-teal-600 ',
+      clear: ' btn-clear-teal focus-visible:ring-teal-500 dark:focus-visible:ring-offset-teal-600 ',
+      none: ' text-teal-500 hocus:text-teal-600 focus-visible:text-teal-600 dark:text-teal-300 dark:hover:text-teal-400 dark:focus-visible:text-teal-400 focus-visible:ring-teal-500 dark:focus-visible:ring-offset-teal-600 ',
     },
     gradient: {
       linear:
@@ -135,7 +143,8 @@ export default {
       normal: ' btn-cyan focus-visible:ring-cyan-800 dark:focus-visible:ring-offset-cyan-100 ',
       bold: ' btn-bold-cyan focus-visible:ring-cyan-900 dark:focus-visible:ring-offset-cyan-50 ',
       outline: ' btn-outline-cyan focus-visible:ring-cyan-500 dark:focus-visible:ring-offset-cyan-600 ',
-      none: ' text-cyan-500 hocus:text-cyan-600 hocus:bg-cyan-100 focus-visible:text-cyan-600 dark:text-cyan-300 dark:hover:text-cyan-400 dark:focus-visible:text-cyan-600/20 dark:focus-visible:text-cyan-400 focus-visible:ring-cyan-500 dark:focus-visible:ring-offset-cyan-600 ',
+      clear: ' btn-clear-cyan focus-visible:ring-cyan-500 dark:focus-visible:ring-offset-cyan-600 ',
+      none: ' text-cyan-500 hocus:text-cyan-600 focus-visible:text-cyan-600 dark:text-cyan-300 dark:hover:text-cyan-400 dark:focus-visible:text-cyan-400 focus-visible:ring-cyan-500 dark:focus-visible:ring-offset-cyan-600 ',
     },
     gradient: {
       linear:
@@ -151,7 +160,8 @@ export default {
       normal: ' btn-sky focus-visible:ring-sky-800 dark:focus-visible:ring-offset-sky-100 ',
       bold: ' btn-bold-sky focus-visible:ring-sky-900 dark:focus-visible:ring-offset-sky-50 ',
       outline: ' btn-outline-sky focus-visible:ring-sky-500 dark:focus-visible:ring-offset-sky-600 ',
-      none: ' text-sky-500 hocus:text-sky-600 hocus:bg-sky-100 focus-visible:text-sky-600 dark:text-sky-300 dark:hover:text-sky-400 dark:focus-visible:text-sky-600/20 dark:focus-visible:text-sky-400 focus-visible:ring-sky-500 dark:focus-visible:ring-offset-sky-600 ',
+      clear: ' btn-clear-sky focus-visible:ring-sky-500 dark:focus-visible:ring-offset-sky-600 ',
+      none: ' text-sky-500 hocus:text-sky-600 focus-visible:text-sky-600 dark:text-sky-300 dark:hover:text-sky-400 dark:focus-visible:text-sky-400 focus-visible:ring-sky-500 dark:focus-visible:ring-offset-sky-600 ',
     },
     gradient: {
       linear:
@@ -167,7 +177,8 @@ export default {
       normal: ' btn-blue focus-visible:ring-blue-800 dark:focus-visible:ring-offset-blue-100 ',
       bold: ' btn-bold-blue focus-visible:ring-blue-900 dark:focus-visible:ring-offset-blue-50 ',
       outline: ' btn-outline-blue focus-visible:ring-blue-500 dark:focus-visible:ring-offset-blue-600 ',
-      none: ' text-blue-500 hocus:text-blue-600 hocus:bg-blue-100 focus-visible:text-blue-600 dark:text-blue-300 dark:hover:text-blue-400 dark:focus-visible:text-blue-600/20 dark:focus-visible:text-blue-400 focus-visible:ring-blue-500 dark:focus-visible:ring-offset-blue-600 ',
+      clear: ' btn-clear-blue focus-visible:ring-blue-500 dark:focus-visible:ring-offset-blue-600 ',
+      none: ' text-blue-500 hocus:text-blue-600 focus-visible:text-blue-600 dark:text-blue-300 dark:hover:text-blue-400 dark:focus-visible:text-blue-400 focus-visible:ring-blue-500 dark:focus-visible:ring-offset-blue-600 ',
     },
     gradient: {
       linear:
@@ -183,7 +194,8 @@ export default {
       normal: ' btn-indigo focus-visible:ring-indigo-800 dark:focus-visible:ring-offset-indigo-100 ',
       bold: ' btn-bold-indigo focus-visible:ring-indigo-900 dark:focus-visible:ring-offset-indigo-50 ',
       outline: ' btn-outline-indigo focus-visible:ring-indigo-500 dark:focus-visible:ring-offset-indigo-600 ',
-      none: ' text-indigo-500 hocus:text-indigo-600 hocus:bg-indigo-100 focus-visible:text-indigo-600 dark:text-indigo-300 dark:hover:text-indigo-400 dark:focus-visible:text-indigo-600/20 dark:focus-visible:text-indigo-400 focus-visible:ring-indigo-500 dark:focus-visible:ring-offset-indigo-600 ',
+      clear: ' btn-clear-indigo focus-visible:ring-indigo-500 dark:focus-visible:ring-offset-indigo-600 ',
+      none: ' text-indigo-500 hocus:text-indigo-600 focus-visible:text-indigo-600 dark:text-indigo-300 dark:hover:text-indigo-400 dark:focus-visible:text-indigo-400 focus-visible:ring-indigo-500 dark:focus-visible:ring-offset-indigo-600 ',
     },
     gradient: {
       linear:
@@ -199,7 +211,8 @@ export default {
       normal: ' btn-violet focus-visible:ring-violet-800 dark:focus-visible:ring-offset-violet-100 ',
       bold: ' btn-bold-violet focus-visible:ring-violet-900 dark:focus-visible:ring-offset-violet-50 ',
       outline: ' btn-outline-violet focus-visible:ring-violet-500 dark:focus-visible:ring-offset-violet-600 ',
-      none: ' text-violet-500 hocus:text-violet-600 hocus:bg-violet-100 focus-visible:text-violet-600 dark:text-violet-300 dark:hover:text-violet-400 dark:focus-visible:text-violet-600/20 dark:focus-visible:text-violet-400 focus-visible:ring-violet-500 dark:focus-visible:ring-offset-violet-600 ',
+      clear: ' btn-clear-violet focus-visible:ring-violet-500 dark:focus-visible:ring-offset-violet-600 ',
+      none: ' text-violet-500 hocus:text-violet-600 focus-visible:text-violet-600 dark:text-violet-300 dark:hover:text-violet-400 dark:focus-visible:text-violet-400 focus-visible:ring-violet-500 dark:focus-visible:ring-offset-violet-600 ',
     },
     gradient: {
       linear:
@@ -215,7 +228,8 @@ export default {
       normal: ' btn-purple focus-visible:ring-purple-800 dark:focus-visible:ring-offset-purple-100 ',
       bold: ' btn-bold-purple focus-visible:ring-purple-900 dark:focus-visible:ring-offset-purple-50 ',
       outline: ' btn-outline-purple focus-visible:ring-purple-500 dark:focus-visible:ring-offset-purple-600 ',
-      none: ' text-purple-500 hocus:text-purple-600 hocus:bg-purple-100 focus-visible:text-purple-600 dark:text-purple-300 dark:hover:text-purple-400 dark:focus-visible:text-purple-600/20 dark:focus-visible:text-purple-400 focus-visible:ring-purple-500 dark:focus-visible:ring-offset-purple-600 ',
+      clear: ' btn-clear-purple focus-visible:ring-purple-500 dark:focus-visible:ring-offset-purple-600 ',
+      none: ' text-purple-500 hocus:text-purple-600 focus-visible:text-purple-600 dark:text-purple-300 dark:hover:text-purple-400 dark:focus-visible:text-purple-400 focus-visible:ring-purple-500 dark:focus-visible:ring-offset-purple-600 ',
     },
     gradient: {
       linear:
@@ -231,7 +245,8 @@ export default {
       normal: ' btn-fuchsia focus-visible:ring-fuchsia-800 dark:focus-visible:ring-offset-fuchsia-100 ',
       bold: ' btn-bold-fuchsia focus-visible:ring-fuchsia-900 dark:focus-visible:ring-offset-fuchsia-50 ',
       outline: ' btn-outline-fuchsia focus-visible:ring-fuchsia-500 dark:focus-visible:ring-offset-fuchsia-600 ',
-      none: ' text-fuchsia-500 hocus:text-fuchsia-600 hocus:bg-fuchsia-100 focus-visible:text-fuchsia-600 dark:text-fuchsia-300 dark:hover:text-fuchsia-400 dark:focus-visible:text-fuchsia-600/20 dark:focus-visible:text-fuchsia-400 focus-visible:ring-fuchsia-500 dark:focus-visible:ring-offset-fuchsia-600 ',
+      clear: ' btn-clear-fuchsia focus-visible:ring-fuchsia-500 dark:focus-visible:ring-offset-fuchsia-600 ',
+      none: ' text-fuchsia-500 hocus:text-fuchsia-600 focus-visible:text-fuchsia-600 dark:text-fuchsia-300 dark:hover:text-fuchsia-400 dark:focus-visible:text-fuchsia-400 focus-visible:ring-fuchsia-500 dark:focus-visible:ring-offset-fuchsia-600 ',
     },
     gradient: {
       linear:
@@ -247,7 +262,8 @@ export default {
       normal: ' btn-pink focus-visible:ring-pink-800 dark:focus-visible:ring-offset-pink-100 ',
       bold: ' btn-bold-pink focus-visible:ring-pink-900 dark:focus-visible:ring-offset-pink-50 ',
       outline: ' btn-outline-pink focus-visible:ring-pink-500 dark:focus-visible:ring-offset-pink-600 ',
-      none: ' text-pink-500 hocus:text-pink-600 hocus:bg-pink-100 focus-visible:text-pink-600 dark:text-pink-300 dark:hover:text-pink-400 dark:focus-visible:text-pink-600/20 dark:focus-visible:text-pink-400 focus-visible:ring-pink-500 dark:focus-visible:ring-offset-pink-600 ',
+      clear: ' btn-clear-pink focus-visible:ring-pink-500 dark:focus-visible:ring-offset-pink-600 ',
+      none: ' text-pink-500 hocus:text-pink-600 focus-visible:text-pink-600 dark:text-pink-300 dark:hover:text-pink-400 dark:focus-visible:text-pink-400 focus-visible:ring-pink-500 dark:focus-visible:ring-offset-pink-600 ',
     },
     gradient: {
       linear:
@@ -263,7 +279,8 @@ export default {
       normal: ' btn-rose focus-visible:ring-rose-800 dark:focus-visible:ring-offset-rose-100 ',
       bold: ' btn-bold-rose focus-visible:ring-rose-900 dark:focus-visible:ring-offset-rose-50 ',
       outline: ' btn-outline-rose focus-visible:ring-rose-500 dark:focus-visible:ring-offset-rose-600 ',
-      none: ' text-rose-500 hocus:text-rose-600 hocus:bg-rose-100 focus-visible:text-rose-600 dark:text-rose-300 dark:hover:text-rose-400 dark:focus-visible:text-rose-600/20 dark:focus-visible:text-rose-400 focus-visible:ring-rose-500 dark:focus-visible:ring-offset-rose-600 ',
+      clear: ' btn-clear-rose focus-visible:ring-rose-500 dark:focus-visible:ring-offset-rose-600 ',
+      none: ' text-rose-500 hocus:text-rose-600 focus-visible:text-rose-600 dark:text-rose-300 dark:hover:text-rose-400 dark:focus-visible:text-rose-400 focus-visible:ring-rose-500 dark:focus-visible:ring-offset-rose-600 ',
     },
     gradient: {
       linear:
@@ -279,7 +296,8 @@ export default {
       normal: ' btn-gray focus-visible:ring-gray-800 dark:focus-visible:ring-offset-gray-100 ',
       bold: ' btn-bold-gray focus-visible:ring-gray-900 dark:focus-visible:ring-offset-gray-50 ',
       outline: ' btn-outline-gray focus-visible:ring-gray-500 dark:focus-visible:ring-offset-gray-600 ',
-      none: ' text-gray-500 hocus:text-gray-600 hocus:bg-gray-100 focus-visible:text-gray-600 dark:text-gray-300 dark:hover:text-gray-400 dark:focus-visible:text-gray-600/20 dark:focus-visible:text-gray-400 focus-visible:ring-gray-500 dark:focus-visible:ring-offset-gray-600 ',
+      clear: ' btn-clear-gray focus-visible:ring-gray-500 dark:focus-visible:ring-offset-gray-600 ',
+      none: ' text-gray-500 hocus:text-gray-600 focus-visible:text-gray-600 dark:text-gray-300 dark:hover:text-gray-400 dark:focus-visible:text-gray-400 focus-visible:ring-gray-500 dark:focus-visible:ring-offset-gray-600 ',
     },
     gradient: {
       linear:
@@ -295,7 +313,8 @@ export default {
       normal: ' btn-slate focus-visible:ring-slate-800 dark:focus-visible:ring-offset-slate-100 ',
       bold: ' btn-bold-slate focus-visible:ring-slate-900 dark:focus-visible:ring-offset-slate-50 ',
       outline: ' btn-outline-slate focus-visible:ring-slate-500 dark:focus-visible:ring-offset-slate-600 ',
-      none: ' text-slate-500 hocus:text-slate-600 hocus:bg-slate-100 focus-visible:text-slate-600 dark:text-slate-300 dark:hover:text-slate-400 dark:focus-visible:text-slate-600/20 dark:focus-visible:text-slate-400 focus-visible:ring-slate-500 dark:focus-visible:ring-offset-slate-600 ',
+      clear: ' btn-clear-slate focus-visible:ring-slate-500 dark:focus-visible:ring-offset-slate-600 ',
+      none: ' text-slate-500 hocus:text-slate-600 focus-visible:text-slate-600 dark:text-slate-300 dark:hover:text-slate-400 dark:focus-visible:text-slate-400 focus-visible:ring-slate-500 dark:focus-visible:ring-offset-slate-600 ',
     },
     gradient: {
       linear:
@@ -311,7 +330,8 @@ export default {
       normal: ' btn-zinc focus-visible:ring-zinc-800 dark:focus-visible:ring-offset-zinc-100 ',
       bold: ' btn-bold-zinc focus-visible:ring-zinc-900 dark:focus-visible:ring-offset-zinc-50 ',
       outline: ' btn-outline-zinc focus-visible:ring-zinc-500 dark:focus-visible:ring-offset-zinc-600 ',
-      none: ' text-zinc-500 hocus:text-zinc-600 hocus:bg-zinc-100 focus-visible:text-zinc-600 dark:text-zinc-300 dark:hover:text-zinc-400 dark:focus-visible:text-zinc-600/20 dark:focus-visible:text-zinc-400 focus-visible:ring-zinc-500 dark:focus-visible:ring-offset-zinc-600 ',
+      clear: ' btn-clear-zinc focus-visible:ring-zinc-500 dark:focus-visible:ring-offset-zinc-600 ',
+      none: ' text-zinc-500 hocus:text-zinc-600 focus-visible:text-zinc-600 dark:text-zinc-300 dark:hover:text-zinc-400 dark:focus-visible:text-zinc-400 focus-visible:ring-zinc-500 dark:focus-visible:ring-offset-zinc-600 ',
     },
     gradient: {
       linear:
@@ -327,7 +347,8 @@ export default {
       normal: ' btn-neutral focus-visible:ring-neutral-800 dark:focus-visible:ring-offset-neutral-100 ',
       bold: ' btn-bold-neutral focus-visible:ring-neutral-900 dark:focus-visible:ring-offset-neutral-50 ',
       outline: ' btn-outline-neutral focus-visible:ring-neutral-500 dark:focus-visible:ring-offset-neutral-600 ',
-      none: ' text-neutral-500 hocus:text-neutral-600 hocus:bg-neutral-100 focus-visible:text-neutral-600 dark:text-neutral-300 dark:hover:text-neutral-400 dark:focus-visible:text-neutral-600/20 dark:focus-visible:text-neutral-400 focus-visible:ring-neutral-500 dark:focus-visible:ring-offset-neutral-600 ',
+      clear: ' btn-clear-neutral focus-visible:ring-neutral-500 dark:focus-visible:ring-offset-neutral-600 ',
+      none: ' text-neutral-500 hocus:text-neutral-600 focus-visible:text-neutral-600 dark:text-neutral-300 dark:hover:text-neutral-400 dark:focus-visible:text-neutral-400 focus-visible:ring-neutral-500 dark:focus-visible:ring-offset-neutral-600 ',
     },
     gradient: {
       linear:
@@ -343,7 +364,8 @@ export default {
       normal: ' btn-stone focus-visible:ring-stone-800 dark:focus-visible:ring-offset-stone-100 ',
       bold: ' btn-bold-stone focus-visible:ring-stone-900 dark:focus-visible:ring-offset-stone-50 ',
       outline: ' btn-outline-stone focus-visible:ring-stone-500 dark:focus-visible:ring-offset-stone-600 ',
-      none: ' text-stone-500 hocus:text-stone-600 hocus:bg-stone-100 focus-visible:text-stone-600 dark:text-stone-300 dark:hover:text-stone-400 dark:focus-visible:text-stone-600/20 dark:focus-visible:text-stone-400 focus-visible:ring-stone-500 dark:focus-visible:ring-offset-stone-600 ',
+      clear: ' btn-clear-stone focus-visible:ring-stone-500 dark:focus-visible:ring-offset-stone-600 ',
+      none: ' text-stone-500 hocus:text-stone-600 focus-visible:text-stone-600 dark:text-stone-300 dark:hover:text-stone-400 dark:focus-visible:text-stone-400 focus-visible:ring-stone-500 dark:focus-visible:ring-offset-stone-600 ',
     },
     gradient: {
       linear:

@@ -117,6 +117,7 @@ export interface FluidButtonWeights {
   normal: string;
   bold: string;
   outline: string;
+  clear: string;
   none: string;
 }
 
