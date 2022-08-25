@@ -16,29 +16,10 @@ import { HiOutlineDotsHorizontal } from 'react-icons/hi';
 import { useTheme } from '../FluidUI/ThemeContext';
 import { excludeClassName } from '../../helpers/exclude';
 
-export interface ButtonProps extends PropsWithChildren<ComponentProps<'button'>> {
-  color?: keyof FluidButtonColors;
-  size?: keyof FluidButtonSizes;
-  weight?: keyof FluidButtonWeights;
-  /**
-   * iconOnly: adjust the padding to be the same for all edges
-   *
-   * @default false
-   */
-  iconOnly?: boolean;
-  isLoading?: boolean;
-  shape?: keyof FluidButtonShapes;
-  gradient?: keyof FluidButtonColorOptions['gradient'] | undefined;
-  loadingOptions?: {
-    animation?: keyof FulidButtonLoadingOptions['animation'];
-    text?: string;
-  };
-  children?: React.ReactNode;
-  [key: string]: any;
-}
 export const Button = ({
   color = 'gray',
   size = 'md',
+  sr = undefined,
   shape = 'round',
   weight = 'normal',
   iconOnly = false,
@@ -71,6 +52,7 @@ export const Button = ({
       type={isLink ? undefined : 'button'}
       {...theirProps}
     >
+      {sr && <span className="sr-only">{sr}</span>}
       {isLoading && <ButtonLoadingComponent {...{ loadingOptions }} />}
       <div
         className={clsxm(
@@ -114,3 +96,55 @@ const ButtonLoadingComponent = ({
     </div>
   );
 };
+
+export interface ButtonProps extends PropsWithChildren<ComponentProps<'button'>> {
+  /**
+   * The color of the button.
+   * @default 'gray'
+   * @type {FluidButtonColorOptions}
+   */
+  color?: keyof FluidButtonColors;
+  /**
+   * sr: screen reader only
+   */
+  sr?: string | undefined;
+  size?: keyof FluidButtonSizes;
+  /**
+   * wieght: The appearance of the button.
+   * @default 'normal'
+   *
+   * @type {'light' | 'normal' | 'bold' | 'outline' | 'clear' | 'none'}
+   */
+  weight?: keyof FluidButtonWeights;
+  /**
+   * Adjust the padding to be the same for all edges
+   *
+   * @default false
+   */
+  iconOnly?: boolean;
+  /**
+   * isLoading: Whether the button is loading or not.
+   * @default false
+   * @type {boolean}
+   * @memberof ButtonProps
+   */
+  isLoading?: boolean;
+  /**
+   * shape: The shape of the button.
+   * @default 'round'
+   * @type {'pill' | 'round' | 'square'}
+   */
+  shape?: keyof FluidButtonShapes;
+  gradient?: keyof FluidButtonColorOptions['gradient'] | undefined;
+  /**
+   * loadingOptions: The options for the loading animation.
+   * @type {FulidButtonLoadingOptions}
+   * @memberof ButtonProps
+   */
+  loadingOptions?: {
+    animation?: keyof FulidButtonLoadingOptions['animation'];
+    text?: string;
+  };
+  children?: React.ReactNode;
+  [key: string]: any;
+}
