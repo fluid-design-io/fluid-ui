@@ -117,7 +117,14 @@ export interface FluidButtonWeights {
   normal: string;
   bold: string;
   outline: string;
+  /**
+   * The initial state background color will be transparent.
+   * When hovered or focused, it will show a light background color.
+   */
   clear: string;
+  /**
+   * There will be no background color.
+   */
   none: string;
 }
 
