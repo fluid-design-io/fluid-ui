@@ -41,11 +41,11 @@ const getNone = (color: string) =>
   `
     text-${color}-500
     hocus:text-${color}-600
-    focus-visible:text-${color}-600
+    active:text-${color}-700
 
     dark:text-${color}-300
-    dark:hover:text-${color}-400
-    dark:focus-visible:text-${color}-400
+    dark:hocus:text-${color}-200
+    dark:active:text-${color}-100
 
     focus-visible:ring-${color}-500
     dark:focus-visible:ring-offset-${color}-600
