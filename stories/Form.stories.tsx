@@ -135,6 +135,9 @@ const Template: Story<StoryButtonProps> = (args) => {
           <button className="p-2 rounded-full m-8 btn-clear-red" data-tooltip-bottom="Hi there! How are you doing?">
             <HiTrash />
           </button>
+          <Button weight="clear" color="blue" iconOnly>
+            <HiInformationCircle />
+          </Button>
         </div>
       </div>
     </>
