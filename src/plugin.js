@@ -354,8 +354,8 @@ const buttonUtilities = (theme) => {
         hocus: { value, step: 100, bw: false },
         active: { value, step: { step: 200, alpha: 85 } },
         disabled: { value, step: { step: 50, alpha: 50 } },
-        textHocus: { value: getColor(value, 500), step: 400, bw: false },
-        textActive: { value: getColor(value, 600), step: 100, bw: true },
+        textHocus: { value: getColor(value, 500), step: 0, bw: false }, // step is not calculated when value is a hex string
+        textActive: { value: getColor(value, 600), step: 0, bw: true },
       }),
       '.dark &': {
         ...generateTxtBg(value, { step: 900, alpha: 0.01 }, false, getColor(value, 400), 50, false),
@@ -363,8 +363,8 @@ const buttonUtilities = (theme) => {
           hocus: { value, step: { step: 600, alpha: 35 }, bw: false },
           active: { value, step: { step: 700, alpha: 40 } },
           disabled: { value, step: { step: 700, alpha: 700 } },
-          textHocus: { value: getColor(value, 600), step: 600, bw: false },
-          textActive: { value: getColor(value, 500), step: 700, bw: false },
+          textHocus: { value: getColor(value, 300), step: 0, bw: false },
+          textActive: { value: getColor(value, 200), step: 0, bw: false },
         }),
       },
       ...generateCMClass({
