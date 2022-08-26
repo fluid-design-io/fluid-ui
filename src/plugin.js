@@ -128,13 +128,13 @@ const getLuminance = (hsla) => {
 const checkDarkness = (hsla, newColor = hsla, mode = 'dark', loop = 0) => {
   const originalLuminance = getLuminance(hsla);
   const newLuminance = getLuminance(newColor);
-  loop > 7 && console.log(`
+  /* loop > 7 && console.log(`
     ---------
     mode: ${mode}, color: ${hsla}, newColor: ${newColor}
     originalLuminance: ${originalLuminance}, newLuminance: ${newLuminance},
     difference: ${Math.abs(originalLuminance - newLuminance)}
     ---------
-  `);
+  `); */
   if (loop >= 10) {
     return newColor;
   }
