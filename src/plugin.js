@@ -42,15 +42,6 @@ const getRGB = (color) => {
     return color;
   }
 };
-const combineAlpha = (color, alpha) => {
-  // convert hex color to rgb
-  const [r, g, b] = getRGB(color);
-  // if alpha is larger than 1, divide by 100 to get the percentage
-  alpha = alpha ? (alpha > 1 ? alpha / 100 : alpha) : 1;
-  // console.log(`recieved ${color} and ${alpha}`);
-  color = `rgba(${r}, ${g}, ${b}, ${alpha})`;
-  return color;
-};
 const hexToRgb = (color) => {
   const hex = color.replace('#', '');
   const r = parseInt(hex.substring(0, 2), 16);
@@ -62,27 +53,37 @@ const rgbToHsl = (r, g, b, a = 1) => {
   r /= 255;
   g /= 255;
   b /= 255;
-  a > 1 ? a /= 100 : a;
+  if (a > 1) a /= 100;
   const max = Math.max(r, g, b);
   const min = Math.min(r, g, b);
-  let h, s, l = (max + min) / 2;
+  let h,
+    s,
+    l = (max + min) / 2;
   if (max === min) {
     h = s = 0; // achromatic
   } else {
     const d = max - min;
     s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
     switch (max) {
-      case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-      case g: h = (b - r) / d + 2; break;
-      case b: h = (r - g) / d + 4; break;
+      case r:
+        h = (g - b) / d + (g < b ? 6 : 0);
+        break;
+      case g:
+        h = (b - r) / d + 2;
+        break;
+      case b:
+        h = (r - g) / d + 4;
+        break;
+      default:
+        break;
     }
     h /= 6;
   }
   // round to 2 decimal places
   return [rounded(h), rounded(s), rounded(l), a];
-}
+};
 const rounded = (num) => Math.round(num * 100) / 100;
-const hslToRgb = (h, s, l) => {
+/* const hslToRgb = (h, s, l) => {
   let r, g, b;
   if (s === 0) {
     r = g = b = l; // achromatic
@@ -94,7 +95,7 @@ const hslToRgb = (h, s, l) => {
       if (t < 1 / 2) return q;
       if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
       return p;
-    }
+    };
     const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
     const p = 2 * l - q;
     r = hue2rgb(p, q, h + 1 / 3);
@@ -102,21 +103,21 @@ const hslToRgb = (h, s, l) => {
     b = hue2rgb(p, q, h - 1 / 3);
   }
   return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
-}
+}; */
 
 const changeColor = (mode = 'dark', hsla) => {
   const amount = 0.1;
   let [h, s, l, a] = hsla;
   // change the color
   if (mode === 'dark') {
-    l -= (amount);
+    l -= amount;
     l = l < 0 ? 0 : l;
-    s *= 0.9
+    s *= 0.9;
   }
   if (mode === 'light') {
-    l += (amount);
+    l += amount;
     l = l > 1 ? 1 : l;
-    s *= 0.9
+    s *= 0.9;
   }
   return [h, rounded(s), rounded(l), a];
 };
@@ -138,7 +139,7 @@ const checkDarkness = (hsla, newColor = hsla, mode = 'dark', loop = 0) => {
   if (loop >= 10) {
     return newColor;
   }
-  if (Math.abs(originalLuminance - newLuminance) > (.5 * hsla[3]) || newLuminance > .95 || newLuminance < .05) {
+  if (Math.abs(originalLuminance - newLuminance) > 0.5 * hsla[3] || newLuminance > 0.95 || newLuminance < 0.05) {
     return newColor;
   } else {
     return checkDarkness(hsla, changeColor(mode, newColor), mode, loop + 1);
@@ -160,21 +161,23 @@ const contrastColor = (value, step = undefined, blackWhite = false) => {
     } else {
       const hsla = getColor(value, step, alpha);
       // alpha && console.log(`${value[step]}:${color}`)
-      const isLight = getLuminance(hsla) > (0.468 * hsla[3]);
+      const isLight = getLuminance(hsla) > 0.468 * hsla[3];
       // alpha && console.log(`Luminance ${value[step]}:${isLight}`);
       return isLight
         ? blackWhite
           ? '#000'
           : checkDarkness(hsla, undefined, 'dark')
         : blackWhite
-          ? '#FFF'
-          : checkDarkness(hsla, undefined, 'light');
+        ? '#FFF'
+        : checkDarkness(hsla, undefined, 'light');
     }
   }
   return value;
 };
 const getColor = (value, step = undefined, alpha = 1) => {
-  alpha > 1 ? alpha /= 100 : alpha;
+  if (alpha > 1) {
+    alpha /= 100;
+  }
   if (typeof value === 'string') {
     return value;
   }
@@ -195,7 +198,7 @@ const toColor = (value) => {
     return `hsla(${value[0] * 360}, ${value[1] * 100}%, ${value[2] * 100}%, ${value[3]})`;
   }
   return value;
-}
+};
 const generateTxtBg = (
   value,
   step,
