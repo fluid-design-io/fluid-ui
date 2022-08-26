@@ -218,6 +218,7 @@ const generateTxtBg = (
   return {
     'background-color': toColor(getColor(value, step, alpha)),
     color: toColor(contrastColor(textValue, textStep, textBW)),
+    transition: 'all 0.15s ease-in-out',
   };
 };
 const generateTxtStates = (value, { hocus, active, disabled, textHocus, textActive, textDisabled }) => ({
@@ -300,7 +301,7 @@ const buttonUtilities = (theme) => {
     /* ==== END NORMAL BUTTON ==== */
     /* ==== START LIGHT BUTTON ==== */
     'btn-light': (value) => ({
-      ...generateTxtBg(value, { step: 100, alpha: 80 }),
+      ...generateTxtBg(value, { step: 100, alpha: 80 }, false, value, { step: 200, alpha: 90 }, false),
       ...generateTxtStates(value, {
         hocus: { value, step: 200 },
         active: { value, step: { step: 400, alpha: 65 } },

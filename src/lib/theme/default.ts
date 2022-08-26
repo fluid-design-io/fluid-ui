@@ -24,7 +24,7 @@ export default {
     },
   },
   button: {
-    base: 'flex justify-center items-center h-min w-fit text-center transition-colors transition-opacity gap-2 relative [-webkit-tap-highlight-color:transparent]',
+    base: 'flex justify-center items-center h-min w-fit text-center gap-2 relative [-webkit-tap-highlight-color:transparent]',
     shape: {
       pill: {
         xs: 'px-3.5 py-1.5 text-xs rounded-full',

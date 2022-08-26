@@ -6,7 +6,7 @@ module.exports = {
   darkMode: 'class',
   corePlugins: {
     // preflight: process.env.NODE_ENV === 'production' ? false : true,
-    preflight: false, // For dev environment
+    preflight: false, // For prod environment
   },
   theme: {
     extend: {

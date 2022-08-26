@@ -16058,10 +16058,10 @@ table@^5.2.3:
     slice-ansi "^2.1.0"
     string-width "^3.0.0"
 
-tailwind-merge@^1.5.1:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/tailwind-merge/-/tailwind-merge-1.5.1.tgz#fb7d6b724aef702b11fd01fddf1be1d8aeab3d7a"
-  integrity sha512-lqmJS6+3vsNQY77TMMRBVFbWyMcIAAD/09Vs+IXCt3cza58/O7X5DBbOu+7p6LPhw0efK45LL8kAJ7IORccMag==
+tailwind-merge@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/tailwind-merge/-/tailwind-merge-1.6.0.tgz#dd652005544aa0b04628e69688b7108265f0d441"
+  integrity sha512-lfpys05uZMcVGIbgrrM/HlQGYKiPIcUhs76H1VrXo0gerpYkoLk4zjQTppdyAcBcmpzlzXJw7X0JniUKOr2hkg==
 
 tailwindcss@^3.1.6:
   version "3.1.8"

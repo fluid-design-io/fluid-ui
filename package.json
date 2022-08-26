@@ -57,7 +57,7 @@
     "framer-motion": "^6.5.1",
     "react-icons": "^4.3.1",
     "react-textarea-autosize": "^8.3.4",
-    "tailwind-merge": "^1.5.1",
+    "tailwind-merge": "^1.6.0",
     "tsdx": "^0.14.1",
     "yup": "^0.32.11"
   },
