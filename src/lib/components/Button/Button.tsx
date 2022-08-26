@@ -30,6 +30,7 @@ export const Button = ({
     text: '',
   },
   href = undefined,
+  className = '',
   children,
   ...props
 }: ButtonProps) => {
@@ -45,7 +46,7 @@ export const Button = ({
         theme.color[color].base,
         iconOnly ? theme.iconOnly[shape][size] : theme.shape[shape][size],
         gradient ? theme.color[color].gradient[gradient] : theme.color[color].weight[weight],
-        props?.className
+        className
       )}
       disabled={props?.disabled || isLoading}
       href={href}
@@ -113,7 +114,7 @@ export interface ButtonProps extends PropsWithChildren<ComponentProps<'button'>>
    * wieght: The appearance of the button.
    * @default 'normal'
    *
-   * @type {'light' | 'normal' | 'bold' | 'outline' | 'clear' | 'none'}
+   * @type {'light' | 'normal' | 'bold' | 'outline' | 'clear' | 'link'}
    */
   weight?: keyof FluidButtonWeights;
   /**

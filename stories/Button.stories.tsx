@@ -84,10 +84,15 @@ Outline.args = {
   weight: 'outline' as keyof FluidButtonWeights,
 };
 
-export const None: Story<StoryButtonProps> = Template.bind({});
-None.storyName = 'Weight None';
-None.args = {
-  weight: 'none' as keyof FluidButtonWeights,
+export const Clear: Story<StoryButtonProps> = Template.bind({});
+Clear.storyName = 'Weight Clear';
+Clear.args = {
+  weight: 'clear' as keyof FluidButtonWeights,
+};
+export const Link: Story<StoryButtonProps> = Template.bind({});
+Link.storyName = 'Weight Link';
+Link.args = {
+  weight: 'link' as keyof FluidButtonWeights,
 };
 
 export const WithIcon: Story<StoryButtonProps> = Template.bind({});

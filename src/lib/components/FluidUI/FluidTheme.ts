@@ -125,7 +125,7 @@ export interface FluidButtonWeights {
   /**
    * There will be no background color.
    */
-  none: string;
+  link: string;
 }
 
 export interface FluidButtonSizes {

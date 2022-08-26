@@ -1,6 +1,6 @@
 export default {
   red: {
-    base: 'select-none motion-safe:transition-all disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
+    base: 'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-[0.9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
     active: 'ring-2 ring-offset-2 ring-offset-red-50 dark:ring-offset-red-800',
     weight: {
       light: ' btn-light-red focus-visible:ring-red-500 dark:focus-visible:ring-offset-red-600 ',
@@ -8,7 +8,7 @@ export default {
       bold: ' btn-bold-red focus-visible:ring-red-900 dark:focus-visible:ring-offset-red-50 ',
       outline: ' btn-outline-red focus-visible:ring-red-500 dark:focus-visible:ring-offset-red-600 ',
       clear: ' btn-clear-red focus-visible:ring-red-500 dark:focus-visible:ring-offset-red-600 ',
-      none: ' text-red-500 hocus:text-red-600 active:text-red-700 dark:text-red-300 dark:hocus:text-red-200 dark:active:text-red-100 focus-visible:ring-red-500 dark:focus-visible:ring-offset-red-600 ',
+      link: ' text-red-500 hocus:text-red-600 active:text-red-700 dark:text-red-300 dark:hocus:text-red-200 dark:active:text-red-100 focus-visible:ring-red-500 dark:focus-visible:ring-offset-red-600 ',
     },
     gradient: {
       linear:
@@ -17,7 +17,7 @@ export default {
     },
   },
   orange: {
-    base: 'select-none motion-safe:transition-all disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
+    base: 'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-[0.9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
     active: 'ring-2 ring-offset-2 ring-offset-orange-50 dark:ring-offset-orange-800',
     weight: {
       light: ' btn-light-orange focus-visible:ring-orange-500 dark:focus-visible:ring-offset-orange-600 ',
@@ -25,7 +25,7 @@ export default {
       bold: ' btn-bold-orange focus-visible:ring-orange-900 dark:focus-visible:ring-offset-orange-50 ',
       outline: ' btn-outline-orange focus-visible:ring-orange-500 dark:focus-visible:ring-offset-orange-600 ',
       clear: ' btn-clear-orange focus-visible:ring-orange-500 dark:focus-visible:ring-offset-orange-600 ',
-      none: ' text-orange-500 hocus:text-orange-600 active:text-orange-700 dark:text-orange-300 dark:hocus:text-orange-200 dark:active:text-orange-100 focus-visible:ring-orange-500 dark:focus-visible:ring-offset-orange-600 ',
+      link: ' text-orange-500 hocus:text-orange-600 active:text-orange-700 dark:text-orange-300 dark:hocus:text-orange-200 dark:active:text-orange-100 focus-visible:ring-orange-500 dark:focus-visible:ring-offset-orange-600 ',
     },
     gradient: {
       linear:
@@ -34,7 +34,7 @@ export default {
     },
   },
   amber: {
-    base: 'select-none motion-safe:transition-all disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
+    base: 'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-[0.9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
     active: 'ring-2 ring-offset-2 ring-offset-amber-50 dark:ring-offset-amber-800',
     weight: {
       light: ' btn-light-amber focus-visible:ring-amber-500 dark:focus-visible:ring-offset-amber-600 ',
@@ -42,7 +42,7 @@ export default {
       bold: ' btn-bold-amber focus-visible:ring-amber-900 dark:focus-visible:ring-offset-amber-50 ',
       outline: ' btn-outline-amber focus-visible:ring-amber-500 dark:focus-visible:ring-offset-amber-600 ',
       clear: ' btn-clear-amber focus-visible:ring-amber-500 dark:focus-visible:ring-offset-amber-600 ',
-      none: ' text-amber-500 hocus:text-amber-600 active:text-amber-700 dark:text-amber-300 dark:hocus:text-amber-200 dark:active:text-amber-100 focus-visible:ring-amber-500 dark:focus-visible:ring-offset-amber-600 ',
+      link: ' text-amber-500 hocus:text-amber-600 active:text-amber-700 dark:text-amber-300 dark:hocus:text-amber-200 dark:active:text-amber-100 focus-visible:ring-amber-500 dark:focus-visible:ring-offset-amber-600 ',
     },
     gradient: {
       linear:
@@ -51,7 +51,7 @@ export default {
     },
   },
   yellow: {
-    base: 'select-none motion-safe:transition-all disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
+    base: 'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-[0.9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
     active: 'ring-2 ring-offset-2 ring-offset-yellow-50 dark:ring-offset-yellow-800',
     weight: {
       light: ' btn-light-yellow focus-visible:ring-yellow-500 dark:focus-visible:ring-offset-yellow-600 ',
@@ -59,7 +59,7 @@ export default {
       bold: ' btn-bold-yellow focus-visible:ring-yellow-900 dark:focus-visible:ring-offset-yellow-50 ',
       outline: ' btn-outline-yellow focus-visible:ring-yellow-500 dark:focus-visible:ring-offset-yellow-600 ',
       clear: ' btn-clear-yellow focus-visible:ring-yellow-500 dark:focus-visible:ring-offset-yellow-600 ',
-      none: ' text-yellow-500 hocus:text-yellow-600 active:text-yellow-700 dark:text-yellow-300 dark:hocus:text-yellow-200 dark:active:text-yellow-100 focus-visible:ring-yellow-500 dark:focus-visible:ring-offset-yellow-600 ',
+      link: ' text-yellow-500 hocus:text-yellow-600 active:text-yellow-700 dark:text-yellow-300 dark:hocus:text-yellow-200 dark:active:text-yellow-100 focus-visible:ring-yellow-500 dark:focus-visible:ring-offset-yellow-600 ',
     },
     gradient: {
       linear:
@@ -68,7 +68,7 @@ export default {
     },
   },
   lime: {
-    base: 'select-none motion-safe:transition-all disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
+    base: 'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-[0.9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
     active: 'ring-2 ring-offset-2 ring-offset-lime-50 dark:ring-offset-lime-800',
     weight: {
       light: ' btn-light-lime focus-visible:ring-lime-500 dark:focus-visible:ring-offset-lime-600 ',
@@ -76,7 +76,7 @@ export default {
       bold: ' btn-bold-lime focus-visible:ring-lime-900 dark:focus-visible:ring-offset-lime-50 ',
       outline: ' btn-outline-lime focus-visible:ring-lime-500 dark:focus-visible:ring-offset-lime-600 ',
       clear: ' btn-clear-lime focus-visible:ring-lime-500 dark:focus-visible:ring-offset-lime-600 ',
-      none: ' text-lime-500 hocus:text-lime-600 active:text-lime-700 dark:text-lime-300 dark:hocus:text-lime-200 dark:active:text-lime-100 focus-visible:ring-lime-500 dark:focus-visible:ring-offset-lime-600 ',
+      link: ' text-lime-500 hocus:text-lime-600 active:text-lime-700 dark:text-lime-300 dark:hocus:text-lime-200 dark:active:text-lime-100 focus-visible:ring-lime-500 dark:focus-visible:ring-offset-lime-600 ',
     },
     gradient: {
       linear:
@@ -85,7 +85,7 @@ export default {
     },
   },
   green: {
-    base: 'select-none motion-safe:transition-all disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
+    base: 'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-[0.9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
     active: 'ring-2 ring-offset-2 ring-offset-green-50 dark:ring-offset-green-800',
     weight: {
       light: ' btn-light-green focus-visible:ring-green-500 dark:focus-visible:ring-offset-green-600 ',
@@ -93,7 +93,7 @@ export default {
       bold: ' btn-bold-green focus-visible:ring-green-900 dark:focus-visible:ring-offset-green-50 ',
       outline: ' btn-outline-green focus-visible:ring-green-500 dark:focus-visible:ring-offset-green-600 ',
       clear: ' btn-clear-green focus-visible:ring-green-500 dark:focus-visible:ring-offset-green-600 ',
-      none: ' text-green-500 hocus:text-green-600 active:text-green-700 dark:text-green-300 dark:hocus:text-green-200 dark:active:text-green-100 focus-visible:ring-green-500 dark:focus-visible:ring-offset-green-600 ',
+      link: ' text-green-500 hocus:text-green-600 active:text-green-700 dark:text-green-300 dark:hocus:text-green-200 dark:active:text-green-100 focus-visible:ring-green-500 dark:focus-visible:ring-offset-green-600 ',
     },
     gradient: {
       linear:
@@ -102,7 +102,7 @@ export default {
     },
   },
   emerald: {
-    base: 'select-none motion-safe:transition-all disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
+    base: 'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-[0.9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
     active: 'ring-2 ring-offset-2 ring-offset-emerald-50 dark:ring-offset-emerald-800',
     weight: {
       light: ' btn-light-emerald focus-visible:ring-emerald-500 dark:focus-visible:ring-offset-emerald-600 ',
@@ -110,7 +110,7 @@ export default {
       bold: ' btn-bold-emerald focus-visible:ring-emerald-900 dark:focus-visible:ring-offset-emerald-50 ',
       outline: ' btn-outline-emerald focus-visible:ring-emerald-500 dark:focus-visible:ring-offset-emerald-600 ',
       clear: ' btn-clear-emerald focus-visible:ring-emerald-500 dark:focus-visible:ring-offset-emerald-600 ',
-      none: ' text-emerald-500 hocus:text-emerald-600 active:text-emerald-700 dark:text-emerald-300 dark:hocus:text-emerald-200 dark:active:text-emerald-100 focus-visible:ring-emerald-500 dark:focus-visible:ring-offset-emerald-600 ',
+      link: ' text-emerald-500 hocus:text-emerald-600 active:text-emerald-700 dark:text-emerald-300 dark:hocus:text-emerald-200 dark:active:text-emerald-100 focus-visible:ring-emerald-500 dark:focus-visible:ring-offset-emerald-600 ',
     },
     gradient: {
       linear:
@@ -119,7 +119,7 @@ export default {
     },
   },
   teal: {
-    base: 'select-none motion-safe:transition-all disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
+    base: 'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-[0.9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
     active: 'ring-2 ring-offset-2 ring-offset-teal-50 dark:ring-offset-teal-800',
     weight: {
       light: ' btn-light-teal focus-visible:ring-teal-500 dark:focus-visible:ring-offset-teal-600 ',
@@ -127,7 +127,7 @@ export default {
       bold: ' btn-bold-teal focus-visible:ring-teal-900 dark:focus-visible:ring-offset-teal-50 ',
       outline: ' btn-outline-teal focus-visible:ring-teal-500 dark:focus-visible:ring-offset-teal-600 ',
       clear: ' btn-clear-teal focus-visible:ring-teal-500 dark:focus-visible:ring-offset-teal-600 ',
-      none: ' text-teal-500 hocus:text-teal-600 active:text-teal-700 dark:text-teal-300 dark:hocus:text-teal-200 dark:active:text-teal-100 focus-visible:ring-teal-500 dark:focus-visible:ring-offset-teal-600 ',
+      link: ' text-teal-500 hocus:text-teal-600 active:text-teal-700 dark:text-teal-300 dark:hocus:text-teal-200 dark:active:text-teal-100 focus-visible:ring-teal-500 dark:focus-visible:ring-offset-teal-600 ',
     },
     gradient: {
       linear:
@@ -136,7 +136,7 @@ export default {
     },
   },
   cyan: {
-    base: 'select-none motion-safe:transition-all disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
+    base: 'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-[0.9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
     active: 'ring-2 ring-offset-2 ring-offset-cyan-50 dark:ring-offset-cyan-800',
     weight: {
       light: ' btn-light-cyan focus-visible:ring-cyan-500 dark:focus-visible:ring-offset-cyan-600 ',
@@ -144,7 +144,7 @@ export default {
       bold: ' btn-bold-cyan focus-visible:ring-cyan-900 dark:focus-visible:ring-offset-cyan-50 ',
       outline: ' btn-outline-cyan focus-visible:ring-cyan-500 dark:focus-visible:ring-offset-cyan-600 ',
       clear: ' btn-clear-cyan focus-visible:ring-cyan-500 dark:focus-visible:ring-offset-cyan-600 ',
-      none: ' text-cyan-500 hocus:text-cyan-600 active:text-cyan-700 dark:text-cyan-300 dark:hocus:text-cyan-200 dark:active:text-cyan-100 focus-visible:ring-cyan-500 dark:focus-visible:ring-offset-cyan-600 ',
+      link: ' text-cyan-500 hocus:text-cyan-600 active:text-cyan-700 dark:text-cyan-300 dark:hocus:text-cyan-200 dark:active:text-cyan-100 focus-visible:ring-cyan-500 dark:focus-visible:ring-offset-cyan-600 ',
     },
     gradient: {
       linear:
@@ -153,7 +153,7 @@ export default {
     },
   },
   sky: {
-    base: 'select-none motion-safe:transition-all disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
+    base: 'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-[0.9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
     active: 'ring-2 ring-offset-2 ring-offset-sky-50 dark:ring-offset-sky-800',
     weight: {
       light: ' btn-light-sky focus-visible:ring-sky-500 dark:focus-visible:ring-offset-sky-600 ',
@@ -161,7 +161,7 @@ export default {
       bold: ' btn-bold-sky focus-visible:ring-sky-900 dark:focus-visible:ring-offset-sky-50 ',
       outline: ' btn-outline-sky focus-visible:ring-sky-500 dark:focus-visible:ring-offset-sky-600 ',
       clear: ' btn-clear-sky focus-visible:ring-sky-500 dark:focus-visible:ring-offset-sky-600 ',
-      none: ' text-sky-500 hocus:text-sky-600 active:text-sky-700 dark:text-sky-300 dark:hocus:text-sky-200 dark:active:text-sky-100 focus-visible:ring-sky-500 dark:focus-visible:ring-offset-sky-600 ',
+      link: ' text-sky-500 hocus:text-sky-600 active:text-sky-700 dark:text-sky-300 dark:hocus:text-sky-200 dark:active:text-sky-100 focus-visible:ring-sky-500 dark:focus-visible:ring-offset-sky-600 ',
     },
     gradient: {
       linear:
@@ -170,7 +170,7 @@ export default {
     },
   },
   blue: {
-    base: 'select-none motion-safe:transition-all disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
+    base: 'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-[0.9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
     active: 'ring-2 ring-offset-2 ring-offset-blue-50 dark:ring-offset-blue-800',
     weight: {
       light: ' btn-light-blue focus-visible:ring-blue-500 dark:focus-visible:ring-offset-blue-600 ',
@@ -178,7 +178,7 @@ export default {
       bold: ' btn-bold-blue focus-visible:ring-blue-900 dark:focus-visible:ring-offset-blue-50 ',
       outline: ' btn-outline-blue focus-visible:ring-blue-500 dark:focus-visible:ring-offset-blue-600 ',
       clear: ' btn-clear-blue focus-visible:ring-blue-500 dark:focus-visible:ring-offset-blue-600 ',
-      none: ' text-blue-500 hocus:text-blue-600 active:text-blue-700 dark:text-blue-300 dark:hocus:text-blue-200 dark:active:text-blue-100 focus-visible:ring-blue-500 dark:focus-visible:ring-offset-blue-600 ',
+      link: ' text-blue-500 hocus:text-blue-600 active:text-blue-700 dark:text-blue-300 dark:hocus:text-blue-200 dark:active:text-blue-100 focus-visible:ring-blue-500 dark:focus-visible:ring-offset-blue-600 ',
     },
     gradient: {
       linear:
@@ -187,7 +187,7 @@ export default {
     },
   },
   indigo: {
-    base: 'select-none motion-safe:transition-all disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
+    base: 'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-[0.9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
     active: 'ring-2 ring-offset-2 ring-offset-indigo-50 dark:ring-offset-indigo-800',
     weight: {
       light: ' btn-light-indigo focus-visible:ring-indigo-500 dark:focus-visible:ring-offset-indigo-600 ',
@@ -195,7 +195,7 @@ export default {
       bold: ' btn-bold-indigo focus-visible:ring-indigo-900 dark:focus-visible:ring-offset-indigo-50 ',
       outline: ' btn-outline-indigo focus-visible:ring-indigo-500 dark:focus-visible:ring-offset-indigo-600 ',
       clear: ' btn-clear-indigo focus-visible:ring-indigo-500 dark:focus-visible:ring-offset-indigo-600 ',
-      none: ' text-indigo-500 hocus:text-indigo-600 active:text-indigo-700 dark:text-indigo-300 dark:hocus:text-indigo-200 dark:active:text-indigo-100 focus-visible:ring-indigo-500 dark:focus-visible:ring-offset-indigo-600 ',
+      link: ' text-indigo-500 hocus:text-indigo-600 active:text-indigo-700 dark:text-indigo-300 dark:hocus:text-indigo-200 dark:active:text-indigo-100 focus-visible:ring-indigo-500 dark:focus-visible:ring-offset-indigo-600 ',
     },
     gradient: {
       linear:
@@ -204,7 +204,7 @@ export default {
     },
   },
   violet: {
-    base: 'select-none motion-safe:transition-all disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
+    base: 'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-[0.9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
     active: 'ring-2 ring-offset-2 ring-offset-violet-50 dark:ring-offset-violet-800',
     weight: {
       light: ' btn-light-violet focus-visible:ring-violet-500 dark:focus-visible:ring-offset-violet-600 ',
@@ -212,7 +212,7 @@ export default {
       bold: ' btn-bold-violet focus-visible:ring-violet-900 dark:focus-visible:ring-offset-violet-50 ',
       outline: ' btn-outline-violet focus-visible:ring-violet-500 dark:focus-visible:ring-offset-violet-600 ',
       clear: ' btn-clear-violet focus-visible:ring-violet-500 dark:focus-visible:ring-offset-violet-600 ',
-      none: ' text-violet-500 hocus:text-violet-600 active:text-violet-700 dark:text-violet-300 dark:hocus:text-violet-200 dark:active:text-violet-100 focus-visible:ring-violet-500 dark:focus-visible:ring-offset-violet-600 ',
+      link: ' text-violet-500 hocus:text-violet-600 active:text-violet-700 dark:text-violet-300 dark:hocus:text-violet-200 dark:active:text-violet-100 focus-visible:ring-violet-500 dark:focus-visible:ring-offset-violet-600 ',
     },
     gradient: {
       linear:
@@ -221,7 +221,7 @@ export default {
     },
   },
   purple: {
-    base: 'select-none motion-safe:transition-all disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
+    base: 'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-[0.9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
     active: 'ring-2 ring-offset-2 ring-offset-purple-50 dark:ring-offset-purple-800',
     weight: {
       light: ' btn-light-purple focus-visible:ring-purple-500 dark:focus-visible:ring-offset-purple-600 ',
@@ -229,7 +229,7 @@ export default {
       bold: ' btn-bold-purple focus-visible:ring-purple-900 dark:focus-visible:ring-offset-purple-50 ',
       outline: ' btn-outline-purple focus-visible:ring-purple-500 dark:focus-visible:ring-offset-purple-600 ',
       clear: ' btn-clear-purple focus-visible:ring-purple-500 dark:focus-visible:ring-offset-purple-600 ',
-      none: ' text-purple-500 hocus:text-purple-600 active:text-purple-700 dark:text-purple-300 dark:hocus:text-purple-200 dark:active:text-purple-100 focus-visible:ring-purple-500 dark:focus-visible:ring-offset-purple-600 ',
+      link: ' text-purple-500 hocus:text-purple-600 active:text-purple-700 dark:text-purple-300 dark:hocus:text-purple-200 dark:active:text-purple-100 focus-visible:ring-purple-500 dark:focus-visible:ring-offset-purple-600 ',
     },
     gradient: {
       linear:
@@ -238,7 +238,7 @@ export default {
     },
   },
   fuchsia: {
-    base: 'select-none motion-safe:transition-all disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
+    base: 'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-[0.9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
     active: 'ring-2 ring-offset-2 ring-offset-fuchsia-50 dark:ring-offset-fuchsia-800',
     weight: {
       light: ' btn-light-fuchsia focus-visible:ring-fuchsia-500 dark:focus-visible:ring-offset-fuchsia-600 ',
@@ -246,7 +246,7 @@ export default {
       bold: ' btn-bold-fuchsia focus-visible:ring-fuchsia-900 dark:focus-visible:ring-offset-fuchsia-50 ',
       outline: ' btn-outline-fuchsia focus-visible:ring-fuchsia-500 dark:focus-visible:ring-offset-fuchsia-600 ',
       clear: ' btn-clear-fuchsia focus-visible:ring-fuchsia-500 dark:focus-visible:ring-offset-fuchsia-600 ',
-      none: ' text-fuchsia-500 hocus:text-fuchsia-600 active:text-fuchsia-700 dark:text-fuchsia-300 dark:hocus:text-fuchsia-200 dark:active:text-fuchsia-100 focus-visible:ring-fuchsia-500 dark:focus-visible:ring-offset-fuchsia-600 ',
+      link: ' text-fuchsia-500 hocus:text-fuchsia-600 active:text-fuchsia-700 dark:text-fuchsia-300 dark:hocus:text-fuchsia-200 dark:active:text-fuchsia-100 focus-visible:ring-fuchsia-500 dark:focus-visible:ring-offset-fuchsia-600 ',
     },
     gradient: {
       linear:
@@ -255,7 +255,7 @@ export default {
     },
   },
   pink: {
-    base: 'select-none motion-safe:transition-all disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
+    base: 'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-[0.9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
     active: 'ring-2 ring-offset-2 ring-offset-pink-50 dark:ring-offset-pink-800',
     weight: {
       light: ' btn-light-pink focus-visible:ring-pink-500 dark:focus-visible:ring-offset-pink-600 ',
@@ -263,7 +263,7 @@ export default {
       bold: ' btn-bold-pink focus-visible:ring-pink-900 dark:focus-visible:ring-offset-pink-50 ',
       outline: ' btn-outline-pink focus-visible:ring-pink-500 dark:focus-visible:ring-offset-pink-600 ',
       clear: ' btn-clear-pink focus-visible:ring-pink-500 dark:focus-visible:ring-offset-pink-600 ',
-      none: ' text-pink-500 hocus:text-pink-600 active:text-pink-700 dark:text-pink-300 dark:hocus:text-pink-200 dark:active:text-pink-100 focus-visible:ring-pink-500 dark:focus-visible:ring-offset-pink-600 ',
+      link: ' text-pink-500 hocus:text-pink-600 active:text-pink-700 dark:text-pink-300 dark:hocus:text-pink-200 dark:active:text-pink-100 focus-visible:ring-pink-500 dark:focus-visible:ring-offset-pink-600 ',
     },
     gradient: {
       linear:
@@ -272,7 +272,7 @@ export default {
     },
   },
   rose: {
-    base: 'select-none motion-safe:transition-all disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
+    base: 'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-[0.9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
     active: 'ring-2 ring-offset-2 ring-offset-rose-50 dark:ring-offset-rose-800',
     weight: {
       light: ' btn-light-rose focus-visible:ring-rose-500 dark:focus-visible:ring-offset-rose-600 ',
@@ -280,7 +280,7 @@ export default {
       bold: ' btn-bold-rose focus-visible:ring-rose-900 dark:focus-visible:ring-offset-rose-50 ',
       outline: ' btn-outline-rose focus-visible:ring-rose-500 dark:focus-visible:ring-offset-rose-600 ',
       clear: ' btn-clear-rose focus-visible:ring-rose-500 dark:focus-visible:ring-offset-rose-600 ',
-      none: ' text-rose-500 hocus:text-rose-600 active:text-rose-700 dark:text-rose-300 dark:hocus:text-rose-200 dark:active:text-rose-100 focus-visible:ring-rose-500 dark:focus-visible:ring-offset-rose-600 ',
+      link: ' text-rose-500 hocus:text-rose-600 active:text-rose-700 dark:text-rose-300 dark:hocus:text-rose-200 dark:active:text-rose-100 focus-visible:ring-rose-500 dark:focus-visible:ring-offset-rose-600 ',
     },
     gradient: {
       linear:
@@ -289,7 +289,7 @@ export default {
     },
   },
   gray: {
-    base: 'select-none motion-safe:transition-all disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
+    base: 'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-[0.9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
     active: 'ring-2 ring-offset-2 ring-offset-gray-50 dark:ring-offset-gray-800',
     weight: {
       light: ' btn-light-gray focus-visible:ring-gray-500 dark:focus-visible:ring-offset-gray-600 ',
@@ -297,7 +297,7 @@ export default {
       bold: ' btn-bold-gray focus-visible:ring-gray-900 dark:focus-visible:ring-offset-gray-50 ',
       outline: ' btn-outline-gray focus-visible:ring-gray-500 dark:focus-visible:ring-offset-gray-600 ',
       clear: ' btn-clear-gray focus-visible:ring-gray-500 dark:focus-visible:ring-offset-gray-600 ',
-      none: ' text-gray-500 hocus:text-gray-600 active:text-gray-700 dark:text-gray-300 dark:hocus:text-gray-200 dark:active:text-gray-100 focus-visible:ring-gray-500 dark:focus-visible:ring-offset-gray-600 ',
+      link: ' text-gray-500 hocus:text-gray-600 active:text-gray-700 dark:text-gray-300 dark:hocus:text-gray-200 dark:active:text-gray-100 focus-visible:ring-gray-500 dark:focus-visible:ring-offset-gray-600 ',
     },
     gradient: {
       linear:
@@ -306,7 +306,7 @@ export default {
     },
   },
   slate: {
-    base: 'select-none motion-safe:transition-all disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
+    base: 'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-[0.9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
     active: 'ring-2 ring-offset-2 ring-offset-slate-50 dark:ring-offset-slate-800',
     weight: {
       light: ' btn-light-slate focus-visible:ring-slate-500 dark:focus-visible:ring-offset-slate-600 ',
@@ -314,7 +314,7 @@ export default {
       bold: ' btn-bold-slate focus-visible:ring-slate-900 dark:focus-visible:ring-offset-slate-50 ',
       outline: ' btn-outline-slate focus-visible:ring-slate-500 dark:focus-visible:ring-offset-slate-600 ',
       clear: ' btn-clear-slate focus-visible:ring-slate-500 dark:focus-visible:ring-offset-slate-600 ',
-      none: ' text-slate-500 hocus:text-slate-600 active:text-slate-700 dark:text-slate-300 dark:hocus:text-slate-200 dark:active:text-slate-100 focus-visible:ring-slate-500 dark:focus-visible:ring-offset-slate-600 ',
+      link: ' text-slate-500 hocus:text-slate-600 active:text-slate-700 dark:text-slate-300 dark:hocus:text-slate-200 dark:active:text-slate-100 focus-visible:ring-slate-500 dark:focus-visible:ring-offset-slate-600 ',
     },
     gradient: {
       linear:
@@ -323,7 +323,7 @@ export default {
     },
   },
   zinc: {
-    base: 'select-none motion-safe:transition-all disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
+    base: 'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-[0.9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
     active: 'ring-2 ring-offset-2 ring-offset-zinc-50 dark:ring-offset-zinc-800',
     weight: {
       light: ' btn-light-zinc focus-visible:ring-zinc-500 dark:focus-visible:ring-offset-zinc-600 ',
@@ -331,7 +331,7 @@ export default {
       bold: ' btn-bold-zinc focus-visible:ring-zinc-900 dark:focus-visible:ring-offset-zinc-50 ',
       outline: ' btn-outline-zinc focus-visible:ring-zinc-500 dark:focus-visible:ring-offset-zinc-600 ',
       clear: ' btn-clear-zinc focus-visible:ring-zinc-500 dark:focus-visible:ring-offset-zinc-600 ',
-      none: ' text-zinc-500 hocus:text-zinc-600 active:text-zinc-700 dark:text-zinc-300 dark:hocus:text-zinc-200 dark:active:text-zinc-100 focus-visible:ring-zinc-500 dark:focus-visible:ring-offset-zinc-600 ',
+      link: ' text-zinc-500 hocus:text-zinc-600 active:text-zinc-700 dark:text-zinc-300 dark:hocus:text-zinc-200 dark:active:text-zinc-100 focus-visible:ring-zinc-500 dark:focus-visible:ring-offset-zinc-600 ',
     },
     gradient: {
       linear:
@@ -340,7 +340,7 @@ export default {
     },
   },
   neutral: {
-    base: 'select-none motion-safe:transition-all disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
+    base: 'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-[0.9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
     active: 'ring-2 ring-offset-2 ring-offset-neutral-50 dark:ring-offset-neutral-800',
     weight: {
       light: ' btn-light-neutral focus-visible:ring-neutral-500 dark:focus-visible:ring-offset-neutral-600 ',
@@ -348,7 +348,7 @@ export default {
       bold: ' btn-bold-neutral focus-visible:ring-neutral-900 dark:focus-visible:ring-offset-neutral-50 ',
       outline: ' btn-outline-neutral focus-visible:ring-neutral-500 dark:focus-visible:ring-offset-neutral-600 ',
       clear: ' btn-clear-neutral focus-visible:ring-neutral-500 dark:focus-visible:ring-offset-neutral-600 ',
-      none: ' text-neutral-500 hocus:text-neutral-600 active:text-neutral-700 dark:text-neutral-300 dark:hocus:text-neutral-200 dark:active:text-neutral-100 focus-visible:ring-neutral-500 dark:focus-visible:ring-offset-neutral-600 ',
+      link: ' text-neutral-500 hocus:text-neutral-600 active:text-neutral-700 dark:text-neutral-300 dark:hocus:text-neutral-200 dark:active:text-neutral-100 focus-visible:ring-neutral-500 dark:focus-visible:ring-offset-neutral-600 ',
     },
     gradient: {
       linear:
@@ -357,7 +357,7 @@ export default {
     },
   },
   stone: {
-    base: 'select-none motion-safe:transition-all disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
+    base: 'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-[0.9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent',
     active: 'ring-2 ring-offset-2 ring-offset-stone-50 dark:ring-offset-stone-800',
     weight: {
       light: ' btn-light-stone focus-visible:ring-stone-500 dark:focus-visible:ring-offset-stone-600 ',
@@ -365,7 +365,7 @@ export default {
       bold: ' btn-bold-stone focus-visible:ring-stone-900 dark:focus-visible:ring-offset-stone-50 ',
       outline: ' btn-outline-stone focus-visible:ring-stone-500 dark:focus-visible:ring-offset-stone-600 ',
       clear: ' btn-clear-stone focus-visible:ring-stone-500 dark:focus-visible:ring-offset-stone-600 ',
-      none: ' text-stone-500 hocus:text-stone-600 active:text-stone-700 dark:text-stone-300 dark:hocus:text-stone-200 dark:active:text-stone-100 focus-visible:ring-stone-500 dark:focus-visible:ring-offset-stone-600 ',
+      link: ' text-stone-500 hocus:text-stone-600 active:text-stone-700 dark:text-stone-300 dark:hocus:text-stone-200 dark:active:text-stone-100 focus-visible:ring-stone-500 dark:focus-visible:ring-offset-stone-600 ',
     },
     gradient: {
       linear:

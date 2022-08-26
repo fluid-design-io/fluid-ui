@@ -7,7 +7,7 @@ This generator will generate gradients for the tones based on the colors.
 import { colorsWithHex } from './tailwindColors';
 
 const base =
-  'select-none motion-safe:transition-all disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent';
+  'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-[0.9] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent';
 const getActive = (color: string) => `ring-2 ring-offset-2 ring-offset-${color}-50 dark:ring-offset-${color}-800`;
 const getLight = (color: string) =>
   `
@@ -37,7 +37,7 @@ const getOutline = (color: string) =>
     dark:focus-visible:ring-offset-${color}-600
     `;
 
-const getNone = (color: string) =>
+const getLink = (color: string) =>
   `
     text-${color}-500
     hocus:text-${color}-600
@@ -106,7 +106,7 @@ const generate = (color: string) => {
   const normal = replaceEnter(getNormal(color));
   const bold = replaceEnter(getBold(color));
   const clear = replaceEnter(getClear(color));
-  const none = replaceEnter(getNone(color));
+  const link = replaceEnter(getLink(color));
   const outline = replaceEnter(getOutline(color));
   const linear = replaceEnter(getLinear(color));
   const clay = replaceEnter(getClay(color));
@@ -121,7 +121,7 @@ const generate = (color: string) => {
         bold,
         outline,
         clear,
-        none,
+        link,
       },
       gradient: {
         linear,
