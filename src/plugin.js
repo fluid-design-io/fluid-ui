@@ -20,8 +20,7 @@ const checkColorMode = (color) => {
     return colorModes.hex;
   } else if (color.includes('var')) {
     return colorModes.var;
-  }
-  else {
+  } else {
     console.log(`unknown color mode: ${color}`);
     return colorModes.unkown;
   }
@@ -168,8 +167,8 @@ const contrastColor = (value, step = undefined, blackWhite = false) => {
           ? '#000'
           : checkDarkness(hsla, undefined, 'dark')
         : blackWhite
-          ? '#FFF'
-          : checkDarkness(hsla, undefined, 'light');
+        ? '#FFF'
+        : checkDarkness(hsla, undefined, 'light');
     }
   }
   return value;
