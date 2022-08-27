@@ -19,10 +19,10 @@ const checkColorMode = (color) => {
   } else if (color.includes('#')) {
     return colorModes.hex;
   } else if (color.includes('var')) {
-    // Only able to pass the var as the color,
-    // Can't manipulate the color
     return colorModes.var;
-  } else {
+  }
+  else {
+    console.log(`unknown color mode: ${color}`);
     return colorModes.unkown;
   }
 };
@@ -168,26 +168,39 @@ const contrastColor = (value, step = undefined, blackWhite = false) => {
           ? '#000'
           : checkDarkness(hsla, undefined, 'dark')
         : blackWhite
-        ? '#FFF'
-        : checkDarkness(hsla, undefined, 'light');
+          ? '#FFF'
+          : checkDarkness(hsla, undefined, 'light');
     }
   }
   return value;
 };
-const getColor = (value, step = undefined, alpha = 1) => {
+const getColor = (value, step = 500, alpha = 1) => {
   if (alpha > 1) {
     alpha /= 100;
   }
-  if (typeof value === 'string') {
-    return value;
-  }
   if (typeof value === 'object') {
+    if (typeof value[step] === 'function') {
+      return value[step]();
+    }
+    const mode = checkColorMode(value[step]);
+    if (mode === colorModes.var) {
+      // the string will look like this: rgb(var(--tw-color-primary-50) / <alpha-value>)
+      const raw = value[step];
+      const colorVar = raw.split('var(--tw-color-')[1].split(')')[0];
+      const alpha = raw.split('/')[1].split(')')[0];
+      /* console.log(`
+      -------
+      ${value[step]}
+      ${colorVar} / ${alpha}
+      -------`); */
+      return raw;
+    }
     const hex = step ? value[step] : value[500];
     const [r, g, b] = getRGB(hex);
     const [h, s, l, a] = rgbToHsl(r, g, b, alpha);
     return [h, s, l, a];
   }
-  return value;
+  return undefined;
 };
 const toColor = (value) => {
   if (typeof value === 'string') {
