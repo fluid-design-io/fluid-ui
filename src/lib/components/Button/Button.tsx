@@ -1,4 +1,4 @@
-import React, { ComponentProps, PropsWithChildren } from 'react';
+import React, { ComponentProps, PropsWithChildren, useId } from 'react';
 import clsxm from '../../helpers/clsxm';
 import {
   FluidButtonColorOptions,
@@ -15,6 +15,7 @@ import { HiOutlineDotsHorizontal } from 'react-icons/hi';
 
 import { useTheme } from '../FluidUI/ThemeContext';
 import { excludeClassName } from '../../helpers/exclude';
+import { AnimatePresence, motion } from 'framer-motion';
 
 export const Button = ({
   color = 'gray',
@@ -37,7 +38,7 @@ export const Button = ({
   const isLink = typeof href !== 'undefined';
   const Component = isLink ? 'a' : 'button';
   const theme = useTheme().theme.button;
-
+  const id = useId();
   const theirProps = excludeClassName(props);
   return (
     <Component
@@ -54,20 +55,20 @@ export const Button = ({
       {...theirProps}
     >
       {sr && <span className="sr-only">{sr}</span>}
-      {isLoading && <ButtonLoadingComponent {...{ loadingOptions }} />}
-      <div
-        className={clsxm(
-          theme.base,
-          isLoading && 'opacity-0',
-          loadingOptions?.text && loadingOptions.text.length > 0 && 'px-2'
-        )}
-      >
-        {isLoading
-          ? loadingOptions?.text && loadingOptions.text.length > 0
-            ? loadingOptions.text
-            : children
-          : children}
-      </div>
+      <AnimatePresence mode="sync">
+        {isLoading && <ButtonLoadingComponent key={id} {...{ loadingOptions }} />}
+        <motion.div
+          initial={{ opacity: 1 }}
+          animate={{ opacity: isLoading ? 0 : 1, scale: isLoading ? 0.85 : 1 }}
+          className={clsxm(theme.base, loadingOptions?.text && loadingOptions.text.length > 0 && 'px-2')}
+        >
+          {isLoading
+            ? loadingOptions?.text && loadingOptions.text.length > 0
+              ? loadingOptions.text
+              : children
+            : children}
+        </motion.div>
+      </AnimatePresence>
     </Component>
   );
 };
@@ -89,12 +90,18 @@ const ButtonLoadingComponent = ({
   const Icon = iconOption[loadingOptions.animation];
 
   return (
-    <div className={clsxm(theme.loading.base)}>
+    <motion.div
+      initial={{ opacity: 0, scale: 0.7 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.7 }}
+      transition={{ duration: 0.3 }}
+      className={clsxm(theme.loading.base)}
+    >
       <Icon className={theme.loading.animation[loadingOptions.animation]} />
       {loadingOptions?.text && loadingOptions.text.length > 0 && (
         <div className={theme.loading.text}>{loadingOptions.text}</div>
       )}
-    </div>
+    </motion.div>
   );
 };
 
@@ -123,12 +130,6 @@ export interface ButtonProps extends PropsWithChildren<ComponentProps<'button'>>
    * @default false
    */
   iconOnly?: boolean;
-  /**
-   * isLoading: Whether the button is loading or not.
-   * @default false
-   * @type {boolean}
-   * @memberof ButtonProps
-   */
   isLoading?: boolean;
   /**
    * shape: The shape of the button.

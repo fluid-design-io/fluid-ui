@@ -137,7 +137,7 @@ const Template: Story<StoryButtonProps> = (args) => {
           </button>
           <div>
             <Button weight="clear" color="blue" iconOnly>
-              <HiInformationCircle className="text-stone-500 btn-blue" />
+              <HiInformationCircle className="text-stone-500 btn-blue text-blue-" />
             </Button>
           </div>
         </div>

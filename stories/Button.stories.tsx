@@ -1,11 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Button, ButtonProps } from '../src/lib/components/Button';
-import {
-  FluidButtonColors,
-  FluidButtonSizes,
-  FluidButtonWeights,
-} from '../src/lib/components/FluidUI/FluidTheme';
+import { FluidButtonColors, FluidButtonSizes, FluidButtonWeights } from '../src/lib/components/FluidUI/FluidTheme';
 import { IoIosSend } from 'react-icons/io';
 
 export default {
@@ -43,18 +39,15 @@ const colors = [
   'stone',
 ];
 
-interface StoryButtonProps extends Omit<ButtonProps, 'color'> {}
+interface StoryButtonProps extends Omit<ButtonProps, 'color'> {
+  isLoading?: boolean;
+}
 
-const Template: Story<StoryButtonProps> = args => {
+const Template: Story<StoryButtonProps> = (args) => {
   return (
     <div className="flex gap-4 flex-wrap">
-      {colors.map(color => (
-        <Button
-          key={color}
-          color={color as keyof FluidButtonColors}
-          className="capitalize"
-          {...args}
-        >
+      {colors.map((color) => (
+        <Button key={color} color={color as keyof FluidButtonColors} className="capitalize" {...args}>
           {color}
           {args?.icon && <IoIosSend />}
         </Button>
