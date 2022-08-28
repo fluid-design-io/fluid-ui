@@ -54,4 +54,16 @@
   .default-focus-visible {
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 dark:ring-primary-400 dark:focus-visible:ring-offset-primary-800;
   }
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-primary-600;
+  }
+  .contrast-ring {
+    @apply outline-none ring-1 ring-primary-800 ring-offset-1 dark:ring-offset-primary-200;
+  }
+  .contrast-bg {
+    @apply contrast:contrast-ring outline-none contrast:bg-amber-300 dark:contrast:!bg-amber-400 dark:contrast:text-black;
+  }
+  .contrast-text {
+    @apply contrast:!text-primary-900 dark:contrast:!text-primary-900;
+  }
 }

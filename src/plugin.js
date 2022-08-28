@@ -167,8 +167,8 @@ const contrastColor = (value, step = undefined, blackWhite = false) => {
           ? '#000'
           : checkDarkness(hsla, undefined, 'dark')
         : blackWhite
-        ? '#FFF'
-        : checkDarkness(hsla, undefined, 'light');
+          ? '#FFF'
+          : checkDarkness(hsla, undefined, 'light');
     }
   }
   return value;
@@ -176,6 +176,9 @@ const contrastColor = (value, step = undefined, blackWhite = false) => {
 const getColor = (value, step = 500, alpha = 1) => {
   if (alpha > 1) {
     alpha /= 100;
+  }
+  if (alpha <= 0) {
+    return 'transparent';
   }
   if (typeof value === 'object') {
     if (typeof value[step] === 'function') {
@@ -185,14 +188,13 @@ const getColor = (value, step = 500, alpha = 1) => {
     if (mode === colorModes.var) {
       // the string will look like this: rgb(var(--tw-color-primary-50) / <alpha-value>)
       const raw = value[step];
-      const colorVar = raw.split('var(--tw-color-')[1].split(')')[0];
-      const alpha = raw.split('/')[1].split(')')[0];
+      const colorVar = raw.split('var(')[1].split(')')[0];
       /* console.log(`
       -------
       ${value[step]}
-      ${colorVar} / ${alpha}
+      rgb(${colorVar} / ${alpha})
       -------`); */
-      return raw;
+      return `rgb(var(${colorVar}) / ${alpha})`;
     }
     const hex = step ? value[step] : value[500];
     const [r, g, b] = getRGB(hex);
@@ -396,28 +398,37 @@ const buttonUtilities = (theme) => {
     /* ==== END BOLD BUTTON ==== */
     /* ==== START OUTLINE BUTTON ==== */
     'btn-outline': (value) => ({
-      ...generateTxtBg(value, { step: 50, alpha: 0.01 }, false, toColor(getColor(value, 500)), 50, false),
+      ...generateTxtBg(value, { step: 50, alpha: 0 }, false, toColor(getColor(value, 700)), 50, false),
       ...generateTxtStates(value, {
-        hocus: { value, step: 500, bw: true },
-        active: { value, step: { step: 600, alpha: 85 } },
-        disabled: { value, step: { step: 50, alpha: 50 } },
-        textActive: { value, step: 500, bw: true },
+        hocus: { value, step: { step: 400, alpha: 20 } },
+        active: { value, step: { step: 400, alpha: 30 } },
+        disabled: { value, step: { step: 50, alpha: 0 } },
+        textHocus: { value: toColor(getColor(value, 900)) },
+        textActive: { value: toColor(getColor(value, 900)) },
       }),
-      'border-color': toColor(getColor(value, 500)),
       'border-width': '1px',
       'border-style': 'solid',
+      'border-color': toColor(getColor(value, 500, 30)),
+      '&:enabled:hover, &:enabled:focus-visible': {
+        'border-color': toColor(getColor(value, 400, 95)),
+      },
       '.dark &': {
-        ...generateTxtBg(value, { step: 900, alpha: 0.01 }, false, toColor(getColor(value, 400)), 50, false),
+        ...generateTxtBg(value, { step: 900, alpha: 0 }, false, toColor(getColor(value, 200)), 50, false),
         ...generateTxtStates(value, {
-          hocus: { value, step: 500, bw: true },
-          active: { value, step: { step: 500, alpha: 80 } },
-          disabled: { value, step: { step: 50, alpha: 50 } },
-          textActive: { value, step: 500, bw: true },
+          hocus: { value, step: { step: 500, alpha: 20 } },
+          active: { value, step: { step: 500, alpha: 30 } },
+          disabled: { value, step: { step: 900, alpha: 0 } },
+          textHocus: { value: toColor(getColor(value, 50)) },
+          textActive: { value: toColor(getColor(value, 50)) },
+          textDisabled: { value: toColor(getColor(value, 100)) },
         }),
-        'border-color': toColor(getColor(value, 400)),
+        'border-color': toColor(getColor(value, 400, 30)),
+        '&:enabled:hover, &:enabled:focus-visible': {
+          'border-color': toColor(getColor(value, 200, 85)),
+        }
       },
       ...generateCMClass({
-        ...generateTxtBg(value, { step: 50, alpha: 0.01 }, false, toColor(getColor(value, 700)), 50, false),
+        ...generateTxtBg(value, { step: 50, alpha: 0 }, false, toColor(getColor(value, 700)), 50, false),
         ...generateCMBtn(value, {
           bw: '1px',
           bc: toColor(getColor(value, 700)),
@@ -427,7 +438,7 @@ const buttonUtilities = (theme) => {
           active: generateTxtBg(value, 300, true),
         }),
         '.dark &': {
-          ...generateTxtBg(value, { step: 900, alpha: 0.01 }, false, toColor(getColor(value, 100)), 50, false),
+          ...generateTxtBg(value, { step: 900, alpha: 0 }, false, toColor(getColor(value, 100)), 50, false),
           ...generateCMBtn(value, {
             bw: '1px',
             bc: toColor(getColor(value, 200)),
@@ -442,26 +453,35 @@ const buttonUtilities = (theme) => {
     /* ==== END OUTLINE BUTTON ==== */
     /* ==== START CLEAR BUTTON ==== */
     'btn-clear': (value) => ({
-      ...generateTxtBg(value, { step: 50, alpha: 0.01 }, false, toColor(getColor(value, 500)), 50, false),
+      ...generateTxtBg(value, { step: 50, alpha: 0 }, false, toColor(getColor(value, 500)), 50, false),
       ...generateTxtStates(value, {
         hocus: { value, step: 100, bw: false },
         active: { value, step: { step: 200, alpha: 85 } },
         disabled: { value, step: { step: 50, alpha: 50 } },
-        textHocus: { value: toColor(getColor(value, 500)), step: 0, bw: false }, // step is not calculated when value is a hex string
-        textActive: { value: toColor(getColor(value, 600)), step: 0, bw: true },
+        textHocus: { value: toColor(getColor(value, 600)) }, // step is not calculated when value is a hex string
+        textActive: { value: toColor(getColor(value, 600)) },
       }),
+      'border-width': '1px',
+      'border-style': 'solid',
+      'border-color': 'transparent',
+      '&:enabled:hover, &:enabled:focus-visible': {
+        'border-color': toColor(getColor(value, 400, 25)),
+      },
       '.dark &': {
-        ...generateTxtBg(value, { step: 900, alpha: 0.01 }, false, toColor(getColor(value, 400)), 50, false),
+        ...generateTxtBg(value, { step: 900, alpha: 0 }, false, toColor(getColor(value, 400)), 50, false),
         ...generateTxtStates(value, {
-          hocus: { value, step: { step: 300, alpha: 25 } },
-          active: { value, step: { step: 400, alpha: 20 } },
-          disabled: { value, step: { step: 700, alpha: 700 } },
-          textHocus: { value: toColor(getColor(value, 500)), step: 0 },
-          textActive: { value: toColor(getColor(value, 600)), step: 0 },
+          hocus: { value, step: { step: 600, alpha: 30 } },
+          active: { value, step: { step: 600, alpha: 20 } },
+          disabled: { value, step: { step: 700, alpha: 70 } },
+          textHocus: { value: toColor(getColor(value, 300)) },
+          textActive: { value: toColor(getColor(value, 300)) },
         }),
+        '&:enabled:hover, &:enabled:focus-visible': {
+          'border-color': toColor(getColor(value, 300, 25)),
+        }
       },
       ...generateCMClass({
-        ...generateTxtBg(value, { step: 50, alpha: 0.01 }, false, toColor(getColor(value, 700)), 50, false),
+        ...generateTxtBg(value, { step: 50, alpha: 0 }, false, toColor(getColor(value, 700)), 50, false),
         ...generateCMBtn(value, {
           bw: '1px',
           bc: toColor(getColor(value, 500)),
