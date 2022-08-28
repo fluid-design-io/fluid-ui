@@ -1,4 +1,4 @@
-import clsxm from '@/lib/helpers/clsxm';
+import clsxm from '../../helpers/clsxm';
 
 function AppLabel({ focused, error, errors, name, label, value }) {
   const noErrorStyle =

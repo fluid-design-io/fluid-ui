@@ -1,6 +1,6 @@
 import React from 'react';
 
-import clsxm from '@/lib/helpers/clsxm';
+import clsxm from '../../helpers/clsxm';
 
 import { FormItemDescription, FormProp } from '.';
 

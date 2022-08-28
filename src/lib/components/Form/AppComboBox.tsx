@@ -3,7 +3,8 @@ import { useFormikContext } from 'formik';
 import { useMemo, useState } from 'react';
 import { HiCheck, HiSelector } from 'react-icons/hi';
 
-import clsxm from '@/lib/helpers/clsxm';
+
+import clsxm from '../../helpers/clsxm';
 
 import { FormProp } from '.';
 import { useTheme } from '../FluidUI/ThemeContext';

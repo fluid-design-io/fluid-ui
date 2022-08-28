@@ -2,10 +2,9 @@ import { Disclosure } from '@headlessui/react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import React, { ComponentProps, FC, PropsWithChildren } from 'react';
 import { HiChevronDown } from 'react-icons/hi';
+import clsxm from '../../helpers/clsxm';
 
-import clsxm from '@/lib/helpers/clsxm';
-import { excludeClassName } from '@/lib/helpers/exclude';
-
+import { excludeClassName } from '../../helpers/exclude';
 import { useTheme } from '../FluidUI/ThemeContext';
 
 export interface AccordionPanelProps

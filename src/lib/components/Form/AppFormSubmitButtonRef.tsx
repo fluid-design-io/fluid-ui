@@ -1,7 +1,7 @@
 import { useFormikContext } from 'formik';
 import React from 'react';
 
-import clsxm from '@/lib/helpers/clsxm';
+import clsxm from '../../helpers/clsxm';
 
 const SubmitButtonRef = ({
   title = 'Submit',
@@ -23,7 +23,6 @@ const SubmitButtonRef = ({
         title={title}
         disabled={!isValid}
         onClick={() => {
-          console.log('submit');
           handleSubmit();
         }}
         type='submit'

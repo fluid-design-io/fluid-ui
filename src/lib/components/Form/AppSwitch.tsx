@@ -2,10 +2,10 @@ import { Switch } from '@headlessui/react';
 import { useFormikContext } from 'formik';
 import { useState } from 'react';
 
-import clsxm from '@/lib/helpers/clsxm';
-import { excludeOnChangeClickBlurFocus } from '@/lib/helpers/exclude';
+import clsxm from '../../helpers/clsxm';
 
 import { FormProp } from '.';
+import { excludeOnChangeClickBlurFocus } from '../../helpers/exclude';
 
 function AppSwitch({
   name,

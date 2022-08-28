@@ -1,6 +1,6 @@
 import { SVGProps } from 'react';
 
-export { getInputColor } from '@/lib/helpers/styleGenerator/inputColor';
+export { getInputColor } from '../../helpers/styleGenerator/inputColor';
 export { default as ComboBox } from './AppComboBox';
 export { default as Form } from './AppForm';
 export { default as FormItem } from './AppFormItem';

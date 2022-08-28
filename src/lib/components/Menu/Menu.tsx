@@ -1,117 +1,11 @@
 import { Menu as HeadlessMenu, Transition } from '@headlessui/react';
 import React, { Fragment, SVGProps, useId } from 'react';
 
-import clsxm from '@/lib/helpers/clsxm';
+import clsxm from '../../helpers/clsxm';
 
-import { MenuItemProps } from '@/typing';
 
 import { MenuItem } from '.';
-
-export interface MenuProps {
-  label?: string;
-  /**
-   * A React component to be used as the icon for the menu item.
-   */
-  icon?: JSX.Element;
-  /**
-   * displayed after the label
-   * `string
-   */
-  badge?: string;
-  /**
-   * Header of the menu, can be either a string or a React component.
-   */
-  header?: JSX.Element | string;
-  /**
-   * sr: Screen reader text
-   */
-  sr?: string;
-  /**
-   * iconStart: Icon to display on the left of the label
-   */
-  iconStart?: (props: SVGProps<SVGSVGElement>) => JSX.Element;
-  /**
-   * iconEnd: Icon to display on the right of the label
-   */
-  iconEnd?: (props: SVGProps<SVGSVGElement>) => JSX.Element;
-  /**
-   * iconStartPosition: Position of the iconStart
-   * `flex` (default) or `between`
-   * `between` will create a gap between the icon and the label
-   */
-  iconStartPosition?: 'flex' | 'between';
-  /**
-   * iconEndPosition: Position of the iconEnd
-   * `flex` (default) or `between`
-   * `between` will create a gap between the icon and the label
-   */
-  iconEndPosition?: 'flex' | 'between';
-  className?: string;
-  /**
-   * buttonClassName: Additional class name to apply to the button
-   * This will override the default class name if the custom class name conflicts with an existing class name
-   */
-  buttonClassName?: string;
-  /**
-   * labelClassName: Additinal class name to apply to the label
-   * This will override the default class name if the custom class name conflicts with an existing class name
-   */
-  labelClassName?: string;
-  /**
-   * badgeClassName: Additinal class name to apply to the badge
-   * This will override the default class name if the custom class name conflicts with an existing class name
-   */
-  badgeClassName?: string;
-  /**
-   * menuClassName: Additinal class name to apply to the menu
-   * This will override the default class name if the custom class name conflicts with an existing class name
-   */
-  menuClassName?: string;
-  /**
-   * menuButtonClassName: Additinal class name to apply to the menu button
-   * This will override the default class name if the custom class name conflicts with an existing class name
-   */
-  menuButtonClassName?: string;
-  /**
-   * iconClassName: Additinal class name to apply to the icon
-   * This will override the default class name if the custom class name conflicts with an existing class name
-   */
-  iconClassName?: string;
-  /**
-   * menuPositionX: Horizontal position of the menu
-   * `center` (default) or `left` or `right`
-   */
-  menuPositionX?: 'start' | 'center' | 'end';
-  /**
-   * menuPositionY: Vertical position of the menu
-   * `top` (default) or `bottom`
-   */
-  menuPositionY?: 'top' | 'center' | 'bottom';
-  [x: string]: any;
-  /**
-   * Make the menu layout horizontal
-   * @defaultValue `false`
-   */
-  horizontal?: boolean;
-  /**
-   * menus: Array of menu items
-   *
-   * Each menu item should be an object with the following properties:
-   *
-   * `label`: The name of the menu item
-   *
-   * `href`: `optional` - The URL of the menu item
-   *
-   * `icon`: `optional` - A React component or a function that returns a React component to be used as the icon for the menu item
-   *
-   * `role`: `optional` - The role of the menu item
-   *
-   * `onClick`: `optional` - A function to be called when the menu item is clicked
-   *
-   * `props`: `optional` - Any additional props to be passed to the menu item
-   */
-  menus?: MenuItemProps[];
-}
+import { MenuProps } from '../../../typing';
 
 const isChildNull = (children) => {
   return Boolean(children.type() === null);

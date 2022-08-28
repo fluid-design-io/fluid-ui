@@ -1,7 +1,20 @@
 {
   // see https://www.typescriptlang.org/tsconfig to better understand tsconfigs
-  "include": ["src/**/*", "types"],
-  "exclude": ["node_modules", "stories/**/*", "test/**/*", ".storybook/**/*", "example/**/*", ".vscode/**/*"],
+  "include": [
+    "src/**/*",
+    "types",
+    "tsconfig.json",
+    "package.json",
+    "README.md"
+  ],
+  "exclude": [
+    "node_modules",
+    "stories/**/*",
+    "test/**/*",
+    ".storybook/**/*",
+    "example/**/*",
+    ".vscode/**/*"
+  ],
   "compilerOptions": {
     "target": "ES5",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -16,11 +29,6 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"],
-      "~/*": ["./stories/*"]
-    }
+    "jsx": "preserve"
   }
 }

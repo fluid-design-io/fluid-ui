@@ -4,16 +4,14 @@ import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { GrEmptyCircle } from 'react-icons/gr';
 import { HiOutlineDotsHorizontal } from 'react-icons/hi';
 
-import clsxm from '@/lib/helpers/clsxm';
-import { excludeClassName } from '@/lib/helpers/exclude';
-
 import {
   ButtonComponent,
   ButtonLoadingOptionsAnimation,
   ButtonProps,
   PolymorphicRef,
-} from '@/typing';
-
+} from '../../../typing';
+import clsxm from '../../helpers/clsxm';
+import { excludeClassName } from '../../helpers/exclude';
 import {
   FluidButtonColors,
   FluidButtonShapes,
@@ -47,7 +45,6 @@ export const Button: ButtonComponent = React.forwardRef(
     // isCustomColor is to check if the className contains a string starts with 'btn-'
     const isCustomColor = className && className.includes('btn-');
     const Component = as || 'button';
-    console.log('🚀 ~ file: Button.tsx ~ line 42 ~ Component', Component);
     return (
       <Component
         ref={ref}

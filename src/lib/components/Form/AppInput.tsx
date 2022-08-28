@@ -1,7 +1,7 @@
 import { useFormikContext } from 'formik';
 import React, { useState } from 'react';
 
-import clsxm from '@/lib/helpers/clsxm';
+import clsxm from '../../helpers/clsxm';
 
 import { useTheme } from '../FluidUI/ThemeContext';
 import { FormItem, FormProp, getInputColor, Label } from './';

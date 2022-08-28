@@ -1,8 +1,6 @@
 import { useFormikContext } from 'formik';
 import React from 'react';
-
-import { ButtonComponent, ButtonProps } from '@/typing';
-
+import { ButtonComponent, ButtonProps } from '../../../typing';
 import { Button } from '../Button';
 
 const SubmitButton: ButtonComponent = <C extends React.ElementType = 'button'>({

@@ -1,13 +1,12 @@
 import { Menu as HeadlessMenu } from '@headlessui/react';
 import React from 'react';
-
-import clsxm from '@/lib/helpers/clsxm';
-
 import {
   MenuItemComponent,
   MenuItemProps,
   PolymorphicComponentProp,
-} from '@/typing';
+} from '../../../typing';
+
+import clsxm from '../../helpers/clsxm';
 
 export const MenuItem: MenuItemComponent = <
   C extends React.ElementType = 'button'
