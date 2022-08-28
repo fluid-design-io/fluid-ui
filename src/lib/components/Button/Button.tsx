@@ -40,13 +40,19 @@ export const Button = ({
   const theme = useTheme().theme.button;
   const id = useId();
   const theirProps = excludeClassName(props);
+  // isCustomColor is to check if the className contains a string starts with 'btn-'
+  const isCustomColor = className.includes('btn-');
   return (
     <Component
       className={clsxm(
         theme.base,
-        theme.color[color].base,
         iconOnly ? theme.iconOnly[shape][size] : theme.shape[shape][size],
-        gradient ? theme.color[color].gradient[gradient] : theme.color[color].weight[weight],
+        isCustomColor
+          ? [`btn-primary`]
+          : [
+              theme.color[color].base,
+              gradient ? theme.color[color].gradient[gradient] : theme.color[color].weight[weight],
+            ],
         className
       )}
       disabled={props?.disabled || isLoading}
@@ -57,18 +63,18 @@ export const Button = ({
       {sr && <span className="sr-only">{sr}</span>}
       <AnimatePresence mode="sync">
         {isLoading && <ButtonLoadingComponent key={id} {...{ loadingOptions }} />}
-        <motion.div
-          initial={{ opacity: 1 }}
-          animate={{ opacity: isLoading ? 0 : 1, scale: isLoading ? 0.85 : 1 }}
-          className={clsxm(theme.base, loadingOptions?.text && loadingOptions.text.length > 0 && 'px-2')}
-        >
-          {isLoading
-            ? loadingOptions?.text && loadingOptions.text.length > 0
-              ? loadingOptions.text
-              : children
-            : children}
-        </motion.div>
       </AnimatePresence>
+      <motion.div
+        initial={{ opacity: 1 }}
+        animate={{ opacity: isLoading ? 0 : 1, scale: isLoading ? 0.85 : 1 }}
+        className={clsxm(theme.base, loadingOptions?.text && loadingOptions.text.length > 0 && 'px-2')}
+      >
+        {isLoading
+          ? loadingOptions?.text && loadingOptions.text.length > 0
+            ? loadingOptions.text
+            : children
+          : children}
+      </motion.div>
     </Component>
   );
 };
@@ -108,8 +114,43 @@ const ButtonLoadingComponent = ({
 export interface ButtonProps extends PropsWithChildren<ComponentProps<'button'>> {
   /**
    * The color of the button.
-   * @default 'gray'
-   * @type {FluidButtonColorOptions}
+   * @defaultValue `gray`
+   *
+   * @example
+   *
+   * You can use custom color by using the class name `btn-custom` once you have defined custom colors in tailwind.config.js
+   * ```tsx
+   * <Button className="btn-primary" />
+   * <Button className="btn-bold-primary" />
+   * <Button className="btn-outline-primary" />
+   * <Button className="btn-clear-primary" />
+   * ```
+   *
+   * ```js
+   *
+   * // tailwind.config.js
+   * module.exports = {
+   *   ...
+   *   theme: {
+   *     extend: {
+   *         colors: {
+   *           primary: {
+   *             50: 'rgb(var(--tw-color-primary-50) / <alpha-value>)',
+   *             100: 'rgb(var(--tw-color-primary-100) / <alpha-value>)',
+   *             200: 'rgb(var(--tw-color-primary-200) / <alpha-value>)',
+   *             300: 'rgb(var(--tw-color-primary-300) / <alpha-value>)',
+   *             400: 'rgb(var(--tw-color-primary-400) / <alpha-value>)',
+   *             500: 'rgb(var(--tw-color-primary-500) / <alpha-value>)',
+   *             600: 'rgb(var(--tw-color-primary-600) / <alpha-value>)',
+   *             700: 'rgb(var(--tw-color-primary-700) / <alpha-value>)',
+   *             800: 'rgb(var(--tw-color-primary-800) / <alpha-value>)',
+   *             900: 'rgb(var(--tw-color-primary-900) / <alpha-value>)',
+   *           },
+   *         }
+   *       },
+   *     }
+   *   }
+   * ```
    */
   color?: keyof FluidButtonColors;
   /**
@@ -119,7 +160,7 @@ export interface ButtonProps extends PropsWithChildren<ComponentProps<'button'>>
   size?: keyof FluidButtonSizes;
   /**
    * wieght: The appearance of the button.
-   * @default 'normal'
+   * @defaultValue `normal`
    *
    * @type {'light' | 'normal' | 'bold' | 'outline' | 'clear' | 'link'}
    */
@@ -127,7 +168,7 @@ export interface ButtonProps extends PropsWithChildren<ComponentProps<'button'>>
   /**
    * Adjust the padding to be the same for all edges
    *
-   * @default false
+   * @defaultValue `false`
    */
   iconOnly?: boolean;
   isLoading?: boolean;

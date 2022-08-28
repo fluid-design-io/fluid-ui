@@ -4,19 +4,11 @@ import { Button, ButtonProps } from '../src/lib/components/Button';
 import * as Yup from 'yup';
 
 import { FluidButtonSizes, FluidButtonWeights } from '../src/lib/components/FluidUI/FluidTheme';
-import {
-  ComboBox,
-  Form,
-  Input,
-  Menu,
-  SubmitButton,
-  SubmitButtonRef,
-  Switch,
-  Textarea,
-} from '../src/lib/components/Form';
+import { ComboBox, Form, Input, SubmitButton, SubmitButtonRef, Switch, Textarea } from '../src/lib/components/Form';
 import { HiChevronDown, HiInformationCircle, HiPencil, HiTrash } from 'react-icons/hi';
 import { states } from '../src/lib/helpers/data';
 import { useRef, useState } from '@storybook/addons';
+import { Menu } from '../src/lib/components';
 
 export default {
   title: 'Components/Form',
@@ -130,6 +122,9 @@ const Template: Story<StoryButtonProps> = (args) => {
           Submit Button Ref
         </Button>
       </div>
+      <div className="w-full flex justify-center flex-row items-center">
+        <Button className="btn-clear-primary">Submit Button Ref</Button>
+      </div>
       <div className="relative h-32 w-ful contrast:bg-blue-400">
         <div className="absolute inset-0 bg-grid-blue-500/20 [background-position:10px] dark:bg-grid-indigo-400">
           <button className="p-2 rounded-full m-8 btn-clear-red" data-tooltip-bottom="Hi there! How are you doing?">
@@ -137,7 +132,7 @@ const Template: Story<StoryButtonProps> = (args) => {
           </button>
           <div>
             <Button weight="clear" color="blue" iconOnly>
-              <HiInformationCircle className="text-stone-500 btn-blue text-blue-" />
+              <HiInformationCircle className="text-stone-500" />
             </Button>
           </div>
         </div>
