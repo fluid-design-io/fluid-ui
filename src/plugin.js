@@ -167,8 +167,8 @@ const contrastColor = (value, step = undefined, blackWhite = false) => {
           ? '#000'
           : checkDarkness(hsla, undefined, 'dark')
         : blackWhite
-          ? '#FFF'
-          : checkDarkness(hsla, undefined, 'light');
+        ? '#FFF'
+        : checkDarkness(hsla, undefined, 'light');
     }
   }
   return value;
@@ -425,7 +425,7 @@ const buttonUtilities = (theme) => {
         'border-color': toColor(getColor(value, 400, 30)),
         '&:enabled:hover, &:enabled:focus-visible': {
           'border-color': toColor(getColor(value, 200, 85)),
-        }
+        },
       },
       ...generateCMClass({
         ...generateTxtBg(value, { step: 50, alpha: 0 }, false, toColor(getColor(value, 700)), 50, false),
@@ -478,7 +478,7 @@ const buttonUtilities = (theme) => {
         }),
         '&:enabled:hover, &:enabled:focus-visible': {
           'border-color': toColor(getColor(value, 300, 25)),
-        }
+        },
       },
       ...generateCMClass({
         ...generateTxtBg(value, { step: 50, alpha: 0 }, false, toColor(getColor(value, 700)), 50, false),
