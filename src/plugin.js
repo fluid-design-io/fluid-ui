@@ -1,5 +1,7 @@
 const plugin = require('tailwindcss/plugin');
-const { default: flattenColorPalette } = require('tailwindcss/lib/util/flattenColorPalette');
+const {
+  default: flattenColorPalette,
+} = require('tailwindcss/lib/util/flattenColorPalette');
 const colors = require('tailwindcss/colors');
 // construct an enum of color modes
 const colorModes = {
@@ -81,6 +83,36 @@ const rgbToHsl = (r, g, b, a = 1) => {
   // round to 2 decimal places
   return [rounded(h), rounded(s), rounded(l), a];
 };
+const getColor = (value, step = 500, alpha = 1) => {
+  if (alpha > 1) {
+    alpha /= 100;
+  }
+  if (alpha <= 0) {
+    return 'transparent';
+  }
+  if (typeof value === 'object') {
+    if (typeof value[step] === 'function') {
+      return value[step]();
+    }
+    const mode = checkColorMode(value[step]);
+    if (mode === colorModes.var) {
+      // the string will look like this: rgb(var(--tw-color-primary-50) / <alpha-value>)
+      const raw = value[step];
+      const colorVar = raw.split('var(')[1].split(')')[0];
+      /* console.log(`
+      -------
+      ${value[step]}
+      rgb(${colorVar} / ${alpha})
+      -------`); */
+      return `rgb(var(${colorVar}) / ${alpha})`;
+    }
+    const hex = step ? value[step] : value[500];
+    const [r, g, b] = getRGB(hex);
+    const [h, s, l, a] = rgbToHsl(r, g, b, alpha);
+    return [h, s, l, a];
+  }
+  return undefined;
+};
 const rounded = (num) => Math.round(num * 100) / 100;
 /* const hslToRgb = (h, s, l) => {
   let r, g, b;
@@ -105,7 +137,7 @@ const rounded = (num) => Math.round(num * 100) / 100;
 }; */
 
 const changeColor = (mode = 'dark', hsla) => {
-  const amount = 0.1;
+  const amount = 0.15;
   let [h, s, l, a] = hsla;
   // change the color
   if (mode === 'dark') {
@@ -138,12 +170,23 @@ const checkDarkness = (hsla, newColor = hsla, mode = 'dark', loop = 0) => {
   if (loop >= 10) {
     return newColor;
   }
-  if (Math.abs(originalLuminance - newLuminance) > 0.5 * hsla[3] || newLuminance > 0.95 || newLuminance < 0.05) {
+  if (
+    Math.abs(originalLuminance - newLuminance) > 0.5 * hsla[3] ||
+    newLuminance > 0.95 ||
+    newLuminance < 0.05
+  ) {
     return newColor;
   } else {
     return checkDarkness(hsla, changeColor(mode, newColor), mode, loop + 1);
   }
 };
+const isLight = (hsla) => {
+  let [h, s, l] = hsla;
+  h = h * 360;
+  // if h is between 80 and 170, and s is between 0.7 and 1, or l is between > 0.47, then it's light
+  return (h >= 45 && h <= 188 && s >= 0.7 && l >= 0.35) || (l >= 0.475);
+}
+
 const contrastColor = (value, step = undefined, blackWhite = false) => {
   let alpha = undefined;
   if (typeof step === 'object') {
@@ -159,49 +202,17 @@ const contrastColor = (value, step = undefined, blackWhite = false) => {
       return value[step];
     } else {
       const hsla = getColor(value, step, alpha);
-      // alpha && console.log(`${value[step]}:${color}`)
-      const isLight = getLuminance(hsla) > 0.468 * hsla[3];
       // alpha && console.log(`Luminance ${value[step]}:${isLight}`);
-      return isLight
+      return isLight(hsla)
         ? blackWhite
           ? '#000'
           : checkDarkness(hsla, undefined, 'dark')
         : blackWhite
-        ? '#FFF'
-        : checkDarkness(hsla, undefined, 'light');
+          ? '#FFF'
+          : checkDarkness(hsla, undefined, 'light');
     }
   }
   return value;
-};
-const getColor = (value, step = 500, alpha = 1) => {
-  if (alpha > 1) {
-    alpha /= 100;
-  }
-  if (alpha <= 0) {
-    return 'transparent';
-  }
-  if (typeof value === 'object') {
-    if (typeof value[step] === 'function') {
-      return value[step]();
-    }
-    const mode = checkColorMode(value[step]);
-    if (mode === colorModes.var) {
-      // the string will look like this: rgb(var(--tw-color-primary-50) / <alpha-value>)
-      const raw = value[step];
-      const colorVar = raw.split('var(')[1].split(')')[0];
-      /* console.log(`
-      -------
-      ${value[step]}
-      rgb(${colorVar} / ${alpha})
-      -------`); */
-      return `rgb(var(${colorVar}) / ${alpha})`;
-    }
-    const hex = step ? value[step] : value[500];
-    const [r, g, b] = getRGB(hex);
-    const [h, s, l, a] = rgbToHsl(r, g, b, alpha);
-    return [h, s, l, a];
-  }
-  return undefined;
 };
 const toColor = (value) => {
   if (typeof value === 'string') {
@@ -209,7 +220,8 @@ const toColor = (value) => {
   } // else if check if value is an array
   else if (typeof value === 'object') {
     const colorMode = checkColorMode(value);
-    return `hsla(${value[0] * 360}, ${value[1] * 100}%, ${value[2] * 100}%, ${value[3]})`;
+    return `hsla(${value[0] * 360}, ${value[1] * 100}%, ${value[2] * 100}%, ${value[3]
+      })`;
   }
   return value;
 };
@@ -235,15 +247,39 @@ const generateTxtBg = (
     transition: 'all 0.15s ease-in-out',
   };
 };
-const generateTxtStates = (value, { hocus, active, disabled, textHocus, textActive, textDisabled }) => ({
-  '&:enabled:hover': {
-    ...generateTxtBg(hocus.value, hocus.step, hocus.bw, textHocus?.value, textHocus?.step, textHocus?.bw),
+const generateTxtStates = (
+  value,
+  { hocus, active, disabled, textHocus, textActive, textDisabled }
+) => ({
+  '&:hover': {
+    ...generateTxtBg(
+      hocus.value,
+      hocus.step,
+      hocus.bw,
+      textHocus?.value,
+      textHocus?.step,
+      textHocus?.bw
+    ),
   },
-  '&:enabled:focus-visible': {
-    ...generateTxtBg(hocus.value, hocus.step, hocus.bw, textHocus?.value, textHocus?.step, textHocus?.bw),
+  '&:focus-visible': {
+    ...generateTxtBg(
+      hocus.value,
+      hocus.step,
+      hocus.bw,
+      textHocus?.value,
+      textHocus?.step,
+      textHocus?.bw
+    ),
   },
-  '&:enabled:active': {
-    ...generateTxtBg(active.value, active.step, active.bw, textActive?.value, textActive?.step, textActive?.bw),
+  '&:active': {
+    ...generateTxtBg(
+      active.value,
+      active.step,
+      active.bw,
+      textActive?.value,
+      textActive?.step,
+      textActive?.bw
+    ),
   },
   '&:disabled': {
     ...generateTxtBg(
@@ -262,9 +298,9 @@ const generateCMBtn = (value, { bw, bc, bs, fw, hocus, active }) => ({
   'border-color': bc,
   'box-shadow': bs,
   'font-weight': fw,
-  '&:enabled:hover': hocus,
-  '&:enabled:focus-visible': hocus,
-  '&:enabled:active': active,
+  '&:hover': hocus,
+  '&:focus-visible': hocus,
+  '&:active': active,
 });
 const generateCMClass = (value) => ({
   '.contrast &': value,
@@ -294,7 +330,9 @@ const buttonUtilities = (theme) => {
         ...generateCMBtn(value, {
           bw: '1px',
           bc: toColor(getColor(value, 500)),
-          bs: `inset 0 0 0 1px ${toColor(getColor(value, 500))}, 0 0px 0px 2px ${toColor(getColor(value, 900))}`,
+          bs: `inset 0 0 0 1px ${toColor(
+            getColor(value, 500)
+          )}, 0 0px 0px 2px ${toColor(getColor(value, 900))}`,
           fw: 'bold',
           hocus: generateTxtBg(value, 700, true),
           active: generateTxtBg(value, 900, true),
@@ -304,7 +342,9 @@ const buttonUtilities = (theme) => {
           ...generateCMBtn(value, {
             bw: '1px',
             bc: toColor(getColor(value, 900)),
-            bs: `inset 0 0 0 1px ${toColor(getColor(value, 900))}, 0 0px 0px 2px ${toColor(getColor(value, 50))}`,
+            bs: `inset 0 0 0 1px ${toColor(
+              getColor(value, 900)
+            )}, 0 0px 0px 2px ${toColor(getColor(value, 50))}`,
             fw: 'bold',
             hocus: generateTxtBg(value, 50, true),
             active: generateTxtBg(value, 300, true),
@@ -315,14 +355,28 @@ const buttonUtilities = (theme) => {
     /* ==== END NORMAL BUTTON ==== */
     /* ==== START LIGHT BUTTON ==== */
     'btn-light': (value) => ({
-      ...generateTxtBg(value, { step: 100, alpha: 80 }, false, value, { step: 200, alpha: 90 }, false),
+      ...generateTxtBg(
+        value,
+        { step: 100, alpha: 80 },
+        false,
+        value,
+        { step: 200, alpha: 90 },
+        false
+      ),
       ...generateTxtStates(value, {
         hocus: { value, step: 200 },
         active: { value, step: { step: 400, alpha: 65 } },
         disabled: { value, step: 100 },
       }),
       '.dark &': {
-        ...generateTxtBg(value, { step: 900, alpha: 40 }, false, value, { step: 900, alpha: 100 }, false),
+        ...generateTxtBg(
+          value,
+          { step: 900, alpha: 40 },
+          false,
+          value,
+          { step: 900, alpha: 100 },
+          false
+        ),
         ...generateTxtStates(value, {
           hocus: { value, step: 800 },
           active: { value, step: 900 },
@@ -334,7 +388,9 @@ const buttonUtilities = (theme) => {
         ...generateCMBtn(value, {
           bw: '1px',
           bc: toColor(getColor(value, 500)),
-          bs: `inset 0 0 0 1px ${toColor(getColor(value, 500))}, 0 0px 0px 1px ${toColor(getColor(value, 900))}`,
+          bs: `inset 0 0 0 1px ${toColor(
+            getColor(value, 500)
+          )}, 0 0px 0px 1px ${toColor(getColor(value, 900))}`,
           fw: 'bold',
           hocus: generateTxtBg(value, 700, true),
           active: generateTxtBg(value, 900, true),
@@ -344,7 +400,9 @@ const buttonUtilities = (theme) => {
           ...generateCMBtn(value, {
             bw: '1px',
             bc: toColor(getColor(value, 900)),
-            bs: `inset 0 0 0 1px ${toColor(getColor(value, 900))}, 0 0px 0px 1px ${toColor(getColor(value, 50))}`,
+            bs: `inset 0 0 0 1px ${toColor(
+              getColor(value, 900)
+            )}, 0 0px 0px 1px ${toColor(getColor(value, 50))}`,
             fw: 'bold',
             hocus: generateTxtBg(value, 50, true),
             active: generateTxtBg(value, 300, true),
@@ -355,7 +413,14 @@ const buttonUtilities = (theme) => {
     /* ==== END LIGHT BUTTON ==== */
     /* ==== START BOLD BUTTON ==== */
     'btn-bold': (value) => ({
-      ...generateTxtBg(value, { step: 700, alpha: 90 }, false, value, 900, true),
+      ...generateTxtBg(
+        value,
+        { step: 700, alpha: 90 },
+        false,
+        value,
+        900,
+        true
+      ),
       ...generateTxtStates(value, {
         hocus: { value, step: { step: 800, alpha: 80 } },
         active: { value, step: 800 },
@@ -363,7 +428,14 @@ const buttonUtilities = (theme) => {
         textHocus: { value, step: 900, bw: true },
       }),
       '.dark &': {
-        ...generateTxtBg(value, { step: 900, alpha: 85 }, false, value, { step: 900, alpha: 100 }, false),
+        ...generateTxtBg(
+          value,
+          { step: 900, alpha: 85 },
+          false,
+          value,
+          { step: 900, alpha: 100 },
+          false
+        ),
         ...generateTxtStates(value, {
           hocus: { value, step: { step: 900, alpha: 65 } },
           active: { value, step: { step: 900, alpha: 45 } },
@@ -377,7 +449,9 @@ const buttonUtilities = (theme) => {
         ...generateCMBtn(value, {
           bw: '3px',
           bc: toColor(getColor(value, 500)),
-          bs: `inset 0 0 0 3px ${toColor(getColor(value, 500))}, 0 0px 0px 3px ${toColor(getColor(value, 900))}`,
+          bs: `inset 0 0 0 3px ${toColor(
+            getColor(value, 500)
+          )}, 0 0px 0px 3px ${toColor(getColor(value, 900))}`,
           fw: 'bold',
           hocus: generateTxtBg(value, 700, true),
           active: generateTxtBg(value, 900, true),
@@ -387,7 +461,9 @@ const buttonUtilities = (theme) => {
           ...generateCMBtn(value, {
             bw: '3px',
             bc: toColor(getColor(value, 900)),
-            bs: `inset 0 0 0 3px ${toColor(getColor(value, 900))}, 0 0px 0px 3px ${toColor(getColor(value, 50))}`,
+            bs: `inset 0 0 0 3px ${toColor(
+              getColor(value, 900)
+            )}, 0 0px 0px 3px ${toColor(getColor(value, 50))}`,
             fw: 'bold',
             hocus: generateTxtBg(value, 50, true),
             active: generateTxtBg(value, 300, true),
@@ -398,7 +474,14 @@ const buttonUtilities = (theme) => {
     /* ==== END BOLD BUTTON ==== */
     /* ==== START OUTLINE BUTTON ==== */
     'btn-outline': (value) => ({
-      ...generateTxtBg(value, { step: 50, alpha: 0 }, false, toColor(getColor(value, 700)), 50, false),
+      ...generateTxtBg(
+        value,
+        { step: 50, alpha: 0 },
+        false,
+        toColor(getColor(value, 700)),
+        50,
+        false
+      ),
       ...generateTxtStates(value, {
         hocus: { value, step: { step: 400, alpha: 20 } },
         active: { value, step: { step: 400, alpha: 30 } },
@@ -409,11 +492,18 @@ const buttonUtilities = (theme) => {
       'border-width': '1px',
       'border-style': 'solid',
       'border-color': toColor(getColor(value, 500, 30)),
-      '&:enabled:hover, &:enabled:focus-visible': {
+      '&:hover, &:focus-visible': {
         'border-color': toColor(getColor(value, 400, 95)),
       },
       '.dark &': {
-        ...generateTxtBg(value, { step: 900, alpha: 0 }, false, toColor(getColor(value, 200)), 50, false),
+        ...generateTxtBg(
+          value,
+          { step: 900, alpha: 0 },
+          false,
+          toColor(getColor(value, 200)),
+          50,
+          false
+        ),
         ...generateTxtStates(value, {
           hocus: { value, step: { step: 500, alpha: 20 } },
           active: { value, step: { step: 500, alpha: 30 } },
@@ -423,29 +513,54 @@ const buttonUtilities = (theme) => {
           textDisabled: { value: toColor(getColor(value, 100)) },
         }),
         'border-color': toColor(getColor(value, 400, 30)),
-        '&:enabled:hover, &:enabled:focus-visible': {
+        '&:hover, &:focus-visible': {
           'border-color': toColor(getColor(value, 200, 85)),
         },
       },
       ...generateCMClass({
-        ...generateTxtBg(value, { step: 50, alpha: 0 }, false, toColor(getColor(value, 700)), 50, false),
+        ...generateTxtBg(
+          value,
+          { step: 50, alpha: 0 },
+          false,
+          toColor(getColor(value, 700)),
+          50,
+          false
+        ),
         ...generateCMBtn(value, {
           bw: '1px',
           bc: toColor(getColor(value, 700)),
-          bs: `inset 0 0 0 3px ${toColor(getColor(value, 700))}, 0 0px 0px 3px ${toColor(getColor(value, 50))}`,
+          bs: `inset 0 0 0 3px ${toColor(
+            getColor(value, 700)
+          )}, 0 0px 0px 3px ${toColor(getColor(value, 50))}`,
           fw: 'bold',
           hocus: generateTxtBg(value, 50, true),
           active: generateTxtBg(value, 300, true),
         }),
         '.dark &': {
-          ...generateTxtBg(value, { step: 900, alpha: 0 }, false, toColor(getColor(value, 100)), 50, false),
+          ...generateTxtBg(
+            value,
+            { step: 900, alpha: 0 },
+            false,
+            toColor(getColor(value, 100)),
+            50,
+            false
+          ),
           ...generateCMBtn(value, {
             bw: '1px',
             bc: toColor(getColor(value, 200)),
-            bs: `inset 0 0 0 3px ${toColor(getColor(value, 700))}, 0 0px 0px 3px ${toColor(getColor(value, 100))}`,
+            bs: `inset 0 0 0 3px ${toColor(
+              getColor(value, 700)
+            )}, 0 0px 0px 3px ${toColor(getColor(value, 100))}`,
             fw: 'bold',
             hocus: generateTxtBg(value, 700, true),
-            active: generateTxtBg(value, { step: 900, alpha: 60 }, true, value, 900, true),
+            active: generateTxtBg(
+              value,
+              { step: 900, alpha: 60 },
+              true,
+              value,
+              900,
+              true
+            ),
           }),
         },
       }),
@@ -453,7 +568,14 @@ const buttonUtilities = (theme) => {
     /* ==== END OUTLINE BUTTON ==== */
     /* ==== START CLEAR BUTTON ==== */
     'btn-clear': (value) => ({
-      ...generateTxtBg(value, { step: 50, alpha: 0 }, false, toColor(getColor(value, 500)), 50, false),
+      ...generateTxtBg(
+        value,
+        { step: 50, alpha: 0 },
+        false,
+        toColor(getColor(value, 500)),
+        50,
+        false
+      ),
       ...generateTxtStates(value, {
         hocus: { value, step: 100, bw: false },
         active: { value, step: { step: 200, alpha: 85 } },
@@ -464,11 +586,18 @@ const buttonUtilities = (theme) => {
       'border-width': '1px',
       'border-style': 'solid',
       'border-color': 'transparent',
-      '&:enabled:hover, &:enabled:focus-visible': {
+      '&:hover, &:focus-visible': {
         'border-color': toColor(getColor(value, 400, 25)),
       },
       '.dark &': {
-        ...generateTxtBg(value, { step: 900, alpha: 0 }, false, toColor(getColor(value, 400)), 50, false),
+        ...generateTxtBg(
+          value,
+          { step: 900, alpha: 0 },
+          false,
+          toColor(getColor(value, 400)),
+          50,
+          false
+        ),
         ...generateTxtStates(value, {
           hocus: { value, step: { step: 600, alpha: 30 } },
           active: { value, step: { step: 600, alpha: 20 } },
@@ -476,16 +605,25 @@ const buttonUtilities = (theme) => {
           textHocus: { value: toColor(getColor(value, 300)) },
           textActive: { value: toColor(getColor(value, 300)) },
         }),
-        '&:enabled:hover, &:enabled:focus-visible': {
+        '&:hover, &:focus-visible': {
           'border-color': toColor(getColor(value, 300, 25)),
         },
       },
       ...generateCMClass({
-        ...generateTxtBg(value, { step: 50, alpha: 0 }, false, toColor(getColor(value, 700)), 50, false),
+        ...generateTxtBg(
+          value,
+          { step: 50, alpha: 0 },
+          false,
+          toColor(getColor(value, 700)),
+          50,
+          false
+        ),
         ...generateCMBtn(value, {
           bw: '1px',
           bc: toColor(getColor(value, 500)),
-          bs: `inset 0 0 0 1px ${toColor(getColor(value, 500))}, 0 0px 0px 2px ${toColor(getColor(value, 900))}`,
+          bs: `inset 0 0 0 1px ${toColor(
+            getColor(value, 500)
+          )}, 0 0px 0px 2px ${toColor(getColor(value, 900))}`,
           fw: 'bold',
           hocus: generateTxtBg(value, 700, true),
           active: generateTxtBg(value, 900, true),
@@ -495,7 +633,9 @@ const buttonUtilities = (theme) => {
           ...generateCMBtn(value, {
             bw: '1px',
             bc: toColor(getColor(value, 900)),
-            bs: `inset 0 0 0 1px ${toColor(getColor(value, 900))}, 0 0px 0px 2px ${toColor(getColor(value, 50))}`,
+            bs: `inset 0 0 0 1px ${toColor(
+              getColor(value, 900)
+            )}, 0 0px 0px 2px ${toColor(getColor(value, 50))}`,
             fw: 'bold',
             hocus: generateTxtBg(value, 50, true),
             active: generateTxtBg(value, 300, true),
@@ -532,7 +672,13 @@ const tooltipArrowStyle = {
   borderRadius: 3,
 };
 
-module.exports = plugin(function ({ matchUtilities, addVariant, addComponents, addBase, theme }) {
+module.exports = plugin(function ({
+  matchUtilities,
+  addVariant,
+  addComponents,
+  addBase,
+  theme,
+}) {
   /* eslint-disable no-unused-expressions */
   matchUtilities(
     buttonUtilities(theme),
@@ -570,7 +716,12 @@ module.exports = plugin(function ({ matchUtilities, addVariant, addComponents, a
       ]]: {
         display: 'inline-block',
       },
-      [['[data-tooltip-top]', '[data-tooltip-left]', '[data-tooltip-right]', '[data-tooltip-bottom]']]: {
+      [[
+        '[data-tooltip-top]',
+        '[data-tooltip-left]',
+        '[data-tooltip-right]',
+        '[data-tooltip-bottom]',
+      ]]: {
         position: 'relative',
       },
       '[data-tooltip-top]::before': {
@@ -631,7 +782,7 @@ module.exports = plugin(function ({ matchUtilities, addVariant, addComponents, a
       },
     }),
     addVariant('hocus', ['&:hover', '&:focus-visible']),
-    addVariant('hocus-enabled', ['&:enabled:hover', '&:enabled:focus-visible']),
-    addVariant('active-enabled', ['&:enabled:active']),
+    addVariant('hocus-enabled', ['&:hover', '&:focus-visible']),
+    addVariant('active-enabled', ['&:active']),
     addVariant('contrast', ['.contrast &', '@media (prefers-contrast: more)']);
 });
