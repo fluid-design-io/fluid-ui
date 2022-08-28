@@ -47,12 +47,10 @@ export const Button = ({
       className={clsxm(
         theme.base,
         iconOnly ? theme.iconOnly[shape][size] : theme.shape[shape][size],
-        isCustomColor
-          ? [`btn-primary`]
-          : [
-              theme.color[color].base,
-              gradient ? theme.color[color].gradient[gradient] : theme.color[color].weight[weight],
-            ],
+        !isCustomColor && [
+          theme.color[color].base,
+          gradient ? theme.color[color].gradient[gradient] : theme.color[color].weight[weight],
+        ],
         className
       )}
       disabled={props?.disabled || isLoading}
