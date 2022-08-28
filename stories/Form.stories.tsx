@@ -1,6 +1,5 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { Button, ButtonProps } from '../src/lib/components/Button';
 import * as Yup from 'yup';
 
 import { FluidButtonSizes, FluidButtonWeights } from '../src/lib/components/FluidUI/FluidTheme';
@@ -8,7 +7,10 @@ import { ComboBox, Form, Input, SubmitButton, SubmitButtonRef, Switch, Textarea 
 import { HiChevronDown, HiInformationCircle, HiPencil, HiTrash } from 'react-icons/hi';
 import { states } from '../src/lib/helpers/data';
 import { useRef, useState } from '@storybook/addons';
-import { Menu } from '../src/lib/components';
+import { Button, Menu } from '../src/lib/components';
+import { motion } from 'framer-motion';
+
+import { ButtonProps } from '../src/typing';
 
 export default {
   title: 'Components/Form',
@@ -20,7 +22,7 @@ export default {
   },
 } as Meta;
 
-interface StoryButtonProps extends Omit<ButtonProps, 'color'> {}
+interface StoryButtonProps extends Omit<ButtonProps<'button'>, 'color'> {}
 
 const Template: Story<StoryButtonProps> = (args) => {
   const submitBtnRef = useRef<HTMLButtonElement | null>(null);
@@ -113,6 +115,8 @@ const Template: Story<StoryButtonProps> = (args) => {
       </div>
       <div>
         <Button
+          as="a"
+          href="#"
           data-tooltip-top="some more information"
           onClick={() => submitBtnRef.current?.click()}
           shape="pill"
@@ -122,19 +126,35 @@ const Template: Story<StoryButtonProps> = (args) => {
           Submit Button Ref
         </Button>
       </div>
-      <div className="w-full flex justify-center flex-row items-center">
+      <div className="flex w-full flex-row items-center justify-center">
         <Button className="btn-clear-primary">Submit Button Ref</Button>
       </div>
-      <div className="relative h-32 w-ful contrast:bg-blue-400">
+      <div className="w-ful relative h-32 contrast:bg-blue-400">
         <div className="absolute inset-0 bg-grid-blue-500/20 [background-position:10px] dark:bg-grid-indigo-400">
-          <button className="p-2 rounded-full m-8 btn-clear-red" data-tooltip-bottom="Hi there! How are you doing?">
+          <Button
+            color="red"
+            as="div"
+            weight="clear"
+            shape="pill"
+            iconOnly
+            data-tooltip-bottom="Hi there! How are you doing?"
+          >
             <HiTrash />
-          </button>
-          <div>
-            <Button weight="clear" color="blue" iconOnly>
-              <HiInformationCircle className="text-stone-500" />
-            </Button>
-          </div>
+          </Button>
+          <Button color="blue" weight="clear" shape="pill" iconOnly data-tooltip-bottom="Hi there! How are you doing?">
+            <HiTrash />
+          </Button>
+          <Button
+            as={motion.a}
+            color="amber"
+            weight="clear"
+            shape="pill"
+            iconOnly
+            initial={{ y: -10 }}
+            animate={{ y: 0 }}
+          >
+            <HiTrash />
+          </Button>
         </div>
       </div>
     </>

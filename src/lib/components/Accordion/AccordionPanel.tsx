@@ -2,11 +2,14 @@ import { Disclosure } from '@headlessui/react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import React, { ComponentProps, FC, PropsWithChildren } from 'react';
 import { HiChevronDown } from 'react-icons/hi';
-import clsxm from '../../helpers/clsxm';
-import { excludeClassName } from '../../helpers/exclude';
+
+import clsxm from '@/lib/helpers/clsxm';
+import { excludeClassName } from '@/lib/helpers/exclude';
+
 import { useTheme } from '../FluidUI/ThemeContext';
 
-export interface AccordionPanelProps extends PropsWithChildren<ComponentProps<'div'>> {
+export interface AccordionPanelProps
+  extends PropsWithChildren<ComponentProps<'div'>> {
   isOpen?: boolean;
   header?: string | React.ReactNode;
   headerIcon?: FC<ComponentProps<'svg'>>;
@@ -27,9 +30,9 @@ export const AccordionPanel: FC<AccordionPanelProps> = ({
 
   const ListPanel = ({ children }: { children: React.ReactNode }) => (
     <motion.div
-      initial="collapsed"
-      animate="open"
-      exit="collapsed"
+      initial='collapsed'
+      animate='open'
+      exit='collapsed'
       variants={{
         open: { opacity: 1, height: 'auto' },
         collapsed: {
@@ -42,30 +45,54 @@ export const AccordionPanel: FC<AccordionPanelProps> = ({
         bounce: 0,
         duration: shouldReduceMotion ? 0.2 : 0.5,
       }}
-      className={`overflow-hidden !mt-0 mx-4`}
+      className='overflow-hidden !mt-0 mx-4'
     >
       {children}
     </motion.div>
   );
 
   return (
-    <Disclosure as="div" className={clsxm('space-y-1', props?.className)} defaultOpen={isOpen} {...theirProps}>
+    <Disclosure
+      as='div'
+      className={clsxm('space-y-1', props?.className)}
+      defaultOpen={isOpen}
+      {...theirProps}
+    >
       {({ open }) => (
         <>
-          <Disclosure.Button as="button" className={clsxm(theme.base, open && theme.open.on)} aria-live="assertive">
+          <Disclosure.Button
+            as='button'
+            className={clsxm(theme.base, open && theme.open.on)}
+            aria-live='assertive'
+          >
             {typeof header === 'string' ? (
-              <p className="flex items-center gap-2">
-                {HeaderIcon && <HeaderIcon className="flex-shrink-0 w-4 h-4" aria-hidden="true" />}
+              <p className='flex items-center gap-2'>
+                {HeaderIcon && (
+                  <HeaderIcon
+                    className='flex-shrink-0 w-4 h-4'
+                    aria-hidden='true'
+                  />
+                )}
                 {header}
               </p>
             ) : (
               header
             )}
-            <span className={`rtl:block hidden`}>
-              <ArrowIcon className={clsxm(theme.arrow.base, open ? theme.arrow.open.on : theme.arrow.open.off)} />
+            <span className='rtl:block hidden'>
+              <ArrowIcon
+                className={clsxm(
+                  theme.arrow.base,
+                  open ? theme.arrow.open.on : theme.arrow.open.off
+                )}
+              />
             </span>
-            <span className={`rtl:hidden block`}>
-              <ArrowIcon className={clsxm(theme.arrow.base, open ? theme.arrow.open.on : theme.arrow.open.off)} />
+            <span className='rtl:hidden block'>
+              <ArrowIcon
+                className={clsxm(
+                  theme.arrow.base,
+                  open ? theme.arrow.open.on : theme.arrow.open.off
+                )}
+              />
             </span>
           </Disclosure.Button>
           <AnimatePresence>

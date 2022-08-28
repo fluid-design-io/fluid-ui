@@ -1,9 +1,11 @@
 import { Switch } from '@headlessui/react';
 import { useFormikContext } from 'formik';
-import React, { useState } from 'react';
+import { useState } from 'react';
+
+import clsxm from '@/lib/helpers/clsxm';
+import { excludeOnChangeClickBlurFocus } from '@/lib/helpers/exclude';
+
 import { FormProp } from '.';
-import clsxm from '../../helpers/clsxm';
-import { excludeOnChangeClickBlurFocus } from '../../helpers/exclude';
 
 function AppSwitch({
   name,
@@ -22,22 +24,30 @@ function AppSwitch({
   labelClassName?: string;
   [key: string]: any;
 }) {
-  const { setFieldTouched, handleChange, errors, touched, values } = useFormikContext();
+  const { setFieldTouched, handleChange, errors, touched, values } =
+    useFormikContext();
   const [focused, setFocused] = useState(false);
   const error = touched[name] ? errors[name] : undefined;
-  const label = props?.label ? props.label : placeholder ? placeholder : `${name[0].toUpperCase()}${name.slice(1)}`;
+  const label = props?.label
+    ? props.label
+    : placeholder
+    ? placeholder
+    : `${name[0].toUpperCase()}${name.slice(1)}`;
   const userOnChange = props?.onChange,
     userOnBlur = props?.onBlur,
     userOnFocus = props?.onFocus;
   const cleanedProps = excludeOnChangeClickBlurFocus(props);
   return (
     <Switch.Group
-      as="div"
-      className={clsxm('mb-4 flex items-center justify-between text-left rtl:text-right', className)}
+      as='div'
+      className={clsxm(
+        'mb-4 flex items-center justify-between text-left rtl:text-right',
+        className
+      )}
     >
-      <span className="flex flex-grow flex-col">
+      <span className='flex flex-grow flex-col'>
         <Switch.Label
-          as="span"
+          as='span'
           className={clsxm(
             'text-sm font-medium text-stone-700 dark:text-stone-200 contrast:text-stone-900',
             labelClassName
@@ -50,7 +60,9 @@ function AppSwitch({
       <Switch
         checked={values[name]}
         className={clsxm(
-          values[name] ? ['bg-blue-600', activeClassName] : 'bg-stone-200 dark:bg-stone-700',
+          values[name]
+            ? ['bg-blue-600', activeClassName]
+            : 'bg-stone-200 dark:bg-stone-700',
           'default-focus relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none disabled:cursor-not-allowed disabled:opacity-50'
         )}
         onChange={(e) => {
@@ -69,9 +81,11 @@ function AppSwitch({
         {...cleanedProps}
       >
         <span
-          aria-hidden="true"
+          aria-hidden='true'
           className={clsxm(
-            values[name] ? 'translate-x-5 rtl:!-translate-x-5' : 'translate-x-0',
+            values[name]
+              ? 'translate-x-5 rtl:!-translate-x-5'
+              : 'translate-x-0',
             'pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out'
           )}
         />

@@ -25,7 +25,10 @@ export function mergeDeep(
     for (const key in source) {
       if (isObject(source[key])) {
         if (!target[key]) Object.assign(target, { [key]: {} });
-        mergeDeep(target[key] as Record<string, unknown>, source[key] as Record<string, unknown>);
+        mergeDeep(
+          target[key] as Record<string, unknown>,
+          source[key] as Record<string, unknown>
+        );
       } else {
         Object.assign(target, { [key]: source[key] });
       }

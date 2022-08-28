@@ -1,8 +1,11 @@
-import React from 'react';
 import { useFormikContext } from 'formik';
-import { Button, ButtonProps } from '../Button';
+import React from 'react';
 
-function SubmitButton({
+import { ButtonComponent, ButtonProps } from '@/typing';
+
+import { Button } from '../Button';
+
+const SubmitButton: ButtonComponent = <C extends React.ElementType = 'button'>({
   title,
   slot,
   children = title,
@@ -12,17 +15,23 @@ function SubmitButton({
   slot?: 'start' | 'end' | undefined;
   children?: React.ReactNode;
   [key: string]: any;
-} & ButtonProps) {
+} & ButtonProps<C>) => {
   const { handleSubmit, isValid, isSubmitting } = useFormikContext();
   return (
-    <div className="flex justify-center">
-      {slot === 'end' && <div className="flex-grow" />}
-      <Button type="submit" disabled={!isValid} isLoading={isSubmitting} onClick={() => handleSubmit()} {...props}>
+    <div className='flex justify-center'>
+      {slot === 'end' && <div className='flex-grow' />}
+      <Button
+        type='submit'
+        disabled={!isValid}
+        isLoading={isSubmitting}
+        onClick={() => handleSubmit()}
+        {...props}
+      >
         {title || children}
       </Button>
-      {slot === 'start' && <div className="flex-grow" />}
+      {slot === 'start' && <div className='flex-grow' />}
     </div>
   );
-}
+};
 
 export default SubmitButton;

@@ -1,14 +1,13 @@
-/* eslint no-use-before-define: 0 */
+import windowExists from '@/lib/helpers/window-exists';
+import defaultTheme from '@/lib/theme/default';
 import React, {
+  createContext,
   FC,
   ReactNode,
-  createContext,
   useContext,
   useEffect,
   useState,
 } from 'react';
-import windowExists from '../../helpers/window-exists';
-import defaultTheme from '../../theme/default';
 import { FluidTheme } from './FluidTheme';
 
 export type Mode = string | undefined | 'light' | 'dark';

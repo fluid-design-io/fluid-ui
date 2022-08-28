@@ -1,5 +1,5 @@
-import React from 'react';
 import { Formik, FormikConfig, FormikValues } from 'formik';
+import React from 'react';
 
 function AppForm({
   initialValues,
@@ -10,7 +10,11 @@ function AppForm({
   children: React.ReactNode;
 } & FormikConfig<FormikValues>) {
   return (
-    <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+      validationSchema={validationSchema}
+    >
       {() => <>{children}</>}
     </Formik>
   );

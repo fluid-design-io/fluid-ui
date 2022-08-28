@@ -1,4 +1,6 @@
-import { DeepPartial } from '../../helpers/deep-partial';
+import { DeepPartial } from '@/lib/helpers/deep-partial';
+
+import { ButtonLoadingOptionsAnimation } from '@/typing';
 // import type { AlertColors } from "../Alert";
 // import type { AvatarSizes } from "../Avatar";
 // import type { BadgeColors, BadgeSizes } from "../Badge";
@@ -101,14 +103,10 @@ export interface FulidButtonLoadingOptions {
   base: string;
   /**
    * The animation type to use when the button is loading.
-   * @default "spin"
-   * Options: "spin", "pulse", "ping"
+   * @defaultValue `spin`
+   * Options: `spin`, `pulse`, `ping`
    */
-  animation: {
-    spin: string;
-    pulse: string;
-    ping: string;
-  };
+  animation: { [key in ButtonLoadingOptionsAnimation]: string };
   text: string;
 }
 

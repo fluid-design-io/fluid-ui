@@ -6,7 +6,8 @@ export default {
     content: {
       base: 'overflow-hidden mx-4',
     },
-    divider: 'divide-stone-200 dark:divide-stone-700 contrast:divide-transparent dark:contrast:divide-transparent',
+    divider:
+      'divide-stone-200 dark:divide-stone-700 contrast:divide-transparent dark:contrast:divide-transparent',
     header: {
       arrow: {
         base: 'w-4 h-4 transform motion-safe:transition contrast:text-black dark:contrast:text-white contrast:ring contrast:ring-2 contrast:ring-black dark:contrast:ring-white contrast:rounded',

@@ -1,12 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  // content: process.env.NODE_ENV === 'production' ? [] : ["./src/**/*.{js,jsx,ts,tsx}", "./stories/**.*.{js,tsx}"],
-  // content: ["./src/**/*.{js,jsx,ts,tsx}", "./stories/**.*.{js,tsx}"], // For dev environment 
-  content: [], // For production environment
+  content: ["./src/**/*.{js,jsx,ts,tsx}", "./stories/**.*.{js,tsx}"], // For dev environment 
+  // content: [], // For production environment
   darkMode: 'class',
   corePlugins: {
-    // preflight: process.env.NODE_ENV === 'production' ? false : true,
-    preflight: false, // For prod environment
+    preflight: process.env.NODE_ENV === 'production' ? false : true,
+    // preflight: false, // For prod environment
   },
   theme: {
     extend: {

@@ -1,9 +1,10 @@
-import React from 'react';
-import clsxm from '../../helpers/clsxm';
+import clsxm from '@/lib/helpers/clsxm';
 
 function AppLabel({ focused, error, errors, name, label, value }) {
-  const noErrorStyle = 'text-primary-500 dark:text-primary-400 contrast:text-primary-900';
-  const notFocusedStyle = value || focused ? 'top-1' : '!text-base top-3.5 bottom-0 font-normal';
+  const noErrorStyle =
+    'text-primary-500 dark:text-primary-400 contrast:text-primary-900';
+  const notFocusedStyle =
+    value || focused ? 'top-1' : '!text-base top-3.5 bottom-0 font-normal';
   return (
     <label
       className={clsxm(

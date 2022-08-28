@@ -41,7 +41,9 @@ export const excludeOnFocus = (props: PropsWithChildren<object>): object => {
   });
 };
 // a function that excludes onChange, onClick, onBlur, and onFocus from props
-export const excludeOnChangeClickBlurFocus = (props: PropsWithChildren<object>): object => {
+export const excludeOnChangeClickBlurFocus = (
+  props: PropsWithChildren<object>
+): object => {
   return excludes(['onChange', 'onClick', 'onBlur', 'onFocus'], props);
 };
 
@@ -50,7 +52,10 @@ const exclude = ({ key, source }: ExcludeProps): object => {
   return source;
 };
 
-const excludes = (keys: string[], source: Record<string, unknown>): Record<string, unknown> => {
+const excludes = (
+  keys: string[],
+  source: Record<string, unknown>
+): Record<string, unknown> => {
   keys.forEach((key) => {
     delete source[key];
   });

@@ -1,5 +1,6 @@
 import { SVGProps } from 'react';
 
+export { getInputColor } from '@/lib/helpers/styleGenerator/inputColor';
 export { default as ComboBox } from './AppComboBox';
 export { default as Form } from './AppForm';
 export { default as FormItem } from './AppFormItem';
@@ -10,7 +11,6 @@ export { default as Input } from './AppInput';
 export { default as Label } from './AppLabel';
 export { default as Switch } from './AppSwitch';
 export { default as Textarea } from './AppTextarea';
-export { getInputColor } from '../../helpers/styleGenerator/inputColor';
 
 export interface FormProp {
   description:

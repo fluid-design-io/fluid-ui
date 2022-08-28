@@ -1,6 +1,7 @@
 import { useFormikContext } from 'formik';
 import React from 'react';
-import clsxm from '../../helpers/clsxm';
+
+import clsxm from '@/lib/helpers/clsxm';
 
 const SubmitButtonRef = ({
   title = 'Submit',
@@ -15,7 +16,7 @@ const SubmitButtonRef = ({
 }) => {
   const { handleSubmit, isValid } = useFormikContext();
   return (
-    <div className="flex justify-center">
+    <div className='flex justify-center'>
       <button
         ref={innerRef}
         className={clsxm(props.className)}
@@ -25,7 +26,7 @@ const SubmitButtonRef = ({
           console.log('submit');
           handleSubmit();
         }}
-        type="submit"
+        type='submit'
       >
         {title}
       </button>

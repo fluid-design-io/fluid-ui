@@ -1,40 +1,11 @@
-import React, { Fragment, SVGProps, useId } from 'react';
 import { Menu as HeadlessMenu, Transition } from '@headlessui/react';
+import React, { Fragment, SVGProps, useId } from 'react';
 
-import clsxm from '../../helpers/clsxm';
+import clsxm from '@/lib/helpers/clsxm';
+
+import { MenuItemProps } from '@/typing';
+
 import { MenuItem } from '.';
-
-export interface MenuRoleProp {
-  /**
-   * The role of the menu item.
-   *
-   * `default` - a regular menu item with gray text.
-   *
-   * `separator` - a separator between menu items. Creates a line based on the orientation.
-   *
-   * `destructive` - a destructive menu item with red text.
-   *
-   * `info` - an info menu item with blue text.
-   *
-   * `success` - a success menu item with green text.
-   *
-   * `warning` - a warning menu item with amber text.
-   *
-   * @default 'default'
-   */
-  role?: 'separator' | 'destructive' | 'default' | 'info' | 'success' | 'warning';
-}
-
-export interface MenuItemProp extends MenuRoleProp {
-  /**
-   * sr: Screen reader text
-   */
-  sr?: string;
-  label?: string;
-  onClick?: () => any;
-  icon?: JSX.Element | { (props: SVGProps<SVGSVGElement>): JSX.Element };
-  [x: string]: any;
-}
 
 export interface MenuProps {
   label?: string;
@@ -119,8 +90,7 @@ export interface MenuProps {
   [x: string]: any;
   /**
    * Make the menu layout horizontal
-   * @type {boolean}
-   * @default false
+   * @defaultValue `false`
    */
   horizontal?: boolean;
   /**
@@ -140,7 +110,7 @@ export interface MenuProps {
    *
    * `props`: `optional` - Any additional props to be passed to the menu item
    */
-  menus?: MenuItemProp[];
+  menus?: MenuItemProps[];
 }
 
 const isChildNull = (children) => {
@@ -173,17 +143,23 @@ export const Menu = ({
   const iconDefaultClassName =
     'h-5 w-5 flex-shrink-0 text-primary-400 group-hover:text-primary-500 dark:text-primary-400 dark:group-hover:text-primary-50';
   return (
-    <HeadlessMenu as="div" className={clsxm('relative -ml-px block', className)} {...props}>
+    <HeadlessMenu
+      as='div'
+      className={clsxm('relative -ml-px block', className)}
+      {...props}
+    >
       <HeadlessMenu.Button
         className={clsxm(
-          'default-focus-visible group inline-flex items-center justify-center text-sm font-medium text-primary-700 hover:text-primary-900 [-webkit-tap-highlight-color:transparent]',
+          'default-focus-visible group inline-flex items-center justify-center text-sm font-medium text-primary-700 [-webkit-tap-highlight-color:transparent] hover:text-primary-900',
           buttonClassName
         )}
       >
-        {sr && <span className="sr-only">{sr}</span>}
-        <div className={clsxm('flex justify-start items-center w-full gap-2')}>
-          {IconStart && <IconStart className={clsxm(iconDefaultClassName, iconClassName)} />}
-          {iconStartPosition === 'between' && <span className="flex-grow" />}
+        {sr && <span className='sr-only'>{sr}</span>}
+        <div className={clsxm('flex w-full items-center justify-start gap-2')}>
+          {IconStart && (
+            <IconStart className={clsxm(iconDefaultClassName, iconClassName)} />
+          )}
+          {iconStartPosition === 'between' && <span className='flex-grow' />}
           {label && (
             <span
               className={clsxm(
@@ -194,8 +170,10 @@ export const Menu = ({
               {label}
             </span>
           )}
-          {iconEndPosition === 'between' && <span className="flex-grow" />}
-          {IconEnd && <IconEnd className={clsxm(iconDefaultClassName, iconClassName)} />}
+          {iconEndPosition === 'between' && <span className='flex-grow' />}
+          {IconEnd && (
+            <IconEnd className={clsxm(iconDefaultClassName, iconClassName)} />
+          )}
           {badge && (
             <span
               className={clsxm(
@@ -211,30 +189,33 @@ export const Menu = ({
 
       <Transition
         as={Fragment}
-        enter="transition ease-out duration-100"
-        enterFrom="transform opacity-0 scale-95"
-        enterTo="transform opacity-100 scale-100"
-        leave="transition ease-in duration-75"
-        leaveFrom="transform opacity-100 scale-100"
-        leaveTo="transform opacity-0 scale-95"
+        enter='transition ease-out duration-100'
+        enterFrom='transform opacity-0 scale-95'
+        enterTo='transform opacity-100 scale-100'
+        leave='transition ease-in duration-75'
+        leaveFrom='transform opacity-100 scale-100'
+        leaveTo='transform opacity-0 scale-95'
       >
         <HeadlessMenu.Items
           className={clsxm(
-            'absolute z-50 divide-primary-100 dark:divide-primary-700 rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-primary-800 dark:ring-white dark:ring-opacity-5',
+            'absolute z-50 divide-primary-100 rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none dark:divide-primary-700 dark:bg-primary-800 dark:ring-white dark:ring-opacity-5',
             'contrast:divide-primary-700 dark:contrast:divide-primary-200',
-            menuPositionX === 'center' && 'mx-auto left-1/2 -translate-x-1/2',
+            menuPositionX === 'center' && 'left-1/2 mx-auto -translate-x-1/2',
             menuPositionX === 'start' && 'left-0 rtl:right-0',
             menuPositionX === 'end' && 'right-0 rtl:left-0',
-            menuPositionY === 'center' && 'mt-auto top-1/2 -translate-y-1/2',
+            menuPositionY === 'center' && 'top-1/2 mt-auto -translate-y-1/2',
             menuPositionY === 'top' && 'bottom-full mb-2',
             menuPositionY === 'bottom' && 'top-full mt-2',
-            !horizontal && 'flex flex-col min-w-full w-max divide-y',
-            horizontal && 'flex flex-row w-max divide-x',
+            !horizontal && 'flex w-max min-w-full flex-col divide-y',
+            horizontal && 'flex w-max flex-row divide-x',
             horizontal &&
               menuPositionY === 'center' &&
               menuPositionX === 'start' &&
               'right-full left-auto ml-2 rtl:mr-2',
-            horizontal && menuPositionY === 'center' && menuPositionX === 'end' && 'left-full right-auto',
+            horizontal &&
+              menuPositionY === 'center' &&
+              menuPositionX === 'end' &&
+              'left-full right-auto',
             !horizontal &&
               menuPositionY === 'center' &&
               menuPositionX === 'start' &&
@@ -248,7 +229,7 @@ export const Menu = ({
         >
           {header &&
             (typeof header === 'string' ? (
-              <div className="flex items-center justify-between px-4 py-2 text-primary-800 dark:text-primary-100">
+              <div className='flex items-center justify-between px-4 py-2 text-primary-800 dark:text-primary-100'>
                 {header}
               </div>
             ) : (
@@ -263,7 +244,10 @@ export const Menu = ({
                 'contrast:divide-primary-700 dark:contrast:divide-primary-200',
               ])}
             >
-              {menus && menus.map(({ ...props }, i) => <MenuItem key={`${id}.${i}`} {...{ horizontal, ...props }} />)}
+              {menus &&
+                menus.map(({ ...props }, i) => (
+                  <MenuItem key={`${id}.${i}`} {...{ horizontal, ...props }} />
+                ))}
             </div>
           )}
         </HeadlessMenu.Items>

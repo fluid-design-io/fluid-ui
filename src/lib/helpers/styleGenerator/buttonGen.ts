@@ -8,7 +8,8 @@ import { colorsWithHex } from './tailwindColors';
 
 const base =
   'select-none disabled:cursor-not-allowed disabled:opacity-80 disabled:filter disabled:saturate-[0.5] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-transparent';
-const getActive = (color: string) => `ring-2 ring-offset-2 ring-offset-${color}-50 dark:ring-offset-${color}-800`;
+const getActive = (color: string) =>
+  `ring-2 ring-offset-2 ring-offset-${color}-50 dark:ring-offset-${color}-800`;
 const getLight = (color: string) =>
   `
     btn-light-${color}
@@ -98,7 +99,8 @@ const getClay = (color: string) => {
 };
 
 // a function replaces enter with a space
-const replaceEnter = (str: string) => str.replace(/\n/g, ' ').replace(/\s+/g, ' ');
+const replaceEnter = (str: string) =>
+  str.replace(/\n/g, ' ').replace(/\s+/g, ' ');
 
 const generate = (color: string) => {
   const active = replaceEnter(getActive(color));

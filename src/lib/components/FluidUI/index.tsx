@@ -1,8 +1,10 @@
 import React, { FC, HTMLAttributes, useEffect, useMemo } from 'react';
-import { DeepPartial } from '../../helpers/deep-partial';
-import { mergeDeep } from '../../helpers/mergeDeep';
-import windowExists from '../../helpers/window-exists';
-import defaultTheme from '../../theme/default';
+
+import { DeepPartial } from '@/lib/helpers/deep-partial';
+import { mergeDeep } from '@/lib/helpers/mergeDeep';
+import windowExists from '@/lib/helpers/window-exists';
+import defaultTheme from '@/lib/theme/default';
+
 import { FluidTheme } from './FluidTheme';
 import { ThemeContext, useThemeMode } from './ThemeContext';
 
@@ -21,7 +23,10 @@ export const FluidUI: FC<FluidUIProps> = ({ children, theme = {} }) => {
   const { theme: customTheme = {}, dark, usePreferences = true } = theme;
   const [mode, setMode, toggleMode] = useThemeMode(usePreferences);
 
-  const mergedTheme = mergeDeep(defaultTheme, customTheme) as unknown as FluidTheme;
+  const mergedTheme = mergeDeep(
+    defaultTheme,
+    customTheme
+  ) as unknown as FluidTheme;
 
   useEffect(() => {
     if (dark) {
@@ -44,7 +49,11 @@ export const FluidUI: FC<FluidUIProps> = ({ children, theme = {} }) => {
     [mode, toggleMode, mergedTheme]
   );
 
-  return <ThemeContext.Provider value={themeContextValue}>{children}</ThemeContext.Provider>;
+  return (
+    <ThemeContext.Provider value={themeContextValue}>
+      {children}
+    </ThemeContext.Provider>
+  );
 };
 
 export { FluidTheme } from './FluidTheme';

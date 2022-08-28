@@ -1,5 +1,5 @@
-import React from 'react';
 import * as ReactDOM from 'react-dom';
+
 import { Accordion } from '../src/lib';
 
 describe('Thing', () => {
