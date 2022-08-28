@@ -1,9 +1,9 @@
 import React, { FC, HTMLAttributes, useEffect, useMemo } from 'react';
 
-import { DeepPartial } from '@/lib/helpers/deep-partial';
-import { mergeDeep } from '@/lib/helpers/mergeDeep';
-import windowExists from '@/lib/helpers/window-exists';
-import defaultTheme from '@/lib/theme/default';
+import { DeepPartial } from '../../helpers/deep-partial';
+import { mergeDeep } from '../../helpers/mergeDeep';
+import windowExists from '../../helpers/window-exists';
+import defaultTheme from '../../theme/default';
 
 import { FluidTheme } from './FluidTheme';
 import { ThemeContext, useThemeMode } from './ThemeContext';
@@ -35,6 +35,7 @@ export const FluidUI: FC<FluidUIProps> = ({ children, theme = {} }) => {
       }
 
       if (windowExists()) {
+        // eslint-disable-next-line no-undef
         document.documentElement.classList.add('dark');
       }
     }
@@ -55,5 +56,3 @@ export const FluidUI: FC<FluidUIProps> = ({ children, theme = {} }) => {
     </ThemeContext.Provider>
   );
 };
-
-export { FluidTheme } from './FluidTheme';

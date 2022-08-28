@@ -1,3 +1,4 @@
+import React from 'react';
 import clsxm from '../../helpers/clsxm';
 
 function AppLabel({ focused, error, errors, name, label, value }) {

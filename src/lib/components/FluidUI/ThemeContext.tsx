@@ -1,5 +1,5 @@
-import windowExists from '@/lib/helpers/window-exists';
-import defaultTheme from '@/lib/theme/default';
+import windowExists from '../../helpers/window-exists';
+import defaultTheme from '../../theme/default';
 import React, {
   createContext,
   FC,

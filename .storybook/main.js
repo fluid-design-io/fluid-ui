@@ -23,14 +23,14 @@ module.exports = {
       },
     },
   ],
-  webpackFinal: async (config, { configType }) => {
+  /* webpackFinal: async (config, { configType }) => {
     config.resolve.modules = [path.resolve(__dirname, "..", "src"), "node_modules"];
     config.resolve.alias = {
       ...config.resolve.alias,
       "@/lib": path.resolve(__dirname, "../src/lib"),
     }
     return config;
-  },
+  }, */
   features: {
     storyStoreV7: true,
   },

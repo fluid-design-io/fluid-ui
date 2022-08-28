@@ -602,8 +602,8 @@ const buttonUtilities = (theme) => {
           hocus: { value, step: { step: 600, alpha: 30 } },
           active: { value, step: { step: 600, alpha: 20 } },
           disabled: { value, step: { step: 700, alpha: 70 } },
-          textHocus: { value: toColor(getColor(value, 300)) },
-          textActive: { value: toColor(getColor(value, 300)) },
+          textHocus: { value: toColor(getColor(value, 100)) },
+          textActive: { value: toColor(getColor(value, 100)) },
         }),
         '&:hover, &:focus-visible': {
           'border-color': toColor(getColor(value, 300, 25)),

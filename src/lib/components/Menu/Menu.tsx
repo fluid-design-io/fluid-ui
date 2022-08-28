@@ -1,8 +1,7 @@
 import { Menu as HeadlessMenu, Transition } from '@headlessui/react';
-import React, { Fragment, SVGProps, useId } from 'react';
+import React, { Fragment, useId } from 'react';
 
 import clsxm from '../../helpers/clsxm';
-
 
 import { MenuItem } from '.';
 import { MenuProps } from '../../../typing';

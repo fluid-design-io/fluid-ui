@@ -1,11 +1,12 @@
 import { useFormikContext } from 'formik';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import ReactTextareaAutosize from 'react-textarea-autosize';
 
 import clsxm from '../../helpers/clsxm';
 
 import { FormItem, FormProp, getInputColor, Label } from '.';
 import { useTheme } from '../FluidUI/ThemeContext';
+
 const Textarea = ({
   name,
   minRows = 1,
