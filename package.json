@@ -15,7 +15,6 @@
     "start": "tsdx watch",
     "build": "NOD_ENV=production tsdx build && yarn build:css",
     "build:css": "NOD_ENV=production npx tailwindcss -o ./dist/fluid-ui.css --minify",
-    "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
     "commit": "git-cz",
     "prepare": "tsdx build",
