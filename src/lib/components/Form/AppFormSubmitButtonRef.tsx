@@ -18,14 +18,14 @@ const SubmitButtonRef = ({
   return (
     <div className='flex justify-center'>
       <button
-        ref={innerRef}
         className={clsxm(props.className)}
-        title={title}
         disabled={!isValid}
+        ref={innerRef}
+        title={title}
+        type='submit'
         onClick={() => {
           handleSubmit();
         }}
-        type='submit'
       >
         {title}
       </button>

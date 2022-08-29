@@ -8,6 +8,7 @@ function AppLabel({ focused, error, errors, name, label, value }) {
     value || focused ? 'top-1' : '!text-base top-3.5 bottom-0 font-normal';
   return (
     <label
+      htmlFor={name}
       className={clsxm(
         focused && error
           ? 'contrast:text-primary-50 top-1 text-red-400 dark:text-red-500'
@@ -17,7 +18,6 @@ function AppLabel({ focused, error, errors, name, label, value }) {
           : [notFocusedStyle, noErrorStyle, `dark:contrast:text-primary-50`],
         `pointer-events-none absolute left-4 -mb-1 text-xs font-semibold transition-all`
       )}
-      htmlFor={name}
     >
       {error ? errors[name] : label}
     </label>

@@ -1,6 +1,6 @@
 import { DeepPartial } from '../../helpers/deep-partial';
 
-import { ButtonLoadingOptionsAnimation } from '../../../typing';
+import { ButtonLoadingOptionsAnimation } from '../../../type';
 // import type { AlertColors } from "../Alert";
 // import type { AvatarSizes } from "../Avatar";
 // import type { BadgeColors, BadgeSizes } from "../Badge";

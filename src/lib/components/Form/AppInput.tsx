@@ -31,19 +31,19 @@ function AppInput({
         {...{ errors, error, focused, label, name, value: values[name] }}
       />
       <input
+        name={name}
+        onChange={handleChange}
+        onFocus={() => setFocused(true)}
+        placeholder={error ? label : undefined}
+        value={values[name]}
         className={clsxm(
           theme.base,
           getInputColor({ error, className: props.className })
         )}
-        value={values[name]}
-        placeholder={error ? label : undefined}
-        onChange={handleChange}
-        onFocus={() => setFocused(true)}
         onBlur={() => {
           setFieldTouched(name);
           setFocused(false);
         }}
-        name={name}
         {...props}
       />
     </FormItem>

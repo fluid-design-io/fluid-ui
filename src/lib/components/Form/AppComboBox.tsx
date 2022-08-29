@@ -54,13 +54,13 @@ function AppComboBox({
   return (
     <Combobox
       as='div'
-      value={values[name]}
+      className='mb-4'
       defaultValue={values[name]}
       disabled={disabled}
+      value={values[name]}
       onChange={(e) => {
         handleChange({ target: { type: 'text', name, value: e } });
       }}
-      className='mb-4'
     >
       <Combobox.Label
         className={clsxm(
@@ -72,20 +72,20 @@ function AppComboBox({
       </Combobox.Label>
       <div className='relative mt-1'>
         <Combobox.Input
+          onChange={(e) => setQuery(e.target.value)}
+          onFocus={() => (!focused ? setFocused(true) : undefined)}
+          value={query}
           className={clsxm(
             theme.base,
             'py-2 pl-3 pr-10 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 sm:text-sm'
           )}
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          onFocus={() => (!focused ? setFocused(true) : undefined)}
           onBlur={() => {
             setFieldTouched(name);
             setFocused(false);
           }}
         />
         <Combobox.Button className='absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none'>
-          <HiSelector className='h-5 w-5 text-stone-400' aria-hidden='true' />
+          <HiSelector aria-hidden='true' className='h-5 w-5 text-stone-400' />
         </Combobox.Button>
 
         {list.length > 0 && (
@@ -123,7 +123,7 @@ function AppComboBox({
                             : 'text-blue-600 dark:text-blue-400'
                         )}
                       >
-                        <HiCheck className='h-5 w-5' aria-hidden='true' />
+                        <HiCheck aria-hidden='true' className='h-5 w-5' />
                       </span>
                     )}
                   </>

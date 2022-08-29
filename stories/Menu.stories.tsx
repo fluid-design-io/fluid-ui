@@ -1,28 +1,30 @@
-import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
+import React from 'react';
 
-import { Menu, MenuProps } from '../src/lib/components';
-import clsxm from '../src/lib/helpers/clsxm';
 import {
   HiArchive,
-  HiChevronUp,
+  HiChevronDown,
   HiCog,
+  HiDownload,
   HiLogout,
   HiTrash,
   HiUser,
 } from 'react-icons/hi';
+import { Menu } from '../src/lib/components';
+import clsxm from '../src/lib/helpers/clsxm';
+import { MenuProps } from '../src/type';
 
 export default {
   title: 'Components/Menu',
   component: Menu,
   args: {
-    label: 'Menu',
-    horizontal: true,
-    header: 'Header',
+    label: 'Profile',
+    horizontal: false,
+    header: 'User',
   },
 } as Meta;
 
-interface StoryButtonProps extends MenuProps {}
+type StoryButtonProps = MenuProps;
 
 const Wrap = ({ className = '', children }) => {
   return (
@@ -41,17 +43,19 @@ const Template: Story<StoryButtonProps> = (args) => {
   return (
     <Wrap className='mt-24'>
       <Menu
-        buttonClassName='border border-transparent hocus:border-primary-400/30 hocus:bg-primary-400/10 dark:hocus:border-primary-300/30 dark:hocus:bg-primary-500/10 hocus:contrast-bg hocus:contrast-text clickable group flex justify-start items-center rounded-md border border-transparent px-3 py-2 text-sm font-regular text-primary-700 transition-colors hocus:text-primary-800 contrast-more:text-primary-900 dark:text-primary-300/80 dark:hocus:text-primary-100 dark:contrast-more:text-primary-100 min-w-32'
-        label={args.label}
-        iconStartPosition={args.iconStartPosition}
+        buttonClassName='min-w-32'
+        color='indigo'
+        header={args.header}
+        horizontal={args.horizontal}
+        iconClassName='w-4 h-4'
+        iconEnd={HiChevronDown}
         iconEndPosition={args.iconEndPosition}
+        iconStart={HiUser}
+        iconStartPosition={args.iconStartPosition}
+        label={args.label}
         menuPositionX={args.menuPositionX}
         menuPositionY={args.menuPositionY}
-        iconClassName='w-4 h-4'
-        horizontal={args.horizontal}
-        header={args.header}
-        iconStart={HiUser}
-        iconEnd={HiChevronUp}
+        weight='clear'
         menus={[
           {
             label: 'Settings',
@@ -60,6 +64,17 @@ const Template: Story<StoryButtonProps> = (args) => {
           {
             label: 'Archive',
             icon: HiArchive,
+            disabled: true,
+          },
+          {
+            label: 'Save',
+            icon: HiDownload,
+            role: 'success',
+            isLoading: true,
+            loadingOptions: {
+              animation: 'spin-large',
+              text: 'Saving...',
+            },
           },
           {
             label: 'Delete',

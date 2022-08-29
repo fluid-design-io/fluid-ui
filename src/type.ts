@@ -1,5 +1,14 @@
 /* ===== Start Polymorphic Props ===== */
 
+import { SVGProps } from 'react';
+import {
+  FluidButtonColorOptions,
+  FluidButtonColors,
+  FluidButtonShapes,
+  FluidButtonSizes,
+  FluidButtonWeights,
+} from './lib/components/FluidUI/FluidTheme';
+
 export type PolymorphicRef<C extends React.ElementType> =
   React.ComponentPropsWithRef<C>['ref'];
 
@@ -109,7 +118,11 @@ export type ButtonProps<C extends React.ElementType> =
     }
   >;
 
-export type ButtonLoadingOptionsAnimation = 'spin' | 'pulse' | 'ping';
+export type ButtonLoadingOptionsAnimation =
+  | 'spin'
+  | 'pulse'
+  | 'ping'
+  | 'spin-large';
 
 export type ButtonComponent = <C extends React.ElementType = 'button'>(
   props: ButtonProps<C>
@@ -119,7 +132,7 @@ export type ButtonComponent = <C extends React.ElementType = 'button'>(
 
 /* ===== Start Menu Props ===== */
 
-export interface MenuProps {
+export type MenuProps = {
   label?: string;
   /**
    * A React component to be used as the icon for the menu item.
@@ -223,7 +236,9 @@ export interface MenuProps {
    * `props`: `optional` - Any additional props to be passed to the menu item
    */
   menus?: MenuItemProps[];
-}
+} & ButtonProps<'button'>;
+
+export type MenuComponent = (props: MenuProps) => React.ReactElement | null;
 
 /**
  * The role of the menu item.
@@ -257,11 +272,14 @@ export type MenuItemProps = {
   sr?: string;
   role?: MenuRoleProp;
   label?: string;
-  onClick?: () => any;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   icon?: JSX.Element | { (props: SVGProps<SVGSVGElement>): JSX.Element };
   [x: string]: any;
 };
 
+export type MenuItemComponentProps<C extends React.ElementType> =
+  PolymorphicComponentPropWithRef<C, MenuItemProps>;
+
 export type MenuItemComponent = <C extends React.ElementType = 'button'>(
-  props: MenuItemProps<C>
+  props: MenuItemComponentProps<C>
 ) => React.ReactElement | null;

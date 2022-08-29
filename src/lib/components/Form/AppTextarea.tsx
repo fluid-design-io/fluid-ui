@@ -34,23 +34,23 @@ const Textarea = ({
       />
       <ReactTextareaAutosize
         {...props}
-        rows={minRows}
-        minRows={minRows}
         maxRows={maxRows}
+        minRows={minRows}
+        name={name}
+        onChange={handleChange}
+        onFocus={() => setFocused(true)}
+        placeholder={error ? label : undefined}
+        rows={minRows}
+        value={values[name]}
         className={clsxm(
           theme.base,
           getInputColor({ error, className: props.className }),
           'min-h-[3rem] pb-2'
         )}
-        value={values[name]}
-        placeholder={error ? label : undefined}
-        onChange={handleChange}
-        onFocus={() => setFocused(true)}
         onBlur={() => {
           setFieldTouched(name);
           setFocused(false);
         }}
-        name={name}
       />
     </FormItem>
   );

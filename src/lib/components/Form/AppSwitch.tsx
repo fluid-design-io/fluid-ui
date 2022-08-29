@@ -48,11 +48,11 @@ function AppSwitch({
       <span className='flex flex-grow flex-col'>
         <Switch.Label
           as='span'
+          passive
           className={clsxm(
             'text-sm font-medium text-stone-700 dark:text-stone-200 contrast:text-stone-900',
             labelClassName
           )}
-          passive
         >
           {label} {error && `(${error})`}
         </Switch.Label>
@@ -65,6 +65,11 @@ function AppSwitch({
             : 'bg-stone-200 dark:bg-stone-700',
           'default-focus relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none disabled:cursor-not-allowed disabled:opacity-50'
         )}
+        onBlur={() => {
+          setFieldTouched(name);
+          setFocused(false);
+          userOnBlur && userOnBlur();
+        }}
         onChange={(e) => {
           handleChange({ target: { type: 'checkbox', name, checked: e } });
           userOnChange && userOnChange(e);
@@ -72,11 +77,6 @@ function AppSwitch({
         onFocus={() => {
           !focused && setFocused(true);
           userOnFocus && userOnFocus();
-        }}
-        onBlur={() => {
-          setFieldTouched(name);
-          setFocused(false);
-          userOnBlur && userOnBlur();
         }}
         {...cleanedProps}
       >

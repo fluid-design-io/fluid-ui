@@ -9,9 +9,10 @@ import {
   ButtonLoadingOptionsAnimation,
   ButtonProps,
   PolymorphicRef,
-} from '../../../typing';
+} from '../../../type';
 import clsxm from '../../helpers/clsxm';
 import { excludeClassName } from '../../helpers/exclude';
+import { getUserClassNames } from '../../helpers/getUserClassNames';
 import {
   FluidButtonColors,
   FluidButtonShapes,
@@ -19,6 +20,7 @@ import {
   FluidButtonWeights,
 } from '../FluidUI/FluidTheme';
 import { useTheme } from '../FluidUI/ThemeContext';
+import { SpinLarge } from '../Spinner';
 
 export const Button: ButtonComponent = React.forwardRef(
   <C extends React.ElementType = 'button'>(
@@ -33,6 +35,7 @@ export const Button: ButtonComponent = React.forwardRef(
       isLoading = false,
       gradient = undefined,
       loadingOptions = undefined,
+      className,
       children,
       ...props
     }: ButtonProps<C>,
@@ -40,17 +43,21 @@ export const Button: ButtonComponent = React.forwardRef(
   ) => {
     const theme = useTheme().theme.button;
     const id = useId();
-    const className = props?.className || '';
     const theirProps = excludeClassName(props);
     // isCustomColor is to check if the className contains a string starts with 'btn-'
     const isCustomColor = className && className.includes('btn-');
+    const inherClassNames = getUserClassNames(className);
+    const themeSize = iconOnly
+      ? theme.iconOnly[shape][size]
+      : theme.shape[shape][size];
     const Component = as || 'button';
     return (
       <Component
+        disabled={props?.disabled || isLoading}
         ref={ref}
         className={clsxm(
           theme.base,
-          iconOnly ? theme.iconOnly[shape][size] : theme.shape[shape][size],
+          themeSize,
           !isCustomColor && [
             theme.color[color].base,
             gradient
@@ -59,28 +66,33 @@ export const Button: ButtonComponent = React.forwardRef(
           ],
           className
         )}
-        disabled={props?.disabled || isLoading}
         {...theirProps}
       >
         {sr && <span className='sr-only'>{sr}</span>}
         <AnimatePresence mode='sync'>
           {isLoading && (
-            <ButtonLoadingComponent key={id} {...{ loadingOptions }} />
+            <ButtonLoadingComponent
+              key={id}
+              {...{
+                loadingOptions,
+                inherClassNames:
+                  loadingOptions?.text &&
+                  loadingOptions.text.length > 0 &&
+                  inherClassNames,
+                themeSize,
+              }}
+            />
           )}
         </AnimatePresence>
         <motion.div
-          initial={{ opacity: 1 }}
           animate={{ opacity: isLoading ? 0 : 1, scale: isLoading ? 0.85 : 1 }}
+          initial={{ opacity: 1 }}
           className={clsxm(
-            theme.base,
-            loadingOptions?.text && loadingOptions.text.length > 0 && 'px-2'
+            'w-full flex gap-2 items-center justify-center',
+            inherClassNames
           )}
         >
-          {isLoading
-            ? loadingOptions?.text && loadingOptions.text.length > 0
-              ? loadingOptions.text
-              : children
-            : children}
+          {children}
         </motion.div>
       </Component>
     );
@@ -92,29 +104,39 @@ const ButtonLoadingComponent = ({
     animation: 'spin',
     text: '',
   },
+  inherClassNames = [],
+  themeSize,
 }: {
   loadingOptions: {
     animation?: ButtonLoadingOptionsAnimation;
     text?: string;
   };
+  inherClassNames: string[];
+  themeSize: string;
 }) => {
   const theme = useTheme().theme.button;
   const iconOption = {
     spin: AiOutlineLoading3Quarters,
     pulse: HiOutlineDotsHorizontal,
     ping: GrEmptyCircle,
+    'spin-large': SpinLarge,
   };
   const Icon = iconOption[loadingOptions.animation];
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.7 }}
       animate={{ opacity: 1, scale: 1 }}
+      className={clsxm(theme.loading.base, themeSize, inherClassNames)}
       exit={{ opacity: 0, scale: 0.7 }}
+      initial={{ opacity: 0, scale: 0.7 }}
       transition={{ duration: 0.3 }}
-      className={clsxm(theme.loading.base)}
     >
-      <Icon className={theme.loading.animation[loadingOptions.animation]} />
+      <Icon
+        className={clsxm(
+          'flex-shrink-0',
+          theme.loading.animation[loadingOptions.animation]
+        )}
+      />
       {loadingOptions?.text && loadingOptions.text.length > 0 && (
         <div className={theme.loading.text}>{loadingOptions.text}</div>
       )}

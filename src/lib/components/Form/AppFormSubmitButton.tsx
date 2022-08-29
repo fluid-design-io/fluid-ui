@@ -1,6 +1,6 @@
 import { useFormikContext } from 'formik';
 import React from 'react';
-import { ButtonComponent, ButtonProps } from '../../../typing';
+import { ButtonComponent, ButtonProps } from '../../../type';
 import { Button } from '../Button';
 
 const SubmitButton: ButtonComponent = <C extends React.ElementType = 'button'>({
@@ -19,10 +19,10 @@ const SubmitButton: ButtonComponent = <C extends React.ElementType = 'button'>({
     <div className='flex justify-center'>
       {slot === 'end' && <div className='flex-grow' />}
       <Button
-        type='submit'
         disabled={!isValid}
         isLoading={isSubmitting}
         onClick={() => handleSubmit()}
+        type='submit'
         {...props}
       >
         {title || children}

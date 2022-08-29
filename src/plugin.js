@@ -245,6 +245,10 @@ const generateTxtBg = (
     'background-color': toColor(getColor(value, step, alpha)),
     color: toColor(contrastColor(textValue, textStep, textBW)),
     transition: 'all 0.15s ease-in-out',
+    '&:disabled': {
+      'background-color': toColor(getColor(value, step, alpha)),
+      color: toColor(contrastColor(textValue, textStep, textBW)),
+    },
   };
 };
 const generateTxtStates = (
@@ -579,15 +583,20 @@ const buttonUtilities = (theme) => {
       ...generateTxtStates(value, {
         hocus: { value, step: 100, bw: false },
         active: { value, step: { step: 200, alpha: 85 } },
-        disabled: { value, step: { step: 50, alpha: 50 } },
+        disabled: { value, step: { step: 50, alpha: 0 } },
         textHocus: { value: toColor(getColor(value, 600)) }, // step is not calculated when value is a hex string
         textActive: { value: toColor(getColor(value, 600)) },
+        textDisabled: { value: toColor(getColor(value, 300)) },
       }),
       'border-width': '1px',
       'border-style': 'solid',
       'border-color': 'transparent',
       '&:hover, &:focus-visible': {
         'border-color': toColor(getColor(value, 400, 25)),
+      },
+      '&:disabled:hover, &:disabled:focus-visible': {
+        'border-color': toColor(getColor(value, 400, 0)),
+        'color': toColor(getColor(value, 300)),
       },
       '.dark &': {
         ...generateTxtBg(
@@ -601,13 +610,17 @@ const buttonUtilities = (theme) => {
         ...generateTxtStates(value, {
           hocus: { value, step: { step: 600, alpha: 30 } },
           active: { value, step: { step: 600, alpha: 20 } },
-          disabled: { value, step: { step: 700, alpha: 70 } },
+          disabled: { value, step: { step: 700, alpha: 0 } },
           textHocus: { value: toColor(getColor(value, 100)) },
           textActive: { value: toColor(getColor(value, 100)) },
         }),
         '&:hover, &:focus-visible': {
           'border-color': toColor(getColor(value, 300, 25)),
         },
+        '&:disabled:hover, &:disabled:focus-visible': {
+          'border-color': toColor(getColor(value, 300, 0)),
+          'color': toColor(getColor(value, 400)),
+        }
       },
       ...generateCMClass({
         ...generateTxtBg(

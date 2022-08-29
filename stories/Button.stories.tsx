@@ -7,7 +7,7 @@ import {
   FluidButtonSizes,
   FluidButtonWeights,
 } from '../src/lib/components/FluidUI/FluidTheme';
-import { ButtonProps } from '../src/typing';
+import { ButtonProps } from '../src/type';
 
 export default {
   title: 'Components/Button',

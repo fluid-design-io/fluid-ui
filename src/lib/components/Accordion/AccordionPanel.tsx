@@ -29,9 +29,15 @@ export const AccordionPanel: FC<AccordionPanelProps> = ({
 
   const ListPanel = ({ children }: { children: React.ReactNode }) => (
     <motion.div
-      initial='collapsed'
       animate='open'
+      className='overflow-hidden !mt-0 mx-4'
       exit='collapsed'
+      initial='collapsed'
+      transition={{
+        type: 'spring',
+        bounce: 0,
+        duration: shouldReduceMotion ? 0.2 : 0.5,
+      }}
       variants={{
         open: { opacity: 1, height: 'auto' },
         collapsed: {
@@ -39,12 +45,6 @@ export const AccordionPanel: FC<AccordionPanelProps> = ({
           height: shouldReduceMotion ? 'auto' : 0,
         },
       }}
-      transition={{
-        type: 'spring',
-        bounce: 0,
-        duration: shouldReduceMotion ? 0.2 : 0.5,
-      }}
-      className='overflow-hidden !mt-0 mx-4'
     >
       {children}
     </motion.div>
@@ -60,16 +60,16 @@ export const AccordionPanel: FC<AccordionPanelProps> = ({
       {({ open }) => (
         <>
           <Disclosure.Button
+            aria-live='assertive'
             as='button'
             className={clsxm(theme.base, open && theme.open.on)}
-            aria-live='assertive'
           >
             {typeof header === 'string' ? (
               <p className='flex items-center gap-2'>
                 {HeaderIcon && (
                   <HeaderIcon
-                    className='flex-shrink-0 w-4 h-4'
                     aria-hidden='true'
+                    className='flex-shrink-0 w-4 h-4'
                   />
                 )}
                 {header}
