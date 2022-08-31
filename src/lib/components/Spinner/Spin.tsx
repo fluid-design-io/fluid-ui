@@ -19,7 +19,7 @@ export const SpinLarge = ({ className, ...props }) => {
         fillRule='evenodd'
       ></path>
       <path
-        className='origin-center motion-safe:animate-spin'
+        className='origin-center motion-safe:animate-spin motion-reduce:animate-pulse'
         d='M15 0C6.716 0 0 6.716 0 15h4.5C4.5 9.201 9.201 4.5 15 4.5V0z'
         fill='currentColor'
       />
