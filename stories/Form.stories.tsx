@@ -60,7 +60,7 @@ const Template: Story<StoryButtonProps> = (args) => {
   });
   return (
     <>
-      <div className='mx-auto mt-12 w-4/5 max-w-lg rounded-xl bg-white p-4 shadow-lg shadow-primary-400/20 dark:bg-stone-900 dark:shadow-black/30'>
+      <div className='mx-auto mt-12 w-4/5 max-w-lg rounded-xl bg-white p-4 shadow-lg shadow-primary-400/20 dark:bg-primary-900 dark:shadow-black/30'>
         <Form
           initialValues={initialValues}
           validationSchema={validationSchema}
