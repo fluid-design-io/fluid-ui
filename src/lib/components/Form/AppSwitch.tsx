@@ -41,7 +41,7 @@ function AppSwitch({
     <Switch.Group
       as='div'
       className={clsxm(
-        'mb-4 flex items-center justify-between text-left rtl:text-right',
+        'mb-4 flex items-center justify-between text-start',
         className
       )}
     >
@@ -50,7 +50,7 @@ function AppSwitch({
           as='span'
           passive
           className={clsxm(
-            'text-sm font-medium text-stone-700 dark:text-stone-200 contrast:text-stone-900',
+            'text-sm font-medium text-primary-700 dark:text-primary-200 contrast:text-primary-900',
             labelClassName
           )}
         >
@@ -62,7 +62,7 @@ function AppSwitch({
         className={clsxm(
           values[name]
             ? ['bg-blue-600', activeClassName]
-            : 'bg-stone-200 dark:bg-stone-700',
+            : 'bg-primary-200 dark:bg-primary-700',
           'default-focus relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none disabled:cursor-not-allowed disabled:opacity-50'
         )}
         onBlur={() => {

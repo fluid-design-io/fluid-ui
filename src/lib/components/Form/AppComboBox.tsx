@@ -64,7 +64,7 @@ function AppComboBox({
     >
       <Combobox.Label
         className={clsxm(
-          'contrast:text-stone-90 text-sm font-medium text-stone-700 dark:text-stone-200',
+          'contrast:text-primary-90 text-sm font-medium text-primary-700 dark:text-primary-200',
           props.className
         )}
       >
@@ -85,7 +85,7 @@ function AppComboBox({
           }}
         />
         <Combobox.Button className='absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none'>
-          <HiSelector aria-hidden='true' className='h-5 w-5 text-stone-400' />
+          <HiSelector aria-hidden='true' className='h-5 w-5 text-primary-400' />
         </Combobox.Button>
 
         {list.length > 0 && (
@@ -99,7 +99,7 @@ function AppComboBox({
                     'relative cursor-default select-none py-2 pl-3 pr-9',
                     active
                       ? 'bg-blue-600 text-white'
-                      : 'bg-stone-800 text-stone-900 dark:text-stone-200'
+                      : 'bg-primary-800 text-primary-900 dark:text-primary-200'
                   )
                 }
               >

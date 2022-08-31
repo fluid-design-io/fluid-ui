@@ -24,12 +24,12 @@ function FormItem({
           `relative mb-4 overflow-hidden rounded-lg transition-all`,
           error &&
             focused &&
-            `contrast:ring-stone-800 dark:contrast:ring-amber-800 ring-1 ring-blue-400`,
+            `contrast:ring-primary-800 dark:contrast:ring-amber-800 ring-1 ring-blue-400`,
           error &&
             !focused &&
             'contrast:ring-red-500 dark:contrast:ring-red-300 ring-1 ring-red-400 dark:ring-red-500',
           !error &&
-            'contrast:ring-stone-800 dark:contrast:ring-stone-200 ring ring-transparent',
+            'contrast:ring-primary-800 dark:contrast:ring-primary-200 ring ring-transparent',
           !error &&
             focused &&
             'contrast:ring-blue-400 dark:contrast:ring-blue-200 ring-1 ring-blue-400',
