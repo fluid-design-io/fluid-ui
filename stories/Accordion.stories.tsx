@@ -7,10 +7,9 @@ import {
   HiOutlineShoppingCart,
   HiOutlineUser,
 } from "react-icons/hi";
-import { AccordionProps } from "../src/lib/components/Accordion";
 import { Accordion } from "../src/lib/components/Accordion";
-import { AccordionPanel } from "../src/lib/components/Accordion/AccordionPanel";
 import clsxm from "../src/lib/helpers/clsxm";
+import { AccordionPanelProps } from "../src/lib/components/Accordion/AccordionPanel";
 
 export default {
   title: "Components/Accordion",
@@ -22,7 +21,7 @@ export default {
   },
 } as Meta;
 
-interface CustomAccordionProps extends AccordionProps {
+interface CustomAccordionProps extends AccordionPanelProps {
   headerIcons: FC<ComponentProps<"svg">>[];
   rtl: boolean;
   darkMode: boolean;
@@ -52,13 +51,13 @@ const Template: Story<CustomAccordionProps> = (args) => {
   const body = (
     <Accordion divider={args?.divider} className={clsxm(args?.className, "contrast")}>
       {headers.map((_, index) => (
-        <AccordionPanel
+        <Accordion.Panel
           key={`${index}`}
           header={headers[index]}
           headerIcon={args?.headerIcons && args.headerIcons[index]}
         >
           <p className="mb-2 text-primary-500 dark:text-primary-300">{contents[index]}</p>
-        </AccordionPanel>
+        </Accordion.Panel>
       ))}
     </Accordion>
   );

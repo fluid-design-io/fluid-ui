@@ -13,7 +13,7 @@ export interface AccordionProps
   extends PropsWithChildren<ComponentProps<'div'>> {
   /**
    * Divider between panels.
-   * defaultValue false
+   * @defaultValue `false`
    */
   divider?: boolean;
   children:
@@ -21,7 +21,7 @@ export interface AccordionProps
     | ReactElement<AccordionPanelProps>[];
 }
 
-export const Accordion: FC<AccordionProps> = ({
+export const AccordionComponent: FC<AccordionProps> = ({
   children,
   divider,
   ...props
