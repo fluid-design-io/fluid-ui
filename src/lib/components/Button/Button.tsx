@@ -1,11 +1,13 @@
+/* eslint-disable @typescript-eslint/ban-ts-ignore */
 import { AnimatePresence, motion } from 'framer-motion';
-import React, { useId } from 'react';
+import React, { useEffect, useId, useState } from 'react';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { GrEmptyCircle } from 'react-icons/gr';
-import { HiOutlineDotsHorizontal } from 'react-icons/hi';
+import { HiCheckCircle, HiOutlineDotsHorizontal } from 'react-icons/hi';
 
 import {
   ButtonComponent,
+  ButtonIsLoadedOptions,
   ButtonLoadingOptionsAnimation,
   ButtonProps,
   PolymorphicRef,
@@ -13,6 +15,7 @@ import {
 import clsxm from '../../helpers/clsxm';
 import { excludeClassName } from '../../helpers/exclude';
 import { getUserClassNames } from '../../helpers/getUserClassNames';
+import { isChildValid } from '../../helpers/isChildValid';
 import {
   FluidButtonColors,
   FluidButtonShapes,
@@ -33,14 +36,27 @@ export const Button: ButtonComponent = React.forwardRef(
       weight = 'normal' as keyof FluidButtonWeights,
       iconOnly = false,
       isLoading = false,
+      isLoaded = false,
+      loadedOptions = undefined,
       gradient = undefined,
       loadingOptions = undefined,
+      icon: Icon,
+      iconStart: IconStart,
+      iconEnd: IconEnd,
       className,
+      badge,
+      label,
+      labelClassName,
+      badgeClassName,
+      iconClassName,
+      iconStartPosition = 'flex',
+      iconEndPosition = 'flex',
       children,
       ...props
     }: ButtonProps<C>,
     ref?: PolymorphicRef<C>
   ) => {
+    const [isLoadedTriggered, setIsLoadedTriggered] = useState(false);
     const theme = useTheme().theme.button;
     const id = useId();
     const theirProps = excludeClassName(props);
@@ -51,6 +67,18 @@ export const Button: ButtonComponent = React.forwardRef(
       ? theme.iconOnly[shape][size]
       : theme.shape[shape][size];
     const Component = as || 'button';
+    const isLoadedDuration =
+      typeof isLoaded === 'object' ? loadedOptions.duration || 1500 : 1500;
+    const isButtonTextHidden = isLoading || (isLoaded && isLoadedTriggered);
+    useEffect(() => {
+      if (!!isLoaded && !isLoadedTriggered) {
+        setIsLoadedTriggered(true);
+        // eslint-disable-next-line no-undef
+        setTimeout(() => {
+          setIsLoadedTriggered(false);
+        }, isLoadedDuration);
+      }
+    }, [isLoaded]);
     return (
       <Component
         disabled={props?.disabled || isLoading}
@@ -69,6 +97,7 @@ export const Button: ButtonComponent = React.forwardRef(
         {...theirProps}
       >
         {sr && <span className='sr-only'>{sr}</span>}
+        {!sr && label && <span className='sr-only'>{label}</span>}
         <AnimatePresence mode='sync'>
           {isLoading && (
             <ButtonLoadingComponent
@@ -83,20 +112,93 @@ export const Button: ButtonComponent = React.forwardRef(
               }}
             />
           )}
+          {!isLoading && isLoaded && isLoadedTriggered && (
+            <ButtonLoadedComponent
+              key={`${id}-loaded`}
+              {...{
+                isLoaded,
+                loadedOptions,
+                inherClassNames:
+                  loadedOptions?.text &&
+                  loadedOptions.text.length > 0 &&
+                  inherClassNames,
+                themeSize,
+              }}
+            />
+          )}
         </AnimatePresence>
         <motion.div
-          animate={{ opacity: isLoading ? 0 : 1, scale: isLoading ? 0.85 : 1 }}
           initial={{ opacity: 1 }}
+          animate={{
+            opacity: isButtonTextHidden ? 0 : 1,
+            scale: isButtonTextHidden ? 0.85 : 1,
+          }}
           className={clsxm(
             'w-full flex gap-2 items-center justify-center',
             inherClassNames
           )}
         >
-          {children}
+          <>
+            {IconStart &&
+              (isChildValid(IconStart) ? (
+                IconStart
+              ) : (
+                /* @ts-ignore */
+                <IconStart
+                  className={clsxm('flex-shrink-0 w-4 h-4', iconClassName)}
+                />
+              ))}
+            {iconStartPosition === 'between' && <span className='flex-grow' />}
+            {label && !iconOnly && (
+              <span className={clsxm(labelClassName)}>{label}</span>
+            )}
+            {children && children}
+            {iconEndPosition === 'between' && <span className='flex-grow' />}
+            {IconEnd &&
+              (isChildValid(IconEnd) ? (
+                IconEnd
+              ) : (
+                /* @ts-ignore */
+                <IconEnd
+                  className={clsxm('flex-shrink-0 w-4 h-4', iconClassName)}
+                />
+              ))}
+            {Icon &&
+              (isChildValid(Icon) ? (
+                Icon
+              ) : (
+                /* @ts-ignore */
+                <Icon
+                  className={clsxm('flex-shrink-0 w-4 h-4', iconClassName)}
+                />
+              ))}
+            {badge && (
+              <span
+                className={clsxm(
+                  'rounded bg-primary-200 py-0.5 px-1.5 text-xs font-semibold tabular-nums text-primary-700',
+                  badgeClassName
+                )}
+              >
+                {badge}
+              </span>
+            )}
+          </>
         </motion.div>
       </Component>
     );
   }
+);
+
+const ButtonOverlayWrap = ({ children, className }) => (
+  <motion.div
+    animate={{ opacity: 1, scale: 1 }}
+    className={clsxm(className)}
+    exit={{ opacity: 0, scale: 0.7 }}
+    initial={{ opacity: 0, scale: 0.7 }}
+    transition={{ duration: 0.3 }}
+  >
+    {children}
+  </motion.div>
 );
 
 const ButtonLoadingComponent = ({
@@ -124,12 +226,8 @@ const ButtonLoadingComponent = ({
   const Icon = iconOption[loadingOptions.animation];
 
   return (
-    <motion.div
-      animate={{ opacity: 1, scale: 1 }}
+    <ButtonOverlayWrap
       className={clsxm(theme.loading.base, themeSize, inherClassNames)}
-      exit={{ opacity: 0, scale: 0.7 }}
-      initial={{ opacity: 0, scale: 0.7 }}
-      transition={{ duration: 0.3 }}
     >
       <Icon
         className={clsxm(
@@ -140,6 +238,47 @@ const ButtonLoadingComponent = ({
       {loadingOptions?.text && loadingOptions.text.length > 0 && (
         <div className={theme.loading.text}>{loadingOptions.text}</div>
       )}
-    </motion.div>
+    </ButtonOverlayWrap>
+  );
+};
+
+const ButtonLoadedComponent = ({
+  isLoaded = false,
+  loadedOptions = undefined,
+  inherClassNames = [],
+  themeSize,
+}: {
+  isLoaded: boolean;
+  loadedOptions: ButtonIsLoadedOptions;
+  inherClassNames: string[];
+  themeSize: string;
+}) => {
+  const theme = useTheme().theme.button;
+  const text: ButtonIsLoadedOptions['text'] = loadedOptions?.text;
+  const className: ButtonIsLoadedOptions['className'] =
+    loadedOptions?.className;
+  let Icon: ButtonIsLoadedOptions['icon'] = HiCheckCircle;
+  if (loadedOptions?.icon) {
+    Icon = loadedOptions.icon;
+  }
+
+  return (
+    <ButtonOverlayWrap
+      className={clsxm(
+        theme.loading.base,
+        themeSize,
+        inherClassNames,
+        className
+      )}
+    >
+      {isChildValid(Icon) ? (
+        Icon
+      ) : (
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // @ts-ignore
+        <Icon className={clsxm('flex-shrink-0')} />
+      )}
+      {text && <div className={theme.loading.text}>{text}</div>}
+    </ButtonOverlayWrap>
   );
 };

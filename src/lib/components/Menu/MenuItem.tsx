@@ -5,7 +5,7 @@ import React, { Fragment } from 'react';
 import {
   MenuItemComponent,
   MenuItemProps,
-  PolymorphicComponentPropWithRef,
+  PolymorphicRef,
 } from '../../../type';
 
 import clsxm from '../../helpers/clsxm';
@@ -13,36 +13,22 @@ import { excludeClassName } from '../../helpers/exclude';
 import { getUserClassNames } from '../../helpers/getUserClassNames';
 import { Button } from '../Button';
 
-const isChildNull = (element: MenuItemProps['icon']) => {
-  if (!element) {
-    return false;
-  }
-  return React.isValidElement(element);
-};
-
 export const MenuItem: MenuItemComponent = React.forwardRef(
   <C extends React.ElementType = 'button'>(
     {
       as,
       menuButtonClassName,
       horizontal,
-      sr,
       label,
       onClick,
-      icon: Icon,
       role,
-      iconStart,
-      iconEnd,
-      iconStartPosition,
-      iconEndPosition,
       className,
       ...props
-    }:
-      | {
-          menuButtonClassName?: string;
-          horizontal?: boolean;
-        } & PolymorphicComponentPropWithRef<C, MenuItemProps>,
-    ref
+    }: MenuItemProps<C> & {
+      menuButtonClassName?: string;
+      horizontal?: boolean;
+    },
+    ref?: PolymorphicRef<C>
   ) => {
     const Component = as || Button;
     const inherClassNames = getUserClassNames(className);
@@ -83,19 +69,7 @@ export const MenuItem: MenuItemComponent = React.forwardRef(
               props.children
             ) : (
               <Fragment>
-                {Icon && (
-                  <span className='rtl:hidden'>
-                    {/* @ts-ignore */}
-                    {isChildNull(Icon) ? Icon : <Icon className='w-4 h-4' />}
-                  </span>
-                )}
                 {label && <span className='flex-shrink-0'>{label}</span>}
-                {Icon && (
-                  <span className='hidden rtl:block'>
-                    {/* @ts-ignore */}
-                    {isChildNull(Icon) ? Icon : <Icon className='w-4 h-4' />}
-                  </span>
-                )}
               </Fragment>
             )}
           </Component>
