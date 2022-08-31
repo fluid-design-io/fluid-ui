@@ -14,10 +14,6 @@ module.exports = {
     }
     ],
 
-    //#region  //*=========== Unused Import ===========
-    '@typescript-eslint/no-unused-vars': 'off',
-    //#endregion  //*======== Unused Import ===========
-
     //#region  //*=========== Import Sort ===========
     'simple-import-sort/exports': 'warn',
     //#endregion  //*======== Import Sort ===========
