@@ -98,6 +98,13 @@ export type ButtonProps<C extends React.ElementType> =
       iconOnly?: boolean;
       isLoading?: boolean;
       /**
+       * If true, the button will show default `isLoaded` UI after isLoading set back to false.
+       * It can be set as an object to customize the text, icon and duration.
+       * @defaultValue `false`
+       */
+      isLoaded?: boolean;
+      loadedOptions?: ButtonIsLoadedOptions;
+      /**
        * shape: The shape of the button.
        * defaultValue `round`
        * @type {'pill' | 'round' | 'square'}
@@ -109,13 +116,10 @@ export type ButtonProps<C extends React.ElementType> =
        * @type {ButtonLoadingOptions}
        * @memberof ButtonProps
        */
-      loadingOptions?: {
-        animation?: ButtonLoadingOptionsAnimation;
-        text?: string;
-      };
+      loadingOptions?: ButtonLoadingOptions;
       children?: React.ReactNode;
       // [key: string]: any;
-    }
+    } & ButtonInnerProp
   >;
 
 export type ButtonLoadingOptionsAnimation =
@@ -124,41 +128,64 @@ export type ButtonLoadingOptionsAnimation =
   | 'ping'
   | 'spin-large';
 
+export type ButtonLoadingOptions = {
+  animation?: ButtonLoadingOptionsAnimation;
+  text?: string;
+};
+
+export type ButtonIsLoadedOptions = {
+  text?: string | undefined;
+  icon?: React.ReactNode | { (props: SVGProps<SVGSVGElement>): JSX.Element };
+  /**
+   * The duration of the animation.
+   * @defaultValue `1500`ms
+   */
+  duration?: number;
+  /**
+   * className of the icon & text wrapper
+   */
+  className?: string;
+};
+
 export type ButtonComponent = <C extends React.ElementType = 'button'>(
   props: ButtonProps<C>
 ) => React.ReactElement | null;
 
-/* ===== End Button Props ===== */
-
-/* ===== Start Menu Props ===== */
-
-export type MenuProps = {
-  label?: string;
-  /**
-   * A React component to be used as the icon for the menu item.
-   */
-  icon?: JSX.Element;
+export type ButtonInnerProp = {
   /**
    * displayed after the label
-   * `string
+   * `string` | `number`
    */
-  badge?: string;
+  badge?: string | number;
   /**
-   * Header of the menu, can be either a string or a React component.
+   * Instead of passing `children` as a prop, you can pass `label` as a prop.
+   * This will automatically generate screen reader text for the button.
    */
-  header?: JSX.Element | string;
+  label?: string;
   /**
-   * sr: Screen reader text
+   * labelClassName: Additinal class name to apply to the label
+   * This will override the default class name if the custom class name conflicts with an existing class name
    */
-  sr?: string;
+  labelClassName?: string;
+  /**
+   * badgeClassName: Additinal class name to apply to the badge
+   * This will override the default class name if the custom class name conflicts with an existing class name
+   */
+  badgeClassName?: string;
+  icon?: JSX.Element | { (props: SVGProps<SVGSVGElement>): JSX.Element };
   /**
    * iconStart: Icon to display on the left of the label
    */
-  iconStart?: (props: SVGProps<SVGSVGElement>) => JSX.Element;
+  iconStart?: JSX.Element | { (props: SVGProps<SVGSVGElement>): JSX.Element };
   /**
    * iconEnd: Icon to display on the right of the label
    */
-  iconEnd?: (props: SVGProps<SVGSVGElement>) => JSX.Element;
+  iconEnd?: JSX.Element | { (props: SVGProps<SVGSVGElement>): JSX.Element };
+  /**
+   * iconClassName: Additinal class name to apply to the icon
+   * This will override the default class name if the custom class name conflicts with an existing class name
+   */
+  iconClassName?: string;
   /**
    * iconStartPosition: Position of the iconStart
    * `flex` (default) or `between`
@@ -171,22 +198,31 @@ export type MenuProps = {
    * `between` will create a gap between the icon and the label
    */
   iconEndPosition?: 'flex' | 'between';
+};
+
+/* ===== End Button Props ===== */
+
+/* ===== Start Menu Props ===== */
+
+export type MenuProps = {
+  /**
+   * A React component to be used as the icon for the menu item.
+   */
+  icon?: JSX.Element;
+  /**
+   * Header of the menu, can be either a string or a React component.
+   */
+  header?: JSX.Element | string;
+  /**
+   * sr: Screen reader text
+   */
+  sr?: string;
   className?: string;
   /**
    * buttonClassName: Additional class name to apply to the button
    * This will override the default class name if the custom class name conflicts with an existing class name
    */
   buttonClassName?: string;
-  /**
-   * labelClassName: Additinal class name to apply to the label
-   * This will override the default class name if the custom class name conflicts with an existing class name
-   */
-  labelClassName?: string;
-  /**
-   * badgeClassName: Additinal class name to apply to the badge
-   * This will override the default class name if the custom class name conflicts with an existing class name
-   */
-  badgeClassName?: string;
   /**
    * menuClassName: Additinal class name to apply to the menu
    * This will override the default class name if the custom class name conflicts with an existing class name
@@ -197,11 +233,6 @@ export type MenuProps = {
    * This will override the default class name if the custom class name conflicts with an existing class name
    */
   menuButtonClassName?: string;
-  /**
-   * iconClassName: Additinal class name to apply to the icon
-   * This will override the default class name if the custom class name conflicts with an existing class name
-   */
-  iconClassName?: string;
   /**
    * menuPositionX: Horizontal position of the menu
    * `center` (default) or `left` or `right`
@@ -223,7 +254,7 @@ export type MenuProps = {
    *
    * Each menu item should be an object with the following properties:
    *
-   * `label`: The name of the menu item
+   * `label`: `optional` - The name of the menu item
    *
    * `href`: `optional` - The URL of the menu item
    *
@@ -234,8 +265,63 @@ export type MenuProps = {
    * `onClick`: `optional` - A function to be called when the menu item is clicked
    *
    * `props`: `optional` - Any additional props to be passed to the menu item
+   *
+   * @example
+   *
+   * An example of a menu item:
+   *
+   * ```jsx
+   * import { Menu } from '@fluid-design/fluid-ui';
+   * import {
+   *   BellIcon,
+   *   CogIcon,
+   *   ArrowRightOnRectangleIcon,
+   *   UserIcon,
+   * } from '@heroicons/react/24/outline';
+   * function Example() {
+   *   return (
+   *     <Menu
+   *       label={'Settings'}
+   *       color='gray'
+   *       weight='clear'
+   *       iconStart={CogIcon}
+   *       iconEndPosition='between'
+   *       menuPositionY='bottom'
+   *       header='Hi, User'
+   *       className='absolute right-4 top-4'
+   *       menus={[
+   *         {
+   *           label: 'Profile',
+   *           icon: UserIcon,
+   *         },
+   *         {
+   *           label: 'Notifications',
+   *           role: 'info',
+   *           icon: BellIcon,
+   *         },
+   *         {
+   *           role: 'separator',
+   *         },
+   *         {
+   *           label: 'Logout',
+   *           role: 'destructive',
+   *           icon: <ArrowRightOnRectangleIcon className='w-4 h-4' />,
+   *           isLoading: true,
+   *           disabled: true,
+   *           loadingOptions: {
+   *             animation: 'spin-large',
+   *           },
+   *           onClick: (e) => {
+   *             e.preventDefault();
+   *           },
+   *         },
+   *       ]}
+   *     />
+   *   );
+   * }
+   * ```
    */
-  menus?: MenuItemProps[];
+  menus?: MenuItemProps<'button'>[];
 } & ButtonProps<'button'>;
 
 export type MenuComponent = (props: MenuProps) => React.ReactElement | null;
@@ -265,21 +351,22 @@ export type MenuRoleProp =
   | 'success'
   | 'warning';
 
-export type MenuItemProps = {
-  /**
-   * sr: Screen reader text
-   */
-  sr?: string;
-  role?: MenuRoleProp;
-  label?: string;
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  icon?: JSX.Element | { (props: SVGProps<SVGSVGElement>): JSX.Element };
-  [x: string]: any;
-};
-
-export type MenuItemComponentProps<C extends React.ElementType> =
-  PolymorphicComponentPropWithRef<C, MenuItemProps>;
+export type MenuItemProps<C extends React.ElementType = 'button'> =
+  PolymorphicComponentPropWithRef<
+    C,
+    {
+      /**
+       * sr: Screen reader text
+       */
+      sr?: string;
+      role?: MenuRoleProp;
+      label?: string;
+      onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+      [x: string]: any;
+    }
+  > &
+    ButtonProps<C>;
 
 export type MenuItemComponent = <C extends React.ElementType = 'button'>(
-  props: MenuItemComponentProps<C>
+  props: MenuItemProps<C>
 ) => React.ReactElement | null;
