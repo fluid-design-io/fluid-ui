@@ -5,6 +5,20 @@ export interface ExcludeProps {
   key: string;
   source: Record<string, unknown>;
 }
+const exclude = ({ key, source }: ExcludeProps): object => {
+  delete source[key];
+  return source;
+};
+
+export const excludes = (
+  keys: string[],
+  source: Record<string, unknown>
+): Record<string, unknown> => {
+  keys.forEach((key) => {
+    delete source[key];
+  });
+  return source;
+};
 
 export const excludeClassName = (props: PropsWithChildren<object>): object => {
   return exclude({
@@ -45,21 +59,6 @@ export const excludeOnChangeClickBlurFocus = (
   props: PropsWithChildren<object>
 ): object => {
   return excludes(['onChange', 'onClick', 'onBlur', 'onFocus'], props);
-};
-
-const exclude = ({ key, source }: ExcludeProps): object => {
-  delete source[key];
-  return source;
-};
-
-const excludes = (
-  keys: string[],
-  source: Record<string, unknown>
-): Record<string, unknown> => {
-  keys.forEach((key) => {
-    delete source[key];
-  });
-  return source;
 };
 
 export default exclude;
