@@ -16,7 +16,7 @@ function AppLabel({ focused, error, errors, name, label, value }) {
         !focused && error
           ? `contrast:text-red-500 dark:contrast:text-red-300 top-1 text-red-400 dark:text-red-500`
           : [notFocusedStyle, noErrorStyle, `dark:contrast:text-primary-50`],
-        `pointer-events-none absolute left-4 -mb-1 text-xs font-semibold transition-all`
+        `pointer-events-none absolute left-4 right-auto rtl:left-auto rtl:right-4 -mb-1 text-xs font-semibold transition-all line-clamp-1`
       )}
     >
       {error ? errors[name] : label}
