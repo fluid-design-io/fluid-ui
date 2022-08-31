@@ -245,17 +245,13 @@ const generateTxtBg = (
     'background-color': toColor(getColor(value, step, alpha)),
     color: toColor(contrastColor(textValue, textStep, textBW)),
     transition: 'all 0.15s ease-in-out',
-    '&:disabled': {
-      'background-color': toColor(getColor(value, step, alpha)),
-      color: toColor(contrastColor(textValue, textStep, textBW)),
-    },
   };
 };
 const generateTxtStates = (
   value,
   { hocus, active, disabled, textHocus, textActive, textDisabled }
 ) => ({
-  '&:hover': {
+  '&:not([href]):enabled:hover, , &[href]:hover': {
     ...generateTxtBg(
       hocus.value,
       hocus.step,
@@ -265,7 +261,7 @@ const generateTxtStates = (
       textHocus?.bw
     ),
   },
-  '&:focus-visible': {
+  '&:not([href]):enabled:focus-visible, &[href]:focus-visible': {
     ...generateTxtBg(
       hocus.value,
       hocus.step,
@@ -275,7 +271,7 @@ const generateTxtStates = (
       textHocus?.bw
     ),
   },
-  '&:active': {
+  '&:not([href]):enabled:active, &[href]:active': {
     ...generateTxtBg(
       active.value,
       active.step,
@@ -394,7 +390,7 @@ const buttonUtilities = (theme) => {
           bc: toColor(getColor(value, 500)),
           bs: `inset 0 0 0 1px ${toColor(
             getColor(value, 500)
-          )}, 0 0px 0px 1px ${toColor(getColor(value, 900))}`,
+          )}, 0 0px 0px 2px ${toColor(getColor(value, 900))}`,
           fw: 'bold',
           hocus: generateTxtBg(value, 700, true),
           active: generateTxtBg(value, 900, true),
@@ -406,7 +402,7 @@ const buttonUtilities = (theme) => {
             bc: toColor(getColor(value, 900)),
             bs: `inset 0 0 0 1px ${toColor(
               getColor(value, 900)
-            )}, 0 0px 0px 1px ${toColor(getColor(value, 50))}`,
+            )}, 0 0px 0px 2px ${toColor(getColor(value, 50))}`,
             fw: 'bold',
             hocus: generateTxtBg(value, 50, true),
             active: generateTxtBg(value, 300, true),
@@ -453,7 +449,7 @@ const buttonUtilities = (theme) => {
         ...generateCMBtn(value, {
           bw: '3px',
           bc: toColor(getColor(value, 500)),
-          bs: `inset 0 0 0 3px ${toColor(
+          bs: `inset 0 0 0 1px ${toColor(
             getColor(value, 500)
           )}, 0 0px 0px 3px ${toColor(getColor(value, 900))}`,
           fw: 'bold',
@@ -465,7 +461,7 @@ const buttonUtilities = (theme) => {
           ...generateCMBtn(value, {
             bw: '3px',
             bc: toColor(getColor(value, 900)),
-            bs: `inset 0 0 0 3px ${toColor(
+            bs: `inset 0 0 0 1px ${toColor(
               getColor(value, 900)
             )}, 0 0px 0px 3px ${toColor(getColor(value, 50))}`,
             fw: 'bold',
@@ -533,9 +529,9 @@ const buttonUtilities = (theme) => {
         ...generateCMBtn(value, {
           bw: '1px',
           bc: toColor(getColor(value, 700)),
-          bs: `inset 0 0 0 3px ${toColor(
+          bs: `inset 0 0 0 1px ${toColor(
             getColor(value, 700)
-          )}, 0 0px 0px 3px ${toColor(getColor(value, 50))}`,
+          )}, 0 0px 0px 2px ${toColor(getColor(value, 50))}`,
           fw: 'bold',
           hocus: generateTxtBg(value, 50, true),
           active: generateTxtBg(value, 300, true),
@@ -552,9 +548,9 @@ const buttonUtilities = (theme) => {
           ...generateCMBtn(value, {
             bw: '1px',
             bc: toColor(getColor(value, 200)),
-            bs: `inset 0 0 0 3px ${toColor(
+            bs: `inset 0 0 0 1px ${toColor(
               getColor(value, 700)
-            )}, 0 0px 0px 3px ${toColor(getColor(value, 100))}`,
+            )}, 0 0px 0px 2px ${toColor(getColor(value, 100))}`,
             fw: 'bold',
             hocus: generateTxtBg(value, 700, true),
             active: generateTxtBg(
