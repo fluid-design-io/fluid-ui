@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --tw-color-primary-50: 249 250 251;
+  /* --tw-color-primary-50: 249 250 251;
   --tw-color-primary-100: 243 244 246;
   --tw-color-primary-200: 229 231 235;
   --tw-color-primary-300: 209 213 219;
@@ -12,7 +12,7 @@
   --tw-color-primary-600: 86 91 98;
   --tw-color-primary-700: 52 56 60;
   --tw-color-primary-800: 39 41 43;
-  --tw-color-primary-900: 17 18 19;
+  --tw-color-primary-900: 17 18 19; */
   --color-primary-50: rgb(var(--tw-color-primary-50)); /* #f9fafb */
   --color-primary-100: rgb(var(--tw-color-primary-100)); /* #f3f4f6 */
   --color-primary-200: rgb(var(--tw-color-primary-200)); /* #e5e7eb */
