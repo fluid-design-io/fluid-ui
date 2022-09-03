@@ -19,6 +19,7 @@ import {
   ComboBox,
   Form,
   Input,
+  List,
   SubmitButton,
   SubmitButtonRef,
   Switch,
@@ -129,6 +130,7 @@ const Template: Story<StoryButtonProps> = (args) => {
             }}
           />
           <ComboBox name='state' list={states} itemKey='name' />
+          <List name='state' list={states} itemKey='name' />
           <Switch name='saveResponse' label='Save Response' />
           <SubmitButton title='Submit' slot='end' />
           <SubmitButtonRef innerRef={submitBtnRef} className='hidden' />

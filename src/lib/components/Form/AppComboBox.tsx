@@ -1,15 +1,17 @@
-import { Combobox } from '@headlessui/react';
+import { Combobox, Transition } from '@headlessui/react';
 import { useFormikContext } from 'formik';
-import React, { useMemo, useState } from 'react';
+import React, { Fragment, useMemo, useState } from 'react';
 import { HiCheck, HiSelector } from 'react-icons/hi';
 
 import clsxm from '../../helpers/clsxm';
 
 import { FormProp } from '.';
+import { useFormValue } from '../../helpers/useFormValue';
 import { useTheme } from '../FluidUI/ThemeContext';
 
 function AppComboBox({
-  name,
+  name: rawName,
+  label: rawLabel,
   list,
   description,
   placeholder,
@@ -19,6 +21,7 @@ function AppComboBox({
 }: {
   name: string;
   list: any[];
+  label?: string;
   description?: FormProp['description'];
   placeholder?: string;
   disabled?: boolean;
@@ -34,10 +37,14 @@ function AppComboBox({
     useFormikContext();
   const [query, setQuery] = useState('');
   const [focused, setFocused] = useState(false);
-  const error = touched[name] ? errors[name] : undefined;
-  const label = placeholder
-    ? placeholder
-    : `${name[0].toUpperCase()}${name.slice(1)}`;
+  const { value, label, error } = useFormValue({
+    rawName,
+    rawLabel,
+    values,
+    errors,
+    touched,
+    placeholder,
+  });
   const filteredList = useMemo(() => {
     if (query === '') {
       return list;
@@ -55,11 +62,11 @@ function AppComboBox({
     <Combobox
       as='div'
       className='mb-4 last:mb-0'
-      defaultValue={values[name]}
+      defaultValue={value}
       disabled={disabled}
-      value={values[name]}
+      value={value}
       onChange={(e) => {
-        handleChange({ target: { type: 'text', name, value: e } });
+        handleChange({ target: { type: 'text', name: rawName, value: e } });
       }}
     >
       <Combobox.Label
@@ -77,10 +84,10 @@ function AppComboBox({
           value={query}
           className={clsxm(
             theme.base,
-            'py-2 pl-3 pr-10 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 sm:text-sm'
+            'py-2 pl-3 pr-10 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 sm:text-sm'
           )}
           onBlur={() => {
-            setFieldTouched(name);
+            setFieldTouched(rawName);
             setFocused(false);
           }}
         />
@@ -88,50 +95,59 @@ function AppComboBox({
           <HiSelector aria-hidden='true' className='h-5 w-5 text-primary-400' />
         </Combobox.Button>
 
-        {list.length > 0 && (
-          <Combobox.Options className='popover-panel absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md py-1 sm:text-sm'>
-            {filteredList.map((item) => (
-              <Combobox.Option
-                key={`${name}-${itemKey ? item[itemKey] : item}-${item.id}`}
-                value={item[itemKey]}
-                className={({ active }) =>
-                  clsxm(
-                    'relative cursor-default select-none py-2 pl-3 pr-9',
-                    active
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-primary-800 text-primary-900 dark:text-primary-200'
-                  )
-                }
-              >
-                {({ active, selected }) => (
-                  <>
-                    <span
-                      className={clsxm(
-                        'block truncate',
-                        selected && 'font-semibold'
-                      )}
-                    >
-                      {item[itemKey]}
-                    </span>
-
-                    {selected && (
+        <Transition
+          as={Fragment}
+          leave='transition ease-in duration-100'
+          leaveFrom='opacity-100'
+          leaveTo='opacity-0'
+        >
+          {list.length > 0 && (
+            <Combobox.Options className='popover-panel absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md py-1 sm:text-sm'>
+              {filteredList.map((item) => (
+                <Combobox.Option
+                  value={item[itemKey]}
+                  className={({ active }) =>
+                    clsxm(
+                      'relative cursor-default select-none py-2 pl-3 pr-9',
+                      active
+                        ? 'bg-blue-600 text-white'
+                        : 'bg-primary-800 text-primary-900 dark:text-primary-200'
+                    )
+                  }
+                  key={`${rawName}-${itemKey ? item[itemKey] : item}-${
+                    item.id
+                  }`}
+                >
+                  {({ active, selected }) => (
+                    <>
                       <span
                         className={clsxm(
-                          'absolute inset-y-0 right-0 flex items-center pr-4',
-                          active
-                            ? 'text-white'
-                            : 'text-blue-600 dark:text-blue-400'
+                          'block truncate',
+                          selected && 'font-semibold'
                         )}
                       >
-                        <HiCheck aria-hidden='true' className='h-5 w-5' />
+                        {item[itemKey]}
                       </span>
-                    )}
-                  </>
-                )}
-              </Combobox.Option>
-            ))}
-          </Combobox.Options>
-        )}
+
+                      {selected && (
+                        <span
+                          className={clsxm(
+                            'absolute inset-y-0 right-0 flex items-center pr-4',
+                            active
+                              ? 'text-white'
+                              : 'text-blue-600 dark:text-blue-400'
+                          )}
+                        >
+                          <HiCheck aria-hidden='true' className='h-5 w-5' />
+                        </span>
+                      )}
+                    </>
+                  )}
+                </Combobox.Option>
+              ))}
+            </Combobox.Options>
+          )}
+        </Transition>
       </div>
     </Combobox>
   );
