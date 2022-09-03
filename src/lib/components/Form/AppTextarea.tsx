@@ -5,16 +5,21 @@ import ReactTextareaAutosize from 'react-textarea-autosize';
 import clsxm from '../../helpers/clsxm';
 
 import { FormItem, FormProp, getInputColor, Label } from '.';
+import { useFormValue } from '../../helpers/useFormValue';
 import { useTheme } from '../FluidUI/ThemeContext';
 
 const Textarea = ({
-  name,
+  name: rawName,
+  label: rawLabel,
+  placeholder = undefined,
   minRows = 1,
   maxRows = 10,
   description,
   ...props
 }: {
   name: string;
+  label?: string;
+  placeholder?: string;
   minRows?: number;
   maxRows?: number;
   description?: FormProp['description'];
@@ -23,32 +28,36 @@ const Textarea = ({
   const { setFieldTouched, handleChange, errors, touched, values } =
     useFormikContext();
   const [focused, setFocused] = useState(false);
-  const error = touched[name] ? errors[name] : undefined;
-  const label = `${name[0].toUpperCase()}${name.slice(1)}`;
+  const { name, value, error, label } = useFormValue({
+    rawName,
+    rawLabel,
+    values,
+    errors,
+    touched,
+    placeholder,
+  });
 
   const theme = useTheme().theme.form;
   return (
     <FormItem {...{ error, focused, description }}>
-      <Label
-        {...{ errors, error, focused, label, name, value: values[name] }}
-      />
+      <Label {...{ errors, error, focused, label, name, value }} />
       <ReactTextareaAutosize
         {...props}
         maxRows={maxRows}
         minRows={minRows}
-        name={name}
+        name={rawName}
         onChange={handleChange}
         onFocus={() => setFocused(true)}
         placeholder={error ? label : undefined}
         rows={minRows}
-        value={values[name]}
+        value={value}
         className={clsxm(
           theme.base,
           getInputColor({ error, className: props.className }),
           'min-h-[3rem] pb-2'
         )}
         onBlur={() => {
-          setFieldTouched(name);
+          setFieldTouched(rawName);
           setFocused(false);
         }}
       />
