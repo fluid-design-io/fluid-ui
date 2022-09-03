@@ -12,13 +12,13 @@ function AppFormItemDescription({
     return null;
   }
   return (
-    <div className='flex flex-col items-start'>
+    <div className='flex flex-col items-start item-description'>
       {React.isValidElement(description) && description}
       {typeof description === 'string' && (
-        <p className='item-description text-sm'>{description}</p>
+        <p className='text-sm'>{description}</p>
       )}
       {typeof description === 'object' && (
-        <p className='item-description flex items-center gap-2 text-sm'>
+        <p className='flex items-center gap-2 text-sm'>
           {/* @ts-ignore-next-line */}
           <description.icon className='h-4 w-4' />
           {/* @ts-ignore-next-line */}

@@ -54,7 +54,7 @@ function AppComboBox({
   return (
     <Combobox
       as='div'
-      className='mb-4'
+      className='mb-4 last:mb-0'
       defaultValue={values[name]}
       disabled={disabled}
       value={values[name]}
