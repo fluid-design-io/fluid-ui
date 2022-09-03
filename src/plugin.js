@@ -90,6 +90,9 @@ const getColor = (value, step = 500, alpha = 1) => {
   if (alpha <= 0) {
     return 'transparent';
   }
+  if (typeof value === 'string') {
+    return value;
+  }
   if (typeof value === 'object') {
     if (typeof value[step] === 'function') {
       return value[step]();
@@ -225,17 +228,17 @@ const toColor = (value) => {
   }
   return value;
 };
+const buttonDefault = {
+  transition: 'all 0.15s ease-in-out',
+}
 const generateTxtBg = (
   value,
-  step,
+  step = undefined,
   blackWhite = false,
-  textValue = undefined,
-  textStep = undefined,
-  textBW = undefined
+  textValue = value,
+  textStep = step,
+  textBW = blackWhite,
 ) => {
-  textValue = textValue || value;
-  textStep = textStep || step;
-  textBW = textBW || blackWhite;
   let alpha = undefined;
   if (typeof step === 'object') {
     alpha = step.alpha;
@@ -244,18 +247,17 @@ const generateTxtBg = (
   return {
     'background-color': toColor(getColor(value, step, alpha)),
     color: toColor(contrastColor(textValue, textStep, textBW)),
-    transition: 'all 0.15s ease-in-out',
   };
 };
 const generateTxtStates = (
   value,
   { hocus, active, disabled, textHocus, textActive, textDisabled }
 ) => ({
-  '&:not([href]):enabled:hover, , &[href]:hover': {
+  '&:not([href]):enabled:hover, &[href]:hover': {
     ...generateTxtBg(
       hocus.value,
-      hocus.step,
-      hocus.bw,
+      hocus?.step,
+      hocus?.bw,
       textHocus?.value,
       textHocus?.step,
       textHocus?.bw
@@ -264,8 +266,8 @@ const generateTxtStates = (
   '&:not([href]):enabled:focus-visible, &[href]:focus-visible': {
     ...generateTxtBg(
       hocus.value,
-      hocus.step,
-      hocus.bw,
+      hocus?.step,
+      hocus?.bw,
       textHocus?.value,
       textHocus?.step,
       textHocus?.bw
@@ -274,18 +276,18 @@ const generateTxtStates = (
   '&:not([href]):enabled:active, &[href]:active': {
     ...generateTxtBg(
       active.value,
-      active.step,
-      active.bw,
+      active?.step,
+      active?.bw,
       textActive?.value,
       textActive?.step,
       textActive?.bw
     ),
   },
-  '&:disabled': {
+  '&:not([href]):disabled': {
     ...generateTxtBg(
       disabled.value,
-      disabled.step,
-      disabled.bw,
+      disabled?.step,
+      disabled?.bw,
       textDisabled?.value,
       textDisabled?.step,
       textDisabled?.bw
@@ -309,12 +311,13 @@ const buttonUtilities = (theme) => {
   return {
     /* ==== START NORMAL BUTTON ==== */
     btn: (value) => ({
+      ...buttonDefault,
       ...generateTxtBg(value, 400),
       ...generateTxtStates(value, {
         hocus: { value, step: 500, bw: true },
-        active: { value, step: 600, bw: false },
+        active: { value, step: 600 },
         disabled: { value, step: 200 },
-        textActive: { value, step: 500, bw: false },
+        textActive: { value, step: 500 },
       }),
       '.dark &': {
         ...generateTxtBg(value, 500),
@@ -355,6 +358,7 @@ const buttonUtilities = (theme) => {
     /* ==== END NORMAL BUTTON ==== */
     /* ==== START LIGHT BUTTON ==== */
     'btn-light': (value) => ({
+      ...buttonDefault,
       ...generateTxtBg(
         value,
         { step: 100, alpha: 80 },
@@ -413,6 +417,7 @@ const buttonUtilities = (theme) => {
     /* ==== END LIGHT BUTTON ==== */
     /* ==== START BOLD BUTTON ==== */
     'btn-bold': (value) => ({
+      ...buttonDefault,
       ...generateTxtBg(
         value,
         { step: 700, alpha: 90 },
@@ -474,8 +479,9 @@ const buttonUtilities = (theme) => {
     /* ==== END BOLD BUTTON ==== */
     /* ==== START OUTLINE BUTTON ==== */
     'btn-outline': (value) => ({
+      ...buttonDefault,
       ...generateTxtBg(
-        value,
+        'transparent',
         { step: 50, alpha: 0 },
         false,
         toColor(getColor(value, 700)),
@@ -485,9 +491,10 @@ const buttonUtilities = (theme) => {
       ...generateTxtStates(value, {
         hocus: { value, step: { step: 400, alpha: 20 } },
         active: { value, step: { step: 400, alpha: 30 } },
-        disabled: { value, step: { step: 50, alpha: 0 } },
+        disabled: { value: "transparent" },
         textHocus: { value: toColor(getColor(value, 900)) },
         textActive: { value: toColor(getColor(value, 900)) },
+        textDisabled: { value: toColor(getColor(value, 700)) },
       }),
       'border-width': '1px',
       'border-style': 'solid',
@@ -497,7 +504,7 @@ const buttonUtilities = (theme) => {
       },
       '.dark &': {
         ...generateTxtBg(
-          value,
+          'transparent',
           { step: 900, alpha: 0 },
           false,
           toColor(getColor(value, 200)),
@@ -510,7 +517,7 @@ const buttonUtilities = (theme) => {
           disabled: { value, step: { step: 900, alpha: 0 } },
           textHocus: { value: toColor(getColor(value, 50)) },
           textActive: { value: toColor(getColor(value, 50)) },
-          textDisabled: { value: toColor(getColor(value, 100)) },
+          textDisabled: { value: toColor(getColor(value, 300)) },
         }),
         'border-color': toColor(getColor(value, 400, 30)),
         '&:hover, &:focus-visible': {
@@ -568,6 +575,7 @@ const buttonUtilities = (theme) => {
     /* ==== END OUTLINE BUTTON ==== */
     /* ==== START CLEAR BUTTON ==== */
     'btn-clear': (value) => ({
+      ...buttonDefault,
       ...generateTxtBg(
         value,
         { step: 50, alpha: 0 },
@@ -577,7 +585,7 @@ const buttonUtilities = (theme) => {
         false
       ),
       ...generateTxtStates(value, {
-        hocus: { value, step: 100, bw: false },
+        hocus: { value, step: 100 },
         active: { value, step: { step: 200, alpha: 85 } },
         disabled: { value, step: { step: 50, alpha: 0 } },
         textHocus: { value: toColor(getColor(value, 600)) }, // step is not calculated when value is a hex string
@@ -589,10 +597,6 @@ const buttonUtilities = (theme) => {
       'border-color': 'transparent',
       '&:hover, &:focus-visible': {
         'border-color': toColor(getColor(value, 400, 25)),
-      },
-      '&:disabled:hover, &:disabled:focus-visible': {
-        'border-color': toColor(getColor(value, 400, 0)),
-        'color': toColor(getColor(value, 300)),
       },
       '.dark &': {
         ...generateTxtBg(
@@ -606,17 +610,13 @@ const buttonUtilities = (theme) => {
         ...generateTxtStates(value, {
           hocus: { value, step: { step: 600, alpha: 30 } },
           active: { value, step: { step: 600, alpha: 20 } },
-          disabled: { value, step: { step: 700, alpha: 0 } },
+          disabled: { value: "transparent" },
           textHocus: { value: toColor(getColor(value, 100)) },
           textActive: { value: toColor(getColor(value, 100)) },
         }),
         '&:hover, &:focus-visible': {
           'border-color': toColor(getColor(value, 300, 25)),
         },
-        '&:disabled:hover, &:disabled:focus-visible': {
-          'border-color': toColor(getColor(value, 300, 0)),
-          'color': toColor(getColor(value, 400)),
-        }
       },
       ...generateCMClass({
         ...generateTxtBg(
