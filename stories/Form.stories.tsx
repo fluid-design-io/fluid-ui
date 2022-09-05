@@ -19,7 +19,7 @@ import {
   ComboBox,
   Form,
   Input,
-  List,
+  Select,
   SubmitButton,
   SubmitButtonRef,
   Switch,
@@ -130,7 +130,7 @@ const Template: Story<StoryButtonProps> = (args) => {
             }}
           />
           <ComboBox name='state' list={states} itemKey='name' />
-          <List name='state' list={states} itemKey='name' />
+          <Select name='state' list={states} itemKey='name' />
           <Switch name='saveResponse' label='Save Response' />
           <SubmitButton title='Submit' slot='end' />
           <SubmitButtonRef innerRef={submitBtnRef} className='hidden' />
@@ -161,6 +161,7 @@ const Template: Story<StoryButtonProps> = (args) => {
             shape='pill'
             iconOnly
             data-tooltip-bottom='Hi there! How are you doing?'
+            className='hocus:backdrop-blur-2xl backdrop-blur-none'
           >
             <HiTrash />
           </Button>

@@ -60,7 +60,6 @@ const Template: Story<StoryButtonProps> = (args) => {
           {...args}
         >
           {color}
-          {args?.icon && <IoIosSend />}
         </Button>
       ))}
     </div>
@@ -102,5 +101,5 @@ Link.args = {
 export const WithIcon: Story<StoryButtonProps> = Template.bind({});
 WithIcon.storyName = 'With Icon';
 WithIcon.args = {
-  icon: true,
+  icon: IoIosSend,
 };
