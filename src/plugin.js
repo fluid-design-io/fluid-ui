@@ -253,7 +253,7 @@ const generateTxtStates = (
   value,
   { hocus, active, disabled, textHocus, textActive, textDisabled }
 ) => ({
-  '&:not([href]):enabled:hover, &[href]:hover': {
+  '&:not([href]):enabled:hover, &:not([type]):hover': {
     ...generateTxtBg(
       hocus.value,
       hocus?.step,
@@ -263,7 +263,7 @@ const generateTxtStates = (
       textHocus?.bw
     ),
   },
-  '&:not([href]):enabled:focus-visible, &[href]:focus-visible': {
+  '&:not([href]):enabled:focus-visible, &:not([type]):focus-visible': {
     ...generateTxtBg(
       hocus.value,
       hocus?.step,
@@ -273,7 +273,7 @@ const generateTxtStates = (
       textHocus?.bw
     ),
   },
-  '&:not([href]):enabled:active, &[href]:active': {
+  '&:not([href]):enabled:active, &:not([type]):active': {
     ...generateTxtBg(
       active.value,
       active?.step,
@@ -613,6 +613,7 @@ const buttonUtilities = (theme) => {
           disabled: { value: "transparent" },
           textHocus: { value: toColor(getColor(value, 100)) },
           textActive: { value: toColor(getColor(value, 100)) },
+          textDisabled: { value: toColor(getColor(value, 600)) },
         }),
         '&:hover, &:focus-visible': {
           'border-color': toColor(getColor(value, 300, 25)),
