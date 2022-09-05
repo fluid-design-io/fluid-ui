@@ -57,6 +57,10 @@ export interface FluidTheme {
   };
   form: {
     base: string;
+    select: {
+      button: string;
+    };
+    popover: string;
   };
 }
 
