@@ -85,6 +85,12 @@ export default {
     },
   },
   form: {
-    base: 'block w-full rounded-lg border-none bg-primary-100 outline-none transition [-webkit-tap-highlight-color:transparent] dark:bg-primary-800 dark:text-primary-200 contrast:placeholder:text-primary-700  dark:contrast:bg-black dark:contrast:text-primary-50 dark:contrast:placeholder:text-primary-50/75',
+    base: 'block w-full rounded-lg bg-primary-100 outline-none transition [-webkit-tap-highlight-color:transparent] dark:bg-primary-800 dark:text-primary-200 contrast:placeholder:text-primary-700 dark:contrast:bg-black dark:contrast:text-primary-50 dark:contrast:placeholder:text-primary-50/75 contrast:contrast-ring',
+    select: {
+      button:
+        'relative w-full cursor-default py-2 pl-4 pr-10 rtl:pr-4 rtl:pl-10 text-start sm:text-sm default-focus-visible',
+    },
+    popover:
+      'rounded-md bg-white shadow-2xl z-10 ring-1 ring-black ring-opacity-5 max-h-60 min-w-full focus:outline-none dark:bg-primary-800 dark:ring-white dark:ring-opacity-5',
   },
 };
