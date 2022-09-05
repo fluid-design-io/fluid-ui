@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from 'react';
-
-import { FormProp } from '.';
+import { FormProp } from '../../../type';
 
 function AppFormItemDescription({
   description,

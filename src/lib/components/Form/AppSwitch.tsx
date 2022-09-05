@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 
 import clsxm from '../../helpers/clsxm';
 
-import { FormItem, FormProp } from '.';
+import { FormItem } from '.';
+import { FormProp } from '../../../type';
 import { excludeOnChangeClickBlurFocus } from '../../helpers/exclude';
 import { useFormValue } from '../../helpers/useFormValue';
 

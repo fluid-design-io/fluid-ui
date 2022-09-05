@@ -1,11 +1,12 @@
 import { useFormikContext } from 'formik';
 import React, { useState } from 'react';
+import { FormProp } from '../../../type';
 
 import clsxm from '../../helpers/clsxm';
 import { useFormValue } from '../../helpers/useFormValue';
 
 import { useTheme } from '../FluidUI/ThemeContext';
-import { FormItem, FormProp, getInputColor, Label } from './';
+import { FormItem, getInputColor, Label } from './';
 function AppInput({
   name: rawName,
   label: rawLabel,

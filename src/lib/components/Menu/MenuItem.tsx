@@ -52,7 +52,7 @@ export const MenuItem: MenuItemComponent = React.forwardRef(
             ref={ref}
             shape='square'
             className={clsxm(
-              (!role || role === 'default') && 'btn-clear-gray',
+              (!role || role === 'default') && 'btn-clear-stone',
               role === 'destructive' && 'btn-clear-red',
               role === 'info' && 'btn-clear-blue',
               role === 'success' && 'btn-clear-green',

@@ -2,7 +2,8 @@ import React from 'react';
 
 import clsxm from '../../helpers/clsxm';
 
-import { FormItemDescription, FormProp } from '.';
+import { FormItemDescription } from '.';
+import { FormProp } from '../../../type';
 
 function FormItem({
   error,

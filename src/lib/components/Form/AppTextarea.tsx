@@ -4,7 +4,8 @@ import ReactTextareaAutosize from 'react-textarea-autosize';
 
 import clsxm from '../../helpers/clsxm';
 
-import { FormItem, FormProp, getInputColor, Label } from '.';
+import { FormItem, getInputColor, Label } from '.';
+import { FormProp } from '../../../type';
 import { useFormValue } from '../../helpers/useFormValue';
 import { useTheme } from '../FluidUI/ThemeContext';
 
