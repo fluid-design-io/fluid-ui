@@ -29,6 +29,7 @@ export const Button: ButtonComponent = React.forwardRef(
   <C extends React.ElementType = 'button'>(
     {
       as,
+      innerAs = as,
       color = 'gray' as keyof FluidButtonColors,
       size = 'md' as keyof FluidButtonSizes,
       sr = undefined,
@@ -51,6 +52,7 @@ export const Button: ButtonComponent = React.forwardRef(
       iconClassName,
       iconStartPosition = 'flex',
       iconEndPosition = 'flex',
+      buttonTransition = true,
       children,
       ...props
     }: ButtonProps<C>,
@@ -66,7 +68,7 @@ export const Button: ButtonComponent = React.forwardRef(
     const themeSize = iconOnly
       ? theme.iconOnly[shape][size]
       : theme.shape[shape][size];
-    const Component = as || 'button';
+    const Component = innerAs || 'button';
     const isLoadedDuration =
       typeof isLoaded === 'object' ? loadedOptions.duration || 1500 : 1500;
     const isButtonTextHidden = isLoading || (isLoaded && isLoadedTriggered);
@@ -92,6 +94,7 @@ export const Button: ButtonComponent = React.forwardRef(
               ? theme.color[color].gradient[gradient]
               : theme.color[color].weight[weight],
           ],
+          !buttonTransition && 'transition-none',
           className
         )}
         {...theirProps}
