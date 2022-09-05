@@ -14,6 +14,11 @@ export type PolymorphicRef<C extends React.ElementType> =
 
 export type AsProp<C extends React.ElementType> = {
   as?: C;
+  /**
+   * innerAs is used to pass a component to a component that is already wrapped in a styled component.
+   * @defaultValue `as`
+   */
+  innerAs?: C;
 };
 
 export type PropsToOmit<C extends React.ElementType, P> = keyof (AsProp<C> & P);
@@ -117,6 +122,11 @@ export type ButtonProps<C extends React.ElementType> =
        * @memberof ButtonProps
        */
       loadingOptions?: ButtonLoadingOptions;
+      /**
+       * Weather to enable button transition.
+       * @defaultValue `true`
+       */
+      buttonTransition?: boolean;
       children?: React.ReactNode;
       // [key: string]: any;
     } & ButtonInnerProp
@@ -370,3 +380,81 @@ export type MenuItemProps<C extends React.ElementType = 'button'> =
 export type MenuItemComponent = <C extends React.ElementType = 'button'>(
   props: MenuItemProps<C>
 ) => React.ReactElement | null;
+
+/* ===== End Menu Props ===== */
+/* ===== Start Select & ComboBox Props ===== */
+
+export type DropdownProps = {
+  /**
+   * Screen reader text
+   */
+  sr?: string;
+  name: string;
+  list: DropdownListProps[];
+  label?: string;
+  labelClassName?: string;
+  description?: FormProp['description'];
+  placeholder?: string;
+  disabled?: boolean;
+  className?: string;
+  buttonClassName?: string;
+  listClassName?: string;
+  listOptionClassName?: string;
+  listOptionActiveClassName?: string;
+  listOptionInactiveClassName?: string;
+  /**
+   * The key to use for the item in the list.
+   *
+   * Users will see this as the value.
+   * @defaultValue `undefined`
+   */
+  itemKey?: string;
+};
+
+/**
+ * DropdownListProps can be a string or an object
+ *
+ * If it is a string, it will be used as the value and the label
+ *
+ * If it is an object, you need to define the `itemKey` prop, which will be used as the value and the `label` prop, which will be used as the label
+ */
+export type DropdownListProps =
+  | {
+      id?: string;
+      [x: string]: string | number | boolean | undefined;
+    }
+  | string;
+
+export type SelectProps<C extends React.ElementType = 'div'> =
+  PolymorphicComponentPropWithRef<C, {} & DropdownProps>;
+
+export type SelectComponent = <C extends React.ElementType = 'div'>(
+  props: SelectProps<C>
+) => React.ReactElement | null;
+
+export type ComboBoxProps<C extends React.ElementType = 'div'> =
+  PolymorphicComponentPropWithRef<
+    C,
+    {
+      inputClassName?: string;
+    } & DropdownProps
+  >;
+
+export type ComboBoxComponent = <C extends React.ElementType = 'div'>(
+  props: ComboBoxProps<C>
+) => React.ReactElement | null;
+
+/* ===== End Select & ComboBox Props ===== */
+/* ===== Start Form Props ===== */
+
+export interface FormProp {
+  description:
+    | string
+    | React.ReactNode
+    | {
+        icon?: (props) => JSX.Element;
+        text: string;
+      };
+}
+
+/* ===== End Form Props ===== */
