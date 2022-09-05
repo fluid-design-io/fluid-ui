@@ -12,8 +12,8 @@ import {
 import { useFormValue } from '../../helpers/useFormValue';
 import { Button } from '../Button';
 
-import { useTheme } from '../FluidUI/ThemeContext';
 import { FormItem } from '.';
+import { useTheme } from '../FluidUI/ThemeContext';
 
 const AppSelect: SelectComponent = React.forwardRef(
   <C extends React.ElementType = 'div'>(
@@ -82,10 +82,6 @@ const AppSelect: SelectComponent = React.forwardRef(
           <FormItem {...{ error, focused, description }}>
             <div className='relative mt-1'>
               <Listbox.Button
-                onFocus={() => {
-                  setFocused(true);
-                  userOnFocus && userOnFocus();
-                }}
                 className={clsxm(
                   theme.base,
                   theme.select.button,
@@ -95,6 +91,10 @@ const AppSelect: SelectComponent = React.forwardRef(
                   setFocused(false);
                   setFieldTouched(rawName);
                   userOnBlur && userOnBlur();
+                }}
+                onFocus={() => {
+                  setFocused(true);
+                  userOnFocus && userOnFocus();
                 }}
               >
                 {sr && <span className='sr-only'>{sr}</span>}
