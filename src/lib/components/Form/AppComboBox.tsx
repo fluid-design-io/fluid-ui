@@ -5,151 +5,179 @@ import { HiCheck, HiSelector } from 'react-icons/hi';
 
 import clsxm from '../../helpers/clsxm';
 
-import { FormProp } from '.';
+import {
+  ComboBoxComponent,
+  ComboBoxProps,
+  PolymorphicRef,
+} from '../../../type';
+import { excludeClassName } from '../../helpers/exclude';
 import { useFormValue } from '../../helpers/useFormValue';
+import { Button } from '../Button';
 import { useTheme } from '../FluidUI/ThemeContext';
+import FormItem from './AppFormItem';
 
-function AppComboBox({
-  name: rawName,
-  label: rawLabel,
-  list,
-  description,
-  placeholder,
-  disabled,
-  itemKey,
-  ...props
-}: {
-  name: string;
-  list: any[];
-  label?: string;
-  description?: FormProp['description'];
-  placeholder?: string;
-  disabled?: boolean;
-  /**
-   * The key to use for the item in the list.
-   * Users will see this as the value.
-   * defaultValue `undefined`
-   */
-  itemKey?: string;
-  [key: string]: any;
-}) {
-  const { setFieldTouched, handleChange, errors, touched, values } =
-    useFormikContext();
-  const [query, setQuery] = useState('');
-  const [focused, setFocused] = useState(false);
-  const { value, label, error } = useFormValue({
-    rawName,
-    rawLabel,
-    values,
-    errors,
-    touched,
-    placeholder,
-  });
-  const filteredList = useMemo(() => {
-    if (query === '') {
-      return list;
-    }
-    return list.filter((item) => {
-      const itemValue = itemKey ? item[itemKey] : item;
-      return itemValue
-        .toLowerCase()
-        .replace(/\s/g, '')
-        .includes(query.toLowerCase().replace(/\s/g, ''));
+const AppComboBox: ComboBoxComponent = React.forwardRef(
+  <C extends React.ElementType = 'div'>(
+    {
+      as,
+      sr,
+      name: rawName,
+      label: rawLabel,
+      list,
+      listClassName,
+      buttonClassName,
+      labelClassName,
+      listOptionActiveClassName,
+      listOptionClassName,
+      listOptionInactiveClassName,
+      inputClassName,
+      className,
+      placeholder,
+      description,
+      disabled,
+      itemKey,
+      ...props
+    }: ComboBoxProps<C>,
+    ref?: PolymorphicRef<C>
+  ) => {
+    const Component = as || FormItem;
+    const { setFieldTouched, handleChange, errors, touched, values } =
+      useFormikContext();
+    const [query, setQuery] = useState('');
+    const [focused, setFocused] = useState(false);
+    const { value, label, error } = useFormValue({
+      rawName,
+      rawLabel,
+      values,
+      errors,
+      touched,
+      placeholder,
     });
-  }, [query, list, itemKey]);
-  const theme = useTheme().theme.form;
-  return (
-    <Combobox
-      as='div'
-      className='mb-4 last:mb-0'
-      defaultValue={value}
-      disabled={disabled}
-      value={value}
-      onChange={(e) => {
-        handleChange({ target: { type: 'text', name: rawName, value: e } });
-      }}
-    >
-      <Combobox.Label
-        className={clsxm(
-          'contrast:text-primary-90 text-sm font-medium text-primary-700 dark:text-primary-200',
-          props.className
-        )}
+    const filteredList = useMemo(() => {
+      if (query === '') {
+        return list;
+      }
+      return list.filter((item) => {
+        const itemValue = itemKey ? item[itemKey] : item;
+        return itemValue
+          .toLowerCase()
+          .replace(/\s/g, '')
+          .includes(query.toLowerCase().replace(/\s/g, ''));
+      });
+    }, [query, list, itemKey]);
+    const theme = useTheme().theme.form;
+    const theirProps = excludeClassName(props);
+    return (
+      <Combobox
+        as={Component as any}
+        className={clsxm('mb-4 last:mb-0', className)}
+        defaultValue={value}
+        disabled={disabled}
+        value={value}
+        onChange={(e) => {
+          handleChange({ target: { type: 'text', name: rawName, value: e } });
+        }}
+        {...theirProps}
       >
-        {label} {error && `(${error})`}
-      </Combobox.Label>
-      <div className='relative mt-1'>
-        <Combobox.Input
-          onChange={(e) => setQuery(e.target.value)}
-          onFocus={() => (!focused ? setFocused(true) : undefined)}
-          value={query}
+        <Combobox.Label
           className={clsxm(
-            theme.base,
-            'py-2 pl-3 pr-10 shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 sm:text-sm'
+            'contrast:text-primary-90 text-sm font-medium text-primary-700 dark:text-primary-200',
+            props.className
           )}
-          onBlur={() => {
-            setFieldTouched(rawName);
-            setFocused(false);
-          }}
-        />
-        <Combobox.Button className='absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none'>
-          <HiSelector aria-hidden='true' className='h-5 w-5 text-primary-400' />
-        </Combobox.Button>
-
-        <Transition
-          as={Fragment}
-          leave='transition ease-in duration-100'
-          leaveFrom='opacity-100'
-          leaveTo='opacity-0'
         >
-          {list.length > 0 && (
-            <Combobox.Options className='popover-panel absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md py-1 sm:text-sm'>
-              {filteredList.map((item) => (
-                <Combobox.Option
-                  value={item[itemKey]}
-                  className={({ active }) =>
-                    clsxm(
-                      'relative cursor-default select-none py-2 pl-3 pr-9',
-                      active
-                        ? 'bg-blue-600 text-white'
-                        : 'bg-primary-800 text-primary-900 dark:text-primary-200'
-                    )
-                  }
-                  key={`${rawName}-${itemKey ? item[itemKey] : item}-${
-                    item.id
-                  }`}
-                >
-                  {({ active, selected }) => (
-                    <>
-                      <span
-                        className={clsxm(
-                          'block truncate',
-                          selected && 'font-semibold'
-                        )}
-                      >
-                        {item[itemKey]}
-                      </span>
+          {label} {error && `(${error})`}
+        </Combobox.Label>
 
-                      {selected && (
-                        <span
-                          className={clsxm(
-                            'absolute inset-y-0 right-0 flex items-center pr-4',
-                            active
-                              ? 'text-white'
-                              : 'text-blue-600 dark:text-blue-400'
-                          )}
-                        >
-                          <HiCheck aria-hidden='true' className='h-5 w-5' />
-                        </span>
-                      )}
-                    </>
+        <FormItem {...{ error, focused, description }}>
+          <div className='relative mt-1'>
+            <Combobox.Input
+              className={clsxm(theme.base, theme.select.button, inputClassName)}
+              onChange={(e) => setQuery(e.target.value)}
+              onFocus={() => (!focused ? setFocused(true) : undefined)}
+              value={query}
+              onBlur={() => {
+                setFieldTouched(rawName);
+                setFocused(false);
+              }}
+            />
+            <Combobox.Button
+              className={clsxm(
+                'absolute inset-y-0 right-0 flex items-center pr-2 hocus:opacity-80',
+                buttonClassName
+              )}
+            >
+              {sr && <span className='sr-only'>{sr}</span>}
+              <HiSelector
+                aria-hidden='true'
+                className='h-5 w-5 text-primary-400'
+              />
+            </Combobox.Button>
+
+            <Transition
+              as={Fragment}
+              leave='transition ease-in duration-100'
+              leaveFrom='opacity-100'
+              leaveTo='opacity-0'
+            >
+              {list.length > 0 && (
+                <Combobox.Options
+                  className={clsxm(
+                    theme.popover,
+                    'absolute overflow-auto mt-2 py-1 sm:text-sm',
+                    listClassName
                   )}
-                </Combobox.Option>
-              ))}
-            </Combobox.Options>
-          )}
-        </Transition>
-      </div>
-    </Combobox>
-  );
-}
+                >
+                  {filteredList.map((item) => (
+                    <Combobox.Option
+                      as={Button}
+                      innerAs='li'
+                      key={`${rawName}-${itemKey ? item[itemKey] : item}`}
+                      shape='square'
+                      value={item[itemKey]}
+                      className={({ active, selected }) =>
+                        clsxm(
+                          'flex w-full items-center justify-start !border-x-transparent select-none',
+                          selected
+                            ? 'btn-light-blue'
+                            : active
+                            ? ['btn-clear-blue', listOptionActiveClassName]
+                            : ['btn-clear-stone', listOptionInactiveClassName],
+
+                          listOptionClassName
+                        )
+                      }
+                    >
+                      {({ active, selected }) => (
+                        <>
+                          <span
+                            className={clsxm(
+                              'block truncate',
+                              selected && 'font-semibold'
+                            )}
+                          >
+                            {item[itemKey]}
+                          </span>
+
+                          {selected && (
+                            <span
+                              className={clsxm(
+                                'absolute inset-y-0 right-0 rtl:right-auto rtl:left-0 flex items-center px-4'
+                              )}
+                            >
+                              <HiCheck aria-hidden='true' className='h-5 w-5' />
+                            </span>
+                          )}
+                        </>
+                      )}
+                    </Combobox.Option>
+                  ))}
+                </Combobox.Options>
+              )}
+            </Transition>
+          </div>
+        </FormItem>
+      </Combobox>
+    );
+  }
+);
 export default AppComboBox;

@@ -9,19 +9,10 @@ export { default as SubmitButton } from './AppFormSubmitButton';
 export { default as SubmitButtonRef } from './AppFormSubmitButtonRef';
 export { default as Input } from './AppInput';
 export { default as Label } from './AppLabel';
-export { default as List } from './AppList';
+export { default as Select } from './AppSelect';
 export { default as Switch } from './AppSwitch';
 export { default as Textarea } from './AppTextarea';
 
-export interface FormProp {
-  description:
-    | string
-    | React.ReactNode
-    | {
-        icon?: (props) => JSX.Element;
-        text: string;
-      };
-}
 export interface DashboardNavProps {
   children?: {
     isCurrent: boolean;
