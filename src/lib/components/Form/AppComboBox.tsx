@@ -81,7 +81,7 @@ const AppComboBox: ComboBoxComponent = React.forwardRef(
       >
         <Combobox.Label
           className={clsxm(
-            'contrast:text-primary-90 text-sm font-medium text-primary-700 dark:text-primary-200',
+            'contrast:text-gray-90 text-sm font-medium text-gray-700 dark:text-gray-200',
             props.className
           )}
         >
@@ -109,7 +109,7 @@ const AppComboBox: ComboBoxComponent = React.forwardRef(
               {sr && <span className='sr-only'>{sr}</span>}
               <HiSelector
                 aria-hidden='true'
-                className='h-5 w-5 text-primary-400'
+                className='h-5 w-5 text-gray-400'
               />
             </Combobox.Button>
 
@@ -138,9 +138,9 @@ const AppComboBox: ComboBoxComponent = React.forwardRef(
                         clsxm(
                           'flex w-full items-center justify-start !border-x-transparent select-none',
                           selected
-                            ? 'btn-light-blue'
+                            ? 'btn-light-primary'
                             : active
-                            ? ['btn-clear-blue', listOptionActiveClassName]
+                            ? ['btn-clear-primary', listOptionActiveClassName]
                             : ['btn-clear-stone', listOptionInactiveClassName],
 
                           listOptionClassName

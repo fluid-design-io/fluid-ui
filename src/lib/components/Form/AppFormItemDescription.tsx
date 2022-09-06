@@ -17,7 +17,7 @@ function AppFormItemDescription({
         <p className='text-sm'>{description}</p>
       )}
       {typeof description === 'object' && (
-        <p className='flex items-center gap-2 text-sm'>
+        <p className='flex items-center gap-2 text-sm dark:text-gray-300 text-gray-600'>
           {/* @ts-ignore-next-line */}
           <description.icon className='h-4 w-4' />
           {/* @ts-ignore-next-line */}

@@ -56,7 +56,7 @@ const Template: Story<CustomAccordionProps> = (args) => {
           header={headers[index]}
           headerIcon={args?.headerIcons && args.headerIcons[index]}
         >
-          <p className="mb-2 text-primary-500 dark:text-primary-300">{contents[index]}</p>
+          <p className="mb-2 text-gray-500 dark:text-gray-300">{contents[index]}</p>
         </Accordion.Panel>
       ))}
     </Accordion>
@@ -103,7 +103,7 @@ export const CustomStyle = Template.bind({});
 CustomStyle.storyName = "Custom style";
 CustomStyle.args = {
   divider: true,
-  className: "fl-max-w-md fl-mx-auto fl-shadow-lg fl-shadow-primary-300/40",
+  className: "fl-max-w-md fl-mx-auto fl-shadow-lg fl-shadow-gray-300/40",
 };
 export const RTL = Template.bind({});
 RTL.storyName = "RTL language";

@@ -65,7 +65,7 @@ function AppSwitch({
           as='span'
           passive
           className={clsxm(
-            'text-sm font-medium text-primary-700 dark:text-primary-200 contrast:text-primary-900',
+            'text-sm font-medium text-gray-700 dark:text-gray-200 contrast:text-gray-900',
             labelClassName
           )}
         >
@@ -78,11 +78,11 @@ function AppSwitch({
           'default-focus-visible relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none disabled:cursor-not-allowed disabled:opacity-50',
           'contrast:contrast-ring focus-ring',
           value
-            ? [activeClassName ? activeClassName : 'bg-blue-600']
+            ? [activeClassName ? activeClassName : 'bg-primary-600']
             : [
                 inactiveClassName
                   ? inactiveClassName
-                  : 'bg-primary-200 dark:bg-primary-700',
+                  : 'bg-gray-200 dark:bg-gray-700',
               ]
         )}
         onBlur={() => {

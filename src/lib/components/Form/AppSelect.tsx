@@ -26,6 +26,7 @@ const AppSelect: SelectComponent = React.forwardRef(
       listClassName,
       buttonClassName,
       labelClassName,
+      listOptionSelectedClassName,
       listOptionActiveClassName,
       listOptionClassName,
       listOptionInactiveClassName,
@@ -73,7 +74,7 @@ const AppSelect: SelectComponent = React.forwardRef(
         <Fragment>
           <Listbox.Label
             className={clsxm(
-              'contrast:text-primary-90 text-sm font-medium text-primary-700 dark:text-primary-200',
+              'contrast:text-gray-90 text-sm font-medium text-gray-700 dark:text-gray-200',
               labelClassName
             )}
           >
@@ -131,14 +132,13 @@ const AppSelect: SelectComponent = React.forwardRef(
                           clsxm(
                             'flex w-full items-center justify-start !border-x-transparent select-none',
                             selected
-                              ? 'btn-light-blue'
+                              ? ['btn-light-primary', listOptionSelectedClassName]
                               : active
-                              ? ['btn-clear-blue', listOptionActiveClassName]
+                              ? ['btn-clear-primary', listOptionActiveClassName]
                               : [
                                   'btn-clear-stone',
                                   listOptionInactiveClassName,
                                 ],
-
                             listOptionClassName
                           )
                         }

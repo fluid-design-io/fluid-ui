@@ -61,7 +61,7 @@ const Template: Story<StoryButtonProps> = (args) => {
   });
   return (
     <>
-      <div className='mx-auto mt-12 w-4/5 max-w-lg rounded-xl bg-white p-4 shadow-lg shadow-primary-400/20 dark:bg-primary-900 dark:shadow-black/30'>
+      <div className='mx-auto mt-12 w-4/5 max-w-lg rounded-xl bg-white p-4 shadow-lg shadow-gray-400/20 dark:bg-gray-900 dark:shadow-black/30'>
         <Form
           initialValues={initialValues}
           validationSchema={validationSchema}
@@ -78,7 +78,7 @@ const Template: Story<StoryButtonProps> = (args) => {
               <h1>Thank you for your submission!</h1>
             </div>
           )}
-          <h2 className='pb-4 text-xl font-semibold text-primary-700 contrast:bg-amber-300 dark:text-primary-200'>
+          <h2 className='pb-4 text-xl font-semibold text-gray-700 contrast:bg-amber-300 dark:text-gray-200'>
             Contact Us
           </h2>
           <div className='relative mb-4 flex justify-between'>
@@ -89,19 +89,20 @@ const Template: Story<StoryButtonProps> = (args) => {
               iconStart={HiInformationCircle}
               header={
                 <p className='truncate py-3 px-3.5'>
-                  <span className='mb-0.5 block text-xs text-primary-500 dark:text-primary-400'>
+                  <span className='mb-0.5 block text-xs text-gray-500 dark:text-gray-400'>
                     Signed in as
                   </span>
-                  <span className='font-semibold text-primary-700 dark:text-primary-300'>
+                  <span className='font-semibold text-gray-700 dark:text-gray-300'>
                     Guest user
                   </span>
                 </p>
               }
-              buttonClassName='!ring-offset-2 ring-offset-primary-50 dark:ring-offset-primary-800 rounded-md'
+              buttonClassName='btn-outline-primary'
+              size='xs'
               menus={[
                 {
                   label: 'Edit',
-                  icon: HiPencil,
+                  iconStart: HiPencil,
                   role: 'info',
                   onClick: () => console.log('edit'),
                 },
@@ -111,7 +112,7 @@ const Template: Story<StoryButtonProps> = (args) => {
                 {
                   label: 'Delete',
                   role: 'destructive',
-                  icon: HiTrash,
+                  iconStart: HiTrash,
                   onClick: () => console.log('delete'),
                 },
               ]}

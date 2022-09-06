@@ -38,8 +38,8 @@ export const MenuItem: MenuItemComponent = React.forwardRef(
         <span
           className={clsxm(
             !horizontal
-              ? 'mt-1 border-t border-t-primary-100 pb-1 dark:border-t-primary-700'
-              : 'ml-1 border-l border-l-primary-100 pr-1 dark:border-l-primary-700'
+              ? 'mt-1 border-t border-t-gray-100 pb-1 dark:border-t-gray-700'
+              : 'ml-1 border-l border-l-gray-100 pr-1 dark:border-l-gray-700'
           )}
         />
       );
@@ -56,6 +56,7 @@ export const MenuItem: MenuItemComponent = React.forwardRef(
               role === 'destructive' && 'btn-clear-red',
               role === 'info' && 'btn-clear-blue',
               role === 'success' && 'btn-clear-green',
+              role === 'primary' && 'btn-clear-primary',
               horizontal &&
                 'flex items-center justify-center !border-y-transparent h-auto',
               !horizontal &&

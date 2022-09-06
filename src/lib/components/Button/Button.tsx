@@ -178,7 +178,7 @@ export const Button: ButtonComponent = React.forwardRef(
             {badge && (
               <span
                 className={clsxm(
-                  'rounded bg-primary-200 py-0.5 px-1.5 text-xs font-semibold tabular-nums text-primary-700',
+                  'rounded bg-gray-200 py-0.5 px-1.5 text-xs font-semibold tabular-nums text-gray-700',
                   badgeClassName
                 )}
               >

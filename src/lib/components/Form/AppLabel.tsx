@@ -3,7 +3,7 @@ import clsxm from '../../helpers/clsxm';
 
 function AppLabel({ focused, error, errors, name, label, value }) {
   const noErrorStyle =
-    'text-primary-500 dark:text-primary-400 contrast:text-primary-900';
+    'text-gray-500 dark:text-gray-400 contrast:text-gray-900';
   const notFocusedStyle =
     value || focused ? 'top-1' : '!text-base top-3.5 bottom-0 font-normal';
   return (
@@ -11,11 +11,11 @@ function AppLabel({ focused, error, errors, name, label, value }) {
       htmlFor={name}
       className={clsxm(
         focused && error
-          ? 'contrast:text-primary-50 top-1 text-red-400 dark:text-red-500'
-          : [noErrorStyle, `dark:contrast:text-primary-900`],
+          ? 'contrast:text-gray-50 top-1 text-red-400 dark:text-red-500'
+          : [noErrorStyle, `dark:contrast:text-gray-900`],
         !focused && error
           ? `contrast:text-red-500 dark:contrast:text-red-300 top-1 text-red-400 dark:text-red-500`
-          : [notFocusedStyle, noErrorStyle, `dark:contrast:text-primary-50`],
+          : [notFocusedStyle, noErrorStyle, `dark:contrast:text-gray-50`],
         `pointer-events-none absolute left-4 right-auto rtl:left-auto rtl:right-4 -mb-1 text-xs font-semibold transition-all line-clamp-1`
       )}
     >

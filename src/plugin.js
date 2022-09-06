@@ -99,7 +99,7 @@ const getColor = (value, step = 500, alpha = 1) => {
     }
     const mode = checkColorMode(value[step]);
     if (mode === colorModes.var) {
-      // the string will look like this: rgb(var(--tw-color-primary-50) / <alpha-value>)
+      // the string will look like this: rgb(var(--tw-color-gray-50) / <alpha-value>)
       const raw = value[step];
       const colorVar = raw.split('var(')[1].split(')')[0];
       /* console.log(`
@@ -202,7 +202,20 @@ const contrastColor = (value, step = undefined, blackWhite = false) => {
     // alpha && console.log(`${value[step]}:${value[step]}`);
     const colorMode = checkColorMode(value[step]);
     if (colorMode === colorModes.var) {
-      return value[step];
+      const colorVar = value[step].split('var(')[1].split(')')[0]; // looks like this: --tw-color-gray-50
+      const colorStep = colorVar.split('-')[colorVar.split('-').length - 1];
+      const parsedColorStep = parseInt(colorStep);
+      if (parsedColorStep <= 400) {
+        if (alpha && alpha <= 50) {
+          return `rgb(var(--tw-color-primary-100) / ${alpha ? alpha / 100 : 1})`;
+        }
+        return `rgb(var(--tw-color-primary-900) / ${alpha ? alpha / 100 : 1})`;
+      } else {
+        if (alpha && alpha <= 50) {
+          return `rgb(var(--tw-color-primary-900) / ${alpha ? alpha / 100 : 1})`;
+        }
+        return `rgb(var(--tw-color-primary-100) / ${alpha ? alpha / 100 : 1})`;
+      }
     } else {
       const hsla = getColor(value, step, alpha);
       // alpha && console.log(`Luminance ${value[step]}:${isLight}`);
@@ -378,7 +391,7 @@ const buttonUtilities = (theme) => {
           { step: 900, alpha: 40 },
           false,
           value,
-          { step: 900, alpha: 100 },
+          900,
           false
         ),
         ...generateTxtStates(value, {

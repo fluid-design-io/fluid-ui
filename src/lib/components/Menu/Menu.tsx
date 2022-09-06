@@ -61,8 +61,8 @@ export const MenuComp: MenuComponent = ({
         <HeadlessMenu.Items
           className={clsxm(
             [
-              'absolute z-50 divide-primary-100 rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none dark:divide-primary-700 dark:bg-primary-800 dark:ring-white dark:ring-opacity-5',
-              'contrast:divide-primary-700 dark:contrast:divide-primary-200 overflow-hidden',
+              'absolute z-50 divide-gray-100 rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none dark:divide-gray-700 dark:bg-gray-800 dark:ring-white dark:ring-opacity-5',
+              'contrast:divide-gray-700 dark:contrast:divide-gray-200 overflow-hidden',
               menuPositionX === 'center' && 'left-1/2 mx-auto -translate-x-1/2',
               menuPositionX === 'start' &&
                 'left-0 rtl:right-auto rtl:left-full',
@@ -95,7 +95,7 @@ export const MenuComp: MenuComponent = ({
           <Fragment>
             {header &&
               (typeof header === 'string' ? (
-                <div className='flex items-center justify-between px-4 py-2 text-primary-800 dark:text-primary-100'>
+                <div className='flex items-center justify-between px-4 py-2 text-gray-800 dark:text-gray-100'>
                   {header}
                 </div>
               ) : (
@@ -107,7 +107,7 @@ export const MenuComp: MenuComponent = ({
               <div
                 className={clsxm([
                   horizontal ? 'flex-row items-stretch px-1' : 'py-1 flex-col',
-                  'flex contrast:divide-primary-700 dark:contrast:divide-primary-200',
+                  'flex contrast:divide-gray-700 dark:contrast:divide-gray-200',
                 ])}
               >
                 {menus &&
