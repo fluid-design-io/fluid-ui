@@ -3,6 +3,14 @@ const {
   default: flattenColorPalette,
 } = require('tailwindcss/lib/util/flattenColorPalette');
 const colors = require('tailwindcss/colors');
+/** @type {import('tinycolor2')} */
+const tinycolor = require('./tinycolor');
+
+// const resolveConfig = require('tailwindcss/resolveConfig');
+// const tailwindConfig = require('../tailwind.config');
+
+// const fullConfig = resolveConfig(tailwindConfig);
+// console.log(JSON.stringify(fullConfig.theme.extend.colors, null, 2));
 // construct an enum of color modes
 const colorModes = {
   rgba: 'rgba',
@@ -27,70 +35,31 @@ const checkColorMode = (color) => {
     return colorModes.unkown;
   }
 };
-const getRGB = (color) => {
-  const mode = checkColorMode(color);
-  if (mode === colorModes.hex) {
-    // return as [r, g, b]
-    return hexToRgb(color);
-  } else if (mode === colorModes.rgba) {
-    // return as [r, g, b]
-    return color.match(/\d+/g).map(Number);
-  } else if (mode === colorModes.var) {
-    // recieve the variable name
-    return color;
-  } else {
-    console.log(`unknown color mode: ${mode}, ${color}`);
-    return color;
-  }
-};
-const hexToRgb = (color) => {
-  const hex = color.replace('#', '');
-  const r = parseInt(hex.substring(0, 2), 16);
-  const g = parseInt(hex.substring(2, 4), 16);
-  const b = parseInt(hex.substring(4, 6), 16);
-  return [r, g, b];
-};
-const rgbToHsl = (r, g, b, a = 1) => {
-  r /= 255;
-  g /= 255;
-  b /= 255;
-  if (a > 1) a /= 100;
-  const max = Math.max(r, g, b);
-  const min = Math.min(r, g, b);
-  let h,
-    s,
-    l = (max + min) / 2;
-  if (max === min) {
-    h = s = 0; // achromatic
-  } else {
-    const d = max - min;
-    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-    switch (max) {
-      case r:
-        h = (g - b) / d + (g < b ? 6 : 0);
-        break;
-      case g:
-        h = (b - r) / d + 2;
-        break;
-      case b:
-        h = (r - g) / d + 4;
-        break;
-      default:
-        break;
-    }
-    h /= 6;
-  }
-  // round to 2 decimal places
-  return [rounded(h), rounded(s), rounded(l), a];
-};
+const stepMap = {
+  50: 0.95,
+  100: 0.9,
+  200: 0.8,
+  300: 0.7,
+  400: 0.6,
+  500: 0.5,
+  600: 0.4,
+  700: 0.3,
+  800: 0.2,
+  900: 0.1,
+}
+
 const getColor = (value, step = 500, alpha = 1) => {
   if (alpha > 1) {
     alpha /= 100;
   }
   if (alpha <= 0) {
-    return 'transparent';
+    return tinycolor('transparent').toHslString();
   }
   if (typeof value === 'string') {
+    if (tinycolor(value).isValid()) {
+      const { h, s, a } = tinycolor(value).setAlpha(alpha).toHsl();
+      return tinycolor({ h, s, l: stepMap[step], a }).toHslString();
+    }
     return value;
   }
   if (typeof value === 'object') {
@@ -102,6 +71,10 @@ const getColor = (value, step = 500, alpha = 1) => {
       // the string will look like this: rgb(var(--tw-color-gray-50) / <alpha-value>)
       const raw = value[step];
       const colorVar = raw.split('var(')[1].split(')')[0];
+      if (typeof window !== 'undefined') {
+        const documentColor = getComputedStyle(document.documentElement).getPropertyValue(colorVar);
+        console.log(documentColor);
+      }
       /* console.log(`
       -------
       ${value[step]}
@@ -110,136 +83,136 @@ const getColor = (value, step = 500, alpha = 1) => {
       return `rgb(var(${colorVar}) / ${alpha})`;
     }
     const hex = step ? value[step] : value[500];
-    const [r, g, b] = getRGB(hex);
-    const [h, s, l, a] = rgbToHsl(r, g, b, alpha);
-    return [h, s, l, a];
+    return tinycolor(hex).setAlpha(alpha).toHslString();
   }
-  return undefined;
+  throw new Error(`Invalid color: ${value} at step ${step}`);
 };
-const rounded = (num) => Math.round(num * 100) / 100;
-/* const hslToRgb = (h, s, l) => {
-  let r, g, b;
-  if (s === 0) {
-    r = g = b = l; // achromatic
-  } else {
-    const hue2rgb = (p, q, t) => {
-      if (t < 0) t += 1;
-      if (t > 1) t -= 1;
-      if (t < 1 / 6) return p + (q - p) * 6 * t;
-      if (t < 1 / 2) return q;
-      if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
-      return p;
-    };
-    const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
-    const p = 2 * l - q;
-    r = hue2rgb(p, q, h + 1 / 3);
-    g = hue2rgb(p, q, h);
-    b = hue2rgb(p, q, h - 1 / 3);
-  }
-  return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
-}; */
 
-const changeColor = (mode = 'dark', hsla) => {
-  const amount = 0.15;
-  let [h, s, l, a] = hsla;
+const changeColor = (mode = 'darken', hslaString, amount = 15) => {
+  const hsla = tinycolor(hslaString);
   // change the color
-  if (mode === 'dark') {
-    l -= amount;
-    l = l < 0 ? 0 : l;
-    s *= 0.9;
+  if (mode === 'darken') {
+    return hsla.darken(amount).desaturate().toHslString();
   }
-  if (mode === 'light') {
-    l += amount;
-    l = l > 1 ? 1 : l;
-    s *= 0.9;
+  if (mode === 'lighten') {
+    return hsla.brighten(amount).desaturate().toHslString();
   }
-  return [h, rounded(s), rounded(l), a];
 };
-const getLuminance = (hsla) => {
-  const l = hsla[2];
-  const a = hsla[3];
-  return rounded(l * a);
-};
-const checkDarkness = (hsla, newColor = hsla, mode = 'dark', loop = 0) => {
-  const originalLuminance = getLuminance(hsla);
-  const newLuminance = getLuminance(newColor);
+
+const checkDarkness = (hslaString, newColorString = hslaString, mode = 'darken', loop = 0, inverted = false) => {
+  const readability = tinycolor.readability(hslaString, newColorString);
   /* loop > 7 && console.log(`
     ---------
     mode: ${mode}, color: ${hsla}, newColor: ${newColor}
-    originalLuminance: ${originalLuminance}, newLuminance: ${newLuminance},
-    difference: ${Math.abs(originalLuminance - newLuminance)}
+    readability: ${readability}
     ---------
   `); */
-  if (loop >= 10) {
-    return newColor;
+  if (loop > 6 && inverted) {
+    // if we've reached the max loop and inverted the color and is still not readable, 
+    // then we return the original color
+    return newColorString;
   }
-  if (
-    Math.abs(originalLuminance - newLuminance) > 0.5 * hsla[3] ||
-    newLuminance > 0.95 ||
-    newLuminance < 0.05
-  ) {
-    return newColor;
+  if (loop > 6) {
+    // because we either darken or lighten 15% each time, 
+    // After 6 loops, the color will be either black or white,
+    // But if the readability is still not good, that means we
+    // need to invert the color
+    if (readability < 4.5) {
+      const invertMode = mode === 'darken' ? 'lighten' : 'darken';
+      // console.log(`inverting color ${hslaString} mode to ${invertMode}, readability: ${readability}, loop: ${loop}`);
+      return checkDarkness(hslaString, changeColor(invertMode, hslaString, 35), invertMode, 0, true);
+    }
+  }
+  if (readability < 4.5) {
+    // console.log(`readability: ${readability}, hsla: ${hslaString} newColor: ${newColorString}`);
+    return checkDarkness(hslaString, changeColor(mode, newColorString), mode, loop + 1, inverted);
   } else {
-    return checkDarkness(hsla, changeColor(mode, newColor), mode, loop + 1);
+    return newColorString;
   }
 };
+/**
+ * A custom is Light function that takes care of bright colors such as yello to blue range
+ * 
+ * @param {hsla} @type {tinycolor.Instance}
+ * @returns {boolean}
+ */
 const isLight = (hsla) => {
-  let [h, s, l] = hsla;
-  h = h * 360;
+  let { h, s, l } = tinycolor(hsla).toHsl();
   // if h is between 80 and 170, and s is between 0.7 and 1, or l is between > 0.47, then it's light
-  return (h >= 45 && h <= 188 && s >= 0.7 && l >= 0.35) || (l >= 0.475);
+  return (h >= 45 && h <= 189 && s >= 0.7 && l >= 0.35) || (l >= 0.475);
 }
 
-const contrastColor = (value, step = undefined, blackWhite = false) => {
+const convertVarWithAlpha = (color, alpha) => {
+  const colorVar = color.split('var(')[1].split(')')[0]; // looks like this: --tw-color-gray-50
+  const colorStep = colorVar.split('-')[colorVar.split('-').length - 1];
+  const parsedColorStep = parseInt(colorStep);
+  if (parsedColorStep <= 400) {
+    if (alpha && alpha <= 50) {
+      return `rgb(var(--tw-color-primary-100) / ${alpha ? alpha / 100 : 1})`;
+    }
+    return `rgb(var(--tw-color-primary-900) / ${alpha ? alpha / 100 : 1})`;
+  } else {
+    if (alpha && alpha <= 50) {
+      return `rgb(var(--tw-color-primary-900) / ${alpha ? alpha / 100 : 1})`;
+    }
+    return `rgb(var(--tw-color-primary-100) / ${alpha ? alpha / 100 : 1})`;
+  }
+}
+
+const getTinycolorContrast = (hslaString, blackWhite) => {
+  return isLight(hslaString)
+    ? blackWhite
+      ? '#000'
+      : checkDarkness(hslaString, undefined, 'darken')
+    : blackWhite
+      ? '#FFF'
+      : checkDarkness(hslaString, undefined, 'lighten');
+}
+/**
+ * 
+ * @param {*} value 
+ * @param {*} step 
+ * @param {*} blackWhite 
+ * @param {*} shouldContrast - if true and the `value` is typeof `string`, it will return its contrast color
+ * @returns 
+ */
+const contrastColor = (value, step = undefined, blackWhite = false, shouldContrast = true) => {
   let alpha = undefined;
+  const colorMode = checkColorMode(value[step]);
   if (typeof step === 'object') {
     alpha = step.alpha;
     step = step.step;
   }
   if (typeof value === 'string') {
+    if (colorMode === colorModes.var) {
+      console.log(`value: ${value}, step: ${step}, alpha: ${alpha}`);
+      return convertVarWithAlpha(value, alpha);
+    }
+    if (tinycolor(value).isValid()) {
+      const hslaString = tinycolor(value).toHslString();
+      return shouldContrast ? getTinycolorContrast(hslaString, blackWhite) : hslaString;
+    }
     return value;
   } else if (typeof value === 'object') {
     // alpha && console.log(`${value[step]}:${value[step]}`);
-    const colorMode = checkColorMode(value[step]);
     if (colorMode === colorModes.var) {
-      const colorVar = value[step].split('var(')[1].split(')')[0]; // looks like this: --tw-color-gray-50
-      const colorStep = colorVar.split('-')[colorVar.split('-').length - 1];
-      const parsedColorStep = parseInt(colorStep);
-      if (parsedColorStep <= 400) {
-        if (alpha && alpha <= 50) {
-          return `rgb(var(--tw-color-primary-100) / ${alpha ? alpha / 100 : 1})`;
-        }
-        return `rgb(var(--tw-color-primary-900) / ${alpha ? alpha / 100 : 1})`;
-      } else {
-        if (alpha && alpha <= 50) {
-          return `rgb(var(--tw-color-primary-900) / ${alpha ? alpha / 100 : 1})`;
-        }
-        return `rgb(var(--tw-color-primary-100) / ${alpha ? alpha / 100 : 1})`;
-      }
+      return convertVarWithAlpha(value[step], alpha);
     } else {
-      const hsla = getColor(value, step, alpha);
+      const hslaString = getColor(value, step, alpha);
       // alpha && console.log(`Luminance ${value[step]}:${isLight}`);
-      return isLight(hsla)
-        ? blackWhite
-          ? '#000'
-          : checkDarkness(hsla, undefined, 'dark')
-        : blackWhite
-          ? '#FFF'
-          : checkDarkness(hsla, undefined, 'light');
+      return getTinycolorContrast(hslaString, blackWhite);
     }
   }
   return value;
 };
 const toColor = (value) => {
-  if (typeof value === 'string') {
+  if (tinycolor(value).isValid()) {
+    return tinycolor(value).toHslString();
+  } else if (typeof value === 'string') {
     return value;
-  } // else if check if value is an array
-  else if (typeof value === 'object') {
-    const colorMode = checkColorMode(value);
-    return `hsla(${value[0] * 360}, ${value[1] * 100}%, ${value[2] * 100}%, ${value[3]
-      })`;
+  } else {
+    throw new Error(`Invalid color: ${value} in function toColor`);
   }
-  return value;
 };
 const buttonDefault = {
   transition: 'all 0.15s ease-in-out',
@@ -251,6 +224,7 @@ const generateTxtBg = (
   textValue = value,
   textStep = step,
   textBW = blackWhite,
+  shouldContrast = true
 ) => {
   let alpha = undefined;
   if (typeof step === 'object') {
@@ -259,7 +233,7 @@ const generateTxtBg = (
   }
   return {
     'background-color': toColor(getColor(value, step, alpha)),
-    color: toColor(contrastColor(textValue, textStep, textBW)),
+    color: toColor(contrastColor(textValue, textStep, textBW, shouldContrast)),
   };
 };
 const generateTxtStates = (
@@ -273,7 +247,8 @@ const generateTxtStates = (
       hocus?.bw,
       textHocus?.value,
       textHocus?.step,
-      textHocus?.bw
+      textHocus?.bw,
+      textHocus?.shouldContrast
     ),
   },
   '&:not([href]):enabled:focus-visible, &:not([type]):focus-visible': {
@@ -283,7 +258,8 @@ const generateTxtStates = (
       hocus?.bw,
       textHocus?.value,
       textHocus?.step,
-      textHocus?.bw
+      textHocus?.bw,
+      textHocus?.shouldContrast
     ),
   },
   '&:not([href]):enabled:active, &:not([type]):active': {
@@ -293,7 +269,8 @@ const generateTxtStates = (
       active?.bw,
       textActive?.value,
       textActive?.step,
-      textActive?.bw
+      textActive?.bw,
+      textActive?.shouldContrast
     ),
   },
   '&:not([href]):disabled': {
@@ -303,7 +280,8 @@ const generateTxtStates = (
       disabled?.bw,
       textDisabled?.value,
       textDisabled?.step,
-      textDisabled?.bw
+      textDisabled?.bw,
+      textDisabled?.shouldContrast
     ),
     cursor: 'not-allowed',
   },
@@ -499,15 +477,16 @@ const buttonUtilities = (theme) => {
         false,
         toColor(getColor(value, 700)),
         50,
+        false,
         false
       ),
       ...generateTxtStates(value, {
         hocus: { value, step: { step: 400, alpha: 20 } },
         active: { value, step: { step: 400, alpha: 30 } },
         disabled: { value: "transparent" },
-        textHocus: { value: toColor(getColor(value, 900)) },
-        textActive: { value: toColor(getColor(value, 900)) },
-        textDisabled: { value: toColor(getColor(value, 700)) },
+        textHocus: { value: toColor(getColor(value, 900)), shouldContrast: false },
+        textActive: { value: toColor(getColor(value, 900)), shouldContrast: false },
+        textDisabled: { value: toColor(getColor(value, 700)), shouldContrast: false },
       }),
       'border-width': '1px',
       'border-style': 'solid',
@@ -522,15 +501,16 @@ const buttonUtilities = (theme) => {
           false,
           toColor(getColor(value, 200)),
           50,
+          false,
           false
         ),
         ...generateTxtStates(value, {
           hocus: { value, step: { step: 500, alpha: 20 } },
           active: { value, step: { step: 500, alpha: 30 } },
           disabled: { value, step: { step: 900, alpha: 0 } },
-          textHocus: { value: toColor(getColor(value, 50)) },
-          textActive: { value: toColor(getColor(value, 50)) },
-          textDisabled: { value: toColor(getColor(value, 300)) },
+          textHocus: { value: toColor(getColor(value, 50)), shouldContrast: false },
+          textActive: { value: toColor(getColor(value, 50)), shouldContrast: false },
+          textDisabled: { value: toColor(getColor(value, 300)), shouldContrast: false },
         }),
         'border-color': toColor(getColor(value, 400, 30)),
         '&:hover, &:focus-visible': {
@@ -595,15 +575,16 @@ const buttonUtilities = (theme) => {
         false,
         toColor(getColor(value, 500)),
         50,
+        false,
         false
       ),
       ...generateTxtStates(value, {
         hocus: { value, step: 100 },
-        active: { value, step: { step: 200, alpha: 85 } },
+        active: { value, step: { step: 200, alpha: 80 } },
         disabled: { value, step: { step: 50, alpha: 0 } },
-        textHocus: { value: toColor(getColor(value, 600)) }, // step is not calculated when value is a hex string
-        textActive: { value: toColor(getColor(value, 600)) },
-        textDisabled: { value: toColor(getColor(value, 300)) },
+        textHocus: { value: toColor(getColor(value, 600)), shouldContrast: false }, // step is not calculated when value is a hex string
+        textActive: { value: toColor(getColor(value, 600)), shouldContrast: false },
+        textDisabled: { value: toColor(getColor(value, 300)), shouldContrast: false },
       }),
       'border-width': '1px',
       'border-style': 'solid',
@@ -618,15 +599,16 @@ const buttonUtilities = (theme) => {
           false,
           toColor(getColor(value, 400)),
           50,
+          false,
           false
         ),
         ...generateTxtStates(value, {
           hocus: { value, step: { step: 600, alpha: 30 } },
           active: { value, step: { step: 600, alpha: 20 } },
           disabled: { value: "transparent" },
-          textHocus: { value: toColor(getColor(value, 100)) },
-          textActive: { value: toColor(getColor(value, 100)) },
-          textDisabled: { value: toColor(getColor(value, 600)) },
+          textHocus: { value: toColor(getColor(value, 100)), shouldContrast: false },
+          textActive: { value: toColor(getColor(value, 100)), shouldContrast: false },
+          textDisabled: { value: toColor(getColor(value, 600)), shouldContrast: false },
         }),
         '&:hover, &:focus-visible': {
           'border-color': toColor(getColor(value, 300, 25)),
