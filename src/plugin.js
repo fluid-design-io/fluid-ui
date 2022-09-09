@@ -653,15 +653,15 @@ const buttonUtilities = (theme) => {
 };
 
 const tooltipStyle = {
-  minWidth: '80px',
+  width: 'fit-content',
   minHeight: 'fit-content',
   display: 'none',
   position: 'absolute',
   borderRadius: '0.25rem',
   backgroundColor: colors.stone[700],
   color: colors.stone[50],
-  padding: '0.5rem',
-  fontSize: '0.75rem',
+  padding: '0.25rem',
+  fontSize: '0.8rem',
   zIndex: 20,
   textAlign: 'center',
 };

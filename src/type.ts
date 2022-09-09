@@ -1,13 +1,190 @@
-/* ===== Start Polymorphic Props ===== */
+import React, { SVGProps } from 'react';
+import { DeepPartial } from './lib/helpers/deep-partial';
 
-import { SVGProps } from 'react';
-import {
-  FluidButtonColorOptions,
-  FluidButtonColors,
-  FluidButtonShapes,
-  FluidButtonSizes,
-  FluidButtonWeights,
-} from './lib/components/FluidUI/FluidTheme';
+/* ===== Start Fluid Theme ===== */
+export type CustomFluidTheme = DeepPartial<FluidTheme>;
+
+export interface FluidTheme {
+  accordion: {
+    base: string;
+    divider: string;
+    content: {
+      base: string;
+    };
+    header: {
+      arrow: {
+        base: string;
+        open: FluidBoolean;
+      };
+      base: string;
+      heading: string;
+      open: FluidBoolean;
+    };
+  };
+  button: {
+    base: string;
+    shape: FluidButtonShapes;
+    color: FluidButtonColors;
+    loading: FulidButtonLoadingOptions;
+    iconOnly: FluidButtonShapes;
+  };
+  form: {
+    base: string;
+    select: {
+      button: string;
+    };
+    popover: string;
+  };
+  tab: {
+    base: string;
+    shape: FluidButtonShapes;
+    weight: Pick<FluidButtonWeights, TabProps['weight']>;
+    tabWrap: {
+      base: string;
+      active: Pick<FluidButtonWeights, TabProps['weight']>;
+      inactive: Pick<FluidButtonWeights, TabProps['weight']>;
+    };
+    activeButton: {
+      base: string;
+      shape: {
+        pill: string;
+        round: string;
+        square: string;
+      };
+      weight: Pick<FluidButtonWeights, TabProps['weight']>;
+    };
+    panel: string;
+  };
+}
+
+export interface FluidBoolean {
+  off: string;
+  on: string;
+}
+
+export interface FluidButtonColors {
+  red: FluidButtonColorOptions;
+  orange: FluidButtonColorOptions;
+  amber: FluidButtonColorOptions;
+  yellow: FluidButtonColorOptions;
+  lime: FluidButtonColorOptions;
+  green: FluidButtonColorOptions;
+  emerald: FluidButtonColorOptions;
+  teal: FluidButtonColorOptions;
+  cyan: FluidButtonColorOptions;
+  sky: FluidButtonColorOptions;
+  blue: FluidButtonColorOptions;
+  indigo: FluidButtonColorOptions;
+  violet: FluidButtonColorOptions;
+  purple: FluidButtonColorOptions;
+  fuchsia: FluidButtonColorOptions;
+  pink: FluidButtonColorOptions;
+  rose: FluidButtonColorOptions;
+  gray: FluidButtonColorOptions;
+  slate: FluidButtonColorOptions;
+  zinc: FluidButtonColorOptions;
+  neutral: FluidButtonColorOptions;
+  stone: FluidButtonColorOptions;
+}
+
+export interface FluidButtonColorOptions {
+  base: string;
+  weight: FluidButtonWeights;
+  gradient: {
+    linear: string;
+    clay: string;
+  };
+}
+
+export interface FulidButtonLoadingOptions {
+  base: string;
+  /**
+   * The animation type to use when the button is loading.
+   * @defaultValue `spin`
+   * Options: `spin`, `pulse`, `ping`
+   */
+  animation: { [key in ButtonLoadingOptionsAnimation]: string };
+  text: string;
+}
+
+export interface FluidButtonWeights {
+  light: string;
+  normal: string;
+  bold: string;
+  outline: string;
+  /**
+   * The initial state background color will be transparent.
+   * When hovered or focused, it will show a light background color.
+   */
+  clear: string;
+  /**
+   * There will be no background color.
+   */
+  link: string;
+}
+
+export interface FluidButtonSizes {
+  xs: string;
+  sm: string;
+  md: string;
+  lg: string;
+  xl: string;
+}
+
+export interface FluidButtonShapes {
+  pill: FluidButtonSizes;
+  round: FluidButtonSizes;
+  square: FluidButtonSizes;
+}
+
+export interface FluidColors {
+  [key: string]: string;
+  blue: string;
+  cyan: string;
+  gray: string;
+  green: string;
+  indigo: string;
+  lime: string;
+  pink: string;
+  red: string;
+  teal: string;
+  yellow: string;
+  dark: string;
+  light: string;
+  purple: string;
+}
+
+export type FluidHeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+
+export interface FluidPositions {
+  'bottom-left': string;
+  'bottom-right': string;
+  'bottom-center': string;
+  'top-left': string;
+  'top-center': string;
+  'top-right': string;
+  'center-left': string;
+  center: string;
+  'center-right': string;
+}
+
+export interface FluidSizes {
+  xs: string;
+  sm: string;
+  md: string;
+  lg: string;
+  xl: string;
+  '2xl': string;
+  '3xl': string;
+  '4xl': string;
+  '5xl': string;
+  '6xl': string;
+  '7xl': string;
+}
+
+/* ===== End Fluid Theme ===== */
+
+/* ===== Start Polymorphic Props ===== */
 
 export type PolymorphicRef<C extends React.ElementType> =
   React.ComponentPropsWithRef<C>['ref'];
@@ -35,6 +212,15 @@ export type PolymorphicComponentPropWithRef<
 };
 
 /* ===== End Polymorphic Props ===== */
+
+/* ===== Start General Props */
+
+export type SRProp = {
+  /**
+   * This prop is used to hide an element visually, but still make it available to screen readers.
+   */
+  sr?: string | undefined;
+};
 
 /* ===== Start Button Props ===== */
 
@@ -83,10 +269,6 @@ export type ButtonProps<C extends React.ElementType> =
        * ```
        */
       color?: keyof FluidButtonColors;
-      /**
-       * sr: screen reader only
-       */
-      sr?: string | undefined;
       size?: keyof FluidButtonSizes;
       /**
        * wieght: The appearance of the button.
@@ -208,7 +390,7 @@ export type ButtonInnerProp = {
    * `between` will create a gap between the icon and the label
    */
   iconEndPosition?: 'flex' | 'between';
-};
+} & SRProp;
 
 /* ===== End Button Props ===== */
 
@@ -223,10 +405,6 @@ export type MenuProps = {
    * Header of the menu, can be either a string or a React component.
    */
   header?: JSX.Element | string;
-  /**
-   * sr: Screen reader text
-   */
-  sr?: string;
   className?: string;
   /**
    * buttonClassName: Additional class name to apply to the button
@@ -332,7 +510,8 @@ export type MenuProps = {
    * ```
    */
   menus?: MenuItemProps<'button'>[];
-} & ButtonProps<'button'>;
+} & ButtonProps<'button'> &
+  SRProp;
 
 export type MenuComponent = (props: MenuProps) => React.ReactElement | null;
 
@@ -366,15 +545,11 @@ export type MenuItemProps<C extends React.ElementType = 'button'> =
   PolymorphicComponentPropWithRef<
     C,
     {
-      /**
-       * sr: Screen reader text
-       */
-      sr?: string;
       role?: MenuRoleProp;
       label?: string;
       onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
       [x: string]: any;
-    }
+    } & SRProp
   > &
     ButtonProps<C>;
 
@@ -386,10 +561,6 @@ export type MenuItemComponent = <C extends React.ElementType = 'button'>(
 /* ===== Start Select & ComboBox Props ===== */
 
 export type DropdownProps = {
-  /**
-   * Screen reader text
-   */
-  sr?: string;
   name: string;
   list: DropdownListProps[];
   label?: string;
@@ -411,7 +582,7 @@ export type DropdownProps = {
    * @defaultValue `undefined`
    */
   itemKey?: string;
-};
+} & SRProp;
 
 /**
  * DropdownListProps can be a string or an object
@@ -460,3 +631,48 @@ export interface FormProp {
 }
 
 /* ===== End Form Props ===== */
+/* ===== Start Tab Props ===== */
+
+export type TabItemProps = {
+  title:
+    | string
+    | { text?: string; iconStart?: React.ReactNode | { (props): JSX.Element } };
+  content: React.ReactNode;
+};
+
+export type TabListItemProps<C extends React.ElementType = 'div'> =
+  PolymorphicComponentPropWithRef<
+    C,
+    {
+      /**
+       * The id shared between the tab and the tab panel,
+       * This is nessessary for framer motion shared layout
+       */
+      layoutId?: string;
+      /**
+       * The title of the tab
+       * @defaultValue `undefined`
+       */
+      title?: TabItemProps['title'];
+      shape?: keyof FluidButtonShapes;
+      size?: keyof FluidButtonSizes;
+      weight?: keyof Pick<FluidButtonWeights, 'normal' | 'clear' | 'light'>;
+      className?: string;
+      tabClassName?: string;
+      tabActiveClassName?: string;
+      tabInactiveClassName?: string;
+      tabPanelClassName?: string;
+      children?: React.ReactNode;
+    } & SRProp
+  >;
+
+export type TabListProps = {
+  tabs?: TabItemProps[];
+} & Omit<TabListItemProps, 'layoutId'>;
+
+export type TabProps<C extends React.ElementType = 'div'> =
+  PolymorphicComponentPropWithRef<C, {} & TabListProps>;
+
+export type TabComponent = <C extends React.ElementType = 'div'>(
+  props: TabProps<C>
+) => React.ReactElement | null;

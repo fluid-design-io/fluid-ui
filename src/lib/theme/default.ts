@@ -1,6 +1,7 @@
+import type { FluidTheme } from '../../type';
 import buttonStyles from './buttonStyles';
 
-export default {
+const defaultTheme: FluidTheme = {
   accordion: {
     base: 'w-full divide-y divide-transparent px-2 py-1 overflow-hidden rounded-lg bg-gray-50 dark:bg-gray-900 shadow-gray-900/10 dark:shadow-gray-900/30 contrast:bg-white dark:contrast:bg-gray-900 contrast:contrast-ring',
     content: {
@@ -85,7 +86,7 @@ export default {
     },
   },
   form: {
-    base: 'block w-full rounded-lg bg-gray-100 outline-none transition [-webkit-tap-highlight-color:transparent] dark:bg-gray-800 dark:text-gray-200 contrast:placeholder:text-gray-700 dark:contrast:bg-black dark:contrast:text-gray-50 dark:contrast:placeholder:text-gray-50/75 contrast:contrast-ring',
+    base: 'block w-full rounded-lg bg-gray-100/30 outline-none transition [-webkit-tap-highlight-color:transparent] dark:bg-gray-800 dark:text-gray-200 contrast:placeholder:text-gray-700 dark:contrast:bg-black dark:contrast:text-gray-50 dark:contrast:placeholder:text-gray-50/75 contrast:contrast-ring',
     select: {
       button:
         'relative w-full cursor-default py-2 pl-4 pr-10 rtl:pr-4 rtl:pl-10 text-start sm:text-sm default-focus-visible',
@@ -93,4 +94,61 @@ export default {
     popover:
       'rounded-md bg-white shadow-2xl z-10 ring-1 ring-black ring-opacity-5 max-h-60 min-w-full focus:outline-none dark:bg-gray-800 dark:ring-white dark:ring-opacity-5',
   },
+  tab: {
+    base: 'flex space-x-1 p-1',
+    shape: {
+      pill: {
+        xs: 'text-xs rounded-full',
+        sm: 'text-sm rounded-full',
+        md: 'rounded-full',
+        lg: 'rounded-full text-lg',
+        xl: 'rounded-full text-xl',
+      },
+      round: {
+        xs: 'text-xs rounded-lg',
+        sm: 'text-sm rounded-lg',
+        md: 'rounded-lg',
+        lg: 'rounded-lg text-lg',
+        xl: 'rounded-lg text-xl',
+      },
+      square: {
+        xs: 'text-xs',
+        sm: 'text-sm',
+        md: '',
+        lg: 'text-lg',
+        xl: 'text-xl',
+      },
+    },
+    tabWrap: {
+      base: 'group relative btn-clear-gray !bg-transparent !border-none outline-none',
+      active: {
+        normal: '!text-gray-800 dark:!text-gray-50',
+        clear: '!text-primary-600 dark:!text-primary-300',
+        light: '!text-gray-700 dark:!text-gray-100',
+      },
+      inactive: {
+        normal: 'hocus:!bg-inherit',
+        clear: 'hocus:!bg-inherit',
+        light: 'hocus:!bg-inherit',
+      },
+    },
+    activeButton: {
+      base: 'absolute inset-0 z-0 pointer-events-none group-focus-visible:ring-white dark:group-focus-visible:ring-black group-focus-visible:ring-opacity-60 group-focus-visible:ring-offset-2 group-focus-visible:ring-offset-primary-400 group-focus-visible:outline-none group-focus-visible:ring-2',
+      shape: { pill: '9999px', round: '6px', square: '0px' },
+      weight: {
+        normal: 'bg-white shadow dark:bg-gray-700',
+        clear: 'bg-primary-100/70 dark:bg-primary-700/30',
+        light: 'bg-white shadow dark:bg-gray-600',
+      },
+    },
+    weight: {
+      normal: 'bg-gray-200/10 dark:bg-black/30',
+      clear: 'bg-transparent',
+      light: 'hover:bg-gray-200/10 dark:hover:bg-gray-800/10',
+    },
+    panel:
+      'w-full focus-visible:ring-white focus-visible:ring-opacity-60 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-400 focus:outline-none focus:ring-2',
+  },
 };
+
+export default defaultTheme;

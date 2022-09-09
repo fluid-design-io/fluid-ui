@@ -1,5 +1,3 @@
-import windowExists from '../../helpers/window-exists';
-import defaultTheme from '../../theme/default';
 import React, {
   createContext,
   FC,
@@ -8,7 +6,9 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import { FluidTheme } from './FluidTheme';
+import { FluidTheme } from '../../../type';
+import windowExists from '../../helpers/window-exists';
+import defaultTheme from '../../theme/default';
 
 export type Mode = string | undefined | 'light' | 'dark';
 

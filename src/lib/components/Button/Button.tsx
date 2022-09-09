@@ -10,18 +10,16 @@ import {
   ButtonIsLoadedOptions,
   ButtonLoadingOptionsAnimation,
   ButtonProps,
+  FluidButtonColors,
+  FluidButtonShapes,
+  FluidButtonSizes,
+  FluidButtonWeights,
   PolymorphicRef,
 } from '../../../type';
 import clsxm from '../../helpers/clsxm';
 import { excludeClassName } from '../../helpers/exclude';
 import { getUserClassNames } from '../../helpers/getUserClassNames';
 import { isChildValid } from '../../helpers/isChildValid';
-import {
-  FluidButtonColors,
-  FluidButtonShapes,
-  FluidButtonSizes,
-  FluidButtonWeights,
-} from '../FluidUI/FluidTheme';
 import { useTheme } from '../FluidUI/ThemeContext';
 import { SpinLarge } from '../Spinner';
 

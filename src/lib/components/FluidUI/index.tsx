@@ -1,11 +1,11 @@
 import React, { FC, HTMLAttributes, useEffect, useMemo } from 'react';
+import { FluidTheme } from '../../../type';
 
 import { DeepPartial } from '../../helpers/deep-partial';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import windowExists from '../../helpers/window-exists';
 import defaultTheme from '../../theme/default';
 
-import { FluidTheme } from './FluidTheme';
 import { ThemeContext, useThemeMode } from './ThemeContext';
 
 export interface ThemeProps {
@@ -24,7 +24,7 @@ export const FluidUI: FC<FluidUIProps> = ({ children, theme = {} }) => {
   const [mode, setMode, toggleMode] = useThemeMode(usePreferences);
 
   const mergedTheme = mergeDeep(
-    defaultTheme,
+    defaultTheme as any,
     customTheme
   ) as unknown as FluidTheme;
 

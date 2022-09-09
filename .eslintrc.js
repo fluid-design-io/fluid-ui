@@ -18,5 +18,5 @@ module.exports = {
     'simple-import-sort/exports': 'warn',
     //#endregion  //*======== Import Sort ===========
   },
-  ignorePatterns: ["ThemeContext.tsx", "src/plugin.js"],
+  ignorePatterns: ["ThemeContext.tsx", "src/plugin.js", "src/tinycolor.js"],
 };

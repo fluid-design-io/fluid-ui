@@ -97,7 +97,7 @@ const Template: Story<StoryButtonProps> = (args) => {
                   </span>
                 </p>
               }
-              buttonClassName='btn-outline-primary'
+              buttonClassName='btn-light-[wheat]'
               size='xs'
               menus={[
                 {
