@@ -131,17 +131,14 @@ const AppSelect: SelectComponent = React.forwardRef(
                         className={({ active, selected }) =>
                           clsxm(
                             'flex w-full items-center justify-start !border-x-transparent select-none',
+                            'btn-clear-gray',
+                            'ui-selected:btn-light-primary',
+                            'ui-not-selected:ui-active:btn-clear-primary',
                             selected
-                              ? [
-                                  'btn-light-primary',
-                                  listOptionSelectedClassName,
-                                ]
+                              ? [listOptionSelectedClassName]
                               : active
-                              ? ['btn-clear-primary', listOptionActiveClassName]
-                              : [
-                                  'btn-clear-stone',
-                                  listOptionInactiveClassName,
-                                ],
+                              ? [listOptionActiveClassName]
+                              : [listOptionInactiveClassName],
                             listOptionClassName
                           )
                         }
