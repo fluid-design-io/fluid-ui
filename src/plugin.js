@@ -48,6 +48,19 @@ const stepMap = {
   900: 0.1,
 }
 
+const stepVarMap = {
+  50: 900,
+  100: 800,
+  200: 700,
+  300: 600,
+  400: 500,
+  500: 400,
+  600: 300,
+  700: 200,
+  800: 100,
+  900: 50,
+}
+
 const getColor = (value, step = 500, alpha = 1) => {
   if (alpha > 1) {
     alpha /= 100;
@@ -73,7 +86,7 @@ const getColor = (value, step = 500, alpha = 1) => {
       const colorVar = raw.split('var(')[1].split(')')[0];
       if (typeof window !== 'undefined') {
         const documentColor = getComputedStyle(document.documentElement).getPropertyValue(colorVar);
-        console.log(documentColor);
+        // console.log(documentColor);
       }
       /* console.log(`
       -------
@@ -142,21 +155,14 @@ const isLight = (hsla) => {
   return (h >= 45 && h <= 189 && s >= 0.7 && l >= 0.35) || (l >= 0.475);
 }
 
-const convertVarWithAlpha = (color, alpha) => {
+const convertVarWithAlpha = (color, alpha = 1) => {
+  alpha = alpha > 1 ? alpha / 100 : alpha;
   const colorVar = color.split('var(')[1].split(')')[0]; // looks like this: --tw-color-gray-50
   const colorStep = colorVar.split('-')[colorVar.split('-').length - 1];
+  const colorName = colorVar.split('-').slice(0, -1).join('-');
   const parsedColorStep = parseInt(colorStep);
-  if (parsedColorStep <= 400) {
-    if (alpha && alpha <= 50) {
-      return `rgb(var(--tw-color-primary-100) / ${alpha ? alpha / 100 : 1})`;
-    }
-    return `rgb(var(--tw-color-primary-900) / ${alpha ? alpha / 100 : 1})`;
-  } else {
-    if (alpha && alpha <= 50) {
-      return `rgb(var(--tw-color-primary-900) / ${alpha ? alpha / 100 : 1})`;
-    }
-    return `rgb(var(--tw-color-primary-100) / ${alpha ? alpha / 100 : 1})`;
-  }
+  const newColorStep = stepVarMap[parsedColorStep];
+  return `rgb(var(${colorName}-${newColorStep}) / ${alpha})`;
 }
 
 const getTinycolorContrast = (hslaString, blackWhite) => {
@@ -177,10 +183,11 @@ const getTinycolorContrast = (hslaString, blackWhite) => {
  * @returns 
  */
 const contrastColor = (value, step = undefined, blackWhite = false, shouldContrast = true) => {
-  let alpha = undefined;
+  let alpha = 1;
   const colorMode = checkColorMode(value[step]);
   if (typeof step === 'object') {
     alpha = step.alpha;
+    alpha > 1 && (alpha = alpha / 100);
     step = step.step;
   }
   if (typeof value === 'string') {
@@ -189,7 +196,9 @@ const contrastColor = (value, step = undefined, blackWhite = false, shouldContra
       return convertVarWithAlpha(value, alpha);
     }
     if (tinycolor(value).isValid()) {
-      const hslaString = tinycolor(value).toHslString();
+      const { h, s, l, a } = tinycolor(value).setAlpha(alpha).toHsl();
+      const hslaString = tinycolor({ h, s, l: stepMap[step], a }).toHslString();
+      // console.log(`value: ${value} is valid, step: ${step}, alpha: ${alpha}\n hsla: ${hslaString}`);
       return shouldContrast ? getTinycolorContrast(hslaString, blackWhite) : hslaString;
     }
     return value;
@@ -476,22 +485,22 @@ const buttonUtilities = (theme) => {
         { step: 50, alpha: 0 },
         false,
         toColor(getColor(value, 700)),
-        50,
+        700,
         false,
-        false
+        false,
       ),
       ...generateTxtStates(value, {
         hocus: { value, step: { step: 400, alpha: 20 } },
         active: { value, step: { step: 400, alpha: 30 } },
-        disabled: { value: "transparent" },
-        textHocus: { value: toColor(getColor(value, 900)), shouldContrast: false },
-        textActive: { value: toColor(getColor(value, 900)), shouldContrast: false },
-        textDisabled: { value: toColor(getColor(value, 700)), shouldContrast: false },
+        disabled: { value: "transparent", step: { step: 50, alpha: 0 } },
+        textHocus: { value: toColor(getColor(value, 900)), step: 900, shouldContrast: false },
+        textActive: { value: toColor(getColor(value, 900)), step: 900, shouldContrast: false },
+        textDisabled: { value: toColor(getColor(value, 700)), step: 700, shouldContrast: false },
       }),
       'border-width': '1px',
       'border-style': 'solid',
       'border-color': toColor(getColor(value, 500, 30)),
-      '&:hover, &:focus-visible': {
+      '&:not([href]):enabled:hover, &:not([type]):hover, &:focus-visible': {
         'border-color': toColor(getColor(value, 400, 95)),
       },
       '.dark &': {
@@ -499,21 +508,21 @@ const buttonUtilities = (theme) => {
           'transparent',
           { step: 900, alpha: 0 },
           false,
-          toColor(getColor(value, 200)),
-          50,
+          toColor(getColor(value, 300)),
+          300,
           false,
-          false
+          false,
         ),
         ...generateTxtStates(value, {
           hocus: { value, step: { step: 500, alpha: 20 } },
           active: { value, step: { step: 500, alpha: 30 } },
           disabled: { value, step: { step: 900, alpha: 0 } },
-          textHocus: { value: toColor(getColor(value, 50)), shouldContrast: false },
-          textActive: { value: toColor(getColor(value, 50)), shouldContrast: false },
-          textDisabled: { value: toColor(getColor(value, 300)), shouldContrast: false },
+          textHocus: { value: toColor(getColor(value, 50)), step: 50, shouldContrast: false },
+          textActive: { value: toColor(getColor(value, 50)), step: 50, shouldContrast: false },
+          textDisabled: { value: toColor(getColor(value, 300)), step: 300, shouldContrast: false },
         }),
         'border-color': toColor(getColor(value, 400, 30)),
-        '&:hover, &:focus-visible': {
+        '&:not([href]):enabled:hover, &:not([type]):hover, &:focus-visible': {
           'border-color': toColor(getColor(value, 200, 85)),
         },
       },
@@ -574,22 +583,22 @@ const buttonUtilities = (theme) => {
         { step: 50, alpha: 0 },
         false,
         toColor(getColor(value, 500)),
-        50,
+        500,
         false,
         false
       ),
       ...generateTxtStates(value, {
         hocus: { value, step: 100 },
         active: { value, step: { step: 200, alpha: 80 } },
-        disabled: { value, step: { step: 50, alpha: 0 } },
-        textHocus: { value: toColor(getColor(value, 600)), shouldContrast: false }, // step is not calculated when value is a hex string
-        textActive: { value: toColor(getColor(value, 600)), shouldContrast: false },
-        textDisabled: { value: toColor(getColor(value, 300)), shouldContrast: false },
+        disabled: { value, step: { step: 200, alpha: 0 } },
+        textHocus: { value: toColor(getColor(value, 600)), step: 600, shouldContrast: false },
+        textActive: { value: toColor(getColor(value, 600)), step: 600, shouldContrast: false },
+        textDisabled: { value: toColor(getColor(value, 400)), step: 400, shouldContrast: false },
       }),
       'border-width': '1px',
       'border-style': 'solid',
       'border-color': 'transparent',
-      '&:hover, &:focus-visible': {
+      '&:not([href]):enabled:hover, &:not([type]):hover, &:focus-visible': {
         'border-color': toColor(getColor(value, 400, 25)),
       },
       '.dark &': {
@@ -598,19 +607,19 @@ const buttonUtilities = (theme) => {
           { step: 900, alpha: 0 },
           false,
           toColor(getColor(value, 400)),
-          50,
+          400,
           false,
           false
         ),
         ...generateTxtStates(value, {
           hocus: { value, step: { step: 600, alpha: 30 } },
           active: { value, step: { step: 600, alpha: 20 } },
-          disabled: { value: "transparent" },
-          textHocus: { value: toColor(getColor(value, 100)), shouldContrast: false },
-          textActive: { value: toColor(getColor(value, 100)), shouldContrast: false },
-          textDisabled: { value: toColor(getColor(value, 600)), shouldContrast: false },
+          disabled: { value, step: { step: 800, alpha: 0 } },
+          textHocus: { value: toColor(getColor(value, 100)), step: 100, shouldContrast: false },
+          textActive: { value: toColor(getColor(value, 100)), step: 100, shouldContrast: false },
+          textDisabled: { value: toColor(getColor(value, 500)), step: 500, shouldContrast: false },
         }),
-        '&:hover, &:focus-visible': {
+        '&:not([href]):enabled:hover, &:not([type]):hover, &:focus-visible': {
           'border-color': toColor(getColor(value, 300, 25)),
         },
       },
