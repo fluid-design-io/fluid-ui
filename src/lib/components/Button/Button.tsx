@@ -83,6 +83,7 @@ export const Button: ButtonComponent = React.forwardRef(
       <Component
         disabled={props?.disabled || isLoading}
         ref={ref}
+        type={props?.type || 'button'}
         className={clsxm(
           theme.base,
           themeSize,
@@ -95,7 +96,6 @@ export const Button: ButtonComponent = React.forwardRef(
           !buttonTransition && 'transition-none',
           className
         )}
-        type={props?.type || 'button'}
         {...theirProps}
       >
         {sr && <span className='sr-only'>{sr}</span>}
