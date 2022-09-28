@@ -1,5 +1,3 @@
-const colors = require('tailwindcss/colors')
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   // content: ["./src/**/*.{js,jsx,ts,tsx}", "./stories/**.*.{js,tsx}"], // For dev environment 
@@ -10,21 +8,6 @@ module.exports = {
     preflight: false, // For prod environment
   },
   theme: {
-    colors: {
-      ...colors,
-      gray: {
-        50: '#f4f7fb',
-        100: '#d8dbdf',
-        200: '#bdc0c4',
-        300: '#a2a5a9',
-        400: '#888b8f',
-        500: '#6f7276',
-        600: '#575a5d',
-        700: '#404346',
-        800: '#2b2d30',
-        900: '#17191c',
-      }
-    },
     extend: {
       screens: {
         'pointer-hover': { 'raw': '(hover: hover) and (pointer: fine)' },
@@ -43,8 +26,20 @@ module.exports = {
           800: '#075985',
           900: '#0c4a6e',
         },
+        gray: {
+          50: '#f4f7fb',
+          100: '#d8dbdf',
+          200: '#bdc0c4',
+          300: '#a2a5a9',
+          400: '#888b8f',
+          500: '#6f7276',
+          600: '#575a5d',
+          700: '#404346',
+          800: '#2b2d30',
+          900: '#17191c',
+        }
       }
     },
   },
-  plugins: [require('@tailwindcss/line-clamp'), require('@tailwindcss/typography'), require('./src/plugin')],
+  plugins: [require('@tailwindcss/line-clamp'), require('@tailwindcss/typography'), require('@headlessui/tailwindcss'), require('./src/plugin')],
 };
