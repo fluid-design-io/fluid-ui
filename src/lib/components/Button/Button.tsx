@@ -75,6 +75,7 @@ export const Button: ButtonComponent = React.forwardRef(
         ? props.type
         : undefined
       : 'button';
+    if (componentTypeProp) theirProps['type'] = componentTypeProp;
     useEffect(() => {
       if (!!isLoaded && !isLoadedTriggered) {
         setIsLoadedTriggered(true);
@@ -100,7 +101,6 @@ export const Button: ButtonComponent = React.forwardRef(
           !buttonTransition && 'transition-none',
           className
         )}
-        {...componentTypeProp}
         {...theirProps}
       >
         {sr && <span className='sr-only'>{sr}</span>}
