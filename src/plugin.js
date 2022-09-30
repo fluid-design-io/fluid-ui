@@ -249,18 +249,7 @@ const generateTxtStates = (
   value,
   { hocus, active, disabled, textHocus, textActive, textDisabled }
 ) => ({
-  '&:not([href]):enabled:hover, &:not([type]):hover': {
-    ...generateTxtBg(
-      hocus.value,
-      hocus?.step,
-      hocus?.bw,
-      textHocus?.value,
-      textHocus?.step,
-      textHocus?.bw,
-      textHocus?.shouldContrast
-    ),
-  },
-  '&:not([href]):enabled:focus-visible, &:not([type]):focus-visible': {
+  '&:not([type]):hover, &:not([type]):focus-visible, &:not([href]):enabled:hover, &:not([href]):enabled:focus-visible': {
     ...generateTxtBg(
       hocus.value,
       hocus?.step,
