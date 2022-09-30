@@ -70,6 +70,11 @@ export const Button: ButtonComponent = React.forwardRef(
     const isLoadedDuration =
       typeof isLoaded === 'object' ? loadedOptions.duration || 1500 : 1500;
     const isButtonTextHidden = isLoading || (isLoaded && isLoadedTriggered);
+    const componentTypeProp = as
+      ? props?.type
+        ? props.type
+        : undefined
+      : 'button';
     useEffect(() => {
       if (!!isLoaded && !isLoadedTriggered) {
         setIsLoadedTriggered(true);
@@ -83,7 +88,6 @@ export const Button: ButtonComponent = React.forwardRef(
       <Component
         disabled={props?.disabled || isLoading}
         ref={ref}
-        type={props?.type || 'button'}
         className={clsxm(
           theme.base,
           themeSize,
@@ -96,6 +100,7 @@ export const Button: ButtonComponent = React.forwardRef(
           !buttonTransition && 'transition-none',
           className
         )}
+        {...componentTypeProp}
         {...theirProps}
       >
         {sr && <span className='sr-only'>{sr}</span>}
