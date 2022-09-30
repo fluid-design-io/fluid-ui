@@ -1,5 +1,5 @@
 {
-  "version": "1.0.3",
+  "version": "1.8.2",
   "name": "@fluid-design/fluid-ui",
   "license": "MIT",
   "main": "dist/index.js",
@@ -25,7 +25,7 @@
     "semantic-release": "semantic-release --branches main"
   },
   "peerDependencies": {
-    "framer-motion": "^7.2.1",
+    "framer-motion": ">=7",
     "react": ">=17",
     "react-dom": ">=17",
     "react-icons": "^4.3.1",
