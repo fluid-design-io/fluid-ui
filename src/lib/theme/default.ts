@@ -26,7 +26,7 @@ const defaultTheme: FluidTheme = {
     },
   },
   button: {
-    base: 'flex justify-center items-center h-min min-w-fit text-center gap-2 relative [-webkit-tap-highlight-color:transparent]',
+    base: 'flex justify-center items-center h-max min-w-fit text-center gap-2 relative [-webkit-tap-highlight-color:transparent]',
     shape: {
       pill: {
         xs: 'px-3.5 py-1.5 text-xs rounded-full',
