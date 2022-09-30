@@ -84,9 +84,13 @@ const Template: Story<StoryButtonProps> = (args) => {
           <div className='relative mb-4 flex justify-between'>
             <div />
             <Menu
-              label={'Actions'}
+              buttonClassName='btn-light-[aqua]'
               iconEnd={HiChevronDown}
               iconStart={HiInformationCircle}
+              label={'Actions'}
+              menuPositionX='end'
+              menuPositionY='bottom'
+              size='xs'
               header={
                 <p className='truncate py-3 px-3.5'>
                   <span className='mb-0.5 block text-xs text-gray-500 dark:text-gray-400'>
@@ -97,8 +101,6 @@ const Template: Story<StoryButtonProps> = (args) => {
                   </span>
                 </p>
               }
-              buttonClassName='btn-light-[aqua]'
-              size='xs'
               menus={[
                 {
                   label: 'Edit',
@@ -116,73 +118,72 @@ const Template: Story<StoryButtonProps> = (args) => {
                   onClick: () => console.log('delete'),
                 },
               ]}
-              menuPositionX='end'
-              menuPositionY='bottom'
             />
           </div>
-          <Input name='name' label='Name' type='text' />
-          <Input name='email' label='Email' type='email' />
+          <Input label='Name' name='name' type='text' />
+          <Input label='Email' name='email' type='email' />
           <Textarea
-            name='message'
             label='Message'
+            name='message'
             description={{
               text: 'Please be as detailed as possible.',
               icon: HiInformationCircle,
             }}
           />
-          <ComboBox name='state' list={states} itemKey='name' />
-          <Select name='state' list={states} itemKey='name' />
-          <Switch name='saveResponse' label='Save Response' />
-          <SubmitButton title='Submit' slot='end' />
-          <SubmitButtonRef innerRef={submitBtnRef} className='hidden' />
+          <ComboBox itemKey='name' list={states} name='state' />
+          <Select itemKey='name' list={states} name='state' />
+          <Switch label='Save Response' name='saveResponse' />
+          <SubmitButton slot='end' title='Submit' />
+          <SubmitButtonRef className='hidden' innerRef={submitBtnRef} />
         </Form>
       </div>
       <div>
         <Button
           as='a'
-          href='#'
+          color='green'
           data-tooltip-top='some more information'
+          href='#'
           onClick={() => submitBtnRef.current?.click()}
           shape='pill'
           weight='outline'
-          color='green'
         >
           Submit Button Ref
         </Button>
       </div>
       <div className='flex w-full flex-row items-center justify-center'>
         <Button className='btn-clear-primary'>Submit Button Ref</Button>
+        <Button
+          animate={{ y: 0 }}
+          as={motion.a}
+          className='btn-clear-amber'
+          color='amber'
+          iconOnly
+          initial={{ y: -10 }}
+          shape='pill'
+          weight='clear'
+        >
+          <HiTrash />
+        </Button>
       </div>
-      <div className='w-ful relative h-32 contrast:bg-blue-400'>
+      <div className='w-full relative h-32 contrast:bg-blue-400'>
         <div className='absolute inset-0 bg-grid-blue-500/20 [background-position:10px] dark:bg-grid-indigo-400'>
           <Button
-            color='red'
             as='div'
-            weight='clear'
-            shape='pill'
-            iconOnly
-            data-tooltip-bottom='Hi there! How are you doing?'
             className='hocus:backdrop-blur-2xl backdrop-blur-none'
+            color='red'
+            data-tooltip-bottom='Hi there! How are you doing?'
+            iconOnly
+            shape='pill'
+            weight='clear'
           >
             <HiTrash />
           </Button>
           <Button
             color='blue'
-            weight='clear'
-            shape='pill'
-            iconOnly
             data-tooltip-bottom='Hi there! How are you doing?'
-          >
-            <HiTrash />
-          </Button>
-          <Button
-            as={motion.a}
-            color='amber'
-            weight='clear'
-            shape='pill'
             iconOnly
-            initial={{ y: -10 }}
-            animate={{ y: 0 }}
+            shape='pill'
+            weight='clear'
           >
             <HiTrash />
           </Button>

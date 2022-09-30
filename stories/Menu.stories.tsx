@@ -87,6 +87,9 @@ const Template: Story<StoryButtonProps> = (args) => {
           {
             label: 'Logout',
             icon: HiLogout,
+            onClick: (e) => {
+              e.preventDefault();
+            },
             role: 'info',
           },
         ]}
