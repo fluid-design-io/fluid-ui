@@ -15,28 +15,32 @@ export const TabListItem = ({
   size = 'md',
   innerAs = as,
   children,
-  tabActiveClassName,
   tabClassName,
+  tabActiveClassName,
   tabInactiveClassName,
-}: TabListItemProps) => {
+}: TabListItemProps): React.ReactElement => {
   const theme = useTheme().theme.tab;
+  const buttonProps = innerAs
+    ? {}
+    : {
+        shape,
+        weight,
+        size,
+      };
   return (
     <HeadlessTab
-      as={Button}
-      innerAs={innerAs}
-      shape={shape}
-      size={size}
-      className={({ selected }) =>
+      as={innerAs || Button}
+      className={({ selected }): string =>
         clsxm(
-          theme.tabWrap.base,
-          tabClassName,
+          [theme.tabWrap.base, tabClassName],
           selected
             ? [theme.tabWrap.active[weight], tabActiveClassName]
             : [theme.tabWrap.inactive[weight], tabInactiveClassName]
         )
       }
+      {...buttonProps}
     >
-      {({ selected }) => (
+      {({ selected }: { selected: boolean }): React.ReactElement => (
         <Fragment>
           {selected && (
             <motion.div

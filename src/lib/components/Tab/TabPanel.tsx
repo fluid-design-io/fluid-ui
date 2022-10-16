@@ -6,13 +6,14 @@ import { useTheme } from '../FluidUI/ThemeContext';
 export const TabPanel = ({
   tabPanelClassName = '',
   children,
-}: {
-  tabPanelClassName?: string;
-  children: React.ReactNode;
-}) => {
+  ...props
+}): React.ReactElement => {
   const theme = useTheme().theme.tab;
   return (
-    <HeadlessTab.Panel className={clsxm(theme.panel, tabPanelClassName)}>
+    <HeadlessTab.Panel
+      className={clsxm(theme.panel, tabPanelClassName)}
+      {...props}
+    >
       {children}
     </HeadlessTab.Panel>
   );

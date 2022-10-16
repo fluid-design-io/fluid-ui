@@ -38,11 +38,20 @@ const Template: Story<StoryButtonProps> = (args) => {
   );
 };
 const Template2: Story<StoryButtonProps> = (args) => {
+  const [activeTabIndex, setActiveTabIndex] = React.useState(0);
   return (
     <Wrap>
-      <Tab>
+      <Tab
+        selectedIndex={activeTabIndex}
+        onChange={setActiveTabIndex as any}
+        shape='square'
+        size='xl'
+        tabClassName='hi-there-how-are-you-doing????? !bg-sky-300'
+      >
         <Tab.List>
-          <Tab.ListItem>Tab 1</Tab.ListItem>
+          <Tab.ListItem tabClassName='hi-there-how-are-you-doing????? !bg-blue-300'>
+            Tab 1
+          </Tab.ListItem>
           <Tab.ListItem>Tab 2</Tab.ListItem>
           <Tab.ListItem>Tab 3</Tab.ListItem>
         </Tab.List>

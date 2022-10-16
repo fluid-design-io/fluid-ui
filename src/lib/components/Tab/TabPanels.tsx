@@ -2,7 +2,7 @@ import { Tab as HeadlessTab } from '@headlessui/react';
 import React, { useId } from 'react';
 import clsxm from '../../helpers/clsxm';
 
-export const TabPanels = ({ className = '', children }) => {
+export const TabPanels = ({ className = '', children }): React.ReactElement => {
   const id = useId();
   return (
     <HeadlessTab.Panels className={clsxm('mt-2 w-full', className)}>

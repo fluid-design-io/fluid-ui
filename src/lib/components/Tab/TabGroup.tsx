@@ -1,7 +1,8 @@
+/* eslint-disable no-undef */
 import { Tab as HeadlessTab } from '@headlessui/react';
+import { LayoutGroup, MotionConfig } from 'framer-motion';
 import React, { useId } from 'react';
 import { PolymorphicRef, TabComponent, TabProps } from '../../../type';
-import { useTheme } from '../FluidUI/ThemeContext';
 import { TabList } from './TabList';
 import { TabPanel } from './TabPanel';
 import { TabPanels } from './TabPanels';
@@ -42,42 +43,84 @@ export const TabGroup: TabComponent = React.forwardRef(
       className,
       innerAs = as,
       children,
-      tabActiveClassName,
       tabClassName,
+      tabActiveClassName,
       tabInactiveClassName,
       tabPanelClassName,
+      ...props
     }: TabProps<C>,
     ref?: PolymorphicRef<C>
   ) => {
-    const theme = useTheme().theme.tab;
     const id = useId();
+    const tabClassNames = {
+      tabClassName,
+      tabActiveClassName,
+      tabInactiveClassName,
+    };
+    // eslint-disable-next-line no-console
     if (children) {
-      return <HeadlessTab.Group>{children}</HeadlessTab.Group>;
+      return (
+        <HeadlessTab.Group {...(props as any)}>
+          <MotionConfig reducedMotion='user'>
+            <LayoutGroup>
+              {React.Children.map(children, (child) => {
+                // if child is typeof TabList, inject the props
+                if (React.isValidElement(child) && child.type === TabList) {
+                  return React.cloneElement(child, {
+                    ...tabClassNames,
+                    shape,
+                    weight,
+                    size,
+                  } as any);
+                }
+                // if child is typeof TabPanels, inject the props
+                else if (
+                  React.isValidElement(child) &&
+                  child.type === TabPanels
+                ) {
+                  return React.cloneElement(child, {
+                    tabPanelClassName,
+                  } as any);
+                } else if (React.isValidElement(child)) {
+                  return child;
+                } else {
+                  return null;
+                }
+              })}
+            </LayoutGroup>
+          </MotionConfig>
+        </HeadlessTab.Group>
+      );
     }
     return (
-      <HeadlessTab.Group>
-        <TabList
-          {...{
-            as,
-            tabs,
-            shape,
-            weight,
-            size,
-            className,
-            innerAs,
-            children,
-            tabActiveClassName,
-            tabClassName,
-            tabInactiveClassName,
-          }}
-        />
-        <TabPanels className={tabPanelClassName}>
-          {tabs.map(({ content }, idx) => (
-            <TabPanel {...{ tabPanelClassName }} key={`tab-panel-${id}-${idx}`}>
-              {content}
-            </TabPanel>
-          ))}
-        </TabPanels>
+      <HeadlessTab.Group {...(props as any)}>
+        <MotionConfig reducedMotion='user'>
+          <LayoutGroup>
+            <TabList
+              {...{
+                as,
+                tabs,
+                shape,
+                weight,
+                size,
+                className,
+                innerAs,
+                children,
+                ...tabClassNames,
+              }}
+            />
+            <TabPanels className={tabPanelClassName}>
+              {tabs.map(({ content }, idx) => (
+                <TabPanel
+                  {...{ tabPanelClassName }}
+                  key={`tab-panel-${id}-${idx}`}
+                >
+                  {content}
+                </TabPanel>
+              ))}
+            </TabPanels>
+          </LayoutGroup>
+        </MotionConfig>
       </HeadlessTab.Group>
     );
   }
