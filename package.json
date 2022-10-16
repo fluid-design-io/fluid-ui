@@ -44,14 +44,14 @@
     }
   ],
   "dependencies": {
-    "@headlessui/react": "^1.7.0",
+    "@headlessui/react": "^1.7.3",
     "classnames": "^2.3.1",
     "clsx": "^1.2.1",
     "formik": "^2.2.9",
-    "framer-motion": "^7.2.1",
-    "react-icons": "^4.3.1",
+    "framer-motion": "^7.5.3",
+    "react-icons": "^4.6.0",
     "react-textarea-autosize": "^8.3.4",
-    "tailwind-merge": "^1.6.0",
+    "tailwind-merge": "^1.6.2",
     "tsdx": "^0.14.1",
     "yup": "^0.32.11"
   },
@@ -89,7 +89,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-is": "^18.2.0",
-    "react-router-dom": "^6.3.0",
+    "react-router-dom": "^6.4.2",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-postcss": "^4.0.2",
     "semantic-release": "^19.0.3",
