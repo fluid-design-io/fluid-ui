@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-ignore */
 import { AnimatePresence, motion } from 'framer-motion';
-import React, { useEffect, useId, useState } from 'react';
+import React, { Fragment, useEffect, useId, useState } from 'react';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { GrEmptyCircle } from 'react-icons/gr';
 import { HiCheckCircle, HiOutlineDotsHorizontal } from 'react-icons/hi';
@@ -103,94 +103,98 @@ export const Button: ButtonComponent = React.forwardRef(
         )}
         {...theirProps}
       >
-        {sr && <span className='sr-only'>{sr}</span>}
-        {!sr && label && <span className='sr-only'>{label}</span>}
-        <AnimatePresence mode='sync'>
-          {isLoading && (
-            <ButtonLoadingComponent
-              key={id}
-              {...{
-                loadingOptions,
-                inherClassNames:
-                  loadingOptions?.text &&
-                  loadingOptions.text.length > 0 &&
-                  inherClassNames,
-                themeSize,
-              }}
-            />
-          )}
-          {!isLoading && isLoaded && isLoadedTriggered && (
-            <ButtonLoadedComponent
-              key={`${id}-loaded`}
-              {...{
-                isLoaded,
-                loadedOptions,
-                inherClassNames:
-                  loadedOptions?.text &&
-                  loadedOptions.text.length > 0 &&
-                  inherClassNames,
-                themeSize,
-              }}
-            />
-          )}
-        </AnimatePresence>
-        <motion.div
-          initial={{ opacity: 1 }}
-          animate={{
-            opacity: isButtonTextHidden ? 0 : 1,
-            scale: isButtonTextHidden ? 0.85 : 1,
-          }}
-          className={clsxm(
-            'w-full flex gap-2 items-center justify-center',
-            inherClassNames
-          )}
-        >
-          <>
-            {IconStart &&
-              (isChildValid(IconStart) ? (
-                IconStart
-              ) : (
-                /* @ts-ignore */
-                <IconStart
-                  className={clsxm('flex-shrink-0 w-4 h-4', iconClassName)}
-                />
-              ))}
-            {iconStartPosition === 'between' && <span className='flex-grow' />}
-            {label && !iconOnly && (
-              <span className={clsxm(labelClassName)}>{label}</span>
+        <Fragment>
+          {sr && <span className='sr-only'>{sr}</span>}
+          {!sr && label && <span className='sr-only'>{label}</span>}
+          <AnimatePresence mode='sync'>
+            {isLoading && (
+              <ButtonLoadingComponent
+                key={id}
+                {...{
+                  loadingOptions,
+                  inherClassNames:
+                    loadingOptions?.text &&
+                    loadingOptions.text.length > 0 &&
+                    inherClassNames,
+                  themeSize,
+                }}
+              />
             )}
-            {children && children}
-            {iconEndPosition === 'between' && <span className='flex-grow' />}
-            {IconEnd &&
-              (isChildValid(IconEnd) ? (
-                IconEnd
-              ) : (
-                /* @ts-ignore */
-                <IconEnd
-                  className={clsxm('flex-shrink-0 w-4 h-4', iconClassName)}
-                />
-              ))}
-            {Icon &&
-              (isChildValid(Icon) ? (
-                Icon
-              ) : (
-                /* @ts-ignore */
-                <Icon
-                  className={clsxm('flex-shrink-0 w-4 h-4', iconClassName)}
-                />
-              ))}
-            {badge && (
-              <span
-                className={clsxm(
-                  'rounded bg-gray-200 py-0.5 px-1.5 text-xs font-semibold tabular-nums text-gray-700',
-                  badgeClassName
-                )}
-              >
-                {badge}
-              </span>
+            {!isLoading && isLoaded && isLoadedTriggered && (
+              <ButtonLoadedComponent
+                key={`${id}-loaded`}
+                {...{
+                  isLoaded,
+                  loadedOptions,
+                  inherClassNames:
+                    loadedOptions?.text &&
+                    loadedOptions.text.length > 0 &&
+                    inherClassNames,
+                  themeSize,
+                }}
+              />
             )}
-          </>
-        </motion.div>
+          </AnimatePresence>
+          <motion.div
+            initial={{ opacity: 1 }}
+            animate={{
+              opacity: isButtonTextHidden ? 0 : 1,
+              scale: isButtonTextHidden ? 0.85 : 1,
+            }}
+            className={clsxm(
+              'w-full flex gap-2 items-center justify-center',
+              inherClassNames
+            )}
+          >
+            <>
+              {IconStart &&
+                (isChildValid(IconStart) ? (
+                  IconStart
+                ) : (
+                  /* @ts-ignore */
+                  <IconStart
+                    className={clsxm('flex-shrink-0 w-4 h-4', iconClassName)}
+                  />
+                ))}
+              {iconStartPosition === 'between' && (
+                <span className='flex-grow' />
+              )}
+              {label && !iconOnly && (
+                <span className={clsxm(labelClassName)}>{label}</span>
+              )}
+              {children && children}
+              {iconEndPosition === 'between' && <span className='flex-grow' />}
+              {IconEnd &&
+                (isChildValid(IconEnd) ? (
+                  IconEnd
+                ) : (
+                  /* @ts-ignore */
+                  <IconEnd
+                    className={clsxm('flex-shrink-0 w-4 h-4', iconClassName)}
+                  />
+                ))}
+              {Icon &&
+                (isChildValid(Icon) ? (
+                  Icon
+                ) : (
+                  /* @ts-ignore */
+                  <Icon
+                    className={clsxm('flex-shrink-0 w-4 h-4', iconClassName)}
+                  />
+                ))}
+              {badge && (
+                <span
+                  className={clsxm(
+                    'rounded bg-gray-200 py-0.5 px-1.5 text-xs font-semibold tabular-nums text-gray-700',
+                    badgeClassName
+                  )}
+                >
+                  {badge}
+                </span>
+              )}
+            </>
+          </motion.div>
+        </Fragment>
       </Component>
     );
   }

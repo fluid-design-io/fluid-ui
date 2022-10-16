@@ -661,7 +661,6 @@ export type TabListItemProps<C extends React.ElementType = 'div'> =
       tabClassName?: string;
       tabActiveClassName?: string;
       tabInactiveClassName?: string;
-      tabPanelClassName?: string;
       children?: React.ReactNode;
     } & SRProp
   >;
@@ -671,7 +670,16 @@ export type TabListProps = {
 } & Omit<TabListItemProps, 'layoutId'>;
 
 export type TabProps<C extends React.ElementType = 'div'> =
-  PolymorphicComponentPropWithRef<C, {} & TabListProps>;
+  PolymorphicComponentPropWithRef<
+    C,
+    {
+      defaultIndex?: number;
+      selectedIndex?: number;
+      onChange?: (index: number) => void;
+      vertical?: boolean;
+      manual?: boolean;
+    } & TabListProps
+  >;
 
 export type TabComponent = <C extends React.ElementType = 'div'>(
   props: TabProps<C>
