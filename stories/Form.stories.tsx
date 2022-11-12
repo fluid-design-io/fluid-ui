@@ -179,13 +179,13 @@ const Template: Story<StoryButtonProps> = (args) => {
             <HiTrash />
           </Button>
           <Button
-            color='blue'
             data-tooltip-bottom='Hi there! How are you doing?'
             iconOnly
             shape='pill'
             weight='clear'
+            className='btn-yellow'
           >
-            <HiTrash />
+            Delete <HiTrash />
           </Button>
         </div>
       </div>

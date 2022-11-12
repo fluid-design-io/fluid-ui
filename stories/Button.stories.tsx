@@ -62,6 +62,15 @@ const Template: Story<StoryButtonProps> = (args) => {
           {color}
         </Button>
       ))}
+      <Button className='btn-primary-100' label='Primary' {...args as any}/>
+      <Button className='btn-[wheat]' label='Wheat' {...args as any}/>
+      <Button className='btn-light-[wheat]' label='Wheat Light' {...args as any}/>
+      <Button className='btn-outline-[wheat]' label='Wheat Outline' {...args as any}/>
+      <Button className='btn-clear-[wheat]' label='Wheat Clear' {...args as any}/>
+      <Button className='btn-[#F0F0F0]' label='F0F0F0' {...args as any}/>
+      <Button className='btn-light-[#F0F0F0]' label='F0F0F0 Light' {...args as any}/>
+      <Button className='btn-outline-[#F0F0F0]' label='F0F0F0 Outline' {...args as any}/>
+      <Button className='btn-clear-[#F0F0F0]' label='F0F0F0 Clear' {...args as any}/>
     </div>
   );
 };
@@ -73,12 +82,6 @@ export const Light: Story<StoryButtonProps> = Template.bind({});
 Light.storyName = 'Weight Light';
 Light.args = {
   weight: 'light' as keyof FluidButtonWeights,
-};
-
-export const Bold: Story<StoryButtonProps> = Template.bind({});
-Bold.storyName = 'Weight Bold';
-Bold.args = {
-  weight: 'bold' as keyof FluidButtonWeights,
 };
 
 export const Outline: Story<StoryButtonProps> = Template.bind({});
