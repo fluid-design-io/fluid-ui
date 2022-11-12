@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { Dispatch, SetStateAction, SVGProps } from 'react';
 import { DeepPartial } from './lib/helpers/deep-partial';
 
 /* ===== Start Fluid Theme ===== */
@@ -675,7 +675,7 @@ export type TabProps<C extends React.ElementType = 'div'> =
     {
       defaultIndex?: number;
       selectedIndex?: number;
-      onChange?: (index: number) => void;
+      onChange?: (index: number) => void | Dispatch<SetStateAction<number>>;
       vertical?: boolean;
       manual?: boolean;
     } & TabListProps

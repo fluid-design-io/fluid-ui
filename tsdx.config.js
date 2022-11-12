@@ -12,6 +12,7 @@ const postcss = require("rollup-plugin-postcss")
 
 
 module.exports = {
+    rootDir: './src',
     rollup(config, options) {
         config.plugins.push(
             postcss({
