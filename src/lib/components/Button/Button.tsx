@@ -17,7 +17,7 @@ import {
   PolymorphicRef,
 } from '../../../type';
 import clsxm from '../../helpers/clsxm';
-import { excludeClassName } from '../../helpers/exclude';
+import { excludeClassName, excludeOnClick } from '../../helpers/exclude';
 import { getUserClassNames } from '../../helpers/getUserClassNames';
 import { isChildValid } from '../../helpers/isChildValid';
 import { useTheme } from '../FluidUI/ThemeContext';
@@ -62,6 +62,20 @@ export const Button: ButtonComponent = React.forwardRef(
     const theirProps = excludeClassName(props);
     // isCustomColor is to check if the className contains a string starts with 'btn-'
     const isCustomColor = className && className.includes('btn-');
+    // customColorType is to check if the className contains a string starts with 'btn-' and before the next '-'
+    const customColorType = () => {
+      if (isCustomColor) {
+        // default color means there's only 1 "-"
+        const isDefaultColor =
+          className && className.split('btn-')[1].split('-').length === 1;
+        if (isDefaultColor) {
+          return 'default';
+        }
+        return className && className.split('btn-')[1].split('-')[0];
+      } else {
+        return null;
+      }
+    };
     const inherClassNames = getUserClassNames(className);
     const themeSize = iconOnly
       ? theme.iconOnly[shape][size]
@@ -85,9 +99,29 @@ export const Button: ButtonComponent = React.forwardRef(
         }, isLoadedDuration);
       }
     }, [isLoaded]);
+    const releaseEffect = (
+      e: React.MouseEvent<HTMLElement> | React.TouchEvent<HTMLElement>
+    ) => {
+      if (
+        weight === 'light' ||
+        weight === 'clear' ||
+        customColorType() === 'clear' ||
+        customColorType() === 'light'
+      ) {
+        // add a className "pressed" to the button, remove it after 200ms
+        const button = e.currentTarget;
+        button.classList.add('pressed');
+        // eslint-disable-next-line no-undef
+        setTimeout(() => {
+          button.classList.remove('pressed');
+        }, 150);
+      }
+    };
     return (
       <Component
         disabled={props?.disabled || isLoading}
+        onMouseUp={releaseEffect}
+        onTouchEnd={releaseEffect}
         ref={ref}
         className={clsxm(
           theme.base,
