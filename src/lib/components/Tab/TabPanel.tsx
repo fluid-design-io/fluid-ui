@@ -7,6 +7,9 @@ export const TabPanel = ({
   tabPanelClassName = '',
   children,
   ...props
+}: {
+  tabPanelClassName?: string;
+  children: React.ReactNode;
 }): React.ReactElement => {
   const theme = useTheme().theme.tab;
   return (
