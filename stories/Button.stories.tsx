@@ -84,6 +84,12 @@ Light.args = {
   weight: 'light' as keyof FluidButtonWeights,
 };
 
+export const Bold: Story<StoryButtonProps> = Template.bind({});
+Light.storyName = 'Weight Light';
+Light.args = {
+  weight: 'bold' as keyof FluidButtonWeights,
+};
+
 export const Outline: Story<StoryButtonProps> = Template.bind({});
 Outline.storyName = 'Weight Outline';
 Outline.args = {

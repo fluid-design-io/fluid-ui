@@ -8,11 +8,13 @@ const {
     lightBtnOptions,
     outlineBtnOptions,
     clearBtnOptions,
+    boldBtnOptions,
 } = require('./util/firstLevelColors');
 const generateDefaultBtn = require('./template/default');
 const generateLightBtn = require('./template/light');
 const generateOutlineBtn = require('./template/outline');
 const generateClearBtn = require('./template/clear');
+const generateBoldBtn = require('./template/bold');
 
 /*============ Combines tailwind colors with options and top level color shortcuts ============*/
 const themeColorOptions = (colors, btnOption) => ({
@@ -25,6 +27,9 @@ const defaultButtonUtilities = (theme) => ({
 });
 const lightButtonUtilities = (theme) => ({
     'btn-light': (value) => generateLightBtn(value, theme),
+});
+const boldButtonUtilities = (theme) => ({
+    'btn-bold': (value) => generateBoldBtn(value, theme),
 });
 const outlineButtonUtilities = (theme) => ({
     'btn-outline': (value) => generateOutlineBtn(value, theme),
@@ -40,6 +45,10 @@ module.exports = plugin(function ({ matchUtilities, theme }) {
     }),
         matchUtilities(lightButtonUtilities(theme), {
             values: themeColorOptions(theme('colors'), lightBtnOptions),
+            type: 'color',
+        }),
+        matchUtilities(boldButtonUtilities(theme), {
+            values: themeColorOptions(theme('colors'), boldBtnOptions),
             type: 'color',
         }),
         matchUtilities(outlineButtonUtilities(theme), {
