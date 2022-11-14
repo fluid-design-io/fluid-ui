@@ -17,7 +17,7 @@ import {
   PolymorphicRef,
 } from '../../../type';
 import clsxm from '../../helpers/clsxm';
-import { excludeClassName, excludeOnClick } from '../../helpers/exclude';
+import { excludeClassName } from '../../helpers/exclude';
 import { getUserClassNames } from '../../helpers/getUserClassNames';
 import { isChildValid } from '../../helpers/isChildValid';
 import { useTheme } from '../FluidUI/ThemeContext';

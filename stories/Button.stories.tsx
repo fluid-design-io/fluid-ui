@@ -71,6 +71,7 @@ const Template: Story<StoryButtonProps> = (args) => {
       <Button className='btn-light-[#F0F0F0]' label='F0F0F0 Light' {...args as any}/>
       <Button className='btn-outline-[#F0F0F0]' label='F0F0F0 Outline' {...args as any}/>
       <Button className='btn-clear-[#F0F0F0]' label='F0F0F0 Clear' {...args as any}/>
+      <Button className='btn-clear-gray-700' label='Gray 700' {...args as any}/>
     </div>
   );
 };
