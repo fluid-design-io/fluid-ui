@@ -4,13 +4,11 @@ const tinycolor = require('../lib/tinycolor');
 const _color = require('tailwindcss/lib/util/color');
 const { contrastRing, focusRing } = require('../util/generateRing');
 const {
-  focusHoverRingColor,
   disabledColor,
-  contrastMoreColor,
 } = require('../util/generateColors');
-const { generateBtnStroke } = require('../util/generateStroke');
 const { BUTTON_STATE, BUTTON_DEFAULT } = require('../lib/constants');
 const { generateBtnTextBg } = require('../util/generateTextBg');
+const { generateTransparentTxtBg } = require('../util/generateTransparentTxtBg');
 const { default: toColorValue } = require('../util/toColorValue');
 
 const generateOutlineBtnState = (color, theme, isDark) => {
@@ -108,17 +106,7 @@ const generateOutlineBtn = (value, theme) => {
       };
     const { mode, color: c, alpha } = colorValue;
     const color = _color.formatColor({ mode, color: c, alpha });
-    const { h, s, v } = tinycolor(color).toHsv();
-    const lightColor = tinycolor({ h, s, v: s > 0.25 ? 0.55 : 0.4 })
-      .setAlpha(alpha || 1)
-      .toRgbString();
-    const darkColorHSV = tinycolor({ h, s, v: v * 0.8 }).toRgbString();
-    const darkColorHSL = tinycolor(darkColorHSV).toHsl();
-    const darkColor = tinycolor({
-      h: darkColorHSL.h,
-      s: darkColorHSL.s,
-      l: 0.8,
-    }).toRgbString();
+    const { lightColor, darkColor } = generateTransparentTxtBg({ color, alpha });
     const borderColor = tinycolor(color)
       .setAlpha(alpha * 0.7 || 0.7)
       .toRgbString();
