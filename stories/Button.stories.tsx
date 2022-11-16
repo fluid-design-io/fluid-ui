@@ -1,5 +1,5 @@
-import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
+import React from 'react';
 import { IoIosSend } from 'react-icons/io';
 import { Button } from '../src/lib/components/Button';
 import {
@@ -62,16 +62,44 @@ const Template: Story<StoryButtonProps> = (args) => {
           {color}
         </Button>
       ))}
-      <Button className='btn-primary-100' label='Primary' {...args as any}/>
-      <Button className='btn-[wheat]' label='Wheat' {...args as any}/>
-      <Button className='btn-light-[wheat]' label='Wheat Light' {...args as any}/>
-      <Button className='btn-outline-[wheat]' label='Wheat Outline' {...args as any}/>
-      <Button className='btn-clear-[wheat]' label='Wheat Clear' {...args as any}/>
-      <Button className='btn-[#F0F0F0]' label='F0F0F0' {...args as any}/>
-      <Button className='btn-light-[#F0F0F0]' label='F0F0F0 Light' {...args as any}/>
-      <Button className='btn-outline-[#F0F0F0]' label='F0F0F0 Outline' {...args as any}/>
-      <Button className='btn-clear-[#F0F0F0]' label='F0F0F0 Clear' {...args as any}/>
-      <Button className='btn-clear-gray-700' label='Gray 700' {...args as any}/>
+      <Button className='btn-primary-100' label='Primary' {...(args as any)} />
+      <Button className='btn-[wheat]' label='Wheat' {...(args as any)} />
+      <Button
+        className='btn-light-[wheat]'
+        label='Wheat Light'
+        {...(args as any)}
+      />
+      <Button
+        className='btn-outline-[wheat]'
+        label='Wheat Outline'
+        {...(args as any)}
+      />
+      <Button
+        className='btn-clear-[wheat]'
+        label='Wheat Clear'
+        {...(args as any)}
+      />
+      <Button className='btn-[#FFFFFF]' label='FFFFFF' {...(args as any)} />
+      <Button
+        className='btn-light-[#FFFFFF]'
+        label='FFFFFF Light'
+        {...(args as any)}
+      />
+      <Button
+        className='btn-outline-[#FFFFFF]'
+        label='FFFFFF Outline'
+        {...(args as any)}
+      />
+      <Button
+        className='btn-clear-[#FFFFFF]'
+        label='FFFFFF Clear'
+        {...(args as any)}
+      />
+      <Button
+        className='btn-clear-gray-700'
+        label='Gray 700'
+        {...(args as any)}
+      />
     </div>
   );
 };

@@ -120,7 +120,7 @@ const defaultTheme: FluidTheme = {
       },
     },
     tabWrap: {
-      base: 'group relative btn-clear-gray !bg-transparent !border-none outline-none',
+      base: 'group relative btn-clear-gray-700 dark:btn-clear-gray-200 !bg-transparent !border-none outline-none',
       active: {
         normal: '!text-gray-800 dark:!text-gray-50',
         clear: '!text-primary-600 dark:!text-primary-300',

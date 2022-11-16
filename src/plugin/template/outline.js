@@ -7,34 +7,18 @@ const {
   disabledColor,
 } = require('../util/generateColors');
 const { BUTTON_STATE, BUTTON_DEFAULT } = require('../lib/constants');
-const { generateBtnTextBg } = require('../util/generateTextBg');
-const { generateTransparentTxtBg } = require('../util/generateTransparentTxtBg');
 const { default: toColorValue } = require('../util/toColorValue');
 
-const generateOutlineBtnState = (color, theme, isDark) => {
-  const houcusColor = isDark
-    ? tinycolor(color).saturate(5).toRgbString()
-    : tinycolor(color).saturate(5).darken(4).toRgbString();
-  const activeColor = isDark
-    ? tinycolor(color).saturate(3).toRgbString()
-    : tinycolor(color).saturate(3).darken(10).toRgbString();
-  const houcusBackground = isDark
-    ? tinycolor(activeColor).darken().setAlpha(0.12).toRgbString()
-    : tinycolor(houcusColor).setAlpha(0.1).toRgbString();
-  const activeBackground = isDark
-    ? tinycolor(activeColor).darken().setAlpha(0.2).toRgbString()
-    : tinycolor(activeColor).setAlpha(0.18).toRgbString();
-  const activeBorderColor = isDark
-    ? tinycolor(activeColor).setAlpha(0.7).toRgbString()
-    : activeColor;
+const generateOutlineBtnState = (color, theme) => {
+  const mutate = tinycolor(color).isDark() ? 'lighten' : 'darken';
+  const alpha = tinycolor(color).getAlpha() || 1;
+  const houcusBackground = tinycolor(color)[mutate]().setAlpha(alpha * 0.12).toRgbString();
+  const activeBackground = tinycolor(color)[mutate]().setAlpha(alpha * 0.2).toRgbString();
+  const activeBorderColor = tinycolor(color).setAlpha(alpha * 0.7).toRgbString();
   return {
     [BUTTON_STATE.HOVER]: {
       'background-color': houcusBackground,
       'border-color': activeBorderColor,
-      '--tw-ring-offset-color': theme(
-        'ringOffsetColor.DEFAULT',
-        isDark ? '#222' : '#fff'
-      ),
       [BUTTON_STATE.CONTRAST_MORE]: {
         ...focusRing({
           color: activeBorderColor,
@@ -46,12 +30,8 @@ const generateOutlineBtnState = (color, theme, isDark) => {
     }, // Focus and hover state
     [BUTTON_STATE.FOCUS]: {
       'background-color': houcusBackground,
-      'border-color': activeBorderColor,
+      'border-color': color,
       ...focusRing({ color, theme, offsetWidth: '0px' }),
-      '--tw-ring-offset-color': theme(
-        'ringOffsetColor.DEFAULT',
-        isDark ? '#222' : '#fff'
-      ),
       [BUTTON_STATE.CONTRAST_MORE]: {
         ...focusRing({
           color: activeBorderColor,
@@ -65,10 +45,7 @@ const generateOutlineBtnState = (color, theme, isDark) => {
       'background-color': activeBackground,
     }, // Active state
     [BUTTON_STATE.DISABLED]: {
-      ...generateBtnTextBg(
-        disabledColor({ color }).textColor,
-        disabledColor({ color }).backgroundColor
-      ),
+      color: disabledColor({ color }).textColor,
       cursor: 'not-allowed',
     }, // Disabled state
     [BUTTON_STATE.CONTRAST_MORE]: {
@@ -78,7 +55,7 @@ const generateOutlineBtnState = (color, theme, isDark) => {
       ...contrastRing({
         color,
         theme,
-        offsetColor: activeColor,
+        offsetColor: activeBorderColor,
         offsetWidth: '1.5px',
         ringWidth: '1.5px',
       }),
@@ -99,14 +76,13 @@ const generateOutlineBtn = (value, theme) => {
     if (!colorValue)
       return {
         ...BUTTON_DEFAULT,
-        ...generateBtnTextBg(toColorValue(value), 'transparent'),
+        ...generateBorder(colorValue),
         ...generateOutlineBtnState(toColorValue(value), theme),
-        'background-color': 'transparent',
         color: toColorValue(value),
+        'background-color': 'transparent',
       };
     const { mode, color: c, alpha } = colorValue;
     const color = _color.formatColor({ mode, color: c, alpha });
-    const { lightColor, darkColor } = generateTransparentTxtBg({ color, alpha });
     const borderColor = tinycolor(color)
       .setAlpha(alpha * 0.7 || 0.7)
       .toRgbString();
@@ -115,15 +91,8 @@ const generateOutlineBtn = (value, theme) => {
       ...BUTTON_DEFAULT,
       ...generateBorder(borderColor), // Generate border color
       ...generateOutlineBtnState(color, theme), // Generate focus, hover, active and disabled states
+      color,
       'background-color': 'transparent',
-      color: lightColor,
-
-      [BUTTON_STATE.DARK]: {
-        'background-color': 'transparent',
-        color: darkColor,
-        ...generateBorder(borderColor),
-        ...generateOutlineBtnState(darkColor, theme, true),
-      },
     };
   }
 };

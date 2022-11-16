@@ -29,7 +29,7 @@ const boldBtnOptions = (colors) => {
 const outlineBtnOptions = (colors) => {
     const firstLevelColors = getFirstLevelColors(colors);
     return firstLevelColors.reduce((acc, color) => {
-        acc[color] = colors[color]['400'];
+        acc[color] = colors[color]['500'];
         return acc;
     }, {});
 };

@@ -11,24 +11,13 @@ const { generateBtnStroke } = require('../util/generateStroke');
 const { BUTTON_STATE, BUTTON_DEFAULT } = require('../lib/constants');
 const { generateBtnTextBg } = require('../util/generateTextBg');
 const { default: toColorValue } = require('../util/toColorValue');
-const { generateTransparentTxtBg } = require('../util/generateTransparentTxtBg');
 
-const generateClearBtnState = (color, theme, isDark) => {
-  const activeColor = isDark
-    ? tinycolor(color).saturate(3).lighten(10).toRgbString()
-    : tinycolor(color).saturate(3).darken(10).toRgbString();
-  const contrastMoreOffsetColor = isDark
-    ? tinycolor(color).lighten(30).toRgbString()
-    : tinycolor(color).darken(30).toRgbString();
-  const houcusColor = isDark
-    ? tinycolor(color).saturate(5).toRgbString()
-    : tinycolor(color).saturate(5).darken(4).toRgbString();
-  const houcusBackground = isDark
-    ? tinycolor(activeColor).darken().setAlpha(0.12).toRgbString()
-    : tinycolor(houcusColor).setAlpha(0.1).toRgbString();
-  const activeBackground = isDark
-    ? tinycolor(activeColor).darken().setAlpha(0.2).toRgbString()
-    : tinycolor(activeColor).setAlpha(0.18).toRgbString();
+const generateClearBtnState = (color, theme) => {
+  const mutate = tinycolor(color).isDark() ? 'lighten' : 'darken';
+  const alpha = tinycolor(color).getAlpha() || 1;
+  const contrastMoreOffsetColor = tinycolor(color).greyscale(0.5).toRgbString();
+  const houcusBackground = tinycolor(color)[mutate]().setAlpha(alpha * 0.12).toRgbString()
+  const activeBackground = tinycolor(color)[mutate]().setAlpha(alpha * 0.2).toRgbString()
   return {
     [BUTTON_STATE.HOVER]: {
       'background-color': houcusBackground,
@@ -41,16 +30,18 @@ const generateClearBtnState = (color, theme, isDark) => {
       'background-color': activeBackground,
     }, // Active state
     [BUTTON_STATE.DISABLED]: {
-      ...generateBtnTextBg(
-        disabledColor({ color }).textColor,
-        disabledColor({ color }).backgroundColor
-      ),
+      color: disabledColor({ color }).textColor,
       cursor: 'not-allowed',
     }, // Disabled state
     [BUTTON_STATE.CONTRAST_MORE]: {
       ...generateBtnTextBg(
         contrastMoreColor({ color }), 'transparent', true),
       ...contrastRing({ color, theme, offsetColor: contrastMoreOffsetColor }),
+    },
+    [BUTTON_STATE.DARK]: {
+      [BUTTON_STATE.FOCUS]: {
+        '--tw-ring-offset-color': '#222 !important',
+      },
     },
   };
 };
@@ -61,31 +52,23 @@ const generateClearBtn = (value, theme) => {
     if (!colorValue)
       return {
         ...BUTTON_DEFAULT,
-        ...generateBtnTextBg(toColorValue(value)),
+        color: toColorValue(value),
+        'background-color': 'transparent',
         ...generateClearBtnState(toColorValue(value), theme),
-        ...generateBtnStroke({ opacity: '0.3' }),
+        ...generateBtnStroke({ opacity: '0.45' }),
       };
     const { mode, color: c, alpha } = colorValue;
     const color = _color.formatColor({ mode, color: c, alpha });
-    const { lightColor, darkColor } = generateTransparentTxtBg({ color, alpha });
 
     return {
       ...BUTTON_DEFAULT,
-      ...generateBtnStroke({ opacity: '0.48' }),
-      ...generateClearBtnState(lightColor, theme), // Generate focus, hover, active and disabled states
+      ...generateBtnStroke({ opacity: '0.45' }),
+      ...generateClearBtnState(color, theme), // Generate focus, hover, active and disabled states
+      color: color,
       'background-color': 'transparent',
-      color: lightColor,
-      [BUTTON_STATE.DARK]: {
-        color: darkColor,
-        ...generateBtnStroke({ opacity: '0.38' }),
-        ...generateClearBtnState(darkColor, theme, true),
-      },
       '&.pressed::after': {
         transition: 'all 0.08s ease-in-out',
-        borderColor: darkColor,
-        [BUTTON_STATE.DARK]: {
-          borderColor: lightColor,
-        }
+        borderColor: color
       },
     };
   }

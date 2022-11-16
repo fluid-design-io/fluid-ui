@@ -5,7 +5,6 @@ const _color = require('tailwindcss/lib/util/color');
 const { contrastRing, focusRing } = require('../util/generateRing');
 const {
   houcusColor,
-  focusHoverRingColor,
   activeColor,
   disabledColor,
   contrastMoreColor,
@@ -43,8 +42,7 @@ const generateDefaultBtnState = (color, theme) => {
     },
     [BUTTON_STATE.DARK]: {
       [BUTTON_STATE.FOCUS]: {
-        '--tw-ring-offset-color': theme('ringOffsetColor.DEFAULT', '#000'),
-        '--tw-ring-color': focusHoverRingColor({ color, isDark: true }),
+        '--tw-ring-offset-color': '#222 !important',
       },
     },
   };
@@ -61,19 +59,10 @@ const generateDefaultBtn = (value, theme) => {
       };
     const { mode, color: c, alpha } = colorValue;
     const color = _color.formatColor({ mode, color: c, alpha });
-    const { h, s, l } = tinycolor(color).toHsl();
-    const lightColor = color;
-    const darkColor = tinycolor({ h, s, l: l * 0.9 })
-      .setAlpha(alpha || 1)
-      .toRgbString();
     return {
       ...BUTTON_DEFAULT,
-      ...generateBtnTextBg(lightColor), // Generate text and background lightColor
-      ...generateDefaultBtnState(lightColor, theme), // Generate focus, hover, active and disabled states
-      [BUTTON_STATE.DARK]: {
-        ...generateBtnTextBg(darkColor),
-        ...generateDefaultBtnState(darkColor, theme),
-      },
+      ...generateBtnTextBg(color), // Generate text and background color
+      ...generateDefaultBtnState(color, theme), // Generate focus, hover, active and disabled states
     };
   }
 };

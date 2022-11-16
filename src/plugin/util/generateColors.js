@@ -43,11 +43,13 @@ const disabledColor = ({ color }) => {
       textColor: { filter: 'brightness(0.8)' },
       backgroundColor: { filter: 'brightness(0.35)' },
     }; // If the color is not valid, return filter
-  const textColor = tinycolor(color).setAlpha(0.8).toRgbString();
-  const backgroundColor = tinycolor(color).setAlpha(0.35).toRgbString();
+  const alpha = tinycolor(color).getAlpha() || 1;
+  const textColor = tinycolor(color).setAlpha(alpha * 0.8).toRgbString();
+  const backgroundColor = tinycolor(color).setAlpha(alpha * 0.35).toRgbString();
   return {
     textColor,
     backgroundColor,
+    alpha,
   };
 };
 const contrastMoreColor = ({ color }) => {

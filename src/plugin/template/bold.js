@@ -13,15 +13,10 @@ const { generateBtnTextBg } = require('../util/generateTextBg');
 const { default: toColorValue } = require('../util/toColorValue');
 
 const generateBoldBtnState = (color, theme, isDark) => {
-  const houcusColor = isDark
-    ? tinycolor(color).saturate(5).lighten(4).toRgbString()
-    : tinycolor(color).saturate(5).darken(4).toRgbString();
-  const activeColor = isDark
-    ? tinycolor(color).saturate(3).lighten(10).toRgbString()
-    : tinycolor(color).saturate(3).darken(10).toRgbString();
-  const contrastMoreOffsetColor = isDark
-    ? tinycolor(color).lighten(30).toRgbString()
-    : tinycolor(color).darken(30).toRgbString();
+  const alpha = tinycolor(color).getAlpha();
+  const houcusColor = tinycolor(color).saturate(5).darken(4).setAlpha(alpha).toRgbString();
+  const activeColor = tinycolor(color).saturate(3).darken(10).setAlpha(alpha).toRgbString();
+  const contrastMoreOffsetColor = tinycolor(color).darken(30).setAlpha(alpha).toRgbString();
   return {
     [BUTTON_STATE.HOVER]: {
       ...generateBtnTextBg(houcusColor),
@@ -68,29 +63,12 @@ const generateBoldBtn = (value, theme) => {
       };
     const { mode, color: c, alpha } = colorValue;
     const color = _color.formatColor({ mode, color: c, alpha });
-    const { h, s } = tinycolor(color).toHsl();
-    const lightColor = tinycolor(color)
-      .setAlpha(alpha || 1)
-      .toRgbString();
-    const darkColorHSL = tinycolor({ h, s, l: 0.5 }).toRgbString();
-    const hsv = tinycolor(darkColorHSL).toHsv();
-    const darkColor = tinycolor({
-      h: hsv.h,
-      s: hsv.s,
-      v: hsv.v * 0.25,
-    }).toRgbString();
 
     return {
       ...BUTTON_DEFAULT,
-      ...generateBtnTextBg(lightColor), // Generate text and background color
-      ...generateBoldBtnState(lightColor, theme), // Generate focus, hover, active and disabled states
+      ...generateBtnTextBg(color), // Generate text and background color
+      ...generateBoldBtnState(color, theme), // Generate focus, hover, active and disabled states
       ...generateBtnStroke({ opacity: '0.3' }),
-
-      [BUTTON_STATE.DARK]: {
-        ...generateBtnStroke({ opacity: '0.15' }),
-        ...generateBtnTextBg(darkColor),
-        ...generateBoldBtnState(darkColor, theme, true),
-      },
       '&.pressed::after': {
         transition: 'all 0.08s ease-in-out',
         borderColor: '#222',
