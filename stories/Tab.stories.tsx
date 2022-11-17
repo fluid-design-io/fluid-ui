@@ -30,10 +30,36 @@ const Wrap = ({ className = '', children }) => {
   );
 };
 
+const testTabs = [
+  {
+    title: 'For You Content',
+    content: <p>Here's the for you</p>,
+  },
+  {
+    title: 'Recent',
+    content: <p>Here's the content</p>,
+  },
+  {
+    title: {
+      text: 'Popular',
+      iconStart: (
+        <svg
+          aria-hidden='true'
+          className='h-5 w-5 text-gray-400'
+          fill='currentColor'
+          viewBox='0 0 20 20'
+          xmlns='http://www.w3.org/2000/svg'
+        />
+      ),
+    },
+    content: <p>Here's the content for Popular</p>,
+  },
+];
+
 const Template: Story<StoryButtonProps> = (args) => {
   return (
     <Wrap>
-      <Tab />
+      <Tab tabs={testTabs} {...args} />
     </Wrap>
   );
 };

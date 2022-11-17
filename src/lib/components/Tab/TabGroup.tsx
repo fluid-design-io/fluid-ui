@@ -7,36 +7,11 @@ import { TabList } from './TabList';
 import { TabPanel } from './TabPanel';
 import { TabPanels } from './TabPanels';
 
-const testTabs = [
-  {
-    title: 'For You Content',
-    content: <p>Here's the for you</p>,
-  },
-  {
-    title: 'Recent',
-    content: <p>Here's the content</p>,
-  },
-  {
-    title: {
-      text: 'Popular',
-      iconStart: (
-        <svg
-          aria-hidden='true'
-          className='h-5 w-5 text-gray-400'
-          fill='currentColor'
-          viewBox='0 0 20 20'
-          xmlns='http://www.w3.org/2000/svg'
-        />
-      ),
-    },
-    content: <p>Here's the content for Popular</p>,
-  },
-];
 export const TabGroup: TabComponent = React.forwardRef(
   <C extends React.ElementType = 'div'>(
     {
       as,
-      tabs = testTabs,
+      tabs,
       shape = 'round',
       weight = 'normal',
       size = 'md',
@@ -110,14 +85,16 @@ export const TabGroup: TabComponent = React.forwardRef(
               }}
             />
             <TabPanels className={tabPanelClassName}>
-              {tabs.map(({ content }, idx) => (
-                <TabPanel
-                  {...{ tabPanelClassName }}
-                  key={`tab-panel-${id}-${idx}`}
-                >
-                  {content}
-                </TabPanel>
-              ))}
+              {tabs &&
+                tabs.length > 0 &&
+                tabs.map(({ content }, idx) => (
+                  <TabPanel
+                    {...{ tabPanelClassName }}
+                    key={`tab-panel-${id}-${idx}`}
+                  >
+                    {content}
+                  </TabPanel>
+                ))}
             </TabPanels>
           </LayoutGroup>
         </MotionConfig>

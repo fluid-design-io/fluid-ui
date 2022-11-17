@@ -55,22 +55,24 @@ export const TabList = ({
   }
   return (
     <HeadlessTab.List className={listClassName}>
-      {tabs.map(({ title }, index) => (
-        <TabListItem
-          {...{
-            layoutId,
-            title,
-            shape,
-            weight,
-            size,
-            tabClassName,
-            tabActiveClassName,
-            tabInactiveClassName,
-            ...props,
-          }}
-          key={`tab-${layoutId}-${index}`}
-        />
-      ))}
+      {tabs &&
+        tabs.length > 0 &&
+        tabs.map(({ title }, index) => (
+          <TabListItem
+            {...{
+              layoutId,
+              title,
+              shape,
+              weight,
+              size,
+              tabClassName,
+              tabActiveClassName,
+              tabInactiveClassName,
+              ...props,
+            }}
+            key={`tab-${layoutId}-${index}`}
+          />
+        ))}
     </HeadlessTab.List>
   );
 };
