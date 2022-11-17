@@ -138,9 +138,10 @@ const AppComboBox: ComboBoxComponent = React.forwardRef(
                       className={({ active, selected }) =>
                         clsxm(
                           'flex w-full items-center justify-start !border-x-transparent select-none',
-                          'btn-clear-gray',
-                          'ui-selected:btn-light-primary',
-                          'ui-not-selected:ui-active:btn-clear-primary',
+                          'ui-selected:btn-light-primary dark:ui-selected:btn-bold-primary',
+                          'ui-not-selected:ui-active:btn-light-primary',
+                          'dark:ui-not-selected:ui-active:btn-bold-primary',
+                          'dark:ui-not-selected:ui-not-active:text-gray-200',
                           selected
                             ? [listOptionSelectedClassName]
                             : active
