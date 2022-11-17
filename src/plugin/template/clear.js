@@ -34,8 +34,6 @@ const generateClearBtnState = (color, theme) => {
       cursor: 'not-allowed',
     }, // Disabled state
     [BUTTON_STATE.CONTRAST_MORE]: {
-      ...generateBtnTextBg(
-        contrastMoreColor({ color }), 'transparent', true),
       ...contrastRing({ color, theme, offsetColor: contrastMoreOffsetColor }),
     },
     [BUTTON_STATE.DARK]: {
