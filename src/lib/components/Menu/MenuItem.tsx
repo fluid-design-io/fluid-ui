@@ -31,6 +31,7 @@ export const MenuItem: MenuItemComponent = React.forwardRef(
     ref?: PolymorphicRef<C>
   ) => {
     const Component = as || Button;
+    const isDefault = Component === Button;
     const inherClassNames = getUserClassNames(className);
     const theirProps = excludeClassName(props);
     if (role === 'separator') {
@@ -44,6 +45,22 @@ export const MenuItem: MenuItemComponent = React.forwardRef(
         />
       );
     }
+    const getButtonColor = () => {
+      switch (role) {
+        case 'default':
+          return 'gray';
+        case 'destructive':
+          return 'red';
+        case 'info':
+          return 'blue';
+        case 'success':
+          return 'green';
+        case 'warning':
+          return 'amber';
+        default:
+          return 'gray';
+      }
+    };
     return (
       <HeadlessMenu.Item>
         <Component
@@ -52,32 +69,31 @@ export const MenuItem: MenuItemComponent = React.forwardRef(
           shape='square'
           className={clsxm(
             (!role || role === 'default') && [
-              'btn-clear-gray',
-              'ui-active:bg-gray-50 dark:ui-active:bg-gray-700/25',
+              'ui-active:bg-gray-100/80 dark:ui-active:bg-gray-700/50',
             ],
             role === 'destructive' && [
-              'btn-clear-red',
-              'ui-active:bg-red-50 dark:ui-active:bg-red-700/25',
+              'ui-active:bg-red-100/50 dark:ui-active:bg-red-700/25',
             ],
             role === 'info' && [
-              'btn-clear-blue',
-              'ui-active:bg-blue-50 dark:ui-active:bg-blue-700/25',
+              'ui-active:bg-blue-100/50 dark:ui-active:bg-blue-700/25',
             ],
             role === 'success' && [
-              'btn-clear-green',
-              'ui-active:bg-green-50 dark:ui-active:bg-green-700/25',
+              'ui-active:bg-green-100/50 dark:ui-active:bg-green-700/25',
+            ],
+            role === 'warning' && [
+              'ui-active:bg-amber-100/50 dark:ui-active:bg-amber-700/25',
             ],
             role === 'primary' && [
-              'btn-clear-primary',
-              'ui-active:bg-primary-50 dark:ui-active:bg-primary-700/25',
+              'btn-claer-primary',
+              'ui-active:bg-primary-100/50 dark:ui-active:bg-primary-700/25',
             ],
-            horizontal &&
-              'flex items-center justify-center ui-not-disabled:!border-y-transparent h-auto',
-            !horizontal &&
-              'flex w-full items-center justify-start ui-not-disabled:!border-x-transparent',
+            horizontal && 'flex items-center justify-center h-auto',
+            !horizontal && 'flex w-full items-center justify-start',
             menuButtonClassName,
             inherClassNames
           )}
+          color={isDefault ? getButtonColor() : undefined}
+          weight={isDefault ? 'clear' : undefined}
           {...theirProps}
         >
           {props?.children ? (

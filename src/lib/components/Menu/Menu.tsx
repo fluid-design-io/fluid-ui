@@ -43,7 +43,7 @@ export const MenuComp: MenuComponent = ({
       <HeadlessMenu.Button
         as={Button}
         className={clsxm(
-          'default-focus-visible inline-flex items-center justify-center',
+          'inline-flex items-center justify-center',
           buttonClassName
         )}
         {...theirProps}
