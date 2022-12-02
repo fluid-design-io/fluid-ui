@@ -88,12 +88,7 @@ export interface FluidButtonColors {
 }
 
 export interface FluidButtonColorOptions {
-  base: string;
   weight: FluidButtonWeights;
-  gradient: {
-    linear: string;
-    clay: string;
-  };
 }
 
 export interface FulidButtonLoadingOptions {
@@ -297,7 +292,6 @@ export type ButtonProps<C extends React.ElementType> =
        * @type {'pill' | 'round' | 'square'}
        */
       shape?: keyof FluidButtonShapes;
-      gradient?: keyof FluidButtonColorOptions['gradient'] | undefined;
       /**
        * loadingOptions: The options for the loading animation.
        * @type {ButtonLoadingOptions}

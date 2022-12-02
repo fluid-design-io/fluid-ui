@@ -96,7 +96,7 @@ const Template: Story<StoryButtonProps> = (args) => {
         {...(args as any)}
       />
       <Button
-        className='btn-clear-gray-700'
+        className='btn-clear-gray-700 unde'
         label='Gray 700'
         {...(args as any)}
       />

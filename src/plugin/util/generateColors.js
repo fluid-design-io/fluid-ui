@@ -37,14 +37,14 @@ const activeColor = ({ color }) => {
   hsv.v < 0.1 ? (hsv.v += 0.1) : (hsv.v -= 0.1);
   return tinycolor(hsv).toRgbString();
 };
-const disabledColor = ({ color }) => {
+const disabledColor = ({ color, textFactor = 1 }) => {
   if (!tinycolor(color).isValid())
     return {
-      textColor: { filter: 'brightness(0.8)' },
-      backgroundColor: { filter: 'brightness(0.35)' },
+      textColor: { filter: `brightness(${alpha * 0.8 * textFactor})` },
+      backgroundColor: { filter: `brightness(${alpha * 0.35})` },
     }; // If the color is not valid, return filter
   const alpha = tinycolor(color).getAlpha() || 1;
-  const textColor = tinycolor(color).setAlpha(alpha * 0.8).toRgbString();
+  const textColor = tinycolor(color).setAlpha(alpha * 0.8 * textFactor).toRgbString();
   const backgroundColor = tinycolor(color).setAlpha(alpha * 0.35).toRgbString();
   return {
     textColor,

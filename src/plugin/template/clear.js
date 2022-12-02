@@ -30,7 +30,7 @@ const generateClearBtnState = (color, theme) => {
       'background-color': activeBackground,
     }, // Active state
     [BUTTON_STATE.DISABLED]: {
-      color: disabledColor({ color }).textColor,
+      color: disabledColor({ color, textFactor: 0.7 }).textColor,
       cursor: 'not-allowed',
     }, // Disabled state
     [BUTTON_STATE.CONTRAST_MORE]: {

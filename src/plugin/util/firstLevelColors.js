@@ -40,6 +40,13 @@ const clearBtnOptions = (colors) => {
         return acc;
     }, {});
 };
+const linkBtnOptions = (colors) => {
+    const firstLevelColors = getFirstLevelColors(colors);
+    return firstLevelColors.reduce((acc, color) => {
+        acc[color] = colors[color]['700'];
+        return acc;
+    }, {});
+};
 
 module.exports = {
     btncolorOptions,
@@ -47,6 +54,7 @@ module.exports = {
     boldBtnOptions,
     outlineBtnOptions,
     clearBtnOptions,
+    linkBtnOptions,
 };
 
 //withAlphaValue(colors[color]['800'], 0.3, 1)

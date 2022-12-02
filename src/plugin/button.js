@@ -9,12 +9,14 @@ const {
     outlineBtnOptions,
     clearBtnOptions,
     boldBtnOptions,
+    linkBtnOptions,
 } = require('./util/firstLevelColors');
 const generateDefaultBtn = require('./template/default');
 const generateLightBtn = require('./template/light');
 const generateOutlineBtn = require('./template/outline');
 const generateClearBtn = require('./template/clear');
 const generateBoldBtn = require('./template/bold');
+const generateLinkBtn = require('./template/link');
 
 /*============ Combines tailwind colors with options and top level color shortcuts ============*/
 const themeColorOptions = (colors, btnOption) => ({
@@ -37,8 +39,11 @@ const outlineButtonUtilities = (theme) => ({
 const clearButtonUtilities = (theme) => ({
     'btn-clear': (value) => generateClearBtn(value, theme),
 });
+const linkButtonUtilities = (theme) => ({
+    'btn-link': (value) => generateLinkBtn(value, theme),
+});
 
-module.exports = plugin(function ({ matchUtilities, theme }) {
+module.exports = plugin(function ({ matchUtilities, theme, addVariant }) {
     matchUtilities(defaultButtonUtilities(theme), {
         values: themeColorOptions(theme('colors'), btncolorOptions),
         type: 'color',
@@ -59,4 +64,10 @@ module.exports = plugin(function ({ matchUtilities, theme }) {
             values: themeColorOptions(theme('colors'), clearBtnOptions),
             type: 'color',
         })
+    matchUtilities(linkButtonUtilities(theme), {
+        values: themeColorOptions(theme('colors'), linkBtnOptions),
+        type: 'color',
+    }),
+        addVariant('hocus', ['&:hover', '&:focus-visible']),
+        addVariant('contrast', ['.contrast &', '@media (prefers-contrast: more)'])
 });

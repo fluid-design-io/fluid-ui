@@ -37,7 +37,6 @@ export const Button: ButtonComponent = React.forwardRef(
       isLoading = false,
       isLoaded = false,
       loadedOptions = undefined,
-      gradient = undefined,
       loadingOptions = undefined,
       icon: Icon,
       iconStart: IconStart,
@@ -126,12 +125,7 @@ export const Button: ButtonComponent = React.forwardRef(
         className={clsxm(
           theme.base,
           themeSize,
-          !isCustomColor && [
-            theme.color[color].base,
-            gradient
-              ? theme.color[color].gradient[gradient]
-              : theme.color[color].weight[weight],
-          ],
+          !isCustomColor && theme.color[color].weight[weight],
           !buttonTransition && 'transition-none',
           className
         )}
