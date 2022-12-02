@@ -3,34 +3,46 @@
   "name": "@fluid-design/fluid-ui",
   "license": "MIT",
   "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "types": "dist/index.d.ts",
+  "typings": "dist/index.d.ts",
   "files": [
     "dist",
-    "src",
-    "README.md",
-    "LICENSE"
+    "src"
   ],
   "engines": {
     "node": ">=14"
   },
   "scripts": {
-    "build": "NODE_ENV=production BABEL_ENV=production rollup -c && yarn build:css",
-    "build:css": "NODE_ENV=production npx tailwindcss -o ./dist/fluid-ui.css --minify",
-    "lint": "npx eslint",
+    "start": "tsdx watch",
+    "build": "NOD_ENV=production tsdx build && yarn build:css",
+    "build:css": "NOD_ENV=production npx tailwindcss -o ./dist/fluid-ui.css --minify",
+    "lint": "tsdx lint",
     "commit": "git-cz",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "semantic-release": "semantic-release --branches main"
   },
   "peerDependencies": {
     "framer-motion": ">=7",
-    "react": "18.x",
-    "react-dom": "18.x",
+    "react": ">=17",
+    "react-dom": ">=17",
     "react-icons": "^4.3.1",
     "tailwindcss": "^3"
   },
-  "author": "Oliver Pan",
+  "author": "Jiuzhen Pan",
+  "module": "dist/fluid-ui.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/fluid-ui.cjs.production.min.js",
+      "limit": "50 KB"
+    },
+    {
+      "path": "dist/fluid-ui.esm.js",
+      "limit": "50 KB"
+    }
+  ],
   "dependencies": {
     "@headlessui/react": "^1.7.4",
     "classnames": "^2.3.1",
@@ -40,15 +52,15 @@
     "react-icons": "^4.6.0",
     "react-textarea-autosize": "^8.4.0",
     "tailwind-merge": "^1.8.0",
+    "tsdx": "^0.14.1",
     "yup": "^0.32.11"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.5",
+    "@babel/core": "^7.18.9",
+    "@babel/helper-string-parser": "^7.18.10",
     "@babel/preset-react": "^7.18.6",
     "@headlessui/tailwindcss": "^0.1.1",
-    "@rollup/plugin-commonjs": "^23.0.3",
-    "@rollup/plugin-node-resolve": "^15.0.1",
-    "@rollup/plugin-typescript": "^10.0.1",
+    "@size-limit/preset-small-lib": "^7.0.8",
     "@storybook/addon-essentials": "^6.5.9",
     "@storybook/addon-info": "^5.3.21",
     "@storybook/addon-links": "^6.5.9",
@@ -62,11 +74,10 @@
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "@types/tinycolor2": "^1.4.3",
-    "autoprefixer": "^10.4.13",
+    "autoprefixer": "^10.4.7",
     "babel-loader": "^8.2.5",
     "clsx": "^1.2.1",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^8.28.0",
     "eslint-plugin-prettier": "3.4.1",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "eslint-plugin-unused-imports": "^2.0.0",
@@ -79,16 +90,14 @@
     "react-dom": "^18.2.0",
     "react-is": "^18.2.0",
     "react-router-dom": "^6.4.2",
-    "rollup": "^3.5.1",
     "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-copy": "^3.4.0",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-terser": "^7.0.2",
     "semantic-release": "^19.0.3",
+    "size-limit": "^7.0.8",
     "storybook": "^6.5.13",
     "storybook-dark-mode": "^1.1.0",
     "tailwindcss": "^3.2.4",
+    "tslib": "^2.4.0",
     "typescript": "^4.7.4"
   },
   "repository": {
