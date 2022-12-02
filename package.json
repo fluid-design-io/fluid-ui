@@ -17,10 +17,8 @@
   "scripts": {
     "build": "NODE_ENV=production BABEL_ENV=production rollup -c && yarn build:css",
     "build:css": "NODE_ENV=production npx tailwindcss -o ./dist/fluid-ui.css --minify",
-    "lint": "yarn lint",
+    "lint": "npx eslint",
     "commit": "git-cz",
-    "size": "size-limit",
-    "analyze": "size-limit --why",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "semantic-release": "semantic-release --branches main"
@@ -68,6 +66,7 @@
     "babel-loader": "^8.2.5",
     "clsx": "^1.2.1",
     "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.28.0",
     "eslint-plugin-prettier": "3.4.1",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "eslint-plugin-unused-imports": "^2.0.0",
