@@ -1,14 +1,20 @@
 <!-- markdownlint-disable-next-line -->
 <p align="center">
-  <a href="https://fluid-design.io/docs/" rel="noopener" target="_blank"><img width="150" src="[/docs/public/static/logo.svg](https://user-images.githubusercontent.com/13263720/205263424-c7458db9-a1ea-4b7c-8c0b-cfdc811fb5f4.png)" alt="Fluid UI logo"></a>
+  <a href="https://fluid-design.io/docs/" rel="noopener" target="_blank"><img width="150" src="https://user-images.githubusercontent.com/13263720/205263424-c7458db9-a1ea-4b7c-8c0b-cfdc811fb5f4.png" alt="Fluid UI logo"></a>
 </p>
 
 <h1 align="center">Fluid UI</h1>
 
+<div align="center">
+
+[![NPM](https://img.shields.io/npm/v/fluid-design.svg)](https://www.npmjs.com/package/@fluid-design/fluid-ui)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/fluid-design-io/fluid-ui/blob/main/LICENSE)
+
+</div>
 
 Fluid UI is an elegant component library for React. It is built on top of mordern libraries like [tailwindcss](https://tailwindcss.com/), [headlessui](https://headlessui.dev/) and [framer-motion](https://www.framer.com/motion/).
 
-Documentation: [fluid-design.io/docs/](https://fluid-design.io/docs/)
+Demo: [fluid-design.io/docs/](https://fluid-design.io/docs/)
 
 - [Introduction](#introduction)
 - [Getting Started](#getting-started)
@@ -25,13 +31,6 @@ Documentation: [fluid-design.io/docs/](https://fluid-design.io/docs/)
 - Tailwind CSS: Every element is built with Tailwind CSS, which means you can override any style with your own CSS.
 - Themeable: By passing the `primary` color under `tailwind.config.js`, all components' accent colors will be updated accordingly.
 - Customizable: You can use most of the components as is, but it can be customized to fit your needs. See the [documentation](https://fluid-design.io/docs/) for more details.
-
-<div align="center">
-
-[![NPM](https://img.shields.io/npm/v/fluid-design.svg)](https://www.npmjs.com/package/@fluid-design/fluid-ui)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/fluid-design-io/fluid-ui/blob/main/LICENSE)
-
-</div>
 
 ##  Getting Started
 
