@@ -40,8 +40,8 @@ const activeColor = ({ color }) => {
 const disabledColor = ({ color, textFactor = 1 }) => {
   if (!tinycolor(color).isValid())
     return {
-      textColor: { filter: `brightness(${alpha * 0.8 * textFactor})` },
-      backgroundColor: { filter: `brightness(${alpha * 0.35})` },
+      textColor: { filter: `brightness(${0.8 * textFactor})` },
+      backgroundColor: { filter: `brightness(${0.35})` },
     }; // If the color is not valid, return filter
   const alpha = tinycolor(color).getAlpha() || 1;
   const textColor = tinycolor(color).setAlpha(alpha * 0.8 * textFactor).toRgbString();
