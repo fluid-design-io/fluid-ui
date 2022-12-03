@@ -7,7 +7,7 @@
 
 <div align="center">
 
-[![NPM](https://img.shields.io/npm/v/fluid-design.svg)](https://www.npmjs.com/package/@fluid-design/fluid-ui)
+[![NPM](https://img.shields.io/npm/v/@fluid-design/fluid-ui.svg)](https://www.npmjs.com/package/@fluid-design/fluid-ui)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/fluid-design-io/fluid-ui/blob/main/LICENSE)
 
 </div>
@@ -123,10 +123,12 @@ It is the perfect starting point for learning and building your own app.
 
 Fluid UI will continue to evolve and grow. Here are some of the features we are working on:
 
+- [ ] Tab (doc) 📄
+- [ ] Forms - Combobox (doc) 📄
+- [ ] Forms - Validation  (doc) 📄
+- [ ] Tooltip Plugin (doc) 📄
 - [ ] Popover 🚧
-- [ ] Tab (document) 📄
-- [ ] Forms - Combobox 🚧
-- [ ] Forms - Validation  (document) 📄
+- [ ] Dialog (Modal) 🚧
 
 ## Issues
 
