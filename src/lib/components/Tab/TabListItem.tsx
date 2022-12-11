@@ -32,6 +32,7 @@ export const TabListItem = ({
       as={innerAs || Button}
       className={({ selected }): string =>
         clsxm(
+          'flex-1',
           [theme.tabWrap.base, tabClassName],
           selected
             ? [theme.tabWrap.active[weight], tabActiveClassName]
@@ -53,6 +54,7 @@ export const TabListItem = ({
               initial={{
                 borderRadius: theme.activeButton.shape[shape],
               }}
+              aria-hidden='true'
             />
           )}
           <span className='z-[1]'>
