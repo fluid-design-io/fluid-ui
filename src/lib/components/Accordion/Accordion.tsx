@@ -3,10 +3,16 @@ import React, {
   FC,
   PropsWithChildren,
   ReactElement,
+  useId,
+  useState,
 } from 'react';
 
 import clsxm from '../../helpers/clsxm';
 import { useTheme } from '../FluidUI/ThemeContext';
+import {
+  AccordionContextProps,
+  AccordionContextProvider,
+} from './AccordionContext';
 import { AccordionPanelProps } from './AccordionPanel';
 
 export interface AccordionProps
@@ -21,17 +27,54 @@ export interface AccordionProps
     | ReactElement<AccordionPanelProps>[];
 }
 
-export const AccordionComponent: FC<AccordionProps> = ({
+export const AccordionComponent: FC<AccordionProps & AccordionContextProps> = ({
   children,
   divider,
+  multiple,
+  defaultIndex,
   ...props
 }): JSX.Element => {
   const theme = useTheme().theme.accordion;
+  const id = useId();
+  const [expandedIndex, setExpandedIndex] =
+    useState<number | number[] | undefined>(defaultIndex);
+  const onToggle = (isOpen, index, event) => {
+    if (!multiple) {
+      if (isOpen) {
+        setExpandedIndex(undefined);
+      } else {
+        setExpandedIndex(index);
+      }
+    }
+  };
   return (
-    <div
-      className={clsxm(theme.base, divider && theme.divider, props?.className)}
+    <AccordionContextProvider
+      value={{
+        multiple,
+        defaultIndex,
+        expandedIndex,
+        setExpandedIndex,
+        onToggle,
+      }}
     >
-      {children}
-    </div>
+      <div
+        className={clsxm(
+          theme.base,
+          divider && theme.divider,
+          props?.className
+        )}
+      >
+        {React.Children.map(children, (child, index) => {
+          // add a key to each child
+          if (React.isValidElement(child)) {
+            return React.cloneElement(child, {
+              key: `${id}-${index}`,
+              panelIndex: index,
+            } as any);
+          }
+          return child;
+        })}
+      </div>
+    </AccordionContextProvider>
   );
 };
