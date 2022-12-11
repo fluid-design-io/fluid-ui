@@ -2,12 +2,13 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
 import { IoIosSend } from 'react-icons/io';
 import { Button } from '../src/lib/components/Button';
+
 import {
+  ButtonProps,
   FluidButtonColors,
   FluidButtonSizes,
   FluidButtonWeights,
-} from '../src/lib/components/FluidUI/FluidTheme';
-import { ButtonProps } from '../src/type';
+} from '../src/type';
 
 export default {
   title: 'Components/Button',
@@ -45,7 +46,6 @@ const colors = [
 ];
 
 interface StoryButtonProps extends ButtonProps<'button'> {
-  icon?: boolean;
   isLoading?: boolean;
 }
 
@@ -63,7 +63,12 @@ const Template: Story<StoryButtonProps> = (args) => {
         </Button>
       ))}
       <Button className='btn-primary-100' label='Primary' {...(args as any)} />
-      <Button className='btn-[wheat]' label='Wheat' {...(args as any)} />
+      <Button
+        className='btn-[wheat]'
+        sr='Something'
+        label='Wheat'
+        {...(args as any)}
+      />
       <Button
         className='btn-light-[wheat]'
         label='Wheat Light'

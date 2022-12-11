@@ -2,30 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --tw-color-secondary-50: 253 244 255;
-  --tw-color-secondary-100: 250 232 255;
-  --tw-color-secondary-200: 245 208 254;
-  --tw-color-secondary-300: 240 171 252;
-  --tw-color-secondary-400: 232 121 249;
-  --tw-color-secondary-500: 217 70 239;
-  --tw-color-secondary-600: 192 38 211;
-  --tw-color-secondary-700: 162 28 175;
-  --tw-color-secondary-800: 134 25 143;
-  --tw-color-secondary-900: 112 26 117;
-
-  /* --tw-color-gray-50: 244 247 251;
-  --tw-color-gray-100: 216 219 223;
-  --tw-color-gray-200: 189 192 196;
-  --tw-color-gray-300: 162 165 169;
-  --tw-color-gray-400: 136 139 143;
-  --tw-color-gray-500: 111 114 118;
-  --tw-color-gray-600: 87 90 93;
-  --tw-color-gray-700: 64 67 70;
-  --tw-color-gray-800: 43 45 48;
-  --tw-color-gray-900: 23 25 28; */
-}
-
 @layer components {
   /* https://gist.github.com/coltenkrauter/34ca748828ffd351930aaf34aaef6c72 */
   input:-webkit-autofill,
@@ -40,9 +16,6 @@
   }
   .popover-panel {
     @apply rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-primary-800 dark:ring-white dark:ring-opacity-5;
-  }
-  .item-description {
-    @apply -mt-4 text-sm text-primary-500 dark:text-primary-400;
   }
   /* default input style */
   .default-input {

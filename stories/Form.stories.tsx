@@ -11,10 +11,7 @@ import {
   HiTrash,
 } from 'react-icons/hi';
 import { Button, Menu } from '../src/lib/components';
-import {
-  FluidButtonSizes,
-  FluidButtonWeights,
-} from '../src/lib/components/FluidUI/FluidTheme';
+
 import {
   ComboBox,
   Form,
@@ -26,7 +23,7 @@ import {
   Textarea,
 } from '../src/lib/components/Form';
 import { states } from '../src/lib/helpers/data';
-import { ButtonProps } from '../src/type';
+import { ButtonProps, FluidButtonSizes, FluidButtonWeights } from '../src/type';
 
 export default {
   title: 'Components/Form',
@@ -139,11 +136,9 @@ const Template: Story<StoryButtonProps> = (args) => {
       </div>
       <div>
         <Button
-          as='a'
           color='green'
           data-tooltip-top='some more information'
-          href='#'
-          onClick={() => submitBtnRef.current?.click()}
+          onClick={(e) => submitBtnRef.current?.click()}
           shape='pill'
           weight='outline'
         >
@@ -184,9 +179,9 @@ const Template: Story<StoryButtonProps> = (args) => {
             shape='pill'
             weight='clear'
             className='btn-yellow'
-          >
-            Delete <HiTrash />
-          </Button>
+            icon={HiTrash}
+            sr='Delete'
+          />
         </div>
       </div>
     </>
