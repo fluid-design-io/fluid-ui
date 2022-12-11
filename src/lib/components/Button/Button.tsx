@@ -129,11 +129,12 @@ export const Button: ButtonComponent = React.forwardRef(
           !buttonTransition && 'transition-none',
           className
         )}
+        aria-label={sr || label}
+        aria-busy={isLoading}
         {...theirProps}
       >
         <Fragment>
           {sr && <span className='sr-only'>{sr}</span>}
-          {!sr && label && <span className='sr-only'>{label}</span>}
           <AnimatePresence mode='sync'>
             {isLoading && (
               <ButtonLoadingComponent
