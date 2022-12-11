@@ -39,3 +39,11 @@ export interface PopoverProps {
     icon?: (props: SVGProps<SVGSVGElement>) => JSX.Element;
   }[];
 }
+
+export const baseOptionClassName = [
+  'flex w-full items-center justify-start !border-x-transparent select-none',
+  'ui-selected:btn-light-primary dark:ui-selected:btn-bold-primary',
+  'ui-not-selected:ui-active:btn-light-primary/70',
+  'dark:ui-not-selected:ui-active:btn-bold-primary/70',
+  'ui-disabled:opacity-50 contrast:ui-disabled:opacity-70',
+];

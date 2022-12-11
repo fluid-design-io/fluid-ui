@@ -417,17 +417,17 @@ export type MenuProps = {
   menuButtonClassName?: string;
   /**
    * menuPositionX: Horizontal position of the menu
-   * `center` (default) or `left` or `right`
+   * @defaultValue `start`
    */
   menuPositionX?: 'start' | 'center' | 'end';
   /**
    * menuPositionY: Vertical position of the menu
-   * `top` (default) or `bottom`
+   * @defaultValue `top`
    */
   menuPositionY?: 'top' | 'center' | 'bottom';
   [x: string]: any;
   /**
-   * Make the menu layout horizontal
+   * Whether the menu should be rendered horizontally.
    * @defaultValue `false`
    */
   horizontal?: boolean;
@@ -564,6 +564,23 @@ export type DropdownProps = {
   disabled?: boolean;
   className?: string;
   buttonClassName?: string;
+  /**
+   * Whether the dropdown has Empty Option
+   * The returned value will be an empty string
+   * @defaultValue `false`
+   */
+  hasEmptyOption?: boolean;
+  /**
+   * The text to display for the empty option
+   * @defaultValue `Select an option`
+   */
+  emptyOptionText?: string;
+  /**
+   * The value of the empty option
+   * @defaultValue `''`
+   */
+  emptyOptionValue?: string;
+  itemClassName?: string;
   listClassName?: string;
   listOptionSelectedClassName?: string;
   listOptionClassName?: string;
@@ -576,6 +593,32 @@ export type DropdownProps = {
    * @defaultValue `undefined`
    */
   itemKey?: string;
+  /**
+   * The key to determine disabled state of the item in the list.
+   * @defaultValue `undefined`
+   */
+  disabledKey?: string;
+  /**
+   * Whether the dropdown is a multi-select
+   * If true, it will be an unlimited multi-select
+   * If a number, it will be a limited multi-select
+   * @defaultValue `false`
+   */
+  multiple?: boolean | number;
+  rednerOptionItem?: ({
+    item,
+    Option,
+  }: {
+    item: any;
+    Option: any;
+  }) => React.ReactNode;
+  renderSelectedItem?: ({
+    item,
+    remove,
+  }: {
+    item: any;
+    remove: () => void;
+  }) => React.ReactNode;
 } & SRProp;
 
 /**
