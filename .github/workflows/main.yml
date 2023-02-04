@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Use Node ${{ matrix.node }}
         uses: actions/setup-node@v2
@@ -33,32 +33,30 @@ jobs:
       - name: Build
         run: yarn build
   publish:
+    name: Release
     runs-on: ubuntu-latest
     if: ${{ github.ref == 'refs/heads/main' }}
     needs: [quality]
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
-
-      - name: Use Node ${{ matrix.node }}
-        uses: actions/setup-node@v2
+      - name: Checkout
+        uses: actions/checkout@v3
         with:
-          node-version: ${{ matrix.node }}
+          fetch-depth: 0
 
-      - name: Install deps and build (with cache)
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 'lts/*'
+
+      - name: Install dependencies
         uses: bahmutov/npm-install@v1
 
       - name: Build
         run: yarn build
 
-      - name: Action For Semantic Release
-        # You may pin to the exact commit or the version.
-        # uses: cycjimmy/semantic-release-action@3b88c82b34098e8b51e401c1082c9170b0a3ec3c
-        uses: cycjimmy/semantic-release-action@v3.0.0
-        with:
-          branch: main
-
+      - name: Semantic Release
+        run: npx semantic-release
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
