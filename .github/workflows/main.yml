@@ -28,10 +28,10 @@ jobs:
         uses: bahmutov/npm-install@v1
 
       - name: Lint
-        run: pnpm lint
+        run: yarn lint
 
       - name: Build
-        run: pnpm build
+        run: yarn build
   publish:
     runs-on: ubuntu-latest
     if: ${{ github.ref == 'refs/heads/main' }}
