@@ -11,6 +11,7 @@
     "build:css": "NOD_ENV=production npx tailwindcss -i ./src/fluid-ui.css -o ./dist/fluid-ui.css --minify",
     "storybook": "start-storybook -p 6006",
     "lint": "tsc",
+    "commit": "git-cz",
     "semantic-release": "semantic-release --branches main"
   },
   "peerDependencies": {
@@ -49,6 +50,7 @@
     "@types/react-dom": "^18.0.10",
     "@types/tinycolor2": "^1.4.3",
     "autoprefixer": "^10.4.13",
+    "cz-conventional-changelog": "^3.3.0",
     "postcss": "^8.4.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
