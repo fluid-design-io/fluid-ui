@@ -49,11 +49,8 @@ jobs:
       - name: Install deps and build (with cache)
         uses: bahmutov/npm-install@v1
 
-      - name: Copy build folder
-        uses: actions/upload-artifact@v3
-        with:
-          name: copy dist folder
-          path: dist/
+      - name: Build
+        run: yarn build
 
       - name: Action For Semantic Release
         # You may pin to the exact commit or the version.
