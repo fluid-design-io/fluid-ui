@@ -10,7 +10,8 @@
     "build": "tsup --format cjs,esm --dts",
     "build:css": "NOD_ENV=production npx tailwindcss -i ./src/fluid-ui.css -o ./dist/fluid-ui.css --minify",
     "storybook": "start-storybook -p 6006",
-    "lint": "tsc"
+    "lint": "tsc",
+    "semantic-release": "semantic-release --branches main"
   },
   "peerDependencies": {
     "framer-motion": ">=7",
@@ -52,6 +53,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.6.2",
+    "semantic-release": "^20.1.0",
     "storybook": "^6.5.15",
     "storybook-dark-mode": "^2.0.5",
     "tailwindcss": "^3.2.4",
@@ -61,5 +63,19 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/fluid-design-io/fluid-ui.git"
+  },
+  "keywords": [
+    "react",
+    "design-system",
+    "tailwind",
+    "tailwindcss",
+    "fluid-design",
+    "fluid-design-react",
+    "fluid-design-react-components"
+  ],
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
