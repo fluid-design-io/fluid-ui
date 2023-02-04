@@ -1,17 +1,65 @@
 {
-  "name": "my-package",
+  "version": "2.3.0",
+  "name": "@fluid-design/fluid-ui",
   "license": "MIT",
-  "version": "0.0.1",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "author": "Jiuzhen Pan",
   "scripts": {
-    "build": "tsup index.ts --format cjs,esm --dts",
+    "build": "tsup --format cjs,esm --dts",
+    "build:css": "NOD_ENV=production npx tailwindcss -i ./src/fluid-ui.css -o ./dist/fluid-ui.css --minify",
+    "storybook": "start-storybook -p 6006",
     "lint": "tsc"
+  },
+  "peerDependencies": {
+    "framer-motion": ">=7",
+    "react": ">=17",
+    "react-dom": ">=17",
+    "react-icons": "^4.3.1",
+    "tailwindcss": "^3"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.7.7",
+    "@heroicons/react": "^2.0.13",
+    "classnames": "^2.3.2",
+    "clsx": "^1.2.1",
+    "formik": "^2.2.9",
+    "framer-motion": "^8.4.3",
+    "react-icons": "^4.7.1",
+    "react-textarea-autosize": "^8.4.0",
+    "tailwind-merge": "^1.8.1",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.0",
+    "@headlessui/tailwindcss": "^0.1.2",
+    "@storybook/addon-essentials": "^6.5.15",
+    "@storybook/addon-info": "^5.3.21",
+    "@storybook/addon-links": "^6.5.15",
+    "@storybook/addon-postcss": "^2.0.0",
+    "@storybook/addons": "^6.5.15",
+    "@storybook/builder-webpack5": "^6.5.15",
+    "@storybook/manager-webpack5": "^6.5.15",
+    "@storybook/react": "^6.5.15",
+    "@tailwindcss/line-clamp": "^0.4.2",
+    "@tailwindcss/typography": "^0.5.9",
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.10",
+    "@types/tinycolor2": "^1.4.3",
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.21",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.6.2",
+    "storybook": "^6.5.15",
+    "storybook-dark-mode": "^2.0.5",
+    "tailwindcss": "^3.2.4",
     "tsup": "^6.5.0",
     "typescript": "^4.9.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fluid-design-io/fluid-ui.git"
   }
 }

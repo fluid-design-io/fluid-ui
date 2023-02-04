@@ -1,0 +1,15 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "workbench.colorCustomizations": {
+    "titleBar.activeForeground": "#0e1f1d",
+    "titleBar.inactiveForeground": "#59b3a8cc",
+    "titleBar.activeBackground": "#49dccb",
+    "titleBar.inactiveBackground": "#385c58cc"
+  },
+  "[javascript]": {
+    "editor.formatOnSave": true
+  },
+  "[javascriptreact]": {
+    "editor.formatOnSave": true
+  }
+}

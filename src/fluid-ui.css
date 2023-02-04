@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* https://gist.github.com/coltenkrauter/34ca748828ffd351930aaf34aaef6c72 */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    @apply dark:text-slate-200;
+    transition: background-color 5000000s ease-in-out 0s;
+  }
+  .checkbox {
+    @apply h-4 w-4 rounded border-primary-300 text-primary-600 focus:ring-primary-500 dark:border-primary-700 dark:bg-primary-900 dark:text-primary-400 dark:focus:ring-primary-400 dark:focus:ring-offset-black/70;
+  }
+  .popover-panel {
+    @apply rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-primary-800 dark:ring-white dark:ring-opacity-5;
+  }
+  /* default input style */
+  .default-input {
+    @apply block w-full rounded-lg border-none bg-primary-100 outline-none transition [-webkit-tap-highlight-color:transparent] dark:bg-primary-900 dark:text-primary-200 contrast:placeholder:text-primary-700  dark:contrast:bg-black dark:contrast:text-primary-50 dark:contrast:placeholder:text-primary-50/75;
+  }
+  /* default focus style */
+  .default-focus {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:ring-primary-400 dark:focus:ring-offset-primary-800;
+  }
+  .default-focus-visible {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 dark:ring-primary-400 dark:focus-visible:ring-offset-primary-800;
+  }
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-primary-600;
+  }
+  .contrast-ring {
+    @apply outline-none ring-1 ring-primary-800 ring-offset-1 dark:ring-offset-primary-200;
+  }
+  .contrast-bg {
+    @apply contrast:contrast-ring outline-none contrast:bg-amber-300 dark:contrast:!bg-amber-400 dark:contrast:text-black;
+  }
+  .contrast-text {
+    @apply contrast:!text-primary-900 dark:contrast:!text-primary-900;
+  }
+  .card-primary-bg {
+    @apply bg-white ring-1 ring-black/5 transition dark:bg-gray-900 dark:ring-white/10;
+  }
+  .card-primary {
+    @apply card-primary-bg overflow-hidden rounded-md p-4;
+  }
+}
