@@ -119,16 +119,47 @@ The [Example Page](http://fluid-design.io/docs/examples) provides many possiple 
 
 It is the perfect starting point for learning and building your own app.
 
+Or check out some examples from below:
+
+**Select**
+
+https://user-images.githubusercontent.com/13263720/216791301-9bae704d-9a5c-4d2c-bb58-a0a25fd7aec4.mp4
+
+**Switch**
+
+https://user-images.githubusercontent.com/13263720/216791361-a5cd7b01-e798-4d62-982d-ad90ad9bfae8.mp4
+
+**Accordion**
+
+https://user-images.githubusercontent.com/13263720/216791322-e6c50046-fdf3-4b98-b129-4b24021a260a.mp4
+
+**Button**
+
+https://user-images.githubusercontent.com/13263720/216791337-814b7264-2ee8-4473-accf-2f1f4fa46d84.mp4
+
+
+
 ##  Future Goals
 
 Fluid UI will continue to evolve and grow. Here are some of the features we are working on:
 
-- [ ] Tab (doc) 📄
-- [ ] Forms - Combobox (doc) 📄
-- [ ] Forms - Validation  (doc) 📄
-- [ ] Tooltip Plugin (doc) 📄
+- [x] Accordion ✅
+- [x] Tab ✅
+- [x] Button ✅
+- [x] Menu ✅
+- [x] Forms - Combobox ✅
+- [x] Forms - Select ✅
+- [x] Forms - Switch ✅
+- [x] Forms - Input ✅
+- [x] Forms - Textarea ✅
+- [x] Forms - Validation ✅
+- [ ] Plugin - Button (doc) ✅
+- [ ] Plugin - Tooltip (doc) 📄
 - [ ] Popover 🚧
-- [ ] Dialog (Modal) 🚧
+- [ ] Dialog (Modal) (doc) 📄
+- [ ] Toast (doc) 📄
+- [x] UI - Card  ✅
+- [x] UI - List  ✅
 
 ## Issues
 
