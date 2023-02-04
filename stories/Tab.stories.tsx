@@ -1,27 +1,27 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
-import React from 'react';
+import { Meta, Story } from "@storybook/react/types-6-0";
+import React from "react";
 
-import { Tab } from '../src/lib/components';
-import clsxm from '../src/lib/helpers/clsxm';
-import { MenuProps } from '../src/type';
+import { Tab } from "../src/lib/components";
+import clsxm from "../src/lib/helpers/clsxm";
+import { MenuProps } from "../src/type";
 
 export default {
-  title: 'Components/Tab',
+  title: "Components/Tab",
   component: Tab,
   args: {
-    label: 'Profile',
+    label: "Profile",
     horizontal: false,
-    header: 'User',
+    header: "User",
   },
 } as Meta;
 
 type StoryButtonProps = MenuProps;
 
-const Wrap = ({ className = '', children }) => {
+const Wrap = ({ className = "", children }) => {
   return (
     <div
       className={clsxm(
-        'flex h-full flex-wrap items-center justify-center gap-6 px-4 lg:px-6',
+        "flex h-full flex-wrap items-center justify-center gap-6 px-4 lg:px-6",
         className
       )}
     >
@@ -32,16 +32,16 @@ const Wrap = ({ className = '', children }) => {
 
 const testTabs = [
   {
-    title: 'For You Content',
+    title: "For You Content",
     content: <p>Here's the for you</p>,
   },
   {
-    title: 'Recent',
+    title: "Recent",
     content: <p>Here's the content</p>,
   },
   {
     title: {
-      text: 'Popular',
+      text: "Popular",
       iconStart: (
         <svg
           aria-hidden='true'
@@ -59,7 +59,7 @@ const testTabs = [
 const Template: Story<StoryButtonProps> = (args) => {
   return (
     <Wrap>
-      <Tab tabs={testTabs} {...args} />
+      <Tab tabs={testTabs} {...(args as any)} />
     </Wrap>
   );
 };
@@ -98,4 +98,4 @@ const Template2: Story<StoryButtonProps> = (args) => {
 };
 export const Default = Template.bind({});
 export const AsComponent = Template2.bind({});
-AsComponent.storyName = 'As Component';
+AsComponent.storyName = "As Component";

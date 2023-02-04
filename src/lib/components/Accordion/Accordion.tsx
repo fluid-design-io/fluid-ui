@@ -5,18 +5,18 @@ import React, {
   ReactElement,
   useId,
   useState,
-} from 'react';
+} from "react";
 
-import clsxm from '../../helpers/clsxm';
-import { useTheme } from '../FluidUI/ThemeContext';
+import clsxm from "../../helpers/clsxm";
+import { useTheme } from "../FluidUI/ThemeContext";
 import {
   AccordionContextProps,
   AccordionContextProvider,
-} from './AccordionContext';
-import { AccordionPanelProps } from './AccordionPanel';
+} from "./AccordionContext";
+import { AccordionPanelProps } from "./AccordionPanel";
 
 export interface AccordionProps
-  extends PropsWithChildren<ComponentProps<'div'>> {
+  extends PropsWithChildren<ComponentProps<"div">> {
   /**
    * Divider between panels.
    * @defaultValue `false`
@@ -36,9 +36,10 @@ export const AccordionComponent: FC<AccordionProps & AccordionContextProps> = ({
 }): JSX.Element => {
   const theme = useTheme().theme.accordion;
   const id = useId();
-  const [expandedIndex, setExpandedIndex] =
-    useState<number | number[] | undefined>(defaultIndex);
-  const onToggle = (isOpen, index, event) => {
+  const [expandedIndex, setExpandedIndex] = useState<
+    number | number[] | undefined
+  >(defaultIndex);
+  const onToggle = (isOpen: boolean, index: number, event: any) => {
     if (!multiple) {
       if (isOpen) {
         setExpandedIndex(undefined);

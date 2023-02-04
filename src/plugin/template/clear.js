@@ -13,11 +13,11 @@ const { generateBtnTextBg } = require('../util/generateTextBg');
 const { default: toColorValue } = require('../util/toColorValue');
 
 const generateClearBtnState = (color, theme) => {
-  const mutate = tinycolor(color).isDark() ? 'lighten' : 'darken';
-  const alpha = tinycolor(color).getAlpha() || 1;
-  const contrastMoreOffsetColor = tinycolor(color).greyscale(0.5).toRgbString();
-  const houcusBackground = tinycolor(color)[mutate]().setAlpha(alpha * 0.12).toRgbString()
-  const activeBackground = tinycolor(color)[mutate]().setAlpha(alpha * 0.2).toRgbString()
+  const mutate = new tinycolor(color).isDark() ? 'lighten' : 'darken';
+  const alpha = new tinycolor(color).getAlpha() || 1;
+  const contrastMoreOffsetColor = new tinycolor(color).greyscale(0.5).toRgbString();
+  const houcusBackground = new tinycolor(color)[mutate]().setAlpha(alpha * 0.12).toRgbString()
+  const activeBackground = new tinycolor(color)[mutate]().setAlpha(alpha * 0.2).toRgbString()
   return {
     [BUTTON_STATE.HOVER]: {
       'background-color': houcusBackground,

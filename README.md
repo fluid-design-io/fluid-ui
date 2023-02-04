@@ -58,7 +58,7 @@ module.exports = {
   darkMode: 'class',
   content: [
     './src/**/*.{js,ts,jsx,tsx}',
-    './node_modules/@fluid-design/fluid-ui/src/**/*.{js,ts,jsx,tsx}',
+    './node_modules/@fluid-design/fluid-ui/dist/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
@@ -92,8 +92,8 @@ module.exports = {
     },
   },
   plugins: [
-    require('@fluid-design/fluid-ui/src/plugin/core'), // main plugin
-    require('@fluid-design/fluid-ui/src/plugin/button'), // for button component
+    require('@fluid-design/fluid-ui/dist/plugin/core'), // main plugin
+    require('@fluid-design/fluid-ui/dist/plugin/button'), // for button component
   ],
 };
 ```

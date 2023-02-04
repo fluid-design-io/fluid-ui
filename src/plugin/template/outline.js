@@ -10,11 +10,11 @@ const { BUTTON_STATE, BUTTON_DEFAULT } = require('../lib/constants');
 const { default: toColorValue } = require('../util/toColorValue');
 
 const generateOutlineBtnState = (color, theme) => {
-  const mutate = tinycolor(color).isDark() ? 'lighten' : 'darken';
-  const alpha = tinycolor(color).getAlpha() || 1;
-  const houcusBackground = tinycolor(color)[mutate]().setAlpha(alpha * 0.12).toRgbString();
-  const activeBackground = tinycolor(color)[mutate]().setAlpha(alpha * 0.2).toRgbString();
-  const activeBorderColor = tinycolor(color).setAlpha(alpha * 0.7).toRgbString();
+  const mutate = new tinycolor(color).isDark() ? 'lighten' : 'darken';
+  const alpha = new tinycolor(color).getAlpha() || 1;
+  const houcusBackground = new tinycolor(color)[mutate]().setAlpha(alpha * 0.12).toRgbString();
+  const activeBackground = new tinycolor(color)[mutate]().setAlpha(alpha * 0.2).toRgbString();
+  const activeBorderColor = new tinycolor(color).setAlpha(alpha * 0.7).toRgbString();
   return {
     [BUTTON_STATE.HOVER]: {
       'background-color': houcusBackground,
@@ -83,7 +83,7 @@ const generateOutlineBtn = (value, theme) => {
       };
     const { mode, color: c, alpha } = colorValue;
     const color = _color.formatColor({ mode, color: c, alpha });
-    const borderColor = tinycolor(color)
+    const borderColor = new tinycolor(color)
       .setAlpha(alpha * 0.7 || 0.7)
       .toRgbString();
 

@@ -1,9 +1,15 @@
 /* eslint-disable @typescript-eslint/ban-ts-ignore */
-import { AnimatePresence, motion } from 'framer-motion';
-import React, { Fragment, useEffect, useId, useState } from 'react';
-import { AiOutlineLoading3Quarters } from 'react-icons/ai';
-import { GrEmptyCircle } from 'react-icons/gr';
-import { HiCheckCircle, HiOutlineDotsHorizontal } from 'react-icons/hi';
+import { AnimatePresence, motion } from "framer-motion";
+import React, {
+  Fragment,
+  isValidElement,
+  useEffect,
+  useId,
+  useState,
+} from "react";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { GrEmptyCircle } from "react-icons/gr";
+import { HiCheckCircle, HiOutlineDotsHorizontal } from "react-icons/hi";
 
 import {
   ButtonComponent,
@@ -15,24 +21,24 @@ import {
   FluidButtonSizes,
   FluidButtonWeights,
   PolymorphicRef,
-} from '../../../type';
-import clsxm from '../../helpers/clsxm';
-import { excludeClassName } from '../../helpers/exclude';
-import { getUserClassNames } from '../../helpers/getUserClassNames';
-import { isChildValid } from '../../helpers/isChildValid';
-import { useTheme } from '../FluidUI/ThemeContext';
-import { SpinLarge } from '../Spinner';
+} from "../../../type";
+import clsxm from "../../helpers/clsxm";
+import { excludeClassName } from "../../helpers/exclude";
+import { getUserClassNames } from "../../helpers/getUserClassNames";
+import { isChildValid } from "../../helpers/isChildValid";
+import { useTheme } from "../FluidUI/ThemeContext";
+import { SpinLarge } from "../Spinner";
 
 export const Button: ButtonComponent = React.forwardRef(
-  <C extends React.ElementType = 'button'>(
+  <C extends React.ElementType = "button">(
     {
       as,
       innerAs = as,
-      color = 'gray' as keyof FluidButtonColors,
-      size = 'md' as keyof FluidButtonSizes,
+      color = "gray" as keyof FluidButtonColors,
+      size = "md" as keyof FluidButtonSizes,
       sr = undefined,
-      shape = 'round' as keyof FluidButtonShapes,
-      weight = 'normal' as keyof FluidButtonWeights,
+      shape = "round" as keyof FluidButtonShapes,
+      weight = "normal" as keyof FluidButtonWeights,
       iconOnly = false,
       isLoading = false,
       isLoaded = false,
@@ -47,8 +53,8 @@ export const Button: ButtonComponent = React.forwardRef(
       labelClassName,
       badgeClassName,
       iconClassName,
-      iconStartPosition = 'flex',
-      iconEndPosition = 'flex',
+      iconStartPosition = "flex",
+      iconEndPosition = "flex",
       buttonTransition = true,
       children,
       ...props
@@ -58,19 +64,19 @@ export const Button: ButtonComponent = React.forwardRef(
     const [isLoadedTriggered, setIsLoadedTriggered] = useState(false);
     const theme = useTheme().theme.button;
     const id = useId();
-    const theirProps = excludeClassName(props);
+    const theirProps = excludeClassName(props) as any;
     // isCustomColor is to check if the className contains a string starts with 'btn-'
-    const isCustomColor = className && className.includes('btn-');
+    const isCustomColor = className && className.includes("btn-");
     // customColorType is to check if the className contains a string starts with 'btn-' and before the next '-'
     const customColorType = () => {
       if (isCustomColor) {
         // default color means there's only 1 "-"
         const isDefaultColor =
-          className && className.split('btn-')[1].split('-').length === 1;
+          className && className.split("btn-")[1].split("-").length === 1;
         if (isDefaultColor) {
-          return 'default';
+          return "default";
         }
-        return className && className.split('btn-')[1].split('-')[0];
+        return className && className.split("btn-")[1].split("-")[0];
       } else {
         return null;
       }
@@ -79,16 +85,16 @@ export const Button: ButtonComponent = React.forwardRef(
     const themeSize = iconOnly
       ? theme.iconOnly[shape][size]
       : theme.shape[shape][size];
-    const Component = innerAs || 'button';
+    const Component = innerAs || "button";
     const isLoadedDuration =
-      typeof isLoaded === 'object' ? loadedOptions.duration || 1500 : 1500;
+      typeof isLoaded === "object" ? loadedOptions?.duration || 1500 : 1500;
     const isButtonTextHidden = isLoading || (isLoaded && isLoadedTriggered);
     const componentTypeProp = as
       ? props?.type
         ? props.type
         : undefined
-      : 'button';
-    if (componentTypeProp) theirProps['type'] = componentTypeProp;
+      : "button";
+    if (componentTypeProp) theirProps["type"] = componentTypeProp;
     useEffect(() => {
       if (!!isLoaded && !isLoadedTriggered) {
         setIsLoadedTriggered(true);
@@ -102,17 +108,17 @@ export const Button: ButtonComponent = React.forwardRef(
       e: React.MouseEvent<HTMLElement> | React.TouchEvent<HTMLElement>
     ) => {
       if (
-        weight === 'light' ||
-        weight === 'clear' ||
-        customColorType() === 'clear' ||
-        customColorType() === 'light'
+        weight === "light" ||
+        weight === "clear" ||
+        customColorType() === "clear" ||
+        customColorType() === "light"
       ) {
         // add a className "pressed" to the button, remove it after 200ms
         const button = e.currentTarget;
-        button.classList.add('pressed');
+        button.classList.add("pressed");
         // eslint-disable-next-line no-undef
         setTimeout(() => {
-          button.classList.remove('pressed');
+          button.classList.remove("pressed");
         }, 150);
       }
     };
@@ -126,7 +132,7 @@ export const Button: ButtonComponent = React.forwardRef(
           theme.base,
           themeSize,
           !isCustomColor && theme.color[color].weight[weight],
-          !buttonTransition && 'transition-none',
+          !buttonTransition && "transition-none",
           className
         )}
         aria-label={sr || label}
@@ -171,7 +177,7 @@ export const Button: ButtonComponent = React.forwardRef(
               scale: isButtonTextHidden ? 0.85 : 1,
             }}
             className={clsxm(
-              'w-full flex gap-2 items-center justify-center',
+              "w-full flex gap-2 items-center justify-center",
               inherClassNames
             )}
           >
@@ -182,24 +188,24 @@ export const Button: ButtonComponent = React.forwardRef(
                 ) : (
                   /* @ts-ignore */
                   <IconStart
-                    className={clsxm('flex-shrink-0 w-4 h-4', iconClassName)}
+                    className={clsxm("flex-shrink-0 w-4 h-4", iconClassName)}
                   />
                 ))}
-              {iconStartPosition === 'between' && (
+              {iconStartPosition === "between" && (
                 <span className='flex-grow' />
               )}
               {label && !iconOnly && (
                 <span className={clsxm(labelClassName)}>{label}</span>
               )}
               {children && children}
-              {iconEndPosition === 'between' && <span className='flex-grow' />}
+              {iconEndPosition === "between" && <span className='flex-grow' />}
               {IconEnd &&
                 (isChildValid(IconEnd) ? (
                   IconEnd
                 ) : (
                   /* @ts-ignore */
                   <IconEnd
-                    className={clsxm('flex-shrink-0 w-4 h-4', iconClassName)}
+                    className={clsxm("flex-shrink-0 w-4 h-4", iconClassName)}
                   />
                 ))}
               {Icon &&
@@ -208,13 +214,13 @@ export const Button: ButtonComponent = React.forwardRef(
                 ) : (
                   /* @ts-ignore */
                   <Icon
-                    className={clsxm('flex-shrink-0 w-4 h-4', iconClassName)}
+                    className={clsxm("flex-shrink-0 w-4 h-4", iconClassName)}
                   />
                 ))}
               {badge && (
                 <span
                   className={clsxm(
-                    'rounded bg-gray-200 py-0.5 px-1.5 text-xs font-semibold tabular-nums text-gray-700',
+                    "rounded bg-gray-200 py-0.5 px-1.5 text-xs font-semibold tabular-nums text-gray-700",
                     badgeClassName
                   )}
                 >
@@ -229,7 +235,13 @@ export const Button: ButtonComponent = React.forwardRef(
   }
 );
 
-const ButtonOverlayWrap = ({ children, className }) => (
+const ButtonOverlayWrap = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode | React.ReactNode[];
+  className?: string;
+}) => (
   <motion.div
     animate={{ opacity: 1, scale: 1 }}
     className={clsxm(className)}
@@ -243,17 +255,17 @@ const ButtonOverlayWrap = ({ children, className }) => (
 
 const ButtonLoadingComponent = ({
   loadingOptions = {
-    animation: 'spin',
-    text: '',
+    animation: "spin",
+    text: "",
   },
   inherClassNames = [],
   themeSize,
 }: {
-  loadingOptions: {
+  loadingOptions?: {
     animation?: ButtonLoadingOptionsAnimation;
     text?: string;
   };
-  inherClassNames: string[];
+  inherClassNames: any;
   themeSize: string;
 }) => {
   const theme = useTheme().theme.button;
@@ -261,9 +273,9 @@ const ButtonLoadingComponent = ({
     spin: AiOutlineLoading3Quarters,
     pulse: HiOutlineDotsHorizontal,
     ping: GrEmptyCircle,
-    'spin-large': SpinLarge,
+    "spin-large": SpinLarge,
   };
-  const Icon = iconOption[loadingOptions.animation];
+  const Icon = iconOption[loadingOptions.animation || "spin"];
 
   return (
     <ButtonOverlayWrap
@@ -271,8 +283,8 @@ const ButtonLoadingComponent = ({
     >
       <Icon
         className={clsxm(
-          'flex-shrink-0',
-          theme.loading.animation[loadingOptions.animation]
+          "flex-shrink-0",
+          theme.loading.animation[loadingOptions.animation || "spin"]
         )}
       />
       {loadingOptions?.text && loadingOptions.text.length > 0 && (
@@ -289,15 +301,15 @@ const ButtonLoadedComponent = ({
   themeSize,
 }: {
   isLoaded: boolean;
-  loadedOptions: ButtonIsLoadedOptions;
-  inherClassNames: string[];
+  loadedOptions?: ButtonIsLoadedOptions;
+  inherClassNames: any;
   themeSize: string;
 }) => {
   const theme = useTheme().theme.button;
-  const text: ButtonIsLoadedOptions['text'] = loadedOptions?.text;
-  const className: ButtonIsLoadedOptions['className'] =
+  const text: ButtonIsLoadedOptions["text"] = loadedOptions?.text;
+  const className: ButtonIsLoadedOptions["className"] =
     loadedOptions?.className;
-  let Icon: ButtonIsLoadedOptions['icon'] = HiCheckCircle;
+  let Icon: ButtonIsLoadedOptions["icon"] = HiCheckCircle;
   if (loadedOptions?.icon) {
     Icon = loadedOptions.icon;
   }
@@ -311,12 +323,12 @@ const ButtonLoadedComponent = ({
         className
       )}
     >
-      {isChildValid(Icon) ? (
+      {isValidElement(Icon) ? (
         Icon
       ) : (
         // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
         // @ts-ignore
-        <Icon className={clsxm('flex-shrink-0')} />
+        <Icon className={clsxm("flex-shrink-0")} />
       )}
       {text && <div className={theme.loading.text}>{text}</div>}
     </ButtonOverlayWrap>

@@ -15,9 +15,9 @@ const makeContrast = ({
     ? tinycolor.readability(currentColor, compareTo)
     : tinycolor.readability(inputColor, currentColor);
   if (readability < 4.5 + threshold) {
-    const transformColor = tinycolor(currentColor)
+    const transformColor = new tinycolor(currentColor)
       .desaturate(loop * 10)
-      [contrast](amount)
+    [contrast](amount)
       .toRgbString();
     // compareTo && console.log(`original: ${inputColor}, current: ${transformColor}, readability: ${readability}, compareTo: ${compareTo}, loop: ${loop}`); // For debugging purpose only
     if (loop > 7) {
@@ -57,14 +57,14 @@ const makeContrast = ({
  * more info: https://www.w3.org/TR/WCAG20-TECHS/G18.html#G18-tests
  */
 const contrastColor = ({ color, mono = false }) => {
-  if (!tinycolor(color).isValid()) return color;
-  const isLight = tinycolor(color).isLight();
+  if (!new tinycolor(color).isValid()) return color;
+  const isLight = new tinycolor(color).isLight();
   if (mono) return isLight ? '#000' : '#fff';
   const contrastColor = makeContrast({
     inputColor: color,
     currentColor: color,
     contrast: isLight ? 'darken' : 'lighten',
-    amount: tinycolor(color).getBrightness() < 255 * 0.3 ? 75 : 15,
+    amount: new tinycolor(color).getBrightness() < 255 * 0.3 ? 75 : 15,
   });
   // console.log(`original color: ${color}, contrast color: ${contrastColor}`); // For debugging purpose only
   return contrastColor; // Return the contrast color

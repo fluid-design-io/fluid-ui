@@ -1,4 +1,10 @@
-export const getInputColor = ({ error, className = undefined }) =>
+export const getInputColor = ({
+  error,
+  className = "",
+}: {
+  error?: boolean;
+  className?: string;
+}) =>
   `pt-5 pb-1.5 px-4 ${
     error
       ? `contrast:focus-within:bg-red-500 dark:contrast:focus-within:bg-red-600 contrast:focus-within:placeholder:text-gray-50`

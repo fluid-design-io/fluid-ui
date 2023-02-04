@@ -1,22 +1,22 @@
-import { Disclosure } from '@headlessui/react';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import React, { ComponentProps, FC, PropsWithChildren, useRef } from 'react';
-import { HiChevronDown } from 'react-icons/hi';
-import clsxm from '../../helpers/clsxm';
+import { Disclosure } from "@headlessui/react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import React, { ComponentProps, FC, PropsWithChildren, useRef } from "react";
+import { HiChevronDown } from "react-icons/hi";
+import clsxm from "../../helpers/clsxm";
 
-import { excludeClassName } from '../../helpers/exclude';
-import { useTheme } from '../FluidUI/ThemeContext';
-import { useAccordionContext } from './AccordionContext';
+import { excludeClassName } from "../../helpers/exclude";
+import { useTheme } from "../FluidUI/ThemeContext";
+import { useAccordionContext } from "./AccordionContext";
 
 export interface AccordionPanelProps
-  extends PropsWithChildren<ComponentProps<'div'>> {
+  extends PropsWithChildren<ComponentProps<"div">> {
   /**
    * The panel header.
    * @defaultValue `undefined`
    */
   header?: string | React.ReactNode;
-  iconStart?: FC<ComponentProps<'svg'>>;
-  iconEnd?: FC<ComponentProps<'svg'>>;
+  iconStart?: FC<ComponentProps<"svg">>;
+  iconEnd?: FC<ComponentProps<"svg">>;
   /**
    * The inherited index of the panel to be expanded.
    * @defaultValue `undefined`
@@ -49,15 +49,15 @@ export const AccordionPanel: FC<AccordionPanelProps> = ({
       exit='collapsed'
       initial='collapsed'
       transition={{
-        type: 'spring',
+        type: "spring",
         bounce: 0,
         duration: shouldReduceMotion ? 0.2 : 0.5,
       }}
       variants={{
-        open: { opacity: 1, height: 'auto' },
+        open: { opacity: 1, height: "auto" },
         collapsed: {
           opacity: 0,
-          height: shouldReduceMotion ? 'auto' : 0,
+          height: shouldReduceMotion ? "auto" : 0,
         },
       }}
     >
@@ -65,15 +65,15 @@ export const AccordionPanel: FC<AccordionPanelProps> = ({
     </motion.div>
   );
   const isExpanded =
-    typeof defaultIndex === 'number'
+    typeof defaultIndex === "number"
       ? defaultIndex === panelIndex
       : Array.isArray(defaultIndex)
-      ? defaultIndex.includes(panelIndex)
+      ? defaultIndex.includes(panelIndex ?? -1)
       : undefined;
   return (
     <Disclosure
       as='div'
-      className={clsxm('space-y-1', props?.className)}
+      className={clsxm("space-y-1", props?.className)}
       defaultOpen={isExpanded}
       {...theirProps}
     >
@@ -88,19 +88,19 @@ export const AccordionPanel: FC<AccordionPanelProps> = ({
               as='button'
               className={clsxm(theme.base, open && theme.open.on)}
               ref={buttonRef}
-              onClick={(e) => {
-                onToggle(open, panelIndex, e);
+              onClick={(e: any) => {
+                onToggle && onToggle(open, panelIndex as number, e);
               }}
-              onTouchEnd={(e) => {
-                onToggle(open, panelIndex, e);
+              onTouchEnd={(e: any) => {
+                onToggle && onToggle(open, panelIndex as number, e);
               }}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  onToggle(open, panelIndex, e);
+              onKeyDown={(e: { key: string }) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  onToggle && onToggle(open, panelIndex as number, e);
                 }
               }}
             >
-              {typeof header === 'string' ? (
+              {typeof header === "string" ? (
                 <p className='flex items-center gap-2'>
                   {HeaderIcon && (
                     <HeaderIcon

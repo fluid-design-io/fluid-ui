@@ -1,5 +1,5 @@
-import React, { Dispatch, SetStateAction, SVGProps } from 'react';
-import { DeepPartial } from './lib/helpers/deep-partial';
+import React, { Dispatch, SetStateAction, SVGProps } from "react";
+import { DeepPartial } from "./lib/helpers/deep-partial";
 
 /* ===== Start Fluid Theme ===== */
 export type CustomFluidTheme = DeepPartial<FluidTheme>;
@@ -38,11 +38,14 @@ export interface FluidTheme {
   tab: {
     base: string;
     shape: FluidButtonShapes;
-    weight: Pick<FluidButtonWeights, TabProps['weight']>;
+    //@ts-ignore
+    weight: Pick<FluidButtonWeights, TabProps["weight"]>;
     tabWrap: {
       base: string;
-      active: Pick<FluidButtonWeights, TabProps['weight']>;
-      inactive: Pick<FluidButtonWeights, TabProps['weight']>;
+      //@ts-ignore
+      active: Pick<FluidButtonWeights, TabProps["weight"]>;
+      //@ts-ignore
+      inactive: Pick<FluidButtonWeights, TabProps["weight"]>;
     };
     activeButton: {
       base: string;
@@ -51,7 +54,8 @@ export interface FluidTheme {
         round: string;
         square: string;
       };
-      weight: Pick<FluidButtonWeights, TabProps['weight']>;
+      //@ts-ignore
+      weight: Pick<FluidButtonWeights, TabProps["weight"]>;
     };
     panel: string;
   };
@@ -149,18 +153,18 @@ export interface FluidColors {
   purple: string;
 }
 
-export type FluidHeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+export type FluidHeadingLevel = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
 export interface FluidPositions {
-  'bottom-left': string;
-  'bottom-right': string;
-  'bottom-center': string;
-  'top-left': string;
-  'top-center': string;
-  'top-right': string;
-  'center-left': string;
+  "bottom-left": string;
+  "bottom-right": string;
+  "bottom-center": string;
+  "top-left": string;
+  "top-center": string;
+  "top-right": string;
+  "center-left": string;
   center: string;
-  'center-right': string;
+  "center-right": string;
 }
 
 export interface FluidSizes {
@@ -169,12 +173,12 @@ export interface FluidSizes {
   md: string;
   lg: string;
   xl: string;
-  '2xl': string;
-  '3xl': string;
-  '4xl': string;
-  '5xl': string;
-  '6xl': string;
-  '7xl': string;
+  "2xl": string;
+  "3xl": string;
+  "4xl": string;
+  "5xl": string;
+  "6xl": string;
+  "7xl": string;
 }
 
 /* ===== End Fluid Theme ===== */
@@ -182,7 +186,7 @@ export interface FluidSizes {
 /* ===== Start Polymorphic Props ===== */
 
 export type PolymorphicRef<C extends React.ElementType> =
-  React.ComponentPropsWithRef<C>['ref'];
+  React.ComponentPropsWithRef<C>["ref"];
 
 export type AsProp<C extends React.ElementType> = {
   as?: C;
@@ -195,9 +199,11 @@ export type AsProp<C extends React.ElementType> = {
 
 export type PropsToOmit<C extends React.ElementType, P> = keyof (AsProp<C> & P);
 
-export type PolymorphicComponentProp<C extends React.ElementType, Props = {}> =
-  React.PropsWithChildren<Props & AsProp<C>> &
-    Omit<React.ComponentPropsWithoutRef<C>, PropsToOmit<C, Props>>;
+export type PolymorphicComponentProp<
+  C extends React.ElementType,
+  Props = {}
+> = React.PropsWithChildren<Props & AsProp<C>> &
+  Omit<React.ComponentPropsWithoutRef<C>, PropsToOmit<C, Props>>;
 
 export type PolymorphicComponentPropWithRef<
   C extends React.ElementType,
@@ -271,7 +277,7 @@ export type ButtonProps<C extends React.ElementType> =
        *
        * @type {'light' | 'normal' | 'bold' | 'outline' | 'clear' | 'link'}
        */
-      weight?: keyof FluidButtonWeights;
+      weight?: keyof FluidButtonWeights | "normal";
       /**
        * Adjust the padding to be the same for all edges
        *
@@ -309,10 +315,10 @@ export type ButtonProps<C extends React.ElementType> =
   >;
 
 export type ButtonLoadingOptionsAnimation =
-  | 'spin'
-  | 'pulse'
-  | 'ping'
-  | 'spin-large';
+  | "spin"
+  | "pulse"
+  | "ping"
+  | "spin-large";
 
 export type ButtonLoadingOptions = {
   animation?: ButtonLoadingOptionsAnimation;
@@ -333,7 +339,7 @@ export type ButtonIsLoadedOptions = {
   className?: string;
 };
 
-export type ButtonComponent = <C extends React.ElementType = 'button'>(
+export type ButtonComponent = <C extends React.ElementType = "button">(
   props: ButtonProps<C>
 ) => React.ReactElement | null;
 
@@ -377,13 +383,13 @@ export type ButtonInnerProp = {
    * `flex` (default) or `between`
    * `between` will create a gap between the icon and the label
    */
-  iconStartPosition?: 'flex' | 'between';
+  iconStartPosition?: "flex" | "between";
   /**
    * iconEndPosition: Position of the iconEnd
    * `flex` (default) or `between`
    * `between` will create a gap between the icon and the label
    */
-  iconEndPosition?: 'flex' | 'between';
+  iconEndPosition?: "flex" | "between";
 } & SRProp;
 
 /* ===== End Button Props ===== */
@@ -419,12 +425,12 @@ export type MenuProps = {
    * menuPositionX: Horizontal position of the menu
    * @defaultValue `start`
    */
-  menuPositionX?: 'start' | 'center' | 'end';
+  menuPositionX?: "start" | "center" | "end";
   /**
    * menuPositionY: Vertical position of the menu
    * @defaultValue `top`
    */
-  menuPositionY?: 'top' | 'center' | 'bottom';
+  menuPositionY?: "top" | "center" | "bottom";
   [x: string]: any;
   /**
    * Whether the menu should be rendered horizontally.
@@ -503,8 +509,8 @@ export type MenuProps = {
    * }
    * ```
    */
-  menus?: MenuItemProps<'button'>[];
-} & ButtonProps<'button'> &
+  menus?: MenuItemProps<"button">[];
+} & ButtonProps<"button"> &
   SRProp;
 
 export type MenuComponent = (props: MenuProps) => React.ReactElement | null;
@@ -527,15 +533,15 @@ export type MenuComponent = (props: MenuProps) => React.ReactElement | null;
  * @defaultValue `default`
  */
 export type MenuRoleProp =
-  | 'separator'
-  | 'destructive'
-  | 'default'
-  | 'info'
-  | 'success'
-  | 'warning'
-  | 'primary';
+  | "separator"
+  | "destructive"
+  | "default"
+  | "info"
+  | "success"
+  | "warning"
+  | "primary";
 
-export type MenuItemProps<C extends React.ElementType = 'button'> =
+export type MenuItemProps<C extends React.ElementType = "button"> =
   PolymorphicComponentPropWithRef<
     C,
     {
@@ -547,7 +553,7 @@ export type MenuItemProps<C extends React.ElementType = 'button'> =
   > &
     ButtonProps<C>;
 
-export type MenuItemComponent = <C extends React.ElementType = 'button'>(
+export type MenuItemComponent = <C extends React.ElementType = "button">(
   props: MenuItemProps<C>
 ) => React.ReactElement | null;
 
@@ -559,11 +565,12 @@ export type DropdownProps = {
   list: DropdownListProps[];
   label?: string;
   labelClassName?: string;
-  description?: FormProp['description'];
+  description?: FormProp["description"];
   placeholder?: string;
   disabled?: boolean;
   className?: string;
   buttonClassName?: string;
+  selectedItemsClassName?: string;
   /**
    * Whether the dropdown has Empty Option
    * The returned value will be an empty string
@@ -605,6 +612,50 @@ export type DropdownProps = {
    * @defaultValue `false`
    */
   multiple?: boolean | number;
+  /**
+   * Custom function to render the option item
+   * @param item - The item string or object that is being rendered
+   * @param Option - The component to use to render the item
+   * The `Option` component exposes the following props:
+   * - `active` - Whether the item is active (hovered)
+   * - `selected` - Whether the item is selected
+   * - `disabled` - Whether the item is disabled
+   * You can use these props to style the item
+   * @returns The rendered item
+   * @example
+   * ```jsx
+   * <Select
+   *  name='food'
+   *  itemKey='name'
+   *  list={food}
+   *  rednerOptionItem={({ item, Option }) => (
+   *    <Option
+   *      value={item.name}
+   *      className={({ active, selected, disabled }) =>
+   *        clsxm(
+   *          'flex flex-row justify-start items-center gap-2 px-2 py-1',
+   *          'bg-white',
+   *          active && 'bg-gray-100',
+   *          selected && 'bg-blue-200',
+   *          disabled && 'bg-gray-200'
+   *        )
+   *      }
+   *      disabled={item.available === false}
+   *    >
+   *      {({ active, selected, disabled }) => (
+   *        <>
+   *          <div className='w-4 h-4'>
+   *            {selected && '✓'}
+   *            {disabled && '🚫'}
+   *          </div>
+   *          <div className='flex-grow'>{item.name}</div>
+   *        </>
+   *      )}
+   *    </Option>
+   * )}
+   * />
+   * ```
+   */
   rednerOptionItem?: ({
     item,
     Option,
@@ -612,12 +663,67 @@ export type DropdownProps = {
     item: any;
     Option: any;
   }) => React.ReactNode;
+  /**
+   * Custom function to render the selected item
+   * @param item - The item string or object that is being rendered
+   * @param remove - The function to remove the item from the selected list
+   * @returns The rendered item
+   * @example
+   * ```jsx
+   * <Select
+   *  name='food'
+   *  itemKey='name'
+   *  list={food}
+   *  selectedItemsClassName='flex flex-wrap p-2 gap-2'
+   *  renderSelectedItem={({ item, remove }) => (
+   *      <button
+   *        onClick={remove}
+   *        className='flex flex-row justify-start items-center gap-2 px-2 py-1 bg-primary-200 rounded-full'
+   *      >
+   *        <div className='flex-grow text-sm'>{item.name}</div>
+   *        <XMarkIcon className='w-4 h-4' />
+   *       </button>
+   *     )}
+   * />
+   * ```
+   */
   renderSelectedItem?: ({
     item,
     remove,
   }: {
     item: any;
     remove: () => void;
+  }) => React.ReactNode;
+  /**
+   * If you only want to customize the display value without
+   * creating your own option item, you can use this function
+   * @param item - The item string or object that is being rendered
+   * @param active - Whether the item is active
+   * @param selected - Whether the item is selected
+   * @param disabled - Whether the item is disabled
+   * @returns The rendered string or node
+   * @example
+   * ```jsx
+   * <Select
+   *  name='food'
+   *  itemKey='name'
+   *  list={food}
+   *  renderDisplayValue={({ item, active, selected, disabled }) => (
+   *  `${item.name} • ${item.calories} ${selected ? '✓' : ''} ${disabled ? '🚫' : ''}`
+   * )}
+   * />
+   * ```
+   */
+  renderDisplayValue?: ({
+    item,
+    active,
+    selected,
+    disabled,
+  }: {
+    item: any;
+    active: boolean;
+    selected: boolean;
+    disabled: boolean;
   }) => React.ReactNode;
 } & SRProp;
 
@@ -628,21 +734,16 @@ export type DropdownProps = {
  *
  * If it is an object, you need to define the `itemKey` prop, which will be used as the value and the `label` prop, which will be used as the label
  */
-export type DropdownListProps =
-  | {
-      id?: string;
-      [x: string]: string | number | boolean | undefined;
-    }
-  | string;
+export type DropdownListProps = Record<string, any> | string;
 
-export type SelectProps<C extends React.ElementType = 'div'> =
+export type SelectProps<C extends React.ElementType = "div"> =
   PolymorphicComponentPropWithRef<C, {} & DropdownProps>;
 
-export type SelectComponent = <C extends React.ElementType = 'div'>(
+export type SelectComponent = <C extends React.ElementType = "div">(
   props: SelectProps<C>
 ) => React.ReactElement | null;
 
-export type ComboBoxProps<C extends React.ElementType = 'div'> =
+export type ComboBoxProps<C extends React.ElementType = "div"> =
   PolymorphicComponentPropWithRef<
     C,
     {
@@ -650,7 +751,7 @@ export type ComboBoxProps<C extends React.ElementType = 'div'> =
     } & DropdownProps
   >;
 
-export type ComboBoxComponent = <C extends React.ElementType = 'div'>(
+export type ComboBoxComponent = <C extends React.ElementType = "div">(
   props: ComboBoxProps<C>
 ) => React.ReactElement | null;
 
@@ -662,7 +763,7 @@ export interface FormProp {
     | string
     | React.ReactNode
     | {
-        icon?: (props) => JSX.Element;
+        icon?: (props: any) => JSX.Element;
         text: string;
       };
 }
@@ -673,11 +774,14 @@ export interface FormProp {
 export type TabItemProps = {
   title:
     | string
-    | { text?: string; iconStart?: React.ReactNode | { (props): JSX.Element } };
+    | {
+        text?: string;
+        iconStart?: React.ReactNode | { (props: any): JSX.Element };
+      };
   content: React.ReactNode;
 };
 
-export type TabListItemProps<C extends React.ElementType = 'div'> =
+export type TabListItemProps<C extends React.ElementType = "div"> =
   PolymorphicComponentPropWithRef<
     C,
     {
@@ -690,10 +794,12 @@ export type TabListItemProps<C extends React.ElementType = 'div'> =
        * The title of the tab
        * @defaultValue `undefined`
        */
-      title?: TabItemProps['title'];
+      title?: TabItemProps["title"];
       shape?: keyof FluidButtonShapes;
       size?: keyof FluidButtonSizes;
-      weight?: keyof Pick<FluidButtonWeights, 'normal' | 'clear' | 'light'>;
+      weight?:
+        | keyof Pick<FluidButtonWeights, "normal" | "clear" | "light">
+        | "normal";
       className?: string;
       tabClassName?: string;
       tabActiveClassName?: string;
@@ -704,9 +810,9 @@ export type TabListItemProps<C extends React.ElementType = 'div'> =
 
 export type TabListProps = {
   tabs?: TabItemProps[];
-} & Omit<TabListItemProps, 'layoutId'>;
+} & Omit<TabListItemProps, "layoutId">;
 
-export type TabProps<C extends React.ElementType = 'div'> =
+export type TabProps<C extends React.ElementType = "div"> =
   PolymorphicComponentPropWithRef<
     C,
     {
@@ -718,6 +824,6 @@ export type TabProps<C extends React.ElementType = 'div'> =
     } & TabListProps
   >;
 
-export type TabComponent = <C extends React.ElementType = 'div'>(
+export type TabComponent = <C extends React.ElementType = "div">(
   props: TabProps<C>
 ) => React.ReactElement | null;

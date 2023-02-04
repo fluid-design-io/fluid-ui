@@ -1,18 +1,18 @@
-import { Tab as HeadlessTab } from '@headlessui/react';
-import { motion } from 'framer-motion';
-import React, { Fragment } from 'react';
-import { TabListItemProps } from '../../../type';
-import clsxm from '../../helpers/clsxm';
-import { Button } from '../Button';
-import { useTheme } from '../FluidUI/ThemeContext';
+import { Tab as HeadlessTab } from "@headlessui/react";
+import { motion, useReducedMotion } from "framer-motion";
+import React, { Fragment } from "react";
+import { TabListItemProps } from "../../../type";
+import clsxm from "../../helpers/clsxm";
+import { Button } from "../Button";
+import { useTheme } from "../FluidUI/ThemeContext";
 
 export const TabListItem = ({
   layoutId,
   as,
   title,
-  shape = 'round',
-  weight = 'normal',
-  size = 'md',
+  shape = "round",
+  weight = "normal",
+  size = "md",
   innerAs = as,
   children,
   tabClassName,
@@ -20,6 +20,7 @@ export const TabListItem = ({
   tabInactiveClassName,
 }: TabListItemProps): React.ReactElement => {
   const theme = useTheme().theme.tab;
+  const shouldReduceMotion = useReducedMotion();
   const buttonProps = innerAs
     ? {}
     : {
@@ -32,7 +33,7 @@ export const TabListItem = ({
       as={innerAs || Button}
       className={({ selected }): string =>
         clsxm(
-          'flex-1',
+          "flex-1",
           [theme.tabWrap.base, tabClassName],
           selected
             ? [theme.tabWrap.active[weight], tabActiveClassName]
@@ -53,6 +54,13 @@ export const TabListItem = ({
               )}
               initial={{
                 borderRadius: theme.activeButton.shape[shape],
+                opacity: shouldReduceMotion ? 0 : 1,
+              }}
+              animate={{
+                opacity: shouldReduceMotion ? 1 : 1,
+              }}
+              exit={{
+                opacity: shouldReduceMotion ? 1 : 0,
               }}
               aria-hidden='true'
             />
@@ -60,7 +68,7 @@ export const TabListItem = ({
           <span className='z-[1]'>
             {children
               ? children
-              : typeof title === 'string'
+              : typeof title === "string"
               ? title
               : title.text}
           </span>

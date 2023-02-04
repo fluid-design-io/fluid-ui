@@ -1,35 +1,15 @@
 {
-  // see https://www.typescriptlang.org/tsconfig to better understand tsconfigs
   "compilerOptions": {
-    "baseUrl": "./src",
-    "outDir": "./dist",
-    "target": "ES6",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": false,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "incremental": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "sourceMap": true,
     "jsx": "react",
-    "paths": {
-      "*": ["*", "src/*"]
-    }
+    "target": "es2016" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
+    "module": "commonjs" /* Specify what module code is generated. */,
+    "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
+    "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
+    "strict": false /* Enable all strict type-checking options. */,
+    "skipLibCheck": true /* Skip type checking all .d.ts files. */,
+    "noUncheckedIndexedAccess": true,
+    "noEmit": true,
+    "allowJs": true /* Allow JavaScript files to be a part of your program. Use the `checkJS` option to get errors from these files. */
   },
-  "include": ["src/**/*", "package.json", "README.md", "LICENSE"],
-  "exclude": [
-    ".storybook/**/*",
-    ".vscode/**/*",
-    "**/*.test.js",
-    "**/*.test.ts",
-    "node_modules/**",
-    "stories/**/*",
-    "dist"
-  ]
+  // "exclude": ["src/plugin/lib/**/*"]
 }

@@ -1,6 +1,3 @@
-/** @type {import('tinycolor2')} */
-const tinycolor = require('../lib/tinycolor');
-
 const _color = require('tailwindcss/lib/util/color');
 const { contrastRing, focusRing } = require('../util/generateRing');
 const {

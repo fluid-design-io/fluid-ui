@@ -40,4 +40,10 @@
   .contrast-text {
     @apply contrast:!text-primary-900 dark:contrast:!text-primary-900;
   }
+  .card-primary-bg {
+    @apply bg-white ring-1 ring-black/5 transition dark:bg-gray-900 dark:ring-white/10;
+  }
+  .card-primary {
+    @apply card-primary-bg overflow-hidden rounded-md p-4;
+  }
 }

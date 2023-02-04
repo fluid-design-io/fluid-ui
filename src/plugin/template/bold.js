@@ -13,10 +13,10 @@ const { generateBtnTextBg } = require('../util/generateTextBg');
 const { default: toColorValue } = require('../util/toColorValue');
 
 const generateBoldBtnState = (color, theme) => {
-  const alpha = tinycolor(color).getAlpha();
-  const houcusColor = tinycolor(color).saturate(5).darken(4).setAlpha(alpha).toRgbString();
-  const activeColor = tinycolor(color).saturate(3).darken(10).setAlpha(alpha).toRgbString();
-  const contrastMoreOffsetColor = tinycolor(color).darken(30).setAlpha(alpha).toRgbString();
+  const alpha = new tinycolor(color).getAlpha();
+  const houcusColor = new tinycolor(color).saturate(5).darken(4).setAlpha(alpha).toRgbString();
+  const activeColor = new tinycolor(color).saturate(3).darken(10).setAlpha(alpha).toRgbString();
+  const contrastMoreOffsetColor = new tinycolor(color).darken(30).setAlpha(alpha).toRgbString();
   return {
     [BUTTON_STATE.HOVER]: {
       ...generateBtnTextBg(houcusColor),

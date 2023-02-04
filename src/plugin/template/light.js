@@ -13,11 +13,11 @@ const { generateBtnTextBg } = require('../util/generateTextBg');
 const { default: toColorValue } = require('../util/toColorValue');
 
 const generateLightBtnState = (color, theme) => {
-  const mutate = tinycolor(color).isDark() ? 'lighten' : 'darken';
-  const alpha = tinycolor(color).getAlpha();
-  const houcusColor = tinycolor(color).saturate(5)[mutate](4).setAlpha(alpha).toRgbString();
-  const activeColor = tinycolor(color).saturate(3)[mutate](10).setAlpha(alpha).toRgbString();
-  const contrastMoreOffsetColor = tinycolor(color)[mutate](20).toRgbString();
+  const mutate = new tinycolor(color).isDark() ? 'lighten' : 'darken';
+  const alpha = new tinycolor(color).getAlpha();
+  const houcusColor = new tinycolor(color).saturate(5)[mutate](4).setAlpha(alpha).toRgbString();
+  const activeColor = new tinycolor(color).saturate(3)[mutate](10).setAlpha(alpha).toRgbString();
+  const contrastMoreOffsetColor = new tinycolor(color)[mutate](20).toRgbString();
   return {
     [BUTTON_STATE.HOVER]: {
       ...generateBtnTextBg(houcusColor),
@@ -51,7 +51,7 @@ const generateLightBtnState = (color, theme) => {
     },
     '&.pressed::after': {
       transition: 'all 0.08s ease-in-out',
-      borderColor: tinycolor(color).isDark() ? '#aaa' : '#222',
+      borderColor: new tinycolor(color).isDark() ? '#aaa' : '#222',
     },
   };
 };
