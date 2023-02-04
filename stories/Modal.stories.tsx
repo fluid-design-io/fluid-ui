@@ -1,24 +1,24 @@
-import { Meta, Story } from "@storybook/react/types-6-0";
-import React, { useState } from "react";
+import { Meta, Story } from '@storybook/react/types-6-0';
+import React, { useState } from 'react';
 
 import {
-  AppProvider,
+  FluidProvider,
   Button,
   Dialog,
   Form,
   Input,
   PresentModalProps,
   useModal,
-} from "../src/lib/components";
-import clsxm from "../src/lib/helpers/clsxm";
+} from '../src/lib/components';
+import clsxm from '../src/lib/helpers/clsxm';
 
 export default {
-  title: "Components/Modal",
+  title: 'Components/Modal',
   component: null,
   args: {
-    title: "Title",
-    message: "Message",
-    role: "success",
+    title: 'Title',
+    message: 'Message',
+    role: 'success',
     autoDismiss: true,
     duration: 3000,
     component: null,
@@ -27,11 +27,11 @@ export default {
 
 type StoryProps = PresentModalProps;
 
-const Wrap = ({ className = "", children }) => {
+const Wrap = ({ className = '', children }) => {
   return (
     <div
       className={clsxm(
-        "flex h-full flex-wrap items-center justify-center gap-6 px-4 lg:px-6",
+        'flex h-full flex-wrap items-center justify-center gap-6 px-4 lg:px-6',
         className
       )}
     >
@@ -42,8 +42,8 @@ const Wrap = ({ className = "", children }) => {
 
 const NestedModal2 = ({ onConfirm, dismiss }) => {
   const [nestedModal] = useModal(NestedModal1, {
-    name: "Test",
-    onConfirm: () => console.log("Confirmed"),
+    name: 'Test',
+    onConfirm: () => console.log('Confirmed'),
   });
   return (
     <Dialog>
@@ -68,8 +68,8 @@ const NestedModal2 = ({ onConfirm, dismiss }) => {
 
 const NestedModal1 = ({ onConfirm, dismiss, ...props }) => {
   const [nestedModal] = useModal(NestedModal2, {
-    name: "Test",
-    onConfirm: () => console.log("Confirmed"),
+    name: 'Test',
+    onConfirm: () => console.log('Confirmed'),
   });
   return (
     <Dialog>
@@ -118,8 +118,8 @@ const ConfirmCancelModalWrap = ({ onConfirm, dismiss, onClose, ...props }) => {
   const [presentConfirmModal] = useModal(ConfirmCancelModal, {
     onConfirm: () => dismiss(),
   });
-  const [name, setName] = useState<string>("John Doe");
-  const canDismiss = name === "John Doe";
+  const [name, setName] = useState<string>('John Doe');
+  const canDismiss = name === 'John Doe';
   onClose(canDismiss ? dismiss : presentConfirmModal);
   return (
     <Dialog>
@@ -131,7 +131,7 @@ const ConfirmCancelModalWrap = ({ onConfirm, dismiss, onClose, ...props }) => {
         </Dialog.Description>
         <Form
           initialValues={{
-            name: "John Doe",
+            name: 'John Doe',
           }}
           onSubmit={() => null}
         >
@@ -176,19 +176,19 @@ const SimpleModal = ({ dismiss }) => {
 
 const Template: Story<StoryProps> = (args) => {
   return (
-    <AppProvider>
+    <FluidProvider>
       <Component {...args} />
-    </AppProvider>
+    </FluidProvider>
   );
 };
 
 const Component = ({
-  className = "",
+  className = '',
   ...args
 }: StoryProps & { className?: string }) => {
   const [nestedModal] = useModal(args.children, {
-    name: "Test",
-    onConfirm: () => console.log("Confirmed"),
+    name: 'Test',
+    onConfirm: () => console.log('Confirmed'),
   });
   return (
     <Wrap>
@@ -213,4 +213,4 @@ ConfirmCancel.args = {
   children: ConfirmCancelModalWrap,
 };
 
-NestedModal.storyName = "Nested Modal";
+NestedModal.storyName = 'Nested Modal';

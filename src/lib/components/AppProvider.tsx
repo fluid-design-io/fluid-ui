@@ -1,6 +1,6 @@
-import React from "react";
-import { ModalProvider } from "./Modal/useModal";
+import React from 'react';
+import { ModalProvider } from './Modal/useModal';
 
-export const AppProvider = ({ children }) => {
+export const FluidProvider = ({ children }) => {
   return <ModalProvider>{children}</ModalProvider>;
 };

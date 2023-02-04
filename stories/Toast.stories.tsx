@@ -1,17 +1,17 @@
-import { Meta, Story } from "@storybook/react/types-6-0";
-import React from "react";
+import { Meta, Story } from '@storybook/react/types-6-0';
+import React from 'react';
 
-import { AppProvider, Button } from "../src/lib/components";
-import { PresentProps, useToast } from "../src/lib/components/Toast/useToast";
-import clsxm from "../src/lib/helpers/clsxm";
+import { FluidProvider, Button } from '../src/lib/components';
+import { PresentProps, useToast } from '../src/lib/components/Toast/useToast';
+import clsxm from '../src/lib/helpers/clsxm';
 
 export default {
-  title: "Components/Toast",
+  title: 'Components/Toast',
   component: null,
   args: {
-    title: "Title",
-    message: "Message",
-    role: "success",
+    title: 'Title',
+    message: 'Message',
+    role: 'success',
     autoDismiss: true,
     duration: 3000,
     component: null,
@@ -20,11 +20,11 @@ export default {
 
 type StoryProps = PresentProps;
 
-const Wrap = ({ className = "", children }) => {
+const Wrap = ({ className = '', children }) => {
   return (
     <div
       className={clsxm(
-        "flex h-full flex-wrap items-center justify-center gap-6 px-4 lg:px-6",
+        'flex h-full flex-wrap items-center justify-center gap-6 px-4 lg:px-6',
         className
       )}
     >
@@ -34,7 +34,7 @@ const Wrap = ({ className = "", children }) => {
 };
 
 const Component = ({
-  className = "",
+  className = '',
   ...args
 }: StoryProps & { className?: string }) => {
   const [presentToast] = useToast();
@@ -47,17 +47,17 @@ const Component = ({
 
 const Template: Story<StoryProps> = (args) => {
   return (
-    <AppProvider>
+    <FluidProvider>
       <Component {...args} />
-    </AppProvider>
+    </FluidProvider>
   );
 };
 
 const CustomBodyTemplate: Story<StoryProps> = (args) => {
   return (
-    <AppProvider>
+    <FluidProvider>
       <Component {...args} />
-    </AppProvider>
+    </FluidProvider>
   );
 };
 
@@ -77,4 +77,4 @@ CustomBody.args = {
   ),
 };
 
-CustomBody.storyName = "Custom Body";
+CustomBody.storyName = 'Custom Body';
