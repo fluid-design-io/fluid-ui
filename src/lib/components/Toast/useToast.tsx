@@ -207,7 +207,7 @@ export function ToastProvider({ children }) {
             ))}
           </AnimatePresence>
         </div>,
-        document.body
+        typeof document !== 'undefined' ? document.body : null
       )}
     </ToastContext.Provider>
   );
