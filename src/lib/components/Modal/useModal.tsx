@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { Dialog } from "@headlessui/react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { Dialog } from '@headlessui/react';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import React, {
   createContext,
   forwardRef,
@@ -9,9 +9,10 @@ import React, {
   useContext,
   useRef,
   useState,
-} from "react";
-import clsxm from "../../helpers/clsxm";
-import { ToastProvider } from "../Toast/useToast";
+} from 'react';
+import clsxm from '../../helpers/clsxm';
+import { ToastProvider } from '../Toast/useToast';
+import { useTheme } from '../FluidUI/ThemeContext';
 
 export type PresentModalProps<P = unknown> = P & {
   /**
@@ -77,7 +78,7 @@ export const Modal = forwardRef(
       <Dialog
         open={true}
         onClose={handleClose}
-        className='fixed inset-0 z-50 overflow-y-auto'
+        className='fixed inset-0 z-[99] overflow-y-auto'
         key={`dialog-root-${options.id}`}
       >
         {index === 0 && (
@@ -96,7 +97,7 @@ export const Modal = forwardRef(
             opacity: 0,
             y: shouldReduceMotion ? 0 : index === 0 ? 0 : 20,
             scale: shouldReduceMotion ? 1 : 1.015,
-            filter: "brightness(1)",
+            filter: 'brightness(1)',
           }}
           animate={{
             opacity: 1,
@@ -113,7 +114,7 @@ export const Modal = forwardRef(
           }}
           transition={{
             duration: count === 1 ? 0.7 : 0.4,
-            type: "spring",
+            type: 'spring',
             bounce: 0.1,
           }}
           className='mx-auto flex min-h-screen items-center justify-center px-4'
@@ -228,11 +229,11 @@ export const useModal = (
   return [presentModal as any, dismiss];
 };
 
-export const ModalHeader = ({ className = "", children }) => (
+export const ModalHeader = ({ className = '', children }) => (
   <Dialog.Title
     as='h1'
     className={clsxm(
-      "mb-4 font-bold md:text-2xl lg:text-2xl text-gray-700 dark:text-gray-100",
+      'mb-4 font-bold md:text-2xl lg:text-2xl text-gray-700 dark:text-gray-100',
       className
     )}
   >
@@ -240,11 +241,11 @@ export const ModalHeader = ({ className = "", children }) => (
   </Dialog.Title>
 );
 
-export const ModalFooter = ({ className = "", children }) => {
+export const ModalFooter = ({ className = '', children }) => {
   return (
     <div
       className={clsxm(
-        "flex flex-col gap-4 bg-gray-50 px-4 py-3 dark:bg-gray-800 sm:flex-row-reverse sm:px-6",
+        'flex flex-col gap-4 bg-gray-50 px-4 py-3 dark:bg-gray-800 sm:flex-row-reverse sm:px-6',
         className
       )}
     >
@@ -255,25 +256,29 @@ export const ModalFooter = ({ className = "", children }) => {
 
 export const ModalContainer = forwardRef(
   (
-    { className = "", children }: { className?: string; children: ReactNode },
+    { className = '', children }: { className?: string; children: ReactNode },
     ref
-  ) => (
-    <Dialog.Panel
-      ref={ref as any}
-      className={clsxm(
-        "card-primary w-full max-w-2xl rounded-md !p-0 shadow-lg",
-        className
-      )}
-    >
-      {children}
-    </Dialog.Panel>
-  )
+  ) => {
+    const theme = useTheme().theme.dialog;
+    return (
+      <Dialog.Panel
+        ref={ref as any}
+        className={clsxm(
+          'w-full max-w-2xl rounded-md !p-0 shadow-lg',
+          theme.base,
+          className
+        )}
+      >
+        {children}
+      </Dialog.Panel>
+    );
+  }
 );
 
-export const ModalBody = ({ className = "", children }) => (
+export const ModalBody = ({ className = '', children }) => (
   <div
     className={clsxm(
-      "px-4 py-5 sm:p-6 text-gray-600 dark:text-gray-300",
+      'px-4 py-5 sm:p-6 text-gray-600 dark:text-gray-300',
       className
     )}
   >
@@ -281,10 +286,10 @@ export const ModalBody = ({ className = "", children }) => (
   </div>
 );
 
-export const ModalDescription = ({ className = "", children }) => (
+export const ModalDescription = ({ className = '', children }) => (
   <Dialog.Description
     as='p'
-    className={clsxm("mb-4 text-gray-600 dark:text-gray-300", className)}
+    className={clsxm('mb-4 text-gray-600 dark:text-gray-300', className)}
   >
     {children}
   </Dialog.Description>
