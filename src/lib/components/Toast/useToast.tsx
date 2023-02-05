@@ -184,7 +184,10 @@ export function ToastProvider({ children }) {
       });
     }
   }, [toasts.length]);
-
+  const windowExists = typeof window !== 'undefined';
+  if (!windowExists) {
+    return null;
+  }
   return (
     <ToastContext.Provider value={{ present }}>
       {children}
@@ -207,7 +210,7 @@ export function ToastProvider({ children }) {
             ))}
           </AnimatePresence>
         </div>,
-        typeof document !== 'undefined' ? document.body : null
+        document.body
       )}
     </ToastContext.Provider>
   );
