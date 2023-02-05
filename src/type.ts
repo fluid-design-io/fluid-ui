@@ -1,5 +1,5 @@
-import React, { Dispatch, SetStateAction, SVGProps } from "react";
-import { DeepPartial } from "./lib/helpers/deep-partial";
+import React, { Dispatch, SetStateAction, SVGProps } from 'react';
+import { DeepPartial } from './lib/helpers/deep-partial';
 
 /* ===== Start Fluid Theme ===== */
 export type CustomFluidTheme = DeepPartial<FluidTheme>;
@@ -39,13 +39,13 @@ export interface FluidTheme {
     base: string;
     shape: FluidButtonShapes;
     //@ts-ignore
-    weight: Pick<FluidButtonWeights, TabProps["weight"]>;
+    weight: Pick<FluidButtonWeights, TabProps['weight']>;
     tabWrap: {
       base: string;
       //@ts-ignore
-      active: Pick<FluidButtonWeights, TabProps["weight"]>;
+      active: Pick<FluidButtonWeights, TabProps['weight']>;
       //@ts-ignore
-      inactive: Pick<FluidButtonWeights, TabProps["weight"]>;
+      inactive: Pick<FluidButtonWeights, TabProps['weight']>;
     };
     activeButton: {
       base: string;
@@ -55,9 +55,16 @@ export interface FluidTheme {
         square: string;
       };
       //@ts-ignore
-      weight: Pick<FluidButtonWeights, TabProps["weight"]>;
+      weight: Pick<FluidButtonWeights, TabProps['weight']>;
     };
     panel: string;
+  };
+  dialog: {
+    base: string;
+  };
+  toast: {
+    base: string;
+    position: FluidPositions;
   };
 }
 
@@ -153,18 +160,18 @@ export interface FluidColors {
   purple: string;
 }
 
-export type FluidHeadingLevel = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+export type FluidHeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
 export interface FluidPositions {
-  "bottom-left": string;
-  "bottom-right": string;
-  "bottom-center": string;
-  "top-left": string;
-  "top-center": string;
-  "top-right": string;
-  "center-left": string;
+  'bottom-left': string;
+  'bottom-right': string;
+  'bottom-center': string;
+  'top-left': string;
+  'top-center': string;
+  'top-right': string;
+  'center-left': string;
   center: string;
-  "center-right": string;
+  'center-right': string;
 }
 
 export interface FluidSizes {
@@ -173,12 +180,12 @@ export interface FluidSizes {
   md: string;
   lg: string;
   xl: string;
-  "2xl": string;
-  "3xl": string;
-  "4xl": string;
-  "5xl": string;
-  "6xl": string;
-  "7xl": string;
+  '2xl': string;
+  '3xl': string;
+  '4xl': string;
+  '5xl': string;
+  '6xl': string;
+  '7xl': string;
 }
 
 /* ===== End Fluid Theme ===== */
@@ -186,7 +193,7 @@ export interface FluidSizes {
 /* ===== Start Polymorphic Props ===== */
 
 export type PolymorphicRef<C extends React.ElementType> =
-  React.ComponentPropsWithRef<C>["ref"];
+  React.ComponentPropsWithRef<C>['ref'];
 
 export type AsProp<C extends React.ElementType> = {
   as?: C;
@@ -199,11 +206,9 @@ export type AsProp<C extends React.ElementType> = {
 
 export type PropsToOmit<C extends React.ElementType, P> = keyof (AsProp<C> & P);
 
-export type PolymorphicComponentProp<
-  C extends React.ElementType,
-  Props = {}
-> = React.PropsWithChildren<Props & AsProp<C>> &
-  Omit<React.ComponentPropsWithoutRef<C>, PropsToOmit<C, Props>>;
+export type PolymorphicComponentProp<C extends React.ElementType, Props = {}> =
+  React.PropsWithChildren<Props & AsProp<C>> &
+    Omit<React.ComponentPropsWithoutRef<C>, PropsToOmit<C, Props>>;
 
 export type PolymorphicComponentPropWithRef<
   C extends React.ElementType,
@@ -277,7 +282,7 @@ export type ButtonProps<C extends React.ElementType> =
        *
        * @type {'light' | 'normal' | 'bold' | 'outline' | 'clear' | 'link'}
        */
-      weight?: keyof FluidButtonWeights | "normal";
+      weight?: keyof FluidButtonWeights | 'normal';
       /**
        * Adjust the padding to be the same for all edges
        *
@@ -315,10 +320,10 @@ export type ButtonProps<C extends React.ElementType> =
   >;
 
 export type ButtonLoadingOptionsAnimation =
-  | "spin"
-  | "pulse"
-  | "ping"
-  | "spin-large";
+  | 'spin'
+  | 'pulse'
+  | 'ping'
+  | 'spin-large';
 
 export type ButtonLoadingOptions = {
   animation?: ButtonLoadingOptionsAnimation;
@@ -339,7 +344,7 @@ export type ButtonIsLoadedOptions = {
   className?: string;
 };
 
-export type ButtonComponent = <C extends React.ElementType = "button">(
+export type ButtonComponent = <C extends React.ElementType = 'button'>(
   props: ButtonProps<C>
 ) => React.ReactElement | null;
 
@@ -383,13 +388,13 @@ export type ButtonInnerProp = {
    * `flex` (default) or `between`
    * `between` will create a gap between the icon and the label
    */
-  iconStartPosition?: "flex" | "between";
+  iconStartPosition?: 'flex' | 'between';
   /**
    * iconEndPosition: Position of the iconEnd
    * `flex` (default) or `between`
    * `between` will create a gap between the icon and the label
    */
-  iconEndPosition?: "flex" | "between";
+  iconEndPosition?: 'flex' | 'between';
 } & SRProp;
 
 /* ===== End Button Props ===== */
@@ -425,12 +430,12 @@ export type MenuProps = {
    * menuPositionX: Horizontal position of the menu
    * @defaultValue `start`
    */
-  menuPositionX?: "start" | "center" | "end";
+  menuPositionX?: 'start' | 'center' | 'end';
   /**
    * menuPositionY: Vertical position of the menu
    * @defaultValue `top`
    */
-  menuPositionY?: "top" | "center" | "bottom";
+  menuPositionY?: 'top' | 'center' | 'bottom';
   [x: string]: any;
   /**
    * Whether the menu should be rendered horizontally.
@@ -509,8 +514,8 @@ export type MenuProps = {
    * }
    * ```
    */
-  menus?: MenuItemProps<"button">[];
-} & ButtonProps<"button"> &
+  menus?: MenuItemProps<'button'>[];
+} & ButtonProps<'button'> &
   SRProp;
 
 export type MenuComponent = (props: MenuProps) => React.ReactElement | null;
@@ -533,15 +538,15 @@ export type MenuComponent = (props: MenuProps) => React.ReactElement | null;
  * @defaultValue `default`
  */
 export type MenuRoleProp =
-  | "separator"
-  | "destructive"
-  | "default"
-  | "info"
-  | "success"
-  | "warning"
-  | "primary";
+  | 'separator'
+  | 'destructive'
+  | 'default'
+  | 'info'
+  | 'success'
+  | 'warning'
+  | 'primary';
 
-export type MenuItemProps<C extends React.ElementType = "button"> =
+export type MenuItemProps<C extends React.ElementType = 'button'> =
   PolymorphicComponentPropWithRef<
     C,
     {
@@ -553,7 +558,7 @@ export type MenuItemProps<C extends React.ElementType = "button"> =
   > &
     ButtonProps<C>;
 
-export type MenuItemComponent = <C extends React.ElementType = "button">(
+export type MenuItemComponent = <C extends React.ElementType = 'button'>(
   props: MenuItemProps<C>
 ) => React.ReactElement | null;
 
@@ -565,7 +570,7 @@ export type DropdownProps = {
   list: DropdownListProps[];
   label?: string;
   labelClassName?: string;
-  description?: FormProp["description"];
+  description?: FormProp['description'];
   placeholder?: string;
   disabled?: boolean;
   className?: string;
@@ -736,14 +741,14 @@ export type DropdownProps = {
  */
 export type DropdownListProps = Record<string, any> | string;
 
-export type SelectProps<C extends React.ElementType = "div"> =
+export type SelectProps<C extends React.ElementType = 'div'> =
   PolymorphicComponentPropWithRef<C, {} & DropdownProps>;
 
-export type SelectComponent = <C extends React.ElementType = "div">(
+export type SelectComponent = <C extends React.ElementType = 'div'>(
   props: SelectProps<C>
 ) => React.ReactElement | null;
 
-export type ComboBoxProps<C extends React.ElementType = "div"> =
+export type ComboBoxProps<C extends React.ElementType = 'div'> =
   PolymorphicComponentPropWithRef<
     C,
     {
@@ -751,7 +756,7 @@ export type ComboBoxProps<C extends React.ElementType = "div"> =
     } & DropdownProps
   >;
 
-export type ComboBoxComponent = <C extends React.ElementType = "div">(
+export type ComboBoxComponent = <C extends React.ElementType = 'div'>(
   props: ComboBoxProps<C>
 ) => React.ReactElement | null;
 
@@ -781,7 +786,7 @@ export type TabItemProps = {
   content: React.ReactNode;
 };
 
-export type TabListItemProps<C extends React.ElementType = "div"> =
+export type TabListItemProps<C extends React.ElementType = 'div'> =
   PolymorphicComponentPropWithRef<
     C,
     {
@@ -794,12 +799,12 @@ export type TabListItemProps<C extends React.ElementType = "div"> =
        * The title of the tab
        * @defaultValue `undefined`
        */
-      title?: TabItemProps["title"];
+      title?: TabItemProps['title'];
       shape?: keyof FluidButtonShapes;
       size?: keyof FluidButtonSizes;
       weight?:
-        | keyof Pick<FluidButtonWeights, "normal" | "clear" | "light">
-        | "normal";
+        | keyof Pick<FluidButtonWeights, 'normal' | 'clear' | 'light'>
+        | 'normal';
       className?: string;
       tabClassName?: string;
       tabActiveClassName?: string;
@@ -810,9 +815,9 @@ export type TabListItemProps<C extends React.ElementType = "div"> =
 
 export type TabListProps = {
   tabs?: TabItemProps[];
-} & Omit<TabListItemProps, "layoutId">;
+} & Omit<TabListItemProps, 'layoutId'>;
 
-export type TabProps<C extends React.ElementType = "div"> =
+export type TabProps<C extends React.ElementType = 'div'> =
   PolymorphicComponentPropWithRef<
     C,
     {
@@ -824,6 +829,6 @@ export type TabProps<C extends React.ElementType = "div"> =
     } & TabListProps
   >;
 
-export type TabComponent = <C extends React.ElementType = "div">(
+export type TabComponent = <C extends React.ElementType = 'div'>(
   props: TabProps<C>
 ) => React.ReactElement | null;

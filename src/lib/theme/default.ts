@@ -149,6 +149,23 @@ const defaultTheme: FluidTheme = {
     panel:
       'w-full focus-visible:ring-white focus-visible:ring-opacity-60 focus-visible:ring-offset-2 focus-visible:ring-offset-blue-400 focus:outline-none focus:ring-2',
   },
+  dialog: {
+    base: 'bg-white ring-1 ring-black/5 transition dark:bg-gray-900 dark:ring-white/10 overflow-hidden rounded-md p-4',
+  },
+  toast: {
+    base: 'bg-white dark:bg-gray-900 dark:ring-white/10 ring-1 ring-black/5 transition rounded-md p-4',
+    position: {
+      'bottom-left': '',
+      'bottom-right': '',
+      'bottom-center': '',
+      'top-left': '',
+      'top-center': '',
+      'top-right': '',
+      'center-left': '',
+      center: '',
+      'center-right': '',
+    },
+  },
 };
 
 export default defaultTheme;
