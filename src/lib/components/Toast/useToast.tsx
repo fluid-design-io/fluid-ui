@@ -185,33 +185,30 @@ export function ToastProvider({ children }) {
     }
   }, [toasts.length]);
   const windowExists = typeof window !== 'undefined';
-  if (!windowExists) {
-    return null;
-  }
+  const body = (
+    <div
+      ref={toastContainerRef}
+      aria-atomic='true'
+      aria-live='assertive'
+      className='pointer-events-none fixed inset-0 z-[99] flex flex-col items-end gap-4 overflow-y-auto px-4 py-6 sm:items-start sm:p-6'
+    >
+      <AnimatePresence mode='popLayout'>
+        {toasts.map((toast) => (
+          <Toast
+            key={`toast-${toast.id}`}
+            options={toast}
+            dismiss={dismissToast}
+            layoutId={shouldReduceMotion ? undefined : `toast-${toast.id}`}
+          />
+        ))}
+      </AnimatePresence>
+    </div>
+  );
   return (
     <ToastContext.Provider value={{ present }}>
       {children}
       {/* Global notification live region, render this permanently at the end of the document */}
-      {createPortal(
-        <div
-          ref={toastContainerRef}
-          aria-atomic='true'
-          aria-live='assertive'
-          className='pointer-events-none fixed inset-0 z-[99] flex flex-col items-end gap-4 overflow-y-auto px-4 py-6 sm:items-start sm:p-6'
-        >
-          <AnimatePresence mode='popLayout'>
-            {toasts.map((toast) => (
-              <Toast
-                key={`toast-${toast.id}`}
-                options={toast}
-                dismiss={dismissToast}
-                layoutId={shouldReduceMotion ? undefined : `toast-${toast.id}`}
-              />
-            ))}
-          </AnimatePresence>
-        </div>,
-        document.body
-      )}
+      {windowExists ? createPortal(body, document.body) : body}
     </ToastContext.Provider>
   );
 }
