@@ -44,7 +44,8 @@ const Template: Story<StoryButtonProps> = (args) => {
     name: '',
     email: '',
     message: '',
-    state: 'California',
+    state: states[3],
+    multiple: [states[0], states[1]],
     saveResponse: false,
   };
   const validationSchema = Yup.object().shape({
@@ -53,7 +54,8 @@ const Template: Story<StoryButtonProps> = (args) => {
       .email('Invalid email address')
       .required('Email is required'),
     message: Yup.string().optional(),
-    state: Yup.string().required('State is required'),
+    state: Yup.object().required('State is required'),
+    multiple: Yup.array().required('Multiple is required'),
     saveResponse: Yup.boolean().required('Save response is required'),
   });
   return (
@@ -129,6 +131,7 @@ const Template: Story<StoryButtonProps> = (args) => {
           />
           <ComboBox itemKey='name' list={states} name='state' />
           <Select itemKey='name' list={states} name='state' />
+          <Select itemKey='name' list={states} name='multiple' multiple />
           <Switch label='Save Response' name='saveResponse' />
           <SubmitButton slot='end' title='Submit' />
           <SubmitButtonRef className='hidden' innerRef={submitBtnRef} />
