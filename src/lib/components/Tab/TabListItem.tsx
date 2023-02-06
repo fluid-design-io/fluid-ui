@@ -1,18 +1,18 @@
-import { Tab as HeadlessTab } from "@headlessui/react";
-import { motion, useReducedMotion } from "framer-motion";
-import React, { Fragment } from "react";
-import { TabListItemProps } from "../../../type";
-import clsxm from "../../helpers/clsxm";
-import { Button } from "../Button";
-import { useTheme } from "../FluidUI/ThemeContext";
+import { Tab as HeadlessTab } from '@headlessui/react';
+import { motion, useReducedMotion } from 'framer-motion';
+import React, { Fragment } from 'react';
+import { TabListItemProps } from '../../../type';
+import clsxm from '../../helpers/clsxm';
+import { Button } from '../Button';
+import { useTheme } from '../FluidUI/ThemeContext';
 
 export const TabListItem = ({
   layoutId,
   as,
   title,
-  shape = "round",
-  weight = "normal",
-  size = "md",
+  shape = 'round',
+  weight = 'normal',
+  size = 'md',
   innerAs = as,
   children,
   tabClassName,
@@ -33,7 +33,7 @@ export const TabListItem = ({
       as={innerAs || Button}
       className={({ selected }): string =>
         clsxm(
-          "flex-1",
+          'flex-1',
           [theme.tabWrap.base, tabClassName],
           selected
             ? [theme.tabWrap.active[weight], tabActiveClassName]
@@ -68,7 +68,7 @@ export const TabListItem = ({
           <span className='z-[1]'>
             {children
               ? children
-              : typeof title === "string"
+              : typeof title === 'string'
               ? title
               : title.text}
           </span>

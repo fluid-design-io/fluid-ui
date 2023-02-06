@@ -224,7 +224,7 @@ const AppSelect: SelectComponent = React.forwardRef(
                     multiple &&
                       value &&
                       value?.length > 1 &&
-                      'border-t border-t-gray-200 dark:border-t-gray-700',
+                      'border-t border-t-gray-200 dark:border-t-gray-700 focus-visible:bg-gray-100/50 dark:focus-visible:bg-gray-700 focus-visible:rounded-b-lg',
                     buttonClassName
                   )}
                   onBlur={() => {

@@ -8,15 +8,19 @@ import {
   ModalProps,
   PresentModalProps,
   ModalProvider,
-} from "./useModal";
+  ModalTitle,
+  ModalCloseButton,
+} from './useModal';
 
 export const Dialog = Object.assign(ModalContainer, {
-  Title: ModalHeader,
+  Title: ModalTitle,
+  Header: ModalHeader,
   Description: ModalDescription,
   Footer: ModalFooter,
   Body: ModalBody,
+  CloseButton: ModalCloseButton,
 });
 
-Dialog.displayName = "Dialog";
+Dialog.displayName = 'Dialog';
 
 export { useModal, ModalProvider, ModalProps, PresentModalProps };

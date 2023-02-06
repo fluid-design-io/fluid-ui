@@ -13,6 +13,8 @@ import React, {
 import clsxm from '../../helpers/clsxm';
 import { ToastProvider } from '../Toast/useToast';
 import { useTheme } from '../FluidUI/ThemeContext';
+import { Button } from '../Button';
+import { XMarkIcon } from '@heroicons/react/24/outline';
 
 export type PresentModalProps<P = unknown> = P & {
   /**
@@ -229,11 +231,11 @@ export const useModal = (
   return [presentModal as any, dismiss];
 };
 
-export const ModalHeader = ({ className = '', children }) => (
+export const ModalTitle = ({ className = '', children }) => (
   <Dialog.Title
     as='h1'
     className={clsxm(
-      'mb-4 font-bold md:text-2xl lg:text-2xl text-gray-700 dark:text-gray-100',
+      'font-semibold md:text-xl text-gray-700 dark:text-gray-100',
       className
     )}
   >
@@ -245,7 +247,8 @@ export const ModalFooter = ({ className = '', children }) => {
   return (
     <div
       className={clsxm(
-        'flex flex-col gap-4 bg-gray-50 px-4 py-3 dark:bg-gray-800 sm:flex-row-reverse sm:px-6',
+        'flex flex-col gap-4 px-4 py-3 sm:flex-row-reverse sm:px-6',
+        'bg-gray-50 dark:bg-gray-800',
         className
       )}
     >
@@ -253,6 +256,29 @@ export const ModalFooter = ({ className = '', children }) => {
     </div>
   );
 };
+export const ModalHeader = ({ className = '', children }) => (
+  <div
+    className={clsxm(
+      'flex items-center justify-between pt-4 pb-3 px-4 sm:px-6 text-gray-600 dark:text-gray-300',
+      'bg-gray-50 dark:bg-gray-800',
+      className
+    )}
+  >
+    {children}
+  </div>
+);
+
+export const ModalCloseButton = ({ className = '', dismiss }) => (
+  <Button
+    className={clsxm(className)}
+    iconOnly
+    onClick={() => dismiss()}
+    aria-label='Close'
+    icon={XMarkIcon}
+    shape='pill'
+    weight='light'
+  />
+);
 
 export const ModalContainer = forwardRef(
   (
@@ -278,7 +304,7 @@ export const ModalContainer = forwardRef(
 export const ModalBody = ({ className = '', children }) => (
   <div
     className={clsxm(
-      'px-4 py-5 sm:p-6 text-gray-600 dark:text-gray-300',
+      'p-4 pt-2 sm:px-6 text-gray-600 dark:text-gray-300',
       className
     )}
   >
