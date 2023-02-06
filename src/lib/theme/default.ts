@@ -133,7 +133,7 @@ const defaultTheme: FluidTheme = {
       },
     },
     activeButton: {
-      base: 'absolute inset-0 z-0 pointer-events-none group-focus-visible:ring-white dark:group-focus-visible:ring-black group-focus-visible:ring-opacity-60 group-focus-visible:ring-offset-2 group-focus-visible:ring-offset-primary-400 group-focus-visible:outline-none group-focus-visible:ring-2',
+      base: 'absolute inset-0 z-0 pointer-events-none group-focus-visible:ring-inset group-focus-visible:ring-white dark:group-focus-visible:ring-black group-focus-visible:ring-opacity-60 group-focus-visible:ring-offset-2 group-focus-visible:ring-offset-primary-400 group-focus-visible:outline-none group-focus-visible:ring-2',
       shape: { pill: '9999px', round: '6px', square: '0px' },
       weight: {
         normal: 'bg-white shadow dark:bg-gray-700',
