@@ -119,7 +119,7 @@ export const Modal = forwardRef(
             type: 'spring',
             bounce: 0.1,
           }}
-          className='mx-auto flex min-h-screen items-center justify-center px-4'
+          className='mx-auto flex min-h-[100dvh] items-center justify-center px-4'
         >
           <Component
             {...options}
@@ -243,12 +243,23 @@ export const ModalTitle = ({ className = '', children }) => (
   </Dialog.Title>
 );
 
-export const ModalFooter = ({ className = '', children }) => {
+export const ModalFooter = ({
+  className = '',
+  transparentBg = false,
+  children,
+}: {
+  /**
+   * If true, the background will be transparent
+   */
+  transparentBg?: boolean;
+  className?: string;
+  children: React.ReactNode;
+}) => {
   return (
     <div
       className={clsxm(
         'flex flex-col gap-4 px-4 py-3 sm:flex-row-reverse sm:px-6',
-        'bg-gray-50 dark:bg-gray-800',
+        { 'bg-gray-50 dark:bg-gray-800': !transparentBg },
         className
       )}
     >
@@ -256,11 +267,22 @@ export const ModalFooter = ({ className = '', children }) => {
     </div>
   );
 };
-export const ModalHeader = ({ className = '', children }) => (
+export const ModalHeader = ({
+  className = '',
+  transparentBg = false,
+  children,
+}: {
+  /**
+   * If true, the background will be transparent
+   */
+  transparentBg?: boolean;
+  className?: string;
+  children: React.ReactNode;
+}) => (
   <div
     className={clsxm(
       'flex items-center justify-between pt-4 pb-3 px-4 sm:px-6 text-gray-600 dark:text-gray-300',
-      'bg-gray-50 dark:bg-gray-800',
+      { 'bg-gray-50 dark:bg-gray-800': !transparentBg },
       className
     )}
   >
