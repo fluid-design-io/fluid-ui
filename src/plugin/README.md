@@ -19,8 +19,8 @@ module.exports = {
     // ...
   },
   plugins: [
-    require('@fluid-design/fluid-ui/src/plugin/core'),
-    require('@fluid-design/fluid-ui/src/plugin/button'),
+    require('@fluid-design/fluid-ui/dist/plugin/core'),
+    require('@fluid-design/fluid-ui/dist/plugin/button'),
     // ...
   ],
 };

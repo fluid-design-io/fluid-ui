@@ -68,6 +68,7 @@ module.exports = plugin(function ({ matchUtilities, theme, addVariant }) {
         values: themeColorOptions(theme('colors'), linkBtnOptions),
         type: 'color',
     }),
+        // incase the core plugin is not added, these're the fallbacks
         addVariant('hocus', ['&:hover', '&:focus-visible']),
         addVariant('contrast', ['.contrast &', '@media (prefers-contrast: more)'])
 });
