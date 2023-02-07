@@ -336,10 +336,7 @@ export const ModalContainer = forwardRef(
 
 export const ModalBody = ({ className = '', children, ...props }) => (
   <div
-    className={clsxm(
-      'p-4 pt-2 sm:px-6 text-gray-600 dark:text-gray-300',
-      className
-    )}
+    className={clsxm('p-4 sm:px-6 text-gray-600 dark:text-gray-300', className)}
     {...props}
   >
     {children}
