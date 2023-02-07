@@ -1,53 +1,75 @@
 const plugin = require('tailwindcss/plugin');
 
+const defaultValues = (theme) => ({
+    '--tooltip-width': 'fit-content',
+    '--tooltip-min-height': 'fit-content',
+    '--tooltip-arrow-width': '12px',
+    '--tooltip-arrow-height': '12px',
+    '--tooltip-background-color': theme("colors.stone.700"),
+    '--tooltip-color': theme("colors.stone.50"),
+    '--tooltip-border-radius': theme("spacing.1"),
+    '--tooltip-padding': `${theme("spacing.1")} ${theme("spacing.2")}`,
+    '--tooltip-font-size': theme("fontSize.sm"),
+    '--tooltip-arrow-border-color': theme("colors.stone.700"),
+    '--tooltip-arrow-border-radius': '3px',
+    '--tooltip-pointer-events': 'none',
+})
+
 const tooltipStyle = {
-    width: 'fit-content',
-    minHeight: 'fit-content',
+    width: 'var(--tooltip-width)',
+    minHeight: 'var(--tooltip-min-height)',
     display: 'none',
     position: 'absolute',
-    borderRadius: '0.25rem',
-    backgroundColor: colors.stone[700],
-    color: colors.stone[50],
-    padding: '0.25rem',
-    fontSize: '0.8rem',
-    zIndex: 20,
     textAlign: 'center',
-};
+    borderRadius: 'var(--tooltip-border-radius)',
+    backgroundColor: 'var(--tooltip-background-color)',
+    color: 'var(--tooltip-color)',
+    padding: 'var(--tooltip-padding)',
+    fontSize: 'var(--tooltip-font-size)',
+    zIndex: 50,
+    pointerEvents: 'var(--tooltip-pointer-events)',
+}
 const tooltipArrowStyle = {
     content: '""',
     display: 'none',
     position: 'absolute',
-    width: 12,
-    height: 12,
-    zIndex: 19,
+    width: 'var(--tooltip-arrow-width)',
+    height: 'var(--tooltip-arrow-height)',
+    zIndex: 49,
     borderStyle: 'solid',
-    borderColor: `${colors.stone[700]}`,
-    borderRadius: 3,
-};
+    borderColor: 'var(--tooltip-arrow-border-color)',
+    borderRadius: 'var(--tooltip-arrow-border-radius)',
+    pointerEvents: 'var(--tooltip-pointer-events)',
+}
 
-module.exports = plugin(function ({ addBase }) {
+const createDataTooltipSelectors = () => {
+    let selectors = [];
+    let states = ['hover', 'focus-within'];
+    let positions = ['', '-top', '-left', '-right', '-bottom'];
+
+    for (let state of states) {
+        for (let position of positions) {
+            selectors.push(`[data-tooltip${position}]:${state}::before`);
+            selectors.push(`[data-tooltip${position}]:${state}::after`);
+        }
+    }
+
+    return selectors;
+}
+
+
+module.exports = plugin(function ({ addBase, theme }) {
     addBase({
-        [[
-            '[data-tooltip-top]:hover::before',
-            '[data-tooltip-left]:hover::before',
-            '[data-tooltip-right]:hover::before',
-            '[data-tooltip-bottom]:hover::before',
-            '[data-tooltip-top]:hover::after',
-            '[data-tooltip-left]:hover::after',
-            '[data-tooltip-right]:hover::after',
-            '[data-tooltip-bottom]:hover::after',
-            '[data-tooltip-top]:focus-within::before',
-            '[data-tooltip-left]:focus-within::before',
-            '[data-tooltip-right]:focus-within::before',
-            '[data-tooltip-bottom]:focus-within::before',
-            '[data-tooltip-top]:focus-within::after',
-            '[data-tooltip-left]:focus-within::after',
-            '[data-tooltip-right]:focus-within::after',
-            '[data-tooltip-bottom]:focus-within::after',
-        ]]: {
+        ':root': {
+            ...defaultValues(theme),
+        },
+        [
+            [...createDataTooltipSelectors()]
+        ]: {
             display: 'inline-block',
         },
         [[
+            '[data-tooltip]',
             '[data-tooltip-top]',
             '[data-tooltip-left]',
             '[data-tooltip-right]',
@@ -55,14 +77,23 @@ module.exports = plugin(function ({ addBase }) {
         ]]: {
             position: 'relative',
         },
+        '[data-tooltip]::before': {
+            ...tooltipStyle,
+            content: 'attr(data-tooltip)',
+            left: -20,
+            right: -20,
+            bottom: 'calc(100% + 6px)',
+            margin: '0 auto',
+        },
         '[data-tooltip-top]::before': {
             ...tooltipStyle,
             content: 'attr(data-tooltip-top)',
             left: -20,
             right: -20,
             bottom: 'calc(100% + 6px)',
+            margin: '0 auto',
         },
-        '[data-tooltip-top]::after': {
+        [['[data-tooltip]::after', '[data-tooltip-top]::after']]: {
             ...tooltipArrowStyle,
             transform: 'rotate(45deg)',
             bottom: 'calc(100% + 3px)',
@@ -72,9 +103,10 @@ module.exports = plugin(function ({ addBase }) {
         '[data-tooltip-left]::before': {
             ...tooltipStyle,
             content: 'attr(data-tooltip-left)',
-            top: 0,
+            top: "100%",
             bottom: 0,
             right: 'calc(100% + 6px)',
+            margin: '-50% 0',
         },
         '[data-tooltip-left]::after': {
             ...tooltipArrowStyle,
@@ -86,9 +118,10 @@ module.exports = plugin(function ({ addBase }) {
         '[data-tooltip-right]::before': {
             ...tooltipStyle,
             content: 'attr(data-tooltip-right)',
-            top: 0,
+            top: "100%",
             bottom: 0,
             left: 'calc(100% + 6px)',
+            margin: '-50% 0',
         },
         '[data-tooltip-right]::after': {
             ...tooltipArrowStyle,
@@ -103,6 +136,7 @@ module.exports = plugin(function ({ addBase }) {
             top: 'calc(100% + 6px)',
             left: -20,
             right: -20,
+            margin: '0 auto',
         },
         '[data-tooltip-bottom]::after': {
             ...tooltipArrowStyle,
