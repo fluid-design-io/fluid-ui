@@ -231,13 +231,14 @@ export const useModal = (
   return [presentModal as any, dismiss];
 };
 
-export const ModalTitle = ({ className = '', children }) => (
+export const ModalTitle = ({ className = '', children, ...props }) => (
   <Dialog.Title
     as='h1'
     className={clsxm(
       'font-semibold md:text-xl text-gray-700 dark:text-gray-100',
       className
     )}
+    {...props}
   >
     {children}
   </Dialog.Title>
@@ -247,6 +248,7 @@ export const ModalFooter = ({
   className = '',
   transparentBg = false,
   children,
+  ...props
 }: {
   /**
    * If true, the background will be transparent
@@ -262,6 +264,7 @@ export const ModalFooter = ({
         { 'bg-gray-50 dark:bg-gray-800': !transparentBg },
         className
       )}
+      {...props}
     >
       {children}
     </div>
@@ -271,6 +274,7 @@ export const ModalHeader = ({
   className = '',
   transparentBg = false,
   children,
+  ...props
 }: {
   /**
    * If true, the background will be transparent
@@ -285,12 +289,13 @@ export const ModalHeader = ({
       { 'bg-gray-50 dark:bg-gray-800': !transparentBg },
       className
     )}
+    {...props}
   >
     {children}
   </div>
 );
 
-export const ModalCloseButton = ({ className = '', dismiss }) => (
+export const ModalCloseButton = ({ className = '', dismiss, ...props }) => (
   <Button
     className={clsxm(className)}
     iconOnly
@@ -299,12 +304,17 @@ export const ModalCloseButton = ({ className = '', dismiss }) => (
     icon={XMarkIcon}
     shape='pill'
     weight='light'
+    {...props}
   />
 );
 
 export const ModalContainer = forwardRef(
   (
-    { className = '', children }: { className?: string; children: ReactNode },
+    {
+      className = '',
+      children,
+      ...props
+    }: { className?: string; children: ReactNode },
     ref
   ) => {
     const theme = useTheme().theme.dialog;
@@ -316,6 +326,7 @@ export const ModalContainer = forwardRef(
           theme.base,
           className
         )}
+        {...props}
       >
         {children}
       </Dialog.Panel>
@@ -323,21 +334,23 @@ export const ModalContainer = forwardRef(
   }
 );
 
-export const ModalBody = ({ className = '', children }) => (
+export const ModalBody = ({ className = '', children, ...props }) => (
   <div
     className={clsxm(
       'p-4 pt-2 sm:px-6 text-gray-600 dark:text-gray-300',
       className
     )}
+    {...props}
   >
     {children}
   </div>
 );
 
-export const ModalDescription = ({ className = '', children }) => (
+export const ModalDescription = ({ className = '', children, ...props }) => (
   <Dialog.Description
     as='p'
     className={clsxm('mb-4 text-gray-600 dark:text-gray-300', className)}
+    {...props}
   >
     {children}
   </Dialog.Description>
