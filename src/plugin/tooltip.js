@@ -103,10 +103,10 @@ module.exports = plugin(function ({ addBase, theme }) {
         '[data-tooltip-left]::before': {
             ...tooltipStyle,
             content: 'attr(data-tooltip-left)',
-            top: "100%",
+            top: 0,
             bottom: 0,
             right: 'calc(100% + 6px)',
-            margin: '-50% 0',
+            margin: 'auto 0',
         },
         '[data-tooltip-left]::after': {
             ...tooltipArrowStyle,
@@ -118,10 +118,10 @@ module.exports = plugin(function ({ addBase, theme }) {
         '[data-tooltip-right]::before': {
             ...tooltipStyle,
             content: 'attr(data-tooltip-right)',
-            top: "100%",
+            top: 0,
             bottom: 0,
             left: 'calc(100% + 6px)',
-            margin: '-50% 0',
+            margin: 'auto 0',
         },
         '[data-tooltip-right]::after': {
             ...tooltipArrowStyle,
