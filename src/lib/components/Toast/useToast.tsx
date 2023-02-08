@@ -331,7 +331,7 @@ export function ToastProvider({ children }) {
       aria-atomic='true'
       aria-live='assertive'
       className={clsxm(
-        'pointer-events-none fixed inset-0 z-[99] flex flex-col gap-4 overflow-y-auto px-4 py-6 sm:p-6',
+        'pointer-events-none fixed inset-0 z-[99] flex flex-col gap-4 overflow-y-auto px-4 py-6 sm:p-6 scrollbar-none',
         theme.position[theme.position['top-right']]
       )}
     >

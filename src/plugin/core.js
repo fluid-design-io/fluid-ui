@@ -8,6 +8,7 @@ module.exports = plugin(function ({
   addVariant,
   theme,
 }) {
+  // bg-grid utility properties are pulled and modified from tailwindcss site
   /* eslint-disable no-unused-expressions */
   matchUtilities(
     {
@@ -19,6 +20,23 @@ module.exports = plugin(function ({
     },
     { values: flattenColorPalette(theme('colors')), type: ['image', 'color'] }
   ),
-    addVariant('hocus', ['&:hover', '&:focus-visible']),
+    matchUtilities(
+      {
+        'scrollbar': (value) => ({
+          '-ms-overflow-style': value,
+          'scrollbar-width': value,
+          '&::-webkit-scrollbar': {
+            display: value,
+          },
+        }),
+      },
+      {
+        values: {
+          'none': 'none',
+        },
+      }
+
+    )
+  addVariant('hocus', ['&:hover', '&:focus-visible']),
     addVariant('contrast', ['.contrast &', '@media (prefers-contrast: more)'])
 });
