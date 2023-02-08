@@ -153,17 +153,27 @@ const defaultTheme: FluidTheme = {
     base: 'bg-white ring-1 ring-black/5 transition dark:bg-gray-900 dark:ring-white/10 overflow-hidden rounded-md p-4',
   },
   toast: {
-    base: 'bg-white dark:bg-gray-900 dark:ring-white/10 ring-1 ring-black/5 transition rounded-md p-4',
+    base: 'ring-1 ring-black/5 rounded-md pointer-events-auto w-full max-w-sm p-0 shadow-lg dark:shadow-xl relative overflow-hidden before:inset-0 before:absolute dark:before:bg-black/75 before:z-0 before:pointer-events-none',
     position: {
-      'bottom-left': '',
-      'bottom-right': '',
-      'bottom-center': '',
-      'top-left': '',
-      'top-center': '',
-      'top-right': '',
-      'center-left': '',
-      center: '',
-      'center-right': '',
+      'top-right': 'items-center sm:items-start justify-end',
+      'bottom-left': 'items-center sm:items-end justify-start',
+      'bottom-right': 'items-center sm:items-end justify-end',
+      'bottom-center': 'items-center sm:items-end justify-center',
+      'top-left': 'items-center sm:items-start justify-start',
+      'top-center': 'items-center sm:items-start justify-center',
+      'center-left': 'items-center justify-start',
+      center: 'items-center justify-center',
+      'center-right': 'items-center justify-end',
+    },
+    role: {
+      error: 'bg-red-100 dark:bg-red-400 dark:ring-red-300/10 ring-red-700/5',
+      info: 'bg-blue-100 dark:bg-blue-400 dark:ring-blue-300/10 ring-blue-700/5',
+      success:
+        'bg-emerald-100 dark:bg-emerald-400 dark:ring-emerald-300/10 ring-emerald-700/5',
+      warning:
+        'bg-amber-100 dark:bg-amber-400 dark:ring-amber-300/10 ring-amber-700/5',
+      default:
+        'bg-gray-100 dark:bg-gray-400 dark:ring-gray-300/10 ring-gray-700/5',
     },
   },
 };

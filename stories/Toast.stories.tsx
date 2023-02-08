@@ -16,6 +16,14 @@ export default {
     duration: 3000,
     component: null,
   },
+  argTypes: {
+    role: {
+      control: {
+        type: 'select',
+        options: ['success', 'error', 'info', 'warning', 'default'],
+      },
+    },
+  },
 } as Meta;
 
 type StoryProps = PresentProps;

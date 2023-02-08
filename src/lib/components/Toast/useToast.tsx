@@ -4,6 +4,7 @@ import { XMarkIcon } from '@heroicons/react/20/solid';
 import {
   CheckCircleIcon,
   ExclamationCircleIcon,
+  ExclamationTriangleIcon,
   InformationCircleIcon,
 } from '@heroicons/react/24/outline';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
@@ -19,12 +20,13 @@ import {
 } from 'react';
 import { createPortal } from 'react-dom';
 import clsxm from '../../helpers/clsxm';
+import { Button } from '../Button';
 import { useTheme } from '../FluidUI/ThemeContext';
 
 export type PresentProps = {
   title: string;
   message?: string;
-  role?: 'success' | 'error' | 'info';
+  role?: 'success' | 'error' | 'info' | 'warning' | 'default';
   id?: string;
   autoDismiss?: boolean;
   duration?: number;
@@ -73,14 +75,19 @@ export const Toast = forwardRef(
     const autoDismiss =
       typeof options?.autoDismiss === 'boolean' ? options?.autoDismiss : true;
     const duration = options?.duration || 4000;
-    const role = options?.role || 'success';
+    const role = options?.role || 'default';
     const shouldReduceMotion = useReducedMotion();
+    const [isHovered, setIsHovered] = useState(false);
     const theme = useTheme().theme.toast;
-    if (autoDismiss) {
-      setTimeout(() => {
-        dismiss(options.id);
-      }, duration);
-    }
+    // if isHovered, don't dismiss
+    useEffect(() => {
+      if (autoDismiss && !isHovered) {
+        const timeout = setTimeout(() => {
+          dismiss(options.id);
+        }, duration);
+        return () => clearTimeout(timeout);
+      }
+    }, [isHovered]);
     return (
       <>
         <motion.div
@@ -99,17 +106,14 @@ export const Toast = forwardRef(
             bounce: 0.15,
           }}
           className='flex w-full flex-col items-center space-y-4 sm:items-end'
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
           {...props}
         >
           {/* Notification panel, dynamically insert this into the live region when it needs to be displayed */}
 
-          <div
-            className={clsxm(
-              'pointer-events-auto w-full max-w-sm rounded-md !p-0 shadow-lg dark:shadow-xl',
-              theme.base
-            )}
-          >
-            <div className='p-4'>
+          <div className={clsxm(theme.base, theme.role[role])}>
+            <div className='p-4 relative z-[1]'>
               <div className='flex items-start'>
                 <div className='flex-shrink-0'>
                   {role === 'success' && (
@@ -130,6 +134,12 @@ export const Toast = forwardRef(
                       aria-hidden='true'
                     />
                   )}
+                  {role === 'warning' && (
+                    <ExclamationTriangleIcon
+                      className='h-6 w-6 text-amber-400'
+                      aria-hidden='true'
+                    />
+                  )}
                 </div>
                 <div className='ml-3 w-0 flex-1 pt-0.5'>
                   <p className='text-sm font-medium text-gray-700 dark:text-gray-100'>
@@ -141,16 +151,17 @@ export const Toast = forwardRef(
                   {options?.component && options.component}
                 </div>
                 <div className='ml-4 flex flex-shrink-0'>
-                  <button
-                    type='button'
-                    className='inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:bg-gray-700 dark:text-gray-400 dark:focus:ring-offset-black'
+                  <Button
                     onClick={() => {
                       dismiss(options.id);
                     }}
-                  >
-                    <span className='sr-only'>Close</span>
-                    <XMarkIcon className='h-5 w-5' aria-hidden='true' />
-                  </button>
+                    iconOnly
+                    icon={XMarkIcon}
+                    weight='clear'
+                    shape='pill'
+                    size='xs'
+                    className='-m-1'
+                  />
                 </div>
               </div>
             </div>
@@ -185,12 +196,16 @@ export function ToastProvider({ children }) {
     }
   }, [toasts.length]);
   const windowExists = typeof window !== 'undefined';
+  const theme = useTheme().theme.toast;
   const body = (
     <div
       ref={toastContainerRef}
       aria-atomic='true'
       aria-live='assertive'
-      className='pointer-events-none fixed inset-0 z-[99] flex flex-col items-end gap-4 overflow-y-auto px-4 py-6 sm:items-start sm:p-6'
+      className={clsxm(
+        'pointer-events-none fixed inset-0 z-[99] flex flex-col gap-4 overflow-y-auto px-4 py-6 sm:p-6',
+        theme.position[theme.position['top-right']]
+      )}
     >
       <AnimatePresence mode='popLayout'>
         {toasts.map((toast) => (

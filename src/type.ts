@@ -1,4 +1,5 @@
 import React, { Dispatch, SetStateAction, SVGProps } from 'react';
+import { PresentProps } from './lib';
 import { DeepPartial } from './lib/helpers/deep-partial';
 
 /* ===== Start Fluid Theme ===== */
@@ -65,6 +66,7 @@ export interface FluidTheme {
   toast: {
     base: string;
     position: FluidPositions;
+    role: Record<PresentProps['role'], string>;
   };
 }
 
