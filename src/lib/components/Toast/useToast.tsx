@@ -61,6 +61,20 @@ export type PresentProps = {
    * @default XMarkIcon
    */
   dismissIcon?: any;
+  /**
+   * onDismiss - Callback function to run when the toast is dismissed
+   * @default null
+   * @param {string} id - ID of the toast
+   * @param {string} role - Role of the toast
+   */
+  onDismiss?: ({ id, role }: { id: string; role: string }) => void;
+  /**
+   * icon - Icon to render in the toast
+   * If not provided, the icon will be based on the role
+   * It can be a React component or as a function that returns a React component
+   * @default null
+   */
+  icon?: JSX.Element | ((props: any) => JSX.Element);
 };
 
 export type ToastProps = {
@@ -88,6 +102,77 @@ export const ToastMessage = ({
     </Component>
   );
 };
+export const defaultTimeouts: {
+  [key in PresentProps['role']]: number;
+} = {
+  default: 3000,
+  success: 2000,
+  error: Infinity,
+  info: 4000,
+  warning: 4000,
+};
+/* 
+
+                  {!Icon && role === 'success' && (
+                    <CheckCircleIcon
+                      className='h-6 w-6 text-green-400'
+                      aria-hidden='true'
+                    />
+                  )}
+                  {!Icon && role === 'error' && (
+                    <ExclamationCircleIcon
+                      className='h-6 w-6 text-red-400'
+                      aria-hidden='true'
+                    />
+                  )}
+                  {!Icon && role === 'info' && (
+                    <InformationCircleIcon
+                      className='h-6 w-6 text-blue-400'
+                      aria-hidden='true'
+                    />
+                  )}
+                  {!Icon && role === 'warning' && (
+                    <ExclamationTriangleIcon
+                      className='h-6 w-6 text-amber-400'
+                      aria-hidden='true'
+                    />
+                  )}
+*/
+
+const getDefaultIcon = (role: PresentProps['role']) => {
+  switch (role) {
+    case 'success':
+      return (
+        <CheckCircleIcon
+          className='h-6 w-6 text-green-400'
+          aria-hidden='true'
+        />
+      );
+    case 'error':
+      return (
+        <ExclamationCircleIcon
+          className='h-6 w-6 text-red-400'
+          aria-hidden='true'
+        />
+      );
+    case 'info':
+      return (
+        <InformationCircleIcon
+          className='h-6 w-6 text-blue-400'
+          aria-hidden='true'
+        />
+      );
+    case 'warning':
+      return (
+        <ExclamationTriangleIcon
+          className='h-6 w-6 text-amber-400'
+          aria-hidden='true'
+        />
+      );
+    default:
+      return null;
+  }
+};
 
 export const Toast = forwardRef(
   (
@@ -105,12 +190,15 @@ export const Toast = forwardRef(
   ) => {
     const autoDismiss =
       typeof options?.autoDismiss === 'boolean' ? options?.autoDismiss : true;
-    const duration = options?.duration || 4000;
+    const duration =
+      options?.duration || defaultTimeouts[options?.role] || 3000;
     const role = options?.role || 'default';
     const DismissIcon = options?.dismissIcon || XMarkIcon;
+    const Icon = options?.icon;
     const shouldReduceMotion = useReducedMotion();
     const [isHovered, setIsHovered] = useState(false);
     const theme = useTheme().theme.toast;
+    const defaultIcon = getDefaultIcon(role);
     // if isHovered, don't dismiss
     useEffect(() => {
       if (autoDismiss && !isHovered) {
@@ -151,29 +239,18 @@ export const Toast = forwardRef(
             <div className='p-4 relative z-[1]'>
               <div className='flex items-start'>
                 <div className='flex-shrink-0'>
-                  {role === 'success' && (
-                    <CheckCircleIcon
-                      className='h-6 w-6 text-green-400'
-                      aria-hidden='true'
-                    />
-                  )}
-                  {role === 'error' && (
-                    <ExclamationCircleIcon
-                      className='h-6 w-6 text-red-400'
-                      aria-hidden='true'
-                    />
-                  )}
-                  {role === 'info' && (
-                    <InformationCircleIcon
-                      className='h-6 w-6 text-blue-400'
-                      aria-hidden='true'
-                    />
-                  )}
-                  {role === 'warning' && (
-                    <ExclamationTriangleIcon
-                      className='h-6 w-6 text-amber-400'
-                      aria-hidden='true'
-                    />
+                  {!Icon && defaultIcon}
+                  {Icon && (
+                    <div className='h-6 w-6'>
+                      {typeof Icon === 'function' ? (
+                        <Icon
+                          className='h-6 w-6 text-amber-400'
+                          aria-hidden='true'
+                        />
+                      ) : (
+                        Icon
+                      )}
+                    </div>
                   )}
                 </div>
                 <div className='ml-3 w-0 flex-1 pt-0.5'>
@@ -189,6 +266,7 @@ export const Toast = forwardRef(
                   <Button
                     onClick={() => {
                       dismiss(options.id);
+                      options?.onDismiss?.({ id: options.id, role });
                     }}
                     iconOnly
                     icon={DismissIcon}
