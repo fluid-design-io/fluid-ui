@@ -24,13 +24,43 @@ import { Button } from '../Button';
 import { useTheme } from '../FluidUI/ThemeContext';
 
 export type PresentProps = {
+  /**
+   * title - Title of the toast
+   * @default ''
+   */
   title: string;
+  /**
+   * message - Message to display in the toast
+   * Note: If component is provided, message will be ignored
+   * @default ''
+   */
   message?: string;
+  /**
+   * role - Role of the toast
+   * @default 'default'
+   */
   role?: 'success' | 'error' | 'info' | 'warning' | 'default';
   id?: string;
+  /**
+   * autoDismiss - Whether to auto dismiss the toast
+   * @default true
+   */
   autoDismiss?: boolean;
+  /**
+   * duration - Duration in milliseconds to auto dismiss the toast
+   * @default 4000
+   */
   duration?: number;
+  /**
+   * component - Component to render in the toast
+   * @default null
+   */
   component?: ReactNode;
+  /**
+   * dismissIcon - Icon to use for the dismiss button
+   * @default XMarkIcon
+   */
+  dismissIcon?: any;
 };
 
 export type ToastProps = {
@@ -64,6 +94,7 @@ export const Toast = forwardRef(
     {
       options,
       dismiss,
+      className = '',
       ...props
     }: {
       options: PresentProps;
@@ -76,6 +107,7 @@ export const Toast = forwardRef(
       typeof options?.autoDismiss === 'boolean' ? options?.autoDismiss : true;
     const duration = options?.duration || 4000;
     const role = options?.role || 'default';
+    const DismissIcon = options?.dismissIcon || XMarkIcon;
     const shouldReduceMotion = useReducedMotion();
     const [isHovered, setIsHovered] = useState(false);
     const theme = useTheme().theme.toast;
@@ -105,7 +137,10 @@ export const Toast = forwardRef(
             type: 'spring',
             bounce: 0.15,
           }}
-          className='flex w-full flex-col items-center space-y-4 sm:items-end'
+          className={clsxm(
+            'flex w-full flex-col items-center space-y-4 sm:items-end',
+            className
+          )}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           {...props}
@@ -156,7 +191,7 @@ export const Toast = forwardRef(
                       dismiss(options.id);
                     }}
                     iconOnly
-                    icon={XMarkIcon}
+                    icon={DismissIcon}
                     weight='clear'
                     shape='pill'
                     size='xs'
