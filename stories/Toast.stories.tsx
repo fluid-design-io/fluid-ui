@@ -15,12 +15,16 @@ export default {
     autoDismiss: true,
     duration: 3000,
     component: null,
-  },
+    dismissIcon: null,
+    onDismiss: null,
+    dismissClassName: '',
+    icon: null,
+  } as PresentProps,
   argTypes: {
     role: {
       control: {
         type: 'select',
-        options: ['success', 'error', 'info', 'warning', 'default'],
+        options: ['success', 'error', 'info', 'warning', 'default', 'blank'],
       },
     },
   },
@@ -48,7 +52,7 @@ const Component = ({
   const [presentToast] = useToast();
   return (
     <Wrap>
-      <Button label='Present Toast' onClick={() => presentToast(args)} />
+      <Button label='Present Toast' onClick={() => presentToast(args as any)} />
     </Wrap>
   );
 };
@@ -74,13 +78,23 @@ export const CustomBody = CustomBodyTemplate.bind({});
 
 CustomBody.args = {
   message: null,
-  component: (
-    <div className='flex flex-col items-center justify-center gap-4 dark:text-white'>
-      <h1 className='text-2xl font-bold'>Custom Body</h1>
+  component: ({ dismiss }) => (
+    <div className='flex flex-col items-center justify-center gap-4 dark:text-white p-2'>
+      <h3 className='text-2xl font-bold'>Custom Body</h3>
       <p className='text-center'>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
         voluptates, quod, quia, voluptatibus quae voluptatem quibusdam
       </p>
+      <div className='flex justify-between w-full'>
+        <div className='flex-grow' />
+        <Button
+          label='Dismiss'
+          onClick={dismiss}
+          color='fuchsia'
+          weight='clear'
+          size='sm'
+        />
+      </div>
     </div>
   ),
 };

@@ -153,7 +153,15 @@ const defaultTheme: FluidTheme = {
     base: 'bg-white ring-1 ring-black/5 transition dark:bg-gray-900 dark:ring-white/10 overflow-hidden rounded-md p-4',
   },
   toast: {
-    base: 'ring-1 ring-black/5 rounded-md pointer-events-auto w-full max-w-sm p-0 shadow-lg dark:shadow-xl relative overflow-hidden before:inset-0 before:absolute dark:before:bg-black/75 before:z-0 before:pointer-events-none',
+    base: [
+      'rounded-md pointer-events-auto w-full max-w-sm p-0 shadow-xl relative overflow-hidden',
+      'ring-1 ring-opacity-30 dark:ring-opacity-20 hocus:ring-opacity-40 dark:hocus:ring-opacity-30',
+    ],
+    before: [
+      'before:transition-colors transition-colors',
+      'dark:hocus:before:bg-black/80 dark:before:bg-black/75',
+      'before:inset-0 before:absolute before:bg-white/20 hocus:before:bg-white/50 before:z-0 before:pointer-events-none',
+    ],
     position: {
       'top-right': 'items-center sm:items-start justify-end',
       'bottom-left': 'items-center sm:items-end justify-start',
@@ -166,14 +174,14 @@ const defaultTheme: FluidTheme = {
       'center-right': 'items-center justify-end',
     },
     role: {
-      error: 'bg-red-100 dark:bg-red-400 dark:ring-red-300/10 ring-red-700/5',
-      info: 'bg-blue-100 dark:bg-blue-400 dark:ring-blue-300/10 ring-blue-700/5',
+      error: 'bg-red-50 dark:bg-red-400 dark:ring-red-300 ring-red-500',
+      info: 'bg-blue-50 dark:bg-blue-400 dark:ring-blue-300 ring-blue-500',
       success:
-        'bg-emerald-100 dark:bg-emerald-400 dark:ring-emerald-300/10 ring-emerald-700/5',
+        'bg-emerald-50 dark:bg-emerald-400 dark:ring-emerald-300 ring-emerald-500',
       warning:
-        'bg-amber-100 dark:bg-amber-400 dark:ring-amber-300/10 ring-amber-700/5',
-      default:
-        'bg-gray-100 dark:bg-gray-400 dark:ring-gray-300/10 ring-gray-700/5',
+        'bg-amber-50 dark:bg-amber-400 dark:ring-amber-300 ring-amber-500',
+      default: 'bg-gray-50 dark:bg-gray-400 dark:ring-gray-300 ring-gray-500',
+      blank: 'bg-gray-50 dark:bg-gray-900 ring-0 dark:ring-0',
     },
   },
 };

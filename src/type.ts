@@ -64,7 +64,8 @@ export interface FluidTheme {
     base: string;
   };
   toast: {
-    base: string;
+    base: string[];
+    before: string[];
     position: FluidPositions;
     role: Record<PresentProps['role'], string>;
   };

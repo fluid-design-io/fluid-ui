@@ -28,7 +28,7 @@ export type PresentProps = {
    * title - Title of the toast
    * @default ''
    */
-  title: string;
+  title?: string;
   /**
    * message - Message to display in the toast
    * Note: If component is provided, message will be ignored
@@ -39,7 +39,7 @@ export type PresentProps = {
    * role - Role of the toast
    * @default 'default'
    */
-  role?: 'success' | 'error' | 'info' | 'warning' | 'default';
+  role?: 'success' | 'error' | 'info' | 'warning' | 'default' | 'blank';
   id?: string;
   /**
    * autoDismiss - Whether to auto dismiss the toast
@@ -55,7 +55,7 @@ export type PresentProps = {
    * component - Component to render in the toast
    * @default null
    */
-  component?: ReactNode;
+  component?: ({ dismiss }: { dismiss: () => void }) => ReactNode;
   /**
    * dismissIcon - Icon to use for the dismiss button
    * @default XMarkIcon
@@ -75,10 +75,24 @@ export type PresentProps = {
    * @default null
    */
   icon?: JSX.Element | ((props: any) => JSX.Element);
+  /**
+   * dismissClassName - Class name to apply to the dismiss button
+   * @default ''
+   */
+  dismissClassName?: string;
 };
 
 export type ToastProps = {
+  /**
+   * present - Function to present a toast
+   * @param {PresentProps} props - Props to pass to the toast
+   */
   present: (options: PresentProps) => void;
+  /**
+   * Dismiss a toast by id
+   * @param id the id of the toast to dismiss
+   */
+  dismiss: (id: string) => void;
 };
 
 export const ToastMessage = ({
@@ -110,34 +124,8 @@ export const defaultTimeouts: {
   error: Infinity,
   info: 4000,
   warning: 4000,
+  blank: Infinity,
 };
-/* 
-
-                  {!Icon && role === 'success' && (
-                    <CheckCircleIcon
-                      className='h-6 w-6 text-green-400'
-                      aria-hidden='true'
-                    />
-                  )}
-                  {!Icon && role === 'error' && (
-                    <ExclamationCircleIcon
-                      className='h-6 w-6 text-red-400'
-                      aria-hidden='true'
-                    />
-                  )}
-                  {!Icon && role === 'info' && (
-                    <InformationCircleIcon
-                      className='h-6 w-6 text-blue-400'
-                      aria-hidden='true'
-                    />
-                  )}
-                  {!Icon && role === 'warning' && (
-                    <ExclamationTriangleIcon
-                      className='h-6 w-6 text-amber-400'
-                      aria-hidden='true'
-                    />
-                  )}
-*/
 
 const getDefaultIcon = (role: PresentProps['role']) => {
   switch (role) {
@@ -169,6 +157,8 @@ const getDefaultIcon = (role: PresentProps['role']) => {
           aria-hidden='true'
         />
       );
+    case 'blank':
+      return null;
     default:
       return null;
   }
@@ -212,12 +202,18 @@ export const Toast = forwardRef(
       <>
         <motion.div
           ref={ref as any}
-          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{
+            opacity: 0,
+            y: shouldReduceMotion ? 0 : 20,
+            filter: 'blur(0px)',
+          }}
+          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           exit={{
             opacity: 0,
+            y: 0,
+            filter: shouldReduceMotion ? 'blur(0px)' : 'blur(16px)',
             transition: {
-              duration: 0.2,
+              duration: 0.4,
             },
           }}
           transition={{
@@ -235,49 +231,68 @@ export const Toast = forwardRef(
         >
           {/* Notification panel, dynamically insert this into the live region when it needs to be displayed */}
 
-          <div className={clsxm(theme.base, theme.role[role])}>
-            <div className='p-4 relative z-[1]'>
-              <div className='flex items-start'>
-                <div className='flex-shrink-0'>
-                  {!Icon && defaultIcon}
-                  {Icon && (
-                    <div className='h-6 w-6'>
-                      {typeof Icon === 'function' ? (
-                        <Icon
-                          className='h-6 w-6 text-amber-400'
-                          aria-hidden='true'
-                        />
-                      ) : (
-                        Icon
-                      )}
-                    </div>
-                  )}
-                </div>
-                <div className='ml-3 w-0 flex-1 pt-0.5'>
-                  <p className='text-sm font-medium text-gray-700 dark:text-gray-100'>
-                    {options?.title}
-                  </p>
-                  {options?.message && (
-                    <ToastMessage>{options?.message}</ToastMessage>
-                  )}
-                  {options?.component && options.component}
-                </div>
-                <div className='ml-4 flex flex-shrink-0'>
-                  <Button
-                    onClick={() => {
-                      dismiss(options.id);
-                      options?.onDismiss?.({ id: options.id, role });
-                    }}
-                    iconOnly
-                    icon={DismissIcon}
-                    weight='clear'
-                    shape='pill'
-                    size='xs'
-                    className='-m-1'
-                  />
+          <div
+            className={clsxm(
+              theme.base,
+              theme.role[role],
+              role !== 'blank' && theme.before
+            )}
+          >
+            {role !== 'blank' && (
+              <div className='p-4 relative z-[1]'>
+                <div className='flex items-start'>
+                  <div className='flex-shrink-0'>
+                    {!Icon && defaultIcon}
+                    {Icon && (
+                      <div className='h-6 w-6'>
+                        {typeof Icon === 'function' ? (
+                          <Icon
+                            className='h-6 w-6 text-amber-400'
+                            aria-hidden='true'
+                          />
+                        ) : (
+                          Icon
+                        )}
+                      </div>
+                    )}
+                  </div>
+                  <div className='ml-3 w-0 flex-1 pt-0.5'>
+                    {options?.title && (
+                      <p className='text-sm font-medium text-gray-700 dark:text-gray-100'>
+                        {options?.title}
+                      </p>
+                    )}
+                    {options?.message && (
+                      <ToastMessage>{options?.message}</ToastMessage>
+                    )}
+                    {options?.component &&
+                      options?.component({
+                        dismiss: () => dismiss(options.id),
+                      })}
+                  </div>
+                  <div className='ml-4 flex flex-shrink-0'>
+                    <Button
+                      onClick={() => {
+                        dismiss(options.id);
+                        options?.onDismiss?.({ id: options.id, role });
+                      }}
+                      iconOnly
+                      icon={DismissIcon}
+                      weight='clear'
+                      shape='pill'
+                      size='xs'
+                      className={clsxm('-m-1', options?.dismissClassName)}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
+            {
+              // if role is blank, return the component
+              role === 'blank' &&
+                options?.component &&
+                options?.component({ dismiss: () => dismiss(options.id) })
+            }
           </div>
         </motion.div>
       </>
@@ -295,7 +310,7 @@ export function ToastProvider({ children }) {
     const toastId = Math.random().toString(36).substr(2, 9);
     setToasts([...toasts, { ...props, id: toastId }]);
   };
-  const dismissToast = (id) => {
+  const dismissToast = (id: string) => {
     setToasts((prev) => prev.filter((toast) => toast.id !== id));
   };
   useEffect(() => {
@@ -333,7 +348,7 @@ export function ToastProvider({ children }) {
     </div>
   );
   return (
-    <ToastContext.Provider value={{ present }}>
+    <ToastContext.Provider value={{ present, dismiss: dismissToast }}>
       {children}
       {/* Global notification live region, render this permanently at the end of the document */}
       {windowExists ? createPortal(body, document.body) : body}
@@ -342,6 +357,6 @@ export function ToastProvider({ children }) {
 }
 
 export function useToast() {
-  const { present } = useContext(ToastContext);
-  return [present];
+  const { present, dismiss } = useContext(ToastContext);
+  return [present, dismiss];
 }
