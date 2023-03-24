@@ -1,11 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  // content: ["./src/**/*.{js,jsx,ts,tsx}", "./stories/**.*.{js,tsx}"], // For dev environment 
-  content: [], // For production environment
+  content: ["./src/**/*.{js,jsx,ts,tsx}", "./stories/**.*.{js,tsx}"], // For dev environment 
+  // content: [], // For production environment
   darkMode: 'class',
   corePlugins: {
-    // preflight: true,
-    preflight: false, // For prod environment
+    preflight: true,
+    // preflight: false, // For prod environment
   },
   theme: {
     extend: {

@@ -94,6 +94,7 @@ module.exports = {
   plugins: [
     require('@fluid-design/fluid-ui/dist/plugin/core'), // main plugin
     require('@fluid-design/fluid-ui/dist/plugin/button'), // for button component
+    require('@fluid-design/fluid-ui/dist/plugin/tooltip'), // for tooltip component
   ],
 };
 ```
@@ -107,8 +108,9 @@ If you don't want to opt-in to use components, you can also use the tailwind plu
 module.exports = {
     //...
     plugins: [
-    require('@fluid-design/fluid-ui/src/plugin/core'), // main plugin
-    require('@fluid-design/fluid-ui/src/plugin/button'), // for button component
+    require('@fluid-design/fluid-ui/dist/plugin/core'), // main plugin
+    require('@fluid-design/fluid-ui/dist/plugin/button'), // for button component
+    require('@fluid-design/fluid-ui/dist/plugin/tooltip'), // for tooltip component
   ],
 }
 ```
@@ -153,13 +155,13 @@ Fluid UI will continue to evolve and grow. Here are some of the features we are 
 - [x] Forms - Input ✅
 - [x] Forms - Textarea ✅
 - [x] Forms - Validation ✅
-- [ ] Plugin - Button (doc) ✅
-- [ ] Plugin - Tooltip (doc) 📄
-- [ ] Popover 🚧
-- [ ] Dialog (Modal) (doc) 📄
-- [ ] Toast (doc) 📄
+- [x] Plugin - Button ✅
+- [x] Plugin - Tooltip ✅
+- [x] Dialog (Modal) ✅
+- [x] Toast ✅
 - [x] UI - Card  ✅
 - [x] UI - List  ✅
+- [ ] Popover 🚧
 
 ## Issues
 
