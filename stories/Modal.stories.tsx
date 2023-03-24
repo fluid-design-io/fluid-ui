@@ -47,8 +47,8 @@ const NestedModal2 = ({ onConfirm, dismiss }) => {
   });
   return (
     <Dialog>
-      <Dialog.Title>Are you sure?</Dialog.Title>
       <Dialog.Body>
+        <Dialog.Title>Are you sure?</Dialog.Title>
         <Dialog.Description>
           You have unsaved changes. Are you sure you want to cancel? All unsaved
           changes will be lost.
@@ -73,8 +73,8 @@ const NestedModal1 = ({ onConfirm, dismiss, ...props }) => {
   });
   return (
     <Dialog>
-      <Dialog.Title>Are you sure?</Dialog.Title>
       <Dialog.Body>
+        <Dialog.Title>Are you sure?</Dialog.Title>
         <Dialog.Description>
           You have unsaved changes. Are you sure you want to cancel? All unsaved
           changes will be lost.
@@ -95,8 +95,8 @@ const NestedModal1 = ({ onConfirm, dismiss, ...props }) => {
 const ConfirmCancelModal = ({ onConfirm, dismiss, ...props }) => {
   return (
     <Dialog>
-      <Dialog.Title>Are you sure?</Dialog.Title>
       <Dialog.Body>
+        <Dialog.Title>Are you sure?</Dialog.Title>
         <Dialog.Description>
           You have unsaved changes. Are you sure you want to cancel? All unsaved
           changes will be lost.
@@ -123,8 +123,8 @@ const ConfirmCancelModalWrap = ({ onConfirm, dismiss, onClose, ...props }) => {
   onClose(canDismiss ? dismiss : presentConfirmModal);
   return (
     <Dialog>
-      <Dialog.Title>My Profile</Dialog.Title>
       <Dialog.Body>
+        <Dialog.Title>My Profile</Dialog.Title>
         <Dialog.Description>
           Enter your profile information below. (Try change the name to
           something else and try to close the modal.)
