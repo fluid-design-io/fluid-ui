@@ -41,7 +41,7 @@ function AppInput({
         onChange={handleChange}
         onFocus={() => setFocused(true)}
         placeholder={error ? label : undefined}
-        value={value}
+        value={value || ''}
         className={clsxm(
           theme.base,
           getInputColor({ error, className: props.className })

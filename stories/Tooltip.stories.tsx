@@ -1,4 +1,3 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
 
 import { FluidProvider, Button } from '../src/lib/components';
@@ -8,11 +7,9 @@ export default {
   title: 'Components/Tooltip',
   component: null,
   args: {},
-} as Meta;
+};
 
-type StoryProps = {};
-
-const Template: Story<StoryProps> = (args) => {
+const Template = (args) => {
   return (
     <>
       <div className='flex gap-4 px-8 py-24'>

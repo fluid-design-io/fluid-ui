@@ -1,25 +1,25 @@
-import { Combobox, Transition } from "@headlessui/react";
-import { useFormikContext } from "formik";
-import React, { Fragment, useMemo, useState } from "react";
-import { HiCheck, HiOutlineX, HiSelector } from "react-icons/hi";
+import { Combobox, Transition } from '@headlessui/react';
+import { useFormikContext } from 'formik';
+import React, { Fragment, useMemo, useState } from 'react';
+import { HiCheck, HiOutlineX, HiSelector } from 'react-icons/hi';
 
-import clsxm from "../../helpers/clsxm";
+import clsxm from '../../helpers/clsxm';
 
-import { AnimatePresence, motion } from "framer-motion";
-import { baseOptionClassName } from ".";
+import { AnimatePresence, motion } from 'framer-motion';
+import { baseOptionClassName } from '.';
 import {
   ComboBoxComponent,
   ComboBoxProps,
   PolymorphicRef,
-} from "../../../type";
-import { excludeClassName } from "../../helpers/exclude";
-import { useFormValue } from "../../helpers/useFormValue";
-import { Button } from "../Button";
-import { useTheme } from "../FluidUI/ThemeContext";
-import FormItem from "./AppFormItem";
+} from '../../../type';
+import { excludeClassName } from '../../helpers/exclude';
+import { useFormValue } from '../../helpers/useFormValue';
+import { Button } from '../Button';
+import { useTheme } from '../FluidUI/ThemeContext';
+import FormItem from './AppFormItem';
 
 const AppComboBox: ComboBoxComponent = React.forwardRef(
-  <C extends React.ElementType = "div">(
+  <C extends React.ElementType = 'div'>(
     {
       as,
       sr,
@@ -53,7 +53,7 @@ const AppComboBox: ComboBoxComponent = React.forwardRef(
     }: ComboBoxProps<C>,
     ref?: PolymorphicRef<C>
   ) => {
-    const Component = as || "div";
+    const Component = as || 'div';
     const { setFieldTouched, handleChange, errors, touched, values } =
       useFormikContext();
     const [focused, setFocused] = useState(false);
@@ -66,25 +66,25 @@ const AppComboBox: ComboBoxComponent = React.forwardRef(
       placeholder,
     });
     const getStringValue = (item: string | Record<string, any> | undefined) => {
-      if (typeof item === "string") {
+      if (typeof item === 'string') {
         return item;
       }
-      if (typeof item === "object") {
-        return item[itemKey || "name" || "id"];
+      if (typeof item === 'object') {
+        return item[itemKey || 'name' || 'id'];
       }
-      return "";
+      return '';
     };
-    const [query, setQuery] = useState(getStringValue(value) || "");
+    const [query, setQuery] = useState(getStringValue(value) || '');
     const filteredList = useMemo(() => {
-      if (query === "") {
+      if (query === '') {
         return list;
       }
       return list.filter((item) => {
         const itemValue = getStringValue(item);
         return itemValue
           .toLowerCase()
-          .replace(/\s/g, "")
-          .includes(query.toLowerCase().replace(/\s/g, ""));
+          .replace(/\s/g, '')
+          .includes(query.toLowerCase().replace(/\s/g, ''));
       });
     }, [query, list, itemKey]);
     const theme = useTheme().theme.form;
@@ -97,7 +97,7 @@ const AppComboBox: ComboBoxComponent = React.forwardRef(
     return (
       <Combobox
         as={Component as any}
-        className={clsxm("mb-4 last:mb-0", className)}
+        className={clsxm('mb-4 last:mb-0', className)}
         defaultValue={value}
         disabled={disabled}
         value={value}
@@ -111,7 +111,7 @@ const AppComboBox: ComboBoxComponent = React.forwardRef(
       >
         <Combobox.Label
           className={clsxm(
-            "contrast:text-gray-90 text-sm font-medium text-gray-700 dark:text-gray-200",
+            'contrast:text-gray-90 text-sm font-medium text-gray-700 dark:text-gray-200',
             labelClassName
           )}
         >
@@ -119,7 +119,7 @@ const AppComboBox: ComboBoxComponent = React.forwardRef(
         </Combobox.Label>
 
         <FormItem {...{ error, descriptionError: error, focused, description }}>
-          <div className={clsxm(theme.base, "relative mt-1", itemClassName)}>
+          <div className={clsxm(theme.base, 'relative mt-1', itemClassName)}>
             <div
               className={clsxm(
                 multiple && value?.length > 0 && selectedItemsClassName
@@ -151,22 +151,22 @@ const AppComboBox: ComboBoxComponent = React.forwardRef(
                     }}
                     animate={{
                       opacity: 1,
-                      height: "auto",
+                      height: 'auto',
                     }}
                     exit={{
                       opacity: 0,
                       height: 0,
                     }}
                     transition={{
-                      type: "spring",
+                      type: 'spring',
                       bounce: 0,
                       duration: 0.38,
                     }}
                   >
                     <div
                       className={clsxm(
-                        multiple && "flex flex-wrap gap-2",
-                        multiple && value?.length > 0 && "p-2"
+                        multiple && 'flex flex-wrap gap-2',
+                        multiple && value?.length > 0 && 'p-2'
                       )}
                     >
                       <AnimatePresence mode='popLayout'>
@@ -175,20 +175,20 @@ const AppComboBox: ComboBoxComponent = React.forwardRef(
                             initial={{
                               opacity: 0,
                               scale: 0.92,
-                              filter: "blur(0px)",
+                              filter: 'blur(0px)',
                             }}
                             animate={{
                               opacity: 1,
                               scale: 1,
-                              filter: "blur(0px)",
+                              filter: 'blur(0px)',
                             }}
                             exit={{
                               opacity: 0,
-                              filter: "blur(5px)",
+                              filter: 'blur(5px)',
                               transition: { duration: 0.15, delay: 0.05 },
                             }}
                             transition={{
-                              type: "spring",
+                              type: 'spring',
                               bounce: 0,
                               duration: 0.25,
                             }}
@@ -211,7 +211,7 @@ const AppComboBox: ComboBoxComponent = React.forwardRef(
                                 ) as any;
                                 handleChange({
                                   target: {
-                                    type: "text",
+                                    type: 'text',
                                     name: rawName,
                                     value: newValue,
                                   },
@@ -228,23 +228,23 @@ const AppComboBox: ComboBoxComponent = React.forwardRef(
             </div>
             <div
               className={clsxm(
-                "relative w-full",
+                'relative w-full',
                 multiple &&
                   value &&
                   value?.length > 0 &&
-                  "border-t border-t-gray-200 dark:border-t-gray-700"
+                  'border-t border-t-gray-200 dark:border-t-gray-700'
               )}
             >
               <Combobox.Input
                 className={clsxm(
-                  "bg-transparent outline-none focus:outline-none",
+                  'bg-transparent outline-none focus:outline-none border-none',
                   theme.select.button,
                   inputClassName
                 )}
                 onChange={(e) => setQuery(e.target.value)}
                 onFocus={() => (!focused ? setFocused(true) : undefined)}
                 value={query}
-                placeholder={placeholder || "Type to search..."}
+                placeholder={placeholder || 'Type to search...'}
                 onBlur={() => {
                   setFieldTouched(rawName);
                   setFocused(false);
@@ -252,8 +252,8 @@ const AppComboBox: ComboBoxComponent = React.forwardRef(
               />
               <Combobox.Button
                 className={clsxm(
-                  "absolute inset-y-0 right-0 flex items-center pr-2 hocus:opacity-80",
-                  "rtl:left-0 rtl:right-auto rtl:pr-0 rtl:pl-2",
+                  'absolute inset-y-0 right-0 flex items-center pr-2 hocus:opacity-80',
+                  'rtl:left-0 rtl:right-auto rtl:pr-0 rtl:pl-2',
                   buttonClassName
                 )}
                 onBlur={() => {
@@ -278,8 +278,8 @@ const AppComboBox: ComboBoxComponent = React.forwardRef(
                 <Combobox.Options
                   className={clsxm(
                     theme.popover,
-                    "absolute overflow-auto mt-2 py-1 sm:text-sm",
-                    multiple && "top-full",
+                    'absolute overflow-auto mt-2 py-1 sm:text-sm',
+                    multiple && 'top-full',
                     listClassName
                   )}
                   onBlur={() => {
@@ -301,11 +301,11 @@ const AppComboBox: ComboBoxComponent = React.forwardRef(
                       innerAs='li'
                       key={`${rawName}-empty`}
                       shape='square'
-                      value={emptyOptionValue || ""}
+                      value={emptyOptionValue || ''}
                       className={clsxm(baseOptionClassName)}
                     >
                       <span className='block truncate'>
-                        {emptyOptionText || "None"}
+                        {emptyOptionText || 'None'}
                       </span>
                     </Combobox.Option>
                   )}
@@ -342,9 +342,9 @@ const AppComboBox: ComboBoxComponent = React.forwardRef(
                       }
                       disabled={
                         (disabledKey &&
-                          typeof item === "object" &&
+                          typeof item === 'object' &&
                           item[disabledKey]) ||
-                        (typeof multiple === "number" &&
+                        (typeof multiple === 'number' &&
                           value.length >= multiple &&
                           !value.includes(item))
                       }
@@ -353,8 +353,8 @@ const AppComboBox: ComboBoxComponent = React.forwardRef(
                         <>
                           <span
                             className={clsxm(
-                              "block truncate",
-                              selected && "font-medium"
+                              'block truncate',
+                              selected && 'font-medium'
                             )}
                           >
                             {!renderDisplayValue && getStringValue(item)}
@@ -370,7 +370,7 @@ const AppComboBox: ComboBoxComponent = React.forwardRef(
                           {selected && (
                             <span
                               className={clsxm(
-                                "absolute inset-y-0 right-0 rtl:right-auto rtl:left-0 flex items-center px-4"
+                                'absolute inset-y-0 right-0 rtl:right-auto rtl:left-0 flex items-center px-4'
                               )}
                             >
                               <HiCheck aria-hidden='true' className='h-5 w-5' />

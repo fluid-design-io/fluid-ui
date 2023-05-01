@@ -1,4 +1,3 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
 import React, { useState } from 'react';
 
 import {
@@ -23,9 +22,7 @@ export default {
     duration: 3000,
     component: null,
   },
-} as Meta;
-
-type StoryProps = PresentModalProps;
+};
 
 const Wrap = ({ className = '', children }) => {
   return (
@@ -177,7 +174,7 @@ const SimpleModal = ({ dismiss }) => {
   );
 };
 
-const Template: Story<StoryProps> = (args) => {
+const Template = (args) => {
   return (
     <FluidProvider>
       <Component {...args} />

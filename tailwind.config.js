@@ -42,5 +42,5 @@ module.exports = {
       }
     },
   },
-  plugins: [require('@tailwindcss/line-clamp'), require('@tailwindcss/typography'), require('@headlessui/tailwindcss'), require('./src/plugin/core'), require('./src/plugin/button'), require('./src/plugin/tooltip')],
+  plugins: [require('@tailwindcss/typography'), require('@headlessui/tailwindcss'), require('./src/plugin/core'), require('./src/plugin/button'), require('./src/plugin/tooltip')],
 };

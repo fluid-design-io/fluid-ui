@@ -1,4 +1,3 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
 import { IoIosSend } from 'react-icons/io';
 import { Button } from '../src/lib/components/Button';
@@ -18,7 +17,7 @@ export default {
     size: 'md' as keyof FluidButtonSizes,
     disabled: false,
   },
-} as Meta;
+};
 
 const colors = [
   'red',
@@ -45,11 +44,7 @@ const colors = [
   'stone',
 ];
 
-interface StoryButtonProps extends ButtonProps<'button'> {
-  isLoading?: boolean;
-}
-
-const Template: Story<StoryButtonProps> = (args) => {
+const Template = (args) => {
   return (
     <div className='flex gap-4 flex-wrap'>
       {colors.map((color) => (
@@ -109,39 +104,39 @@ const Template: Story<StoryButtonProps> = (args) => {
   );
 };
 export const Default = Template.bind({});
-export const Normal: Story<StoryButtonProps> = Template.bind({});
+export const Normal = Template.bind({});
 Normal.storyName = 'Weight normal';
 
-export const Light: Story<StoryButtonProps> = Template.bind({});
+export const Light = Template.bind({});
 Light.storyName = 'Weight Light';
 Light.args = {
   weight: 'light' as keyof FluidButtonWeights,
 };
 
-export const Bold: Story<StoryButtonProps> = Template.bind({});
+export const Bold = Template.bind({});
 Light.storyName = 'Weight Light';
 Light.args = {
   weight: 'bold' as keyof FluidButtonWeights,
 };
 
-export const Outline: Story<StoryButtonProps> = Template.bind({});
+export const Outline = Template.bind({});
 Outline.storyName = 'Weight Outline';
 Outline.args = {
   weight: 'outline' as keyof FluidButtonWeights,
 };
 
-export const Clear: Story<StoryButtonProps> = Template.bind({});
+export const Clear = Template.bind({});
 Clear.storyName = 'Weight Clear';
 Clear.args = {
   weight: 'clear' as keyof FluidButtonWeights,
 };
-export const Link: Story<StoryButtonProps> = Template.bind({});
+export const Link = Template.bind({});
 Link.storyName = 'Weight Link';
 Link.args = {
   weight: 'link' as keyof FluidButtonWeights,
 };
 
-export const WithIcon: Story<StoryButtonProps> = Template.bind({});
+export const WithIcon = Template.bind({});
 WithIcon.storyName = 'With Icon';
 WithIcon.args = {
   icon: IoIosSend,

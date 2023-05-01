@@ -1,4 +1,3 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
 
 import { FluidProvider, Button } from '../src/lib/components';
@@ -28,9 +27,7 @@ export default {
       },
     },
   },
-} as Meta;
-
-type StoryProps = PresentProps;
+};
 
 const Wrap = ({ className = '', children }) => {
   return (
@@ -57,7 +54,7 @@ const Component = ({
   );
 };
 
-const Template: Story<StoryProps> = (args) => {
+const Template = (args) => {
   return (
     <FluidProvider>
       <Component {...args} />

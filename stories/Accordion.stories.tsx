@@ -1,39 +1,32 @@
-import { Meta, Story } from "@storybook/react/types-6-0";
-import React, { ComponentProps, FC } from "react";
+import React, { ComponentProps, FC } from 'react';
 import {
   HiOutlineArrowCircleDown,
   HiOutlineInformationCircle,
   HiOutlineShoppingCart,
   HiOutlineUser,
-} from "react-icons/hi";
-import { Accordion } from "../src/lib/components/Accordion";
-import { AccordionPanelProps } from "../src/lib/components/Accordion/AccordionPanel";
-import clsxm from "../src/lib/helpers/clsxm";
+} from 'react-icons/hi';
+import { Accordion } from '../src/lib/components/Accordion';
+import clsxm from '../src/lib/helpers/clsxm';
 
 export default {
-  title: "Components/Accordion",
+  title: 'Components/Accordion',
   component: Accordion,
   args: {
     isOpen: false,
     divider: false,
     darkMode: false,
   },
-} as Meta;
+};
 
-interface CustomAccordionProps extends AccordionPanelProps {
-  headerIcons: FC<ComponentProps<"svg">>[];
-  rtl: boolean;
-  darkMode: boolean;
-}
-const Template: Story<CustomAccordionProps> = (args) => {
+const Template = (args) => {
   const headers = args?.rtl
-    ? ["متجر", "خدمة", "معلومات عنا"]
-    : ["Shop", "Service", "About"];
+    ? ['متجر', 'خدمة', 'معلومات عنا']
+    : ['Shop', 'Service', 'About'];
   const contents = args?.rtl
     ? [
-        "لكن لا بد أن أوضح لك أن كل هذه الأفكار المغلوطة حول استنكار  النشوة وتمجيد الألم نشأت بالفعل، وسأعرض لك التفاصيل لتكتشف حقيقة وأساس تلك السعادة البشرية، فلا أحد يرفض أو يكره أو يتجنب الشعور بالسعادة، ولكن بفضل هؤلاء الأشخاص الذين لا يدركون بأن السعادة لا بد أن نستشعرها بصورة أكثر عقلانية ومنطقية فيعرضهم هذا لمواجهة الظروف الأليمة، وأكرر بأنه لا يوجد من هؤ",
-        "المغلوطة حول استنكار  النشوة وتمجيد الألم نشأت بالفعل، وسأعرض لك التفاصيل لتكتشف حقيقة وأساس تلك السعادة البشرية، فلا أحد يرفض أو يكره أو يتجنب الشعور بالسعادة، ولكن بفضل هؤ",
-        "و سأعرض مثال حي لهذا، من منا لم يتحمل جهد بدني شاق إلا من أجل الحصول على ميزة أو فائدة؟ ولكن من لديه الحق أن ينتقد شخص ما أراد أن يشعر بالسعادة التي لا تشوبها عواقب أليمة أو آخر أراد أن يتجنب الألم الذي ربما تنجم عنه بعض المتعة ؟ ",
+        'لكن لا بد أن أوضح لك أن كل هذه الأفكار المغلوطة حول استنكار  النشوة وتمجيد الألم نشأت بالفعل، وسأعرض لك التفاصيل لتكتشف حقيقة وأساس تلك السعادة البشرية، فلا أحد يرفض أو يكره أو يتجنب الشعور بالسعادة، ولكن بفضل هؤلاء الأشخاص الذين لا يدركون بأن السعادة لا بد أن نستشعرها بصورة أكثر عقلانية ومنطقية فيعرضهم هذا لمواجهة الظروف الأليمة، وأكرر بأنه لا يوجد من هؤ',
+        'المغلوطة حول استنكار  النشوة وتمجيد الألم نشأت بالفعل، وسأعرض لك التفاصيل لتكتشف حقيقة وأساس تلك السعادة البشرية، فلا أحد يرفض أو يكره أو يتجنب الشعور بالسعادة، ولكن بفضل هؤ',
+        'و سأعرض مثال حي لهذا، من منا لم يتحمل جهد بدني شاق إلا من أجل الحصول على ميزة أو فائدة؟ ولكن من لديه الحق أن ينتقد شخص ما أراد أن يشعر بالسعادة التي لا تشوبها عواقب أليمة أو آخر أراد أن يتجنب الألم الذي ربما تنجم عنه بعض المتعة ؟ ',
       ]
     : [
         `Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam.
@@ -50,7 +43,7 @@ const Template: Story<CustomAccordionProps> = (args) => {
     vulputate.`,
       ];
   const body = (
-    <Accordion className={clsxm(args?.className, "contrast")}>
+    <Accordion className={clsxm(args?.className, 'contrast')}>
       {headers.map((_, index) => (
         <Accordion.Panel
           key={`${index}`}
@@ -67,8 +60,8 @@ const Template: Story<CustomAccordionProps> = (args) => {
   if (args?.rtl || args?.darkMode) {
     return (
       <div
-        dir={args?.rtl ? "rtl" : "ltr"}
-        className={clsxm(args?.darkMode && "dark")}
+        dir={args?.rtl ? 'rtl' : 'ltr'}
+        className={clsxm(args?.darkMode && 'dark')}
       >
         {body}
       </div>
@@ -80,26 +73,26 @@ const Template: Story<CustomAccordionProps> = (args) => {
 export const Default = Template.bind({});
 
 export const IsOpen = Template.bind({});
-IsOpen.storyName = "Default Open";
+IsOpen.storyName = 'Default Open';
 IsOpen.args = {
   isOpen: true,
 };
 
 export const WithDivider = Template.bind({});
-WithDivider.storyName = "With Divider";
+WithDivider.storyName = 'With Divider';
 WithDivider.args = {
   divider: true,
 };
 
 export const WithArrowIcon = Template.bind({});
-WithArrowIcon.storyName = "With arrow icon";
+WithArrowIcon.storyName = 'With arrow icon';
 WithArrowIcon.args = {
   divider: true,
   iconEnd: HiOutlineArrowCircleDown,
 };
 
 export const WithHeaderIcon = Template.bind({});
-WithHeaderIcon.storyName = "With header icon";
+WithHeaderIcon.storyName = 'With header icon';
 WithHeaderIcon.args = {
   divider: true,
   headerIcons: [
@@ -110,13 +103,13 @@ WithHeaderIcon.args = {
 };
 
 export const CustomStyle = Template.bind({});
-CustomStyle.storyName = "Custom style";
+CustomStyle.storyName = 'Custom style';
 CustomStyle.args = {
   divider: true,
-  className: "fl-max-w-md fl-mx-auto fl-shadow-lg fl-shadow-gray-300/40",
+  className: 'fl-max-w-md fl-mx-auto fl-shadow-lg fl-shadow-gray-300/40',
 };
 export const RTL = Template.bind({});
-RTL.storyName = "RTL language";
+RTL.storyName = 'RTL language';
 RTL.args = {
   rtl: true,
   divider: true,

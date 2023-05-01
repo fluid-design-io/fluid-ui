@@ -1,4 +1,3 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
 import * as Yup from 'yup';
 
@@ -33,11 +32,8 @@ export default {
     size: 'md' as keyof FluidButtonSizes,
     disabled: false,
   },
-} as Meta;
-
-type StoryButtonProps = ButtonProps<'button'>;
-
-const Template: Story<StoryButtonProps> = (args) => {
+};
+const Template = (args) => {
   const submitBtnRef = useRef<HTMLButtonElement | null>(null);
   const [isSubmitted, setIsSubmitted] = useState<any>(null);
   const initialValues = {

@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
   --tw-color-primary-50: 249 250 251;
   --tw-color-primary-100: 243 244 246;
@@ -15,15 +14,14 @@
   --tw-color-primary-800: 39 41 43;
   --tw-color-primary-900: 17 18 19;
 
-
-    --tw-color-gray-50: 244 247 251;
-    --tw-color-gray-100: 216 219 223;
-    --tw-color-gray-200: 189 192 196;
-    --tw-color-gray-300: 162 165 169;
-    --tw-color-gray-400: 136 139 143;
-    --tw-color-gray-500: 111 114 118;
-    --tw-color-gray-600: 87 90 93;
-    --tw-color-gray-700: 64 67 70;
-    --tw-color-gray-800: 43 45 48;
-    --tw-color-gray-900: 23 25 28;
-  }
+  --tw-color-gray-50: 244 247 251;
+  --tw-color-gray-100: 216 219 223;
+  --tw-color-gray-200: 189 192 196;
+  --tw-color-gray-300: 162 165 169;
+  --tw-color-gray-400: 136 139 143;
+  --tw-color-gray-500: 111 114 118;
+  --tw-color-gray-600: 87 90 93;
+  --tw-color-gray-700: 64 67 70;
+  --tw-color-gray-800: 43 45 48;
+  --tw-color-gray-900: 23 25 28;
+}

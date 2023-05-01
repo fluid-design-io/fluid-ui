@@ -1,4 +1,3 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
 
 import {
@@ -22,9 +21,7 @@ export default {
     horizontal: false,
     header: 'User',
   },
-} as Meta;
-
-type StoryButtonProps = MenuProps;
+};
 
 const Wrap = ({ className = '', children }) => {
   return (
@@ -39,7 +36,7 @@ const Wrap = ({ className = '', children }) => {
   );
 };
 
-const Template: Story<StoryButtonProps> = (args) => {
+const Template = (args) => {
   return (
     <Wrap className='mt-24'>
       <Menu

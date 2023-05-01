@@ -30,7 +30,7 @@ function FormItem({
     <>
       <div
         className={clsxm(
-          `relative mb-4 last:mb-0 overflow-visible rounded-lg transition-all [&_+_.item-description]:-mt-3`,
+          `relative overflow-visible rounded-lg transition-all [&_+_.item-description]:mb-1`,
           error &&
             focused &&
             `contrast:ring-gray-800 dark:contrast:ring-amber-800 ring-2 contrast:ring-2 ring-primary-400`,
